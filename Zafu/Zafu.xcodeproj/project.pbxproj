@@ -17,6 +17,8 @@
 		1EB068B325A854E600889248 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1EB068B125A854E600889248 /* bell.wav */; };
 		1EB068B825A8556100889248 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068B725A8556100889248 /* AudioPlayer.swift */; };
 		1EB068B925A8556100889248 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068B725A8556100889248 /* AudioPlayer.swift */; };
+		1EB068C025A8580300889248 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068BF25A8580300889248 /* TimerView.swift */; };
+		1EB068C125A8580300889248 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068BF25A8580300889248 /* TimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,7 @@
 		1EB0689D25A8510E00889248 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		1EB068B125A854E600889248 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
 		1EB068B725A8556100889248 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		1EB068BF25A8580300889248 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,7 @@
 		1EB0688A25A8510D00889248 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1EB068BE25A857F900889248 /* Views */,
 				1EB068B625A8555100889248 /* Utilities */,
 				1EB068B025A854D200889248 /* Sounds */,
 				1EB0688B25A8510D00889248 /* ZafuApp.swift */,
@@ -112,6 +116,14 @@
 				1EB068B725A8556100889248 /* AudioPlayer.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1EB068BE25A857F900889248 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1EB068BF25A8580300889248 /* TimerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +227,7 @@
 			files = (
 				1EB068A025A8510E00889248 /* ContentView.swift in Sources */,
 				1EB0689E25A8510E00889248 /* ZafuApp.swift in Sources */,
+				1EB068C025A8580300889248 /* TimerView.swift in Sources */,
 				1EB068B825A8556100889248 /* AudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +238,7 @@
 			files = (
 				1EB068A125A8510E00889248 /* ContentView.swift in Sources */,
 				1EB0689F25A8510E00889248 /* ZafuApp.swift in Sources */,
+				1EB068C125A8580300889248 /* TimerView.swift in Sources */,
 				1EB068B925A8556100889248 /* AudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
