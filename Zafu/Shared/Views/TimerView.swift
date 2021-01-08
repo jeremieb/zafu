@@ -44,7 +44,7 @@ struct TimerView: View {
                         }
                     }
             }
-        } .navigationBarTitle(Text("Zazen"))
+        }.navigationBarTitle(Text("Zafu"))
     }
 }
 
