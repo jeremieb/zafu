@@ -19,22 +19,22 @@ struct TimerView: View {
             if isStoped {
                 HStack {
                     Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                        Text("Start 4 seconds")
+                        Text("15 minutes")
                             .onTapGesture {
-                                timeRemaining = 4
+                                timeRemaining = 900
                                 isStoped.toggle()
                             }
                     }.buttonStyle(GradientButtonStyle())
                     Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                        Text("Start 10 seconds")
+                        Text("20 minutes")
                             .onTapGesture {
-                                timeRemaining = 10
+                                timeRemaining = 1200
                                 isStoped.toggle()
                             }
                     }.buttonStyle(GradientButtonStyle())
                 }
             } else {
-                Text("\(timeRemaining)")
+                Text("\(timeString(time: TimeInterval(timeRemaining)))")
                     .onReceive(timer) { _ in
                         if timeRemaining > 0 {
                             timeRemaining -= 1
@@ -45,6 +45,15 @@ struct TimerView: View {
                     }
             }
         }.navigationBarTitle(Text("Zafu"))
+    }
+    
+    func timeString(time: TimeInterval) -> String {
+        let hour = Int(time) / 3600
+        let minute = Int(time) / 60 % 60
+        let second = Int(time) % 60
+        
+        // return formated string
+        return String(format: "%02i:%02i:%02i", hour, minute, second)
     }
 }
 
