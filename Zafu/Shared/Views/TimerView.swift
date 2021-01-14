@@ -35,6 +35,9 @@ struct TimerView: View {
                 }
             } else {
                 Text("\(timeString(time: TimeInterval(timeRemaining)))")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                    .multilineTextAlignment(.center)
                     .onReceive(timer) { _ in
                         if timeRemaining > 0 {
                             timeRemaining -= 1
