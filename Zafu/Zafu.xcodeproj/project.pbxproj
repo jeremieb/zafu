@@ -3,22 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1EB0689E25A8510E00889248 /* ZafuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB0688B25A8510D00889248 /* ZafuApp.swift */; };
-		1EB0689F25A8510E00889248 /* ZafuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB0688B25A8510D00889248 /* ZafuApp.swift */; };
 		1EB068A025A8510E00889248 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB0688C25A8510D00889248 /* ContentView.swift */; };
-		1EB068A125A8510E00889248 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB0688C25A8510D00889248 /* ContentView.swift */; };
 		1EB068A225A8510E00889248 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EB0688D25A8510E00889248 /* Assets.xcassets */; };
-		1EB068A325A8510E00889248 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EB0688D25A8510E00889248 /* Assets.xcassets */; };
 		1EB068B225A854E600889248 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1EB068B125A854E600889248 /* bell.wav */; };
-		1EB068B325A854E600889248 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1EB068B125A854E600889248 /* bell.wav */; };
 		1EB068B825A8556100889248 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068B725A8556100889248 /* AudioPlayer.swift */; };
-		1EB068B925A8556100889248 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068B725A8556100889248 /* AudioPlayer.swift */; };
 		1EB068C025A8580300889248 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068BF25A8580300889248 /* TimerView.swift */; };
-		1EB068C125A8580300889248 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068BF25A8580300889248 /* TimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +21,6 @@
 		1EB0688D25A8510E00889248 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EB0689225A8510E00889248 /* Zafu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zafu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB0689525A8510E00889248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1EB0689A25A8510E00889248 /* Zafu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zafu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB0689C25A8510E00889248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EB0689D25A8510E00889248 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		1EB068B125A854E600889248 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
@@ -37,13 +30,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		1EB0688F25A8510E00889248 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1EB0689725A8510E00889248 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -80,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				1EB0689225A8510E00889248 /* Zafu.app */,
-				1EB0689A25A8510E00889248 /* Zafu.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,23 +131,6 @@
 			productReference = 1EB0689225A8510E00889248 /* Zafu.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1EB0689925A8510E00889248 /* Zafu (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1EB068A925A8510E00889248 /* Build configuration list for PBXNativeTarget "Zafu (macOS)" */;
-			buildPhases = (
-				1EB0689625A8510E00889248 /* Sources */,
-				1EB0689725A8510E00889248 /* Frameworks */,
-				1EB0689825A8510E00889248 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Zafu (macOS)";
-			productName = "Zafu (macOS)";
-			productReference = 1EB0689A25A8510E00889248 /* Zafu.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -175,13 +143,10 @@
 					1EB0689125A8510E00889248 = {
 						CreatedOnToolsVersion = 12.3;
 					};
-					1EB0689925A8510E00889248 = {
-						CreatedOnToolsVersion = 12.3;
-					};
 				};
 			};
 			buildConfigurationList = 1EB0688925A8510D00889248 /* Build configuration list for PBXProject "Zafu" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -194,7 +159,6 @@
 			projectRoot = "";
 			targets = (
 				1EB0689125A8510E00889248 /* Zafu (iOS) */,
-				1EB0689925A8510E00889248 /* Zafu (macOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -209,15 +173,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1EB0689825A8510E00889248 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1EB068A325A8510E00889248 /* Assets.xcassets in Resources */,
-				1EB068B325A854E600889248 /* bell.wav in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -229,17 +184,6 @@
 				1EB0689E25A8510E00889248 /* ZafuApp.swift in Sources */,
 				1EB068C025A8580300889248 /* TimerView.swift in Sources */,
 				1EB068B825A8556100889248 /* AudioPlayer.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1EB0689625A8510E00889248 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1EB068A125A8510E00889248 /* ContentView.swift in Sources */,
-				1EB0689F25A8510E00889248 /* ZafuApp.swift in Sources */,
-				1EB068C125A8580300889248 /* TimerView.swift in Sources */,
-				1EB068B925A8556100889248 /* AudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +241,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -350,6 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -375,7 +321,7 @@
 				PRODUCT_NAME = Zafu;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -397,58 +343,8 @@
 				PRODUCT_NAME = Zafu;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		1EB068AA25A8510E00889248 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = PNJ2ZGDY4C;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = macOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jeremieberduck.zafu.Zafu;
-				PRODUCT_NAME = Zafu;
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		1EB068AB25A8510E00889248 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = PNJ2ZGDY4C;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = macOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jeremieberduck.zafu.Zafu;
-				PRODUCT_NAME = Zafu;
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -469,15 +365,6 @@
 			buildConfigurations = (
 				1EB068A725A8510E00889248 /* Debug */,
 				1EB068A825A8510E00889248 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1EB068A925A8510E00889248 /* Build configuration list for PBXNativeTarget "Zafu (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1EB068AA25A8510E00889248 /* Debug */,
-				1EB068AB25A8510E00889248 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
