@@ -13,6 +13,7 @@ struct BackgroundView: View {
 
             LinearGradient(gradient: gradientBackground, startPoint: .bottomTrailing, endPoint: .topLeading).ignoresSafeArea()
             
+            BottomShapeFront()
             BottomShapeBack()
         }
     }
@@ -34,6 +35,26 @@ struct BottomShapeBack: View {
             }.fill(Color("shapes"))
             
         }.ignoresSafeArea()
+    }
+}
+
+struct BottomShapeFront: View {
+    var body: some View {
+        
+        GeometryReader { geometry in
+            
+            Path { path in
+                path.move(to: CGPoint(x: 0, y: geometry.size.height / 2.0 ))
+                path.addCurve(to: CGPoint(x: geometry.size.width, y: geometry.size.height / 1.6),
+                              control1: CGPoint(x: geometry.size.width / 2.8, y: geometry.size.height / 1.5),
+                              control2: CGPoint(x: geometry.size.width / 1.4, y: geometry.size.height / 2.4))
+                path.addLine(to: CGPoint(x: geometry.size.width, y: geometry.size.height / 8))
+                path.addLine(to: CGPoint(x: geometry.size.width, y: geometry.size.height))
+                path.addLine(to: CGPoint(x: 0, y: geometry.size.height))
+            }.fill(Color("shapes"))
+            
+        }.ignoresSafeArea()
+        
     }
 }
 
