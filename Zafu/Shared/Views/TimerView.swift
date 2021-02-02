@@ -47,7 +47,7 @@ struct TimerView: View {
                         }
                     }
             }
-        }.navigationBarTitle(Text("Zafu"))
+        }
     }
     
     func timeString(time: TimeInterval) -> String {
