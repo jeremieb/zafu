@@ -9,12 +9,14 @@ import SwiftUI
 
 struct QuotesView: View {
     
-    
-    /// TODO: Random quotes
-    private var quote = "Feelings come and go like clouds in a windy sky. Conscious breathing is my anchor."
-    private var author = "Thich Nhat Hahn"
+    private var myQuote = MyQuotes()
     
     var body: some View {
+        
+        let quoteKey = Int(arc4random_uniform(UInt32(myQuote.quotes.count)))
+        let quote = Array(myQuote.quotes.keys)[quoteKey]
+        let author = Array(myQuote.quotes.values)[quoteKey]
+        
         VStack {
             ZStack {
                 HStack {
@@ -25,13 +27,14 @@ struct QuotesView: View {
                     Text(quote).font(.system(size: 28, weight: .heavy, design: .serif))
                     HStack {
                         Spacer()
-                        Text(author).font(.system(size: 28, weight: .bold, design: .serif).italic()).multilineTextAlignment(.trailing)
+                        Text(author).font(.system(size: 18, weight: .bold, design: .serif).italic()).multilineTextAlignment(.trailing)
                     }
                 }.padding(.top, 80).foregroundColor(.mainColor)
             }
             Spacer()
         }.padding(.horizontal, 28)
     }
+
 }
 
 struct QuotesView_Previews: PreviewProvider {
