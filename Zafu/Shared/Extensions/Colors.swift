@@ -13,6 +13,7 @@ extension Color {
     /// Primary colors
     static let mainColor = Color("main")
     static let secondaryColor = Color("secondary")
+    static let shapesColor = Color("shapes")
     
     /// Gradient colors
     static let gradientStart = Color("gradient-start")
