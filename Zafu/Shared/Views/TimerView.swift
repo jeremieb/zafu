@@ -12,13 +12,11 @@ struct TimerView: View {
     @State var selectedButton = 0
     @State var timeRemaining = 0
     @State var isStoped = true
-    @State var isPaused = false
     
     @AppStorage("firstTimer") var firstTimer: Int = 900
     @AppStorage("secondTimer") var secondTimer: Int = 1200
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
 
     var body: some View {
         
@@ -111,15 +109,10 @@ struct TimerView: View {
                         VStack {
                             Spacer()
                             Button(action: {
-                                
-                            }) {
-                                Text("Pause").font(.system(size: 22, weight: .heavy, design: .serif)).foregroundColor(.mainColor).textCase(.uppercase)
-                            }
-                            Button(action: {
                                 isStoped.toggle()
                                 timeRemaining = 0
                             }) {
-                                Text("or cancel").font(.system(size: 17, weight: .regular, design: .serif)).foregroundColor(.secondaryColor)
+                                Text("Stop").font(.system(size: 22, weight: .heavy, design: .serif)).foregroundColor(.mainColor).textCase(.uppercase)
                             }
                             Spacer().frame(height: 30)
                         }
