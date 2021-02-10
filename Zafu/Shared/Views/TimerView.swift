@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TimerView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var selectedButton = 0
     @State var timeRemaining = 0
     @State var isStoped = false
@@ -77,7 +79,7 @@ struct TimerView: View {
                     }
                 } // end ZStack
                 
-            // MARK: - TIMER IS RUNNING
+                // MARK: - TIMER IS RUNNING
             } else {
                 
                 ZStack {
@@ -87,24 +89,64 @@ struct TimerView: View {
                         /// Sky animation
                         VStack {
                             
-                            ZStack{
-                                /// CLOUDS
-                                Image(systemName: "cloud.fill")
-                                    .font(.system(size: 85, weight: .regular))
-                                    .foregroundColor(.shapesColor)
-                                    .offset(x: -100, y: -80)
+                            if colorScheme == .light {
+                                /// Light mode
+                                ZStack{
+                                    /// CLOUDS
+                                    Image(systemName: "cloud.fill")
+                                        .font(.system(size: 85, weight: .regular))
+                                        .foregroundColor(.shapesColor)
+                                        .offset(x: -100, y: -80)
+                                    
+                                    Image(systemName: "cloud.fill")
+                                        .font(.system(size: 85, weight: .regular))
+                                        .foregroundColor(.shapesColor)
+                                        .offset(x: 80)
+                                    
+                                    /// SUN
+                                    Image(systemName: "sun.max.fill")
+                                        .font(.system(size: 120, weight: .regular))
+                                        .foregroundColor(.shapesColor)
+                                        .offset( x: -120, y: 100)
+                                }
                                 
-                                Image(systemName: "cloud.fill")
-                                    .font(.system(size: 85, weight: .regular))
-                                    .foregroundColor(.shapesColor)
-                                    .offset(x: 80)
+                            } else {
                                 
-                                /// SUN
-                                Image(systemName: "sun.max.fill")
-                                    .font(.system(size: 200, weight: .regular))
-                                    .foregroundColor(.shapesColor)
-                                    .offset( x: -(geometry.size.width - 250), y: 100)
+                                /// Dark mode
+                                ZStack{
+                                    /// STARS
+                                    Circle()
+                                        .fill(Color.mainColor)
+                                        .frame(width: 5, height: 5)
+                                        .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
+                                    
+                                    Circle()
+                                        .fill(Color.mainColor)
+                                        .frame(width: 5, height: 5)
+                                        .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
+                                        .offset(x: -90.0, y: -80.0)
+                                    
+                                    Circle()
+                                        .fill(Color.mainColor)
+                                        .frame(width: 5, height: 5)
+                                        .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
+                                        .offset(x: -50.0, y: -120.0)
+                                    
+                                    Circle()
+                                        .fill(Color.mainColor)
+                                        .frame(width: 5, height: 5)
+                                        .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
+                                        .offset(x: 100.0, y: 50.0)
+                                    
+                                    /// SUN
+                                    Image(systemName: "moon.stars.fill")
+                                        .font(.system(size: 120, weight: .regular))
+                                        .foregroundColor(.mainColor)
+                                        .offset( x: -120, y: 100)
+                                        .shadow(color: .mainColor, radius: 18.0, x: 0, y: 0)
+                                }
                             }
+
                         }
                         .frame(width: geometry.size.width, height: geometry.size.height / 2, alignment: .center)
                         .ignoresSafeArea()
