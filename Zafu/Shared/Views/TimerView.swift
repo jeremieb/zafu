@@ -13,6 +13,8 @@ struct TimerView: View {
     @State var timeRemaining = 0
     @State var isStoped = true
     
+    @EnvironmentObject var myTimer: TimerViewModel
+    
     @AppStorage("firstTimer") var firstTimer: Int = 900
     @AppStorage("secondTimer") var secondTimer: Int = 1200
     
@@ -27,9 +29,7 @@ struct TimerView: View {
             if isStoped { /// Timer is not running
                 
                 ZStack {
-                    
-                    QuotesView()
-                    
+
                     VStack(alignment: .center) {
                         
                         /// Define a spacer with the height of half of the screen
@@ -73,7 +73,13 @@ struct TimerView: View {
                     
                     VStack {
                         Spacer()
-                        Button(action: { startTimer(timer: selectedButton == 0 ? firstTimer : secondTimer) }) {
+                        Button(action: {
+                            withAnimation(){
+                                startTimer(timer: selectedButton == 0 ? firstTimer : secondTimer)
+                                myTimer.isStarted = true
+                                playSound(sound: "bell", type: "wav")
+                            }
+                        }) {
                             Text("Start").font(.system(size: 22, weight: .heavy, design: .serif)).foregroundColor(.mainColor).textCase(.uppercase)
                         }
                         Spacer().frame(height: 30)
@@ -109,8 +115,11 @@ struct TimerView: View {
                         VStack {
                             Spacer()
                             Button(action: {
-                                isStoped.toggle()
-                                timeRemaining = 0
+                                withAnimation(){
+                                    isStoped.toggle()
+                                    myTimer.isStarted = false
+                                    timeRemaining = 0
+                                }
                             }) {
                                 Text("Stop").font(.system(size: 22, weight: .heavy, design: .serif)).foregroundColor(.mainColor).textCase(.uppercase)
                             }

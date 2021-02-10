@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ZafuApp: App {
+    
+    private var myTimer = TimerViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(myTimer)
         }
     }
 }

@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var myTimer: TimerViewModel
+    
     var body: some View {
         ZStack {
             BackgroundView()
             HeaderView()
-            TimerView()
+            QuotesView()
+            TimerView().environmentObject(myTimer)
         }
     }
 }
