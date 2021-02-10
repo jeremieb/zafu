@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct TimerView: View {
-    
-    @Environment(\.colorScheme) var colorScheme
-    
+
     @State var selectedButton = 0
     @State var timeRemaining = 0
-    @State var isStoped = false
+    @State var isStoped = true
+    @State var isPaused = false
     
     @AppStorage("firstTimer") var firstTimer: Int = 900
     @AppStorage("secondTimer") var secondTimer: Int = 1200
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+
     var body: some View {
         
         GeometryReader{ geometry in
@@ -41,30 +41,33 @@ struct TimerView: View {
                             
                             /// 15 minutes
                             VStack {
-                                Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
+                                Button(action: {selectedButton = 0 }) {
                                     VStack(alignment: .center) {
                                         Text("\(Int(firstTimer) / 60 % 60)").font(.system(size: 80, weight: .heavy, design: .serif))
                                         Text("minutes").font(.system(size: 17, weight: .regular, design: .serif)).foregroundColor(.secondaryColor)
-                                    }.foregroundColor(.mainColor)
+                                    }.foregroundColor(selectedButton == 0 ? .mainColor : .secondaryColor)
                                 }
-                                
                                 /// Selection Indicator
-                                Circle().frame(width: 12, height: 12, alignment: .center)
+                                Circle()
+                                    .frame(width: 12, height: 12, alignment: .center)
+                                    .opacity(selectedButton == 0 ? 1 : 0 )
                             }
                             
                             Spacer().frame(width: geometry.size.width / 3.2)
                             
                             /// 20 minutes
                             VStack {
-                                Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
+                                Button(action: {selectedButton = 1 }) {
                                     VStack(alignment: .center) {
                                         Text("\(Int(secondTimer) / 60 % 60)").font(.system(size: 80, weight: .heavy, design: .serif))
                                         Text("minutes").font(.system(size: 17, weight: .regular, design: .serif)).foregroundColor(.secondaryColor)
-                                    }.foregroundColor(.secondaryColor)
+                                    }.foregroundColor(selectedButton == 1 ? .mainColor : .secondaryColor)
                                 }
                                 
                                 /// Selection Indicator
-                                Circle().frame(width: 12, height: 12, alignment: .center).opacity(0)
+                                Circle()
+                                    .frame(width: 12, height: 12, alignment: .center)
+                                    .opacity(selectedButton == 1 ? 1 : 0 )
                             }
                         }
                         
@@ -72,7 +75,7 @@ struct TimerView: View {
                     
                     VStack {
                         Spacer()
-                        Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
+                        Button(action: { startTimer(timer: selectedButton == 0 ? firstTimer : secondTimer) }) {
                             Text("Start").font(.system(size: 22, weight: .heavy, design: .serif)).foregroundColor(.mainColor).textCase(.uppercase)
                         }
                         Spacer().frame(height: 30)
@@ -85,71 +88,8 @@ struct TimerView: View {
                 ZStack {
                     
                     VStack(alignment: .center) {
-                        
-                        /// Sky animation
-                        VStack {
-                            
-                            if colorScheme == .light {
-                                /// Light mode
-                                ZStack{
-                                    /// CLOUDS
-                                    Image(systemName: "cloud.fill")
-                                        .font(.system(size: 85, weight: .regular))
-                                        .foregroundColor(.shapesColor)
-                                        .offset(x: -100, y: -80)
-                                    
-                                    Image(systemName: "cloud.fill")
-                                        .font(.system(size: 85, weight: .regular))
-                                        .foregroundColor(.shapesColor)
-                                        .offset(x: 80)
-                                    
-                                    /// SUN
-                                    Image(systemName: "sun.max.fill")
-                                        .font(.system(size: 120, weight: .regular))
-                                        .foregroundColor(.shapesColor)
-                                        .offset( x: -120, y: 100)
-                                }
-                                
-                            } else {
-                                
-                                /// Dark mode
-                                ZStack{
-                                    /// STARS
-                                    Circle()
-                                        .fill(Color.mainColor)
-                                        .frame(width: 5, height: 5)
-                                        .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
-                                    
-                                    Circle()
-                                        .fill(Color.mainColor)
-                                        .frame(width: 5, height: 5)
-                                        .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
-                                        .offset(x: -90.0, y: -80.0)
-                                    
-                                    Circle()
-                                        .fill(Color.mainColor)
-                                        .frame(width: 5, height: 5)
-                                        .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
-                                        .offset(x: -50.0, y: -120.0)
-                                    
-                                    Circle()
-                                        .fill(Color.mainColor)
-                                        .frame(width: 5, height: 5)
-                                        .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
-                                        .offset(x: 100.0, y: 50.0)
-                                    
-                                    /// SUN
-                                    Image(systemName: "moon.stars.fill")
-                                        .font(.system(size: 120, weight: .regular))
-                                        .foregroundColor(.mainColor)
-                                        .offset( x: -120, y: 100)
-                                        .shadow(color: .mainColor, radius: 18.0, x: 0, y: 0)
-                                }
-                            }
 
-                        }
-                        .frame(width: geometry.size.width, height: geometry.size.height / 2, alignment: .center)
-                        .ignoresSafeArea()
+                        SkyView()
                         
                         /// Running timer
                         Text("\(timeString(time: TimeInterval(timeRemaining)))")
@@ -167,46 +107,28 @@ struct TimerView: View {
                             }
                             .lineLimit(1)
                             .padding(.horizontal, 28)
+                        
+                        VStack {
+                            Spacer()
+                            Button(action: {
+                                
+                            }) {
+                                Text("Pause").font(.system(size: 22, weight: .heavy, design: .serif)).foregroundColor(.mainColor).textCase(.uppercase)
+                            }
+                            Button(action: {
+                                isStoped.toggle()
+                                timeRemaining = 0
+                            }) {
+                                Text("or cancel").font(.system(size: 17, weight: .regular, design: .serif)).foregroundColor(.secondaryColor)
+                            }
+                            Spacer().frame(height: 30)
+                        }
                     }
                     .frame(width: geometry.size.width)
                     
                 }
             }
         }
-        
-        //        VStack(alignment: .leading) {
-        //            if isStoped {
-        //                HStack {
-        //                    Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-        //                        Text("15 minutes")
-        //                            .onTapGesture {
-        //                                timeRemaining = 900
-        //                                isStoped.toggle()
-        //                            }
-        //                    }.buttonStyle(GradientButtonStyle())
-        //                    Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-        //                        Text("20 minutes")
-        //                            .onTapGesture {
-        //                                timeRemaining = 1200
-        //                                isStoped.toggle()
-        //                            }
-        //                    }.buttonStyle(GradientButtonStyle())
-        //                }
-        //            } else {
-        //                Text("\(timeString(time: TimeInterval(timeRemaining)))")
-        //                    .font(.largeTitle)
-        //                    .fontWeight(.heavy)
-        //                    .multilineTextAlignment(.center)
-        //                    .onReceive(timer) { _ in
-        //                        if timeRemaining > 0 {
-        //                            timeRemaining -= 1
-        //                        } else if timeRemaining == 0 {
-        //                            isStoped = true
-        //                            playSound(sound: "bell", type: "wav")
-        //                        }
-        //                    }
-        //            }
-        //        }
     }
     
     func timeString(time: TimeInterval) -> String {
@@ -217,6 +139,12 @@ struct TimerView: View {
         // return formated string
         return String(format: "%02i:%02i:%02i", hour, minute, second)
     }
+    
+    func startTimer(timer: Int) {
+        isStoped.toggle()
+        timeRemaining = timer
+    }
+    
 }
 
 struct TimerView_Previews: PreviewProvider {
