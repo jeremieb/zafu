@@ -37,7 +37,8 @@ struct QuotesView: View {
                         HStack {
                             Spacer()
                             Text(author)
-                                .font(.system(size: 18, weight: .bold, design: .serif).italic())
+                                .font(.system(size: 18, weight: .bold, design: .serif))
+                                .italic()
                                 .multilineTextAlignment(.trailing)
                         }.padding(.top, 1)
                     }.padding(.top, 80).foregroundColor(.mainColor)
