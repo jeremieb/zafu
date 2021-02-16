@@ -99,9 +99,10 @@ struct TimerView: View {
                         
                         /// Running timer
                         Text("\(timeString(time: TimeInterval(timeRemaining)))")
-                            .font(.system(size: 80, weight: .heavy, design: .serif))
+                            .kerning(2)
+                            .font(.system(size: 70, weight: .heavy, design: .serif))
                             .foregroundColor(.mainColor)
-                            .minimumScaleFactor(0.5)
+                            .frame(width: geometry.size.width, alignment: .center)
                             .multilineTextAlignment(.center)
                             .onReceive(timer) { _ in
                                 if timeRemaining > 0 {
@@ -113,6 +114,8 @@ struct TimerView: View {
                             }
                             .lineLimit(1)
                             .padding(.horizontal, 28)
+                            .frame(width: geometry.size.width)
+                            .fixedSize()
                         
                         VStack {
                             Spacer()
@@ -127,8 +130,7 @@ struct TimerView: View {
                             Spacer().frame(height: 30)
                         }
                     }
-                    .frame(width: geometry.size.width)
-                    
+                    .frame(width: geometry.size.width, alignment: .center)
                 }
             }
         }
@@ -151,6 +153,6 @@ struct TimerView: View {
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerView()
+        TimerView().environmentObject(TimerViewModel())
     }
 }
