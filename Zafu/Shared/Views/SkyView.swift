@@ -15,7 +15,6 @@ struct SkyView: View {
         
         GeometryReader { geometry in
             
-            
             /// Sky animation
             VStack {
                 
@@ -78,7 +77,7 @@ struct SkyView: View {
                 }
                 
             }
-            .frame(width: geometry.size.width, height: geometry.size.height / 2, alignment: .center)
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
             .ignoresSafeArea()
         }
     }
