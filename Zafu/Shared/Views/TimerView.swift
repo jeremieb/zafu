@@ -11,7 +11,6 @@ struct TimerView: View {
 
     @State var selectedButton = 0
     @State var timeRemaining = 0
-    @State var isStoped = true
     
     @EnvironmentObject var myTimer: TimerViewModel
     
@@ -26,7 +25,7 @@ struct TimerView: View {
             
             // MARK: - TIMER IS NOT RUNNING
             
-            if isStoped { /// Timer is not running
+            if !myTimer.isStarted { /// Timer is not running
                 
                 ZStack {
 
@@ -39,33 +38,36 @@ struct TimerView: View {
                             
                             /// 15 minutes
                             VStack {
-                                Button(action: {selectedButton = 0 }) {
+                                Button(action: { selectedButton = 0 }) {
                                     VStack(alignment: .center) {
                                         Text("\(Int(firstTimer) / 60 % 60)").font(.system(size: 80, weight: .heavy, design: .serif))
-                                        Text("minutes").font(.system(size: 17, weight: .regular, design: .serif)).foregroundColor(.secondaryColor)
-                                    }.foregroundColor(selectedButton == 0 ? .mainColor : .secondaryColor)
+                                        Text("minutes").font(.system(size: 17, weight: .regular, design: .serif))
+                                    }
+                                    .foregroundColor(selectedButton == 0 ? .mainColor : .secondaryColor)
                                 }
                                 /// Selection Indicator
                                 Circle()
                                     .frame(width: 12, height: 12, alignment: .center)
                                     .opacity(selectedButton == 0 ? 1 : 0 )
+                                    .foregroundColor(.mainColor)
                             }
                             
                             Spacer().frame(width: geometry.size.width / 3.2)
                             
                             /// 20 minutes
                             VStack {
-                                Button(action: {selectedButton = 1 }) {
+                                Button(action: { selectedButton = 1 }) {
                                     VStack(alignment: .center) {
                                         Text("\(Int(secondTimer) / 60 % 60)").font(.system(size: 80, weight: .heavy, design: .serif))
-                                        Text("minutes").font(.system(size: 17, weight: .regular, design: .serif)).foregroundColor(.secondaryColor)
-                                    }.foregroundColor(selectedButton == 1 ? .mainColor : .secondaryColor)
+                                        Text("minutes").font(.system(size: 17, weight: .regular, design: .serif))
+                                    }
+                                    .foregroundColor(selectedButton == 1 ? .mainColor : .secondaryColor)
                                 }
-                                
                                 /// Selection Indicator
                                 Circle()
                                     .frame(width: 12, height: 12, alignment: .center)
                                     .opacity(selectedButton == 1 ? 1 : 0 )
+                                    .foregroundColor(.mainColor)
                             }
                         }
                         
@@ -105,7 +107,7 @@ struct TimerView: View {
                                 if timeRemaining > 0 {
                                     timeRemaining -= 1
                                 } else if timeRemaining == 0 {
-                                    isStoped = true
+                                    myTimer.isStarted = false
                                     playSound(sound: "bell", type: "wav")
                                 }
                             }
@@ -116,7 +118,6 @@ struct TimerView: View {
                             Spacer()
                             Button(action: {
                                 withAnimation(){
-                                    isStoped.toggle()
                                     myTimer.isStarted = false
                                     timeRemaining = 0
                                 }
@@ -143,7 +144,6 @@ struct TimerView: View {
     }
     
     func startTimer(timer: Int) {
-        isStoped.toggle()
         timeRemaining = timer
     }
     

@@ -20,6 +20,7 @@
 		1EB068B225A854E600889248 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1EB068B125A854E600889248 /* bell.wav */; };
 		1EB068B825A8556100889248 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068B725A8556100889248 /* AudioPlayer.swift */; };
 		1EB068C025A8580300889248 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068BF25A8580300889248 /* TimerView.swift */; };
+		1EDD9BF425D458A500805861 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDD9BF325D458A500805861 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		1EB068B125A854E600889248 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
 		1EB068B725A8556100889248 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		1EB068BF25A8580300889248 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		1EDD9BF325D458A500805861 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDD9BF425D458A500805861 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +79,7 @@
 				1EB0689425A8510E00889248 /* iOS */,
 				1EB0689B25A8510E00889248 /* macOS */,
 				1EB0689325A8510E00889248 /* Products */,
+				1EDD9BF225D458A500805861 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,6 +150,14 @@
 				1EAA83F925D433CD00F359C0 /* SkyView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1EDD9BF225D458A500805861 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EDD9BF325D458A500805861 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

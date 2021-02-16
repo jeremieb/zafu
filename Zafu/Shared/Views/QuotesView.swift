@@ -36,12 +36,16 @@ struct QuotesView: View {
                         Text(quote).font(.system(size: 28, weight: .heavy, design: .serif))
                         HStack {
                             Spacer()
-                            Text(author).font(.system(size: 18, weight: .bold, design: .serif).italic()).multilineTextAlignment(.trailing)
-                        }
+                            Text(author)
+                                .font(.system(size: 18, weight: .bold, design: .serif).italic())
+                                .multilineTextAlignment(.trailing)
+                        }.padding(.top, 1)
                     }.padding(.top, 80).foregroundColor(.mainColor)
                 }
+                GeometryReader { geometry in
+                    Spacer().frame(height: geometry.size.height / 2.5)
+                }
             }
-            Spacer()
         }.padding(.horizontal, 28)
     }
 
@@ -51,7 +55,9 @@ struct QuotesView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             QuotesView()
+                .environmentObject(TimerViewModel())
             QuotesView()
+                .environmentObject(TimerViewModel())
                 .preferredColorScheme(.dark)
         }
             
