@@ -24,16 +24,17 @@ struct SettingsView: View {
                     VStack(spacing: 10){
                         
                         // MARK: - ACHIEVEMENT SECTION
-                        HeaderSection(title: "Achievements")
+                        HeaderSectionView(title: "Achievements")
+                        AchievementsSectionView(weeklyAverage: 1.2, monthlyAverage: 2.3)
                         
                         // MARK: - TIMER SETTINGS SECTION
-                        HeaderSection(title: "Timer")
+                        HeaderSectionView(title: "Timer")
                         
                         // MARK: - SYSTEM SECTION
-                        HeaderSection(title: "System")
+                        HeaderSectionView(title: "System")
                         
                         // MARK: - OTHERS SECTION
-                        HeaderSection(title: "Others")
+                        HeaderSectionView(title: "Others")
                         
                         // MARK: - FOOTER
                         FooterView()
@@ -42,42 +43,6 @@ struct SettingsView: View {
                 
             } // end main VStack
         } /// end main ZStack
-    }
-}
-
-struct HeaderSection: View {
-    var title: String
-    
-    var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                Color.mainColor.opacity(0.3)
-                HStack {
-                    Text(title)
-                        .font(.subheadline)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.headersColor)
-                        .multilineTextAlignment(.leading)
-                        .textCase(.uppercase)
-                    Spacer()
-                }.padding(.horizontal)
-                
-            }.frame(minWidth: geo.size.width, minHeight: 20)
-        }
-    }
-}
-
-struct FooterView: View {
-    
-    private var heart = Image(systemName: "heart.fill")
-    
-    var body: some View {
-        VStack(alignment: .center) {
-            Text("Made with \(heart) in Amsterdam")
-                .font(.system(size: 12, weight: .semibold, design: .serif))
-                .foregroundColor(.mainColor)
-            Image("amsterdam")
-        }.padding(.vertical)
     }
 }
 
