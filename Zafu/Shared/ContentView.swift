@@ -17,6 +17,7 @@ struct ContentView: View {
             HeaderView()
             QuotesView()
             TimerView().environmentObject(myTimer)
+            SettingsButtonView()
         }
     }
 }
