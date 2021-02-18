@@ -60,6 +60,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E89267225DEB19100E512D5 /* Settings SubViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Settings SubViews";
+			sourceTree = "<group>";
+		};
 		1E99C2F625C98ECF00F3DBE0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +154,7 @@
 		1EB068BE25A857F900889248 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1E89267225DEB19100E512D5 /* Settings SubViews */,
 				1EB068BF25A8580300889248 /* TimerView.swift */,
 				1E99C2F425C98D9700F3DBE0 /* BackgroundView.swift */,
 				1E1B776525CD7CDE00F5F4EC /* QuotesView.swift */,

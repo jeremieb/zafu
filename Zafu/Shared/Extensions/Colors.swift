@@ -15,9 +15,15 @@ extension Color {
     static let secondaryColor = Color("secondary")
     static let shapesColor = Color("shapes")
     
+    /// Background colors
+    static let modalBackground = Color("modalBackground")
+    
     /// Gradient colors
     static let gradientStart = Color("gradient-start")
     static let gradientEnd = Color("gradient-end")
+    
+    /// Text specific colors
+    static let headersColor = Color("headerColor")
     
 }
 
