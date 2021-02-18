@@ -27,11 +27,14 @@ struct SettingsButtonView: View {
                 HStack {
                     Spacer()
                     Button(action:{
-                        
+                        self.showSettingsView.toggle()
+                        self.impact.impactOccurred()
                     }) {
                         Image(systemName: "gearshape.fill")
                             .font(.system(size: 28))
                             .foregroundColor(.shapesColor)
+                    }.frame(width: 44, height: 44).sheet(isPresented: self.$showSettingsView) {
+                        SettingsView().environmentObject(myTimer)
                     }
                 }.padding(.trailing, 24)
                 Spacer()
