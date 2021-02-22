@@ -25,6 +25,8 @@
 		1EB068B225A854E600889248 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1EB068B125A854E600889248 /* bell.wav */; };
 		1EB068B825A8556100889248 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068B725A8556100889248 /* AudioPlayer.swift */; };
 		1EB068C025A8580300889248 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068BF25A8580300889248 /* TimerView.swift */; };
+		1EB7C8E925E3FEC40062F040 /* SettingsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB7C8E825E3FEC40062F040 /* SettingsNavigationView.swift */; };
+		1EB7C8EB25E404AC0062F040 /* SettingsTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB7C8EA25E404AC0062F040 /* SettingsTimerView.swift */; };
 		1EDD9BF425D458A500805861 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDD9BF325D458A500805861 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 		1EB068B125A854E600889248 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
 		1EB068B725A8556100889248 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		1EB068BF25A8580300889248 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		1EB7C8E825E3FEC40062F040 /* SettingsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationView.swift; sourceTree = "<group>"; };
+		1EB7C8EA25E404AC0062F040 /* SettingsTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimerView.swift; sourceTree = "<group>"; };
 		1EDD9BF325D458A500805861 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -72,6 +76,8 @@
 				1E89267325DEB83F00E512D5 /* HeaderSectionView.swift */,
 				1E89267525DEB89200E512D5 /* FooterView.swift */,
 				1E89267725DEB8C600E512D5 /* AchievementsSectionView.swift */,
+				1EB7C8E825E3FEC40062F040 /* SettingsNavigationView.swift */,
+				1EB7C8EA25E404AC0062F040 /* SettingsTimerView.swift */,
 			);
 			path = "Settings SubViews";
 			sourceTree = "<group>";
@@ -255,6 +261,7 @@
 				1EAA83FA25D433CD00F359C0 /* SkyView.swift in Sources */,
 				1E99C2F525C98D9700F3DBE0 /* BackgroundView.swift in Sources */,
 				1E99C2F825C98EE100F3DBE0 /* Colors.swift in Sources */,
+				1EB7C8EB25E404AC0062F040 /* SettingsTimerView.swift in Sources */,
 				1E89267625DEB89200E512D5 /* FooterView.swift in Sources */,
 				1E89267825DEB8C600E512D5 /* AchievementsSectionView.swift in Sources */,
 				1EB068A025A8510E00889248 /* ContentView.swift in Sources */,
@@ -268,6 +275,7 @@
 				1E1B776825CD816900F5F4EC /* HeaderView.swift in Sources */,
 				1E1B776B25CD82BB00F5F4EC /* Quotes.swift in Sources */,
 				1E89267125DEA23200E512D5 /* SettingsView.swift in Sources */,
+				1EB7C8E925E3FEC40062F040 /* SettingsNavigationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

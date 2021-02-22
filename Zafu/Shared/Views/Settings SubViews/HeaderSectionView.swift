@@ -12,19 +12,21 @@ struct HeaderSectionView: View {
     
     var body: some View {
         GeometryReader { geo in
-            ZStack {
-                Color.mainColor.opacity(0.3)
-                HStack {
-                    Text(title)
-                        .font(.subheadline)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.headersColor)
-                        .multilineTextAlignment(.leading)
-                        .textCase(.uppercase)
-                    Spacer()
-                }.padding(.horizontal)
-                
-            }.frame(minWidth: geo.size.width, minHeight: 20)
+            VStack(spacing: 0) {
+                ZStack {
+                    Color.mainColor.opacity(0.3)
+                    HStack {
+                        Text(title)
+                            .font(.subheadline)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.headersColor)
+                            .multilineTextAlignment(.leading)
+                            .textCase(.uppercase)
+                        Spacer()
+                    }.padding(.horizontal)
+                    
+                }.frame(width: geo.size.width, height: 20)
+            }
         }
     }
 }
