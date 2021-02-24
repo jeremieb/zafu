@@ -9,6 +9,7 @@ import Foundation
 
 final class TimerViewModel: ObservableObject {
     
+    /// Timer status
     @Published var isStarted = false
     
 }

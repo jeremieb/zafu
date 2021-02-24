@@ -8,30 +8,48 @@
 import SwiftUI
 
 struct SettingsTimerSelectionView: View {
+    
+    @State var timePickerOne = false
+    @State var timePickerTwo = false
+
+    /// Timer selection value
+    private var timeAvailable = [300, 600, 900, 1200, 1800, 2400, 2700, 3000, 3600, 4500, 5400, 7200]
+    
+    /// We're storing the timer value
+    @AppStorage("firstTimer") var firstTimer: Int = 900
+    @AppStorage("secondTimer") var secondTimer: Int = 1200
+    
     var body: some View {
-        
-        
         
         VStack(alignment: .center) {
             
             HStack {
                 
                 /// First Button
-                Button(action: {
-                    return
-                }) {
-                    ButtonTimerSelection()
+                Button(action: { timePickerOne.toggle() }) {
+                    ButtonTimerSelection(label: "\(Int(firstTimer) / 60 % 60)")
+                }
+                if timePickerOne {
+                    Picker(selection: $firstTimer, label: EmptyView(), content: {
+                        ForEach(timeAvailable, id: \.self, content: { time in // <1>
+                            Text("\(Int(time) / 60 % 60) min")
+                        })
+                    })
                 }
                 
                 Spacer()
                 
                 /// Second Button
-                Button(action: {
-                    return
-                }) {
-                    ButtonTimerSelection()
+                Button(action: { timePickerTwo.toggle() }) {
+                    ButtonTimerSelection(label: "\(Int(secondTimer) / 60 % 60)")
                 }
-                
+                if timePickerTwo {
+                    Picker(selection: $secondTimer, label: EmptyView(), content: {
+                        ForEach(timeAvailable, id: \.self, content: { time in // <1>
+                            Text("\(Int(time) / 60 % 60) min")
+                        })
+                    })
+                }
             }
             
             Text("Tap the buttons above to set your meditation time.")
@@ -60,7 +78,7 @@ struct ButtonTimerSelection: View {
             VStack(spacing: 10.0) {
                 Image(systemName: "timer")
                     .font(.system(size: 24))
-                Text(label)
+                Text(label + " minutes")
                     .font(.system(size: 17, weight: .semibold, design: .serif))
             }
             .padding()
