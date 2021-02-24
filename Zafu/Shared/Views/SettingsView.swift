@@ -35,20 +35,7 @@ struct SettingsView: View {
                             
                             // MARK: - TIMER SETTINGS SECTION
                             HeaderSectionView(title: "Timer").frame(height: 20)
-                            Group {
-                                
-                                /// First timer settings
-                                NavigationLink(destination: SettingsTimerView()){
-                                    SettingsNavigationView(icon: "timer", title: "15 minutes")
-                                }
-                                
-                                Divider()
-                                
-                                /// Second timer settings
-                                NavigationLink(destination: SettingsTimerView()){
-                                    SettingsNavigationView(icon: "timer", title: "20 minutes")
-                                }
-                            }
+                            SettingsTimerSelectionView()
                             
                             
                             // MARK: - SYSTEM SECTION

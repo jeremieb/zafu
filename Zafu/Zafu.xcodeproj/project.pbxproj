@@ -19,6 +19,7 @@
 		1E99C2F825C98EE100F3DBE0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E99C2F725C98EE100F3DBE0 /* Colors.swift */; };
 		1EAA83FA25D433CD00F359C0 /* SkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAA83F925D433CD00F359C0 /* SkyView.swift */; };
 		1EAA83FD25D440C400F359C0 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAA83FC25D440C400F359C0 /* TimerViewModel.swift */; };
+		1EAB158925E68E9B0025B1EB /* SettingsTimerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAB158825E68E9B0025B1EB /* SettingsTimerSelectionView.swift */; };
 		1EB0689E25A8510E00889248 /* ZafuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB0688B25A8510D00889248 /* ZafuApp.swift */; };
 		1EB068A025A8510E00889248 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB0688C25A8510D00889248 /* ContentView.swift */; };
 		1EB068A225A8510E00889248 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EB0688D25A8510E00889248 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		1E99C2F725C98EE100F3DBE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1EAA83F925D433CD00F359C0 /* SkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyView.swift; sourceTree = "<group>"; };
 		1EAA83FC25D440C400F359C0 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		1EAB158825E68E9B0025B1EB /* SettingsTimerSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimerSelectionView.swift; sourceTree = "<group>"; };
 		1EB0688B25A8510D00889248 /* ZafuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZafuApp.swift; sourceTree = "<group>"; };
 		1EB0688C25A8510D00889248 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1EB0688D25A8510E00889248 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				1E89267725DEB8C600E512D5 /* AchievementsSectionView.swift */,
 				1EB7C8E825E3FEC40062F040 /* SettingsNavigationView.swift */,
 				1EB7C8EA25E404AC0062F040 /* SettingsTimerView.swift */,
+				1EAB158825E68E9B0025B1EB /* SettingsTimerSelectionView.swift */,
 			);
 			path = "Settings SubViews";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				1EB0689E25A8510E00889248 /* ZafuApp.swift in Sources */,
 				1EB068C025A8580300889248 /* TimerView.swift in Sources */,
 				1E1B776625CD7CDE00F5F4EC /* QuotesView.swift in Sources */,
+				1EAB158925E68E9B0025B1EB /* SettingsTimerSelectionView.swift in Sources */,
 				1E89267425DEB83F00E512D5 /* HeaderSectionView.swift in Sources */,
 				1E89266F25DEA22600E512D5 /* SettingsButtonView.swift in Sources */,
 				1EB068B825A8556100889248 /* AudioPlayer.swift in Sources */,
