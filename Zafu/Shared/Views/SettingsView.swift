@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    /// View Models
+    
+    
     var body: some View {
         
         NavigationView {
+            
             ZStack {
                 
                 /// Background color
@@ -98,14 +103,14 @@ struct SettingsView: View {
                         }
                     }
                     
-                } // end main VStack
+                } /// end main VStack
                 
-            } // end main ZStack
+            } /// end main ZStack
             
             /// Hidding Navigation View top bar
             .navigationBarTitle("")
             .navigationBarHidden(true)
-        } // end NavigationView
+        } /// end NavigationView
     }
 }
 
