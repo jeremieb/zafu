@@ -34,7 +34,7 @@ struct SettingsTimerSelectionView: View {
                         }
                     }
                 }) {
-                    ButtonTimerSelection(label: "\(Int(firstTimer) / 60 % 240)")
+                    ButtonTimerSelection(label: "\(Int(firstTimer) / 60 % 240)", isInactive: timePickerTwo)
                 }
                 
                 Spacer()
@@ -48,7 +48,7 @@ struct SettingsTimerSelectionView: View {
                         }
                     }
                 }) {
-                    ButtonTimerSelection(label: "\(Int(secondTimer) / 60 % 240)")
+                    ButtonTimerSelection(label: "\(Int(secondTimer) / 60 % 240)", isInactive: timePickerOne)
                 }
                 
             }
@@ -85,6 +85,17 @@ struct ButtonTimerSelection: View {
     
     var label: String = "tap to select"
     
+    /// Inactive state
+    var isInactive: Bool = false
+    
+    private var opacityButton: Double {
+        if isInactive {
+            return 0.3
+        } else {
+            return 1
+        }
+    }
+    
     var body: some View {
         
         ZStack {
@@ -105,7 +116,7 @@ struct ButtonTimerSelection: View {
             
         }
         .frame(width: UIScreen.main.bounds.width / 2.3)
-        
+        .opacity(opacityButton)
     }
 }
 
