@@ -14,7 +14,7 @@ struct SettingsView: View {
     
     var body: some View {
         
-//        NavigationView {
+        NavigationView {
             
             ZStack {
                 
@@ -95,9 +95,9 @@ struct SettingsView: View {
             } /// end main ZStack
             
             /// Hidding Navigation View top bar
-//            .navigationBarTitle("")
-//            .navigationBarHidden(true)
-       // } /// end NavigationView
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
+        } /// end NavigationView
     }
 }
 
