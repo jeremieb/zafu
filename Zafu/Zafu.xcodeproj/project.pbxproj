@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1E1B776625CD7CDE00F5F4EC /* QuotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1B776525CD7CDE00F5F4EC /* QuotesView.swift */; };
-		1E1B776825CD816900F5F4EC /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1B776725CD816900F5F4EC /* HeaderView.swift */; };
 		1E1B776B25CD82BB00F5F4EC /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1B776A25CD82BB00F5F4EC /* Quotes.swift */; };
 		1E89266F25DEA22600E512D5 /* SettingsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89266E25DEA22600E512D5 /* SettingsButtonView.swift */; };
 		1E89267125DEA23200E512D5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89267025DEA23200E512D5 /* SettingsView.swift */; };
@@ -33,12 +32,12 @@
 		1ED71B1925E9436700976218 /* SettingsAppIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1825E9436700976218 /* SettingsAppIconsView.swift */; };
 		1ED71B1B25E9438800976218 /* SettingsAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1A25E9438800976218 /* SettingsAboutView.swift */; };
 		1ED71B1D25E943AA00976218 /* SettingsPrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1C25E943AA00976218 /* SettingsPrivacyView.swift */; };
+		1ED71B1F25E94D7500976218 /* TimerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1E25E94D7500976218 /* TimerButtonView.swift */; };
 		1EDD9BF425D458A500805861 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDD9BF325D458A500805861 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E1B776525CD7CDE00F5F4EC /* QuotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesView.swift; sourceTree = "<group>"; };
-		1E1B776725CD816900F5F4EC /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		1E1B776A25CD82BB00F5F4EC /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		1E89266E25DEA22600E512D5 /* SettingsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonView.swift; sourceTree = "<group>"; };
 		1E89267025DEA23200E512D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		1ED71B1825E9436700976218 /* SettingsAppIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppIconsView.swift; sourceTree = "<group>"; };
 		1ED71B1A25E9438800976218 /* SettingsAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutView.swift; sourceTree = "<group>"; };
 		1ED71B1C25E943AA00976218 /* SettingsPrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPrivacyView.swift; sourceTree = "<group>"; };
+		1ED71B1E25E94D7500976218 /* TimerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerButtonView.swift; sourceTree = "<group>"; };
 		1EDD9BF325D458A500805861 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -198,10 +198,10 @@
 			isa = PBXGroup;
 			children = (
 				1E8FBAD125E8F5A5009B9149 /* Settings */,
+				1ED71B1E25E94D7500976218 /* TimerButtonView.swift */,
 				1EB068BF25A8580300889248 /* TimerView.swift */,
 				1E99C2F425C98D9700F3DBE0 /* BackgroundView.swift */,
 				1E1B776525CD7CDE00F5F4EC /* QuotesView.swift */,
-				1E1B776725CD816900F5F4EC /* HeaderView.swift */,
 				1EAA83F925D433CD00F359C0 /* SkyView.swift */,
 			);
 			path = Views;
@@ -302,10 +302,10 @@
 				1E89266F25DEA22600E512D5 /* SettingsButtonView.swift in Sources */,
 				1EB068B825A8556100889248 /* AudioPlayer.swift in Sources */,
 				1EAA83FD25D440C400F359C0 /* TimerViewModel.swift in Sources */,
-				1E1B776825CD816900F5F4EC /* HeaderView.swift in Sources */,
 				1E1B776B25CD82BB00F5F4EC /* Quotes.swift in Sources */,
 				1ED71B1B25E9438800976218 /* SettingsAboutView.swift in Sources */,
 				1E89267125DEA23200E512D5 /* SettingsView.swift in Sources */,
+				1ED71B1F25E94D7500976218 /* TimerButtonView.swift in Sources */,
 				1ED71B1D25E943AA00976218 /* SettingsPrivacyView.swift in Sources */,
 				1EB7C8E925E3FEC40062F040 /* SettingsNavigationView.swift in Sources */,
 			);

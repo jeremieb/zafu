@@ -12,6 +12,9 @@ struct TimerView: View {
     @State var selectedButton = 0
     @State var timeRemaining = 0
     
+    @State var firstTimerSelected = true
+    @State var secondTimerSelected = false
+    
     @EnvironmentObject var myTimer: TimerViewModel
     
     @AppStorage("firstTimer") var firstTimer: Int = 900
@@ -38,20 +41,16 @@ struct TimerView: View {
                             
                             /// 15 minutes
                             VStack {
-                                Button(action: { selectedButton = 0 }) {
-                                    VStack(alignment: .center) {
-                                        Text("\(Int(firstTimer) / 60 % 240)")
-                                            .font(.system(size: 80, weight: .heavy, design: .serif))
-                                            .lineLimit(1)
-                                            .minimumScaleFactor(0.5)
-                                        Text("minutes").font(.system(size: 17, weight: .regular, design: .serif))
-                                    }
-                                    .foregroundColor(selectedButton == 0 ? .mainColor : .secondaryColor)
+                                Button(action: {
+                                    firstTimerSelected.toggle()
+                                    secondTimerSelected.toggle()
+                                }) {
+                                    TimerButtonView(time: firstTimer, isSelected: firstTimerSelected)
                                 }
                                 /// Selection Indicator
                                 Circle()
                                     .frame(width: 12, height: 12, alignment: .center)
-                                    .opacity(selectedButton == 0 ? 1 : 0 )
+                                    .opacity(firstTimerSelected == true ? 1 : 0 )
                                     .foregroundColor(.mainColor)
                             }
                             
@@ -59,20 +58,16 @@ struct TimerView: View {
                             
                             /// 20 minutes
                             VStack {
-                                Button(action: { selectedButton = 1 }) {
-                                    VStack(alignment: .center) {
-                                        Text("\(Int(secondTimer) / 60 % 240)")
-                                            .font(.system(size: 80, weight: .heavy, design: .serif))
-                                            .lineLimit(1)
-                                            .minimumScaleFactor(0.5)
-                                        Text("minutes").font(.system(size: 17, weight: .regular, design: .serif))
-                                    }
-                                    .foregroundColor(selectedButton == 1 ? .mainColor : .secondaryColor)
+                                Button(action: {
+                                    secondTimerSelected.toggle()
+                                    firstTimerSelected.toggle()
+                                }) {
+                                    TimerButtonView(time: secondTimer, isSelected: secondTimerSelected)
                                 }
                                 /// Selection Indicator
                                 Circle()
                                     .frame(width: 12, height: 12, alignment: .center)
-                                    .opacity(selectedButton == 1 ? 1 : 0 )
+                                    .opacity(secondTimerSelected == true ? 1 : 0 )
                                     .foregroundColor(.mainColor)
                             }
                         }
@@ -104,12 +99,7 @@ struct TimerView: View {
                         SkyView()
                         
                         /// Running timer
-                        Text("\(timeString(time: TimeInterval(timeRemaining)))")
-                            .kerning(2)
-                            .font(.system(size: 70, weight: .heavy, design: .serif))
-                            .foregroundColor(.mainColor)
-                            .frame(width: geometry.size.width, alignment: .center)
-                            .multilineTextAlignment(.center)
+                        TimerLabelView(time: "\(timeString(time: TimeInterval(timeRemaining)))")
                             .onReceive(timer) { _ in
                                 if timeRemaining > 0 {
                                     timeRemaining -= 1
@@ -118,10 +108,6 @@ struct TimerView: View {
                                     playSound(sound: "bell", type: "wav")
                                 }
                             }
-                            .lineLimit(1)
-                            .padding(.horizontal, 28)
-                            .frame(width: geometry.size.width)
-                            .fixedSize()
                         
                         VStack {
                             Spacer()
@@ -155,6 +141,24 @@ struct TimerView: View {
         timeRemaining = timer
     }
     
+}
+
+struct TimerLabelView: View {
+    
+    var time: String
+    
+    var body: some View {
+        
+        Text(time)
+            .kerning(2)
+            .font(.system(size: 70, weight: .heavy, design: .serif))
+            .foregroundColor(.mainColor)
+            .frame(width: UIScreen.main.bounds.width, alignment: .center)
+            .multilineTextAlignment(.center)
+            .lineLimit(1)
+            .padding(.horizontal, 28)
+            .fixedSize()
+    }
 }
 
 struct TimerView_Previews: PreviewProvider {
