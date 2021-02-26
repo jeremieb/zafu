@@ -75,14 +75,24 @@
 		1E89267225DEB19100E512D5 /* Settings SubViews */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = "Settings SubViews";
+			sourceTree = "<group>";
+		};
+		1E8FBAD125E8F5A5009B9149 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1E89267225DEB19100E512D5 /* Settings SubViews */,
 				1E89267325DEB83F00E512D5 /* HeaderSectionView.swift */,
 				1E89267525DEB89200E512D5 /* FooterView.swift */,
 				1E89267725DEB8C600E512D5 /* AchievementsSectionView.swift */,
 				1EB7C8E825E3FEC40062F040 /* SettingsNavigationView.swift */,
 				1EB7C8EA25E404AC0062F040 /* SettingsTimerView.swift */,
 				1EAB158825E68E9B0025B1EB /* SettingsTimerSelectionView.swift */,
+				1E89266E25DEA22600E512D5 /* SettingsButtonView.swift */,
+				1E89267025DEA23200E512D5 /* SettingsView.swift */,
 			);
-			path = "Settings SubViews";
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		1E99C2F625C98ECF00F3DBE0 /* Extensions */ = {
@@ -172,14 +182,12 @@
 		1EB068BE25A857F900889248 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1E89267225DEB19100E512D5 /* Settings SubViews */,
+				1E8FBAD125E8F5A5009B9149 /* Settings */,
 				1EB068BF25A8580300889248 /* TimerView.swift */,
 				1E99C2F425C98D9700F3DBE0 /* BackgroundView.swift */,
 				1E1B776525CD7CDE00F5F4EC /* QuotesView.swift */,
 				1E1B776725CD816900F5F4EC /* HeaderView.swift */,
 				1EAA83F925D433CD00F359C0 /* SkyView.swift */,
-				1E89266E25DEA22600E512D5 /* SettingsButtonView.swift */,
-				1E89267025DEA23200E512D5 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
