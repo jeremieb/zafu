@@ -11,7 +11,7 @@ struct SettingsTimerSelectionView: View {
     
     @State var timePickerOne = false
     @State var timePickerTwo = false
-
+    
     /// Timer selection value
     private var timeAvailable = [300, 600, 900, 1200, 1800, 2400, 2700, 3000, 3600, 4500, 5400, 7200]
     
@@ -26,36 +26,60 @@ struct SettingsTimerSelectionView: View {
             HStack {
                 
                 /// First Button
-                Button(action: { timePickerOne.toggle() }) {
-                    ButtonTimerSelection(label: "\(Int(firstTimer) / 60 % 60)")
+                Button(action: {
+                    withAnimation {
+                        timePickerOne.toggle()
+                        if timePickerTwo {
+                            timePickerTwo.toggle()
+                        }
+                    }
+                }) {
+                    ButtonTimerSelection(label: "\(Int(firstTimer) / 60 % 240)")
                 }
-                if timePickerOne {
-                    Picker(selection: $firstTimer, label: EmptyView(), content: {
-                        ForEach(timeAvailable, id: \.self, content: { time in // <1>
-                            Text("\(Int(time) / 60 % 60) min")
-                        })
-                    })
-                }
+                
                 
                 Spacer()
                 
                 /// Second Button
-                Button(action: { timePickerTwo.toggle() }) {
-                    ButtonTimerSelection(label: "\(Int(secondTimer) / 60 % 60)")
+                Button(action: {
+                    withAnimation {
+                        timePickerTwo.toggle()
+                        if timePickerOne {
+                            timePickerOne.toggle()
+                        }
+                    }
+                }) {
+                    ButtonTimerSelection(label: "\(Int(secondTimer) / 60 % 240)")
                 }
-                if timePickerTwo {
-                    Picker(selection: $secondTimer, label: EmptyView(), content: {
-                        ForEach(timeAvailable, id: \.self, content: { time in // <1>
-                            Text("\(Int(time) / 60 % 60) min")
-                        })
-                    })
-                }
+                
             }
             
-            Text("Tap the buttons above to set your meditation time.")
-                .font(.footnote)
-                .foregroundColor(.mainColor)
-                .opacity(0.6)
+            if timePickerOne {
+                Picker(selection: $firstTimer, label: EmptyView(), content: {
+                    ForEach(timeAvailable, id: \.self, content: { time in
+                        Text("\(Int(time) / 60 % 240) min")
+                    })
+                }).onDisappear(perform: {
+                    TimerViewModel().updateView()
+                })
+            }
+            
+            if timePickerTwo {
+                Picker(selection: $secondTimer, label: EmptyView(), content: {
+                    ForEach(timeAvailable, id: \.self, content: { time in
+                        Text("\(Int(time) / 60 % 240) min")
+                    })
+                }).onDisappear(perform: {
+                    TimerViewModel().updateView()
+                })
+            }
+            
+            if !timePickerOne && !timePickerTwo {
+                Text("Tap the buttons above to set your meditation time.")
+                    .font(.footnote)
+                    .foregroundColor(.mainColor)
+                    .opacity(0.6)
+            }
             
         }.padding(.horizontal)
         Spacer().frame(height: 16)

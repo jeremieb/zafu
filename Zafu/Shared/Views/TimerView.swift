@@ -21,7 +21,7 @@ struct TimerView: View {
 
     var body: some View {
         
-        GeometryReader{ geometry in
+        return GeometryReader{ geometry in
             
             // MARK: - TIMER IS NOT RUNNING
             
@@ -40,7 +40,10 @@ struct TimerView: View {
                             VStack {
                                 Button(action: { selectedButton = 0 }) {
                                     VStack(alignment: .center) {
-                                        Text("\(Int(firstTimer) / 60 % 60)").font(.system(size: 80, weight: .heavy, design: .serif))
+                                        Text("\(Int(firstTimer) / 60 % 240)")
+                                            .font(.system(size: 80, weight: .heavy, design: .serif))
+                                            .lineLimit(1)
+                                            .minimumScaleFactor(0.5)
                                         Text("minutes").font(.system(size: 17, weight: .regular, design: .serif))
                                     }
                                     .foregroundColor(selectedButton == 0 ? .mainColor : .secondaryColor)
@@ -58,7 +61,10 @@ struct TimerView: View {
                             VStack {
                                 Button(action: { selectedButton = 1 }) {
                                     VStack(alignment: .center) {
-                                        Text("\(Int(secondTimer) / 60 % 60)").font(.system(size: 80, weight: .heavy, design: .serif))
+                                        Text("\(Int(secondTimer) / 60 % 240)")
+                                            .font(.system(size: 80, weight: .heavy, design: .serif))
+                                            .lineLimit(1)
+                                            .minimumScaleFactor(0.5)
                                         Text("minutes").font(.system(size: 17, weight: .regular, design: .serif))
                                     }
                                     .foregroundColor(selectedButton == 1 ? .mainColor : .secondaryColor)

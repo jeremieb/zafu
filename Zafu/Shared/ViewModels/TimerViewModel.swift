@@ -12,4 +12,9 @@ final class TimerViewModel: ObservableObject {
     /// Timer status
     @Published var isStarted = false
     
+    /// Hack force update
+    func updateView(){
+        self.objectWillChange.send()
+    }
+    
 }
