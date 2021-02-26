@@ -59,8 +59,6 @@ struct SettingsTimerSelectionView: View {
                     ForEach(timeAvailable, id: \.self, content: { time in
                         Text("\(Int(time) / 60 % 240) min")
                     })
-                }).onDisappear(perform: {
-                    TimerViewModel().updateView()
                 })
             }
             
@@ -69,8 +67,6 @@ struct SettingsTimerSelectionView: View {
                     ForEach(timeAvailable, id: \.self, content: { time in
                         Text("\(Int(time) / 60 % 240) min")
                     })
-                }).onDisappear(perform: {
-                    TimerViewModel().updateView()
                 })
             }
             
