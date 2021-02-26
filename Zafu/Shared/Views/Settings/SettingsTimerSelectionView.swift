@@ -37,7 +37,6 @@ struct SettingsTimerSelectionView: View {
                     ButtonTimerSelection(label: "\(Int(firstTimer) / 60 % 240)")
                 }
                 
-                
                 Spacer()
                 
                 /// Second Button

@@ -43,21 +43,21 @@ struct SettingsView: View {
                             Group{
                                 
                                 /// Health Kit
-                                NavigationLink( destination: EmptyView() ){
+                                NavigationLink( destination: SettingsHealthView() ){
                                     SettingsNavigationView(icon: "heart.fill", title: "Health Sync")
                                 }
                                 
                                 Divider()
                                 
                                 /// Siri Kit
-                                NavigationLink( destination: EmptyView() ) {
+                                NavigationLink( destination: SettingsSiriView() ) {
                                     SettingsNavigationView(icon: "mic.fill", title: "Siri Shortcuts")
                                 }
                                 
                                 Divider()
                                 
                                 /// Custom App Icon
-                                NavigationLink( destination: EmptyView() ) {
+                                NavigationLink( destination: SettingsAppIconsView() ) {
                                     SettingsNavigationView(icon: "app.badge.fill", title: "Alternate App Icon")
                                 }
                             }
@@ -68,14 +68,14 @@ struct SettingsView: View {
                             Group {
                                 
                                 /// About view
-                                NavigationLink ( destination: EmptyView() ) {
+                                NavigationLink ( destination: SettingsAboutView() ) {
                                     SettingsNavigationView(icon: "person.fill", title: "About")
                                 }
                                 
                                 Divider()
                                 
                                 /// Privacy view
-                                NavigationLink( destination: EmptyView()) {
+                                NavigationLink( destination: SettingsPrivacyView()) {
                                     SettingsNavigationView(icon: "shield.checkerboard", title: "Privacy")
                                 }
                                 
