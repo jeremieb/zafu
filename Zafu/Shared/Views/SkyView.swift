@@ -51,20 +51,20 @@ struct SkyView: View {
                             .font(.system(size: 85, weight: .regular))
                             .foregroundColor(.shapesColor)
                             .offset(x: animated ? cloudOne : -520, y: -80)
-                            .animation(.linear(duration: 20).repeatForever(autoreverses: true))
+                            .animation(.linear(duration: 30).repeatForever(autoreverses: true))
                         
                         Image(systemName: "cloud.fill") /// CLOUD TWO
                             .font(.system(size: 85, weight: .regular))
                             .foregroundColor(.shapesColor)
                             .offset(x: animated ? cloudTwo : screenSize - 100)
-                            .animation(.linear(duration: 15).repeatForever(autoreverses: true))
+                            .animation(.linear(duration: 22).repeatForever(autoreverses: true))
                         
                         /// SUN
                         Image(systemName: "sun.max.fill")
                             .font(.system(size: 120, weight: .regular))
                             .foregroundColor(.shapesColor)
                             .offset( x: animated ? sunHorizontalMoving : -120, y: animated ? sunVerticalMoving : 100)
-                            .animation(.linear(duration: 30).repeatForever(autoreverses: true))
+                            .animation(.linear(duration: 35).repeatForever(autoreverses: true))
                     }
                     
                 } else {
@@ -134,7 +134,7 @@ struct SkyView_Previews: PreviewProvider {
                     Spacer().frame(height: UIScreen.main.bounds.height / 2)
                 }
             }
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
         }
     }
 }
