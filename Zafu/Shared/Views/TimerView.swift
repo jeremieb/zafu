@@ -17,7 +17,7 @@ struct TimerView: View {
     
     @EnvironmentObject var myTimer: TimerViewModel
     
-    @AppStorage("firstTimer") var firstTimer: Int = 900
+    @AppStorage("firstTimer") var firstTimer: Int = 7200
     @AppStorage("secondTimer") var secondTimer: Int = 1200
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -54,7 +54,7 @@ struct TimerView: View {
                                     .foregroundColor(.mainColor)
                             }
                             
-                            Spacer().frame(width: geometry.size.width / 3.2)
+                            Spacer()
                             
                             /// 20 minutes
                             VStack {
