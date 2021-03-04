@@ -11,23 +11,7 @@ struct SettingsSiriView: View {
 
     var body: some View {
         
-        ZStack {
-            
-            /// Background color
-            Color.modalBackground.ignoresSafeArea()
-            
-            VStack(alignment: .leading) {
-                
-                /// Title
-                Text("Siri Shortcuts")
-                    .font(.system(size: 42, weight: .semibold, design: .serif))
-                Text("Body")
-                
-                Spacer()
-            }
-            .frame(width: UIScreen.main.bounds.width)
-            .foregroundColor(.mainColor)
-        }
+        SettingsSubView(title: "Siri Shortcuts", icon: "mic.fill")
     }
 }
 

@@ -9,16 +9,9 @@ import SwiftUI
 
 struct SettingsAboutView: View {
     var body: some View {
-        ZStack {
-            
-            /// Background color
-            Color.modalBackground.ignoresSafeArea()
-            
-            VStack {
-                Text("Body")
-            }
-            
-        }.navigationTitle("About")
+        
+        SettingsSubView(title: "About", icon: "person.fill")
+        
     }
 }
 

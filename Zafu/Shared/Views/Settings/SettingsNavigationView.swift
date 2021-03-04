@@ -27,7 +27,7 @@ struct SettingsNavigationView: View {
                         .frame(width: 50, height: 50, alignment: .leading)
                         .opacity(0.15)
                     Image(systemName: icon)
-                        .font(.system(size: 17, weight: .semibold))
+                        .font(.system(size: 22, weight: .medium))
                 }
                 
                 Spacer().frame(width: 16)

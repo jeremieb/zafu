@@ -9,16 +9,9 @@ import SwiftUI
 
 struct SettingsAppIconsView: View {
     var body: some View {
-        ZStack {
-            
-            /// Background color
-            Color.modalBackground.ignoresSafeArea()
-            
-            VStack {
-                Text("Body")
-            }
-            
-        }.navigationTitle("Alternate App Icons")
+
+        SettingsSubView(title: "Alternate App Icons", icon: "app.badge.fill")
+        
     }
 }
 

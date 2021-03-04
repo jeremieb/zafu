@@ -27,6 +27,7 @@
 		1EB068C025A8580300889248 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB068BF25A8580300889248 /* TimerView.swift */; };
 		1EB7C8E925E3FEC40062F040 /* SettingsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB7C8E825E3FEC40062F040 /* SettingsNavigationView.swift */; };
 		1EB7C8EB25E404AC0062F040 /* SettingsTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB7C8EA25E404AC0062F040 /* SettingsTimerView.swift */; };
+		1ED21EFB25F1004B0008AAC9 /* SettingsSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED21EFA25F1004B0008AAC9 /* SettingsSubView.swift */; };
 		1ED71B1525E9424800976218 /* SettingsHealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1425E9424800976218 /* SettingsHealthView.swift */; };
 		1ED71B1725E9431600976218 /* SettingsSiriView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1625E9431600976218 /* SettingsSiriView.swift */; };
 		1ED71B1925E9436700976218 /* SettingsAppIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1825E9436700976218 /* SettingsAppIconsView.swift */; };
@@ -61,6 +62,7 @@
 		1EB068BF25A8580300889248 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		1EB7C8E825E3FEC40062F040 /* SettingsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationView.swift; sourceTree = "<group>"; };
 		1EB7C8EA25E404AC0062F040 /* SettingsTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimerView.swift; sourceTree = "<group>"; };
+		1ED21EFA25F1004B0008AAC9 /* SettingsSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubView.swift; sourceTree = "<group>"; };
 		1ED71B1425E9424800976218 /* SettingsHealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHealthView.swift; sourceTree = "<group>"; };
 		1ED71B1625E9431600976218 /* SettingsSiriView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSiriView.swift; sourceTree = "<group>"; };
 		1ED71B1825E9436700976218 /* SettingsAppIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppIconsView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				1ED71B1825E9436700976218 /* SettingsAppIconsView.swift */,
 				1ED71B1A25E9438800976218 /* SettingsAboutView.swift */,
 				1ED71B1C25E943AA00976218 /* SettingsPrivacyView.swift */,
+				1ED21EFA25F1004B0008AAC9 /* SettingsSubView.swift */,
 			);
 			path = "Settings SubViews";
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				1E89267425DEB83F00E512D5 /* HeaderSectionView.swift in Sources */,
 				1E89266F25DEA22600E512D5 /* SettingsButtonView.swift in Sources */,
 				1EB068B825A8556100889248 /* AudioPlayer.swift in Sources */,
+				1ED21EFB25F1004B0008AAC9 /* SettingsSubView.swift in Sources */,
 				1EAA83FD25D440C400F359C0 /* TimerViewModel.swift in Sources */,
 				1E1B776B25CD82BB00F5F4EC /* Quotes.swift in Sources */,
 				1ED71B1B25E9438800976218 /* SettingsAboutView.swift in Sources */,

@@ -8,23 +8,18 @@
 import SwiftUI
 
 struct SettingsHealthView: View {
+
     var body: some View {
         
-        ZStack {
-            
-            /// Background color
-            Color.modalBackground.ignoresSafeArea()
-            
-            VStack {
-                Text("Body")
-            }
-            
-        }.navigationTitle("Health Sync")
+        SettingsSubView(title: "Health Sync", icon: "heart.fill")
+        
     }
 }
 
 struct SettingsHealthView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsHealthView()
+        NavigationView{
+            SettingsHealthView()
+        }
     }
 }

@@ -9,16 +9,8 @@ import SwiftUI
 
 struct SettingsPrivacyView: View {
     var body: some View {
-        ZStack {
-            
-            /// Background color
-            Color.modalBackground.ignoresSafeArea()
-            
-            VStack {
-                Text("Body")
-            }
-            
-        }.navigationTitle("Privacy")
+        
+        SettingsSubView(title: "Privacy", icon: "shield.checkerboard")
     }
 }
 

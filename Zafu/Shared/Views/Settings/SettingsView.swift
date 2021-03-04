@@ -9,22 +9,20 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    /// View Models
-    
-    
     var body: some View {
         
         NavigationView {
             
             ZStack {
                 
-                /// Background color
+                /// Background colour
                 Color.modalBackground.ignoresSafeArea()
                 
                 VStack {
                     
                     /// Logo
-                    VStack { Image("logo") }.padding(.vertical)
+                    VStack { Image("logo") }
+                        .padding(.vertical)
                     
                     ScrollView(.vertical, showsIndicators: false){
                         VStack(alignment: .center, spacing: 10){
@@ -61,6 +59,7 @@ struct SettingsView: View {
                                     SettingsNavigationView(icon: "app.badge.fill", title: "Alternate App Icon")
                                 }
                             }
+                            .navigationBarHidden(false)
                             
                             // MARK: - OTHERS SECTION
                             HeaderSectionView(title: "Others").frame(height: 20)
@@ -94,7 +93,7 @@ struct SettingsView: View {
                 
             } /// end main ZStack
             
-            /// Hidding Navigation View top bar
+            /// Hiding Navigation View top bar
             .navigationBarTitle("")
             .navigationBarHidden(true)
         } /// end NavigationView
