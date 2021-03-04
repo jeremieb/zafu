@@ -63,8 +63,8 @@ struct SkyView: View {
                         Image(systemName: "sun.max.fill")
                             .font(.system(size: 120, weight: .regular))
                             .foregroundColor(.shapesColor)
-                            .offset( x: animated ? sunHorizontalMoving : -120, y: animated ? sunVerticalMoving : 100)
-                            .animation(.linear(duration: 35).repeatForever(autoreverses: true))
+                            .offset( x: animated ? sunHorizontalMoving : -(UIScreen.main.bounds.width / 1.5) , y: animated ? sunVerticalMoving : 100)
+                            .animation(animated ? Animation.linear(duration: 35).delay(2).repeatForever(autoreverses: false) : .default)
                     }
                     
                 } else {
@@ -107,10 +107,9 @@ struct SkyView: View {
                         Image(systemName: "moon.stars.fill")
                             .font(.system(size: 120, weight: .regular))
                             .foregroundColor(.mainColor)
-                            .offset( x: animated ? sunHorizontalMoving : -120, y: animated ? sunVerticalMoving : 100)
-                            .animation(.linear(duration: 30).repeatForever(autoreverses: true))
+                            .offset( x: animated ? sunHorizontalMoving : -(UIScreen.main.bounds.width / 1.5), y: animated ? sunVerticalMoving : 100)
                             .shadow(color: .mainColor, radius: animated ? moonGlow : 18.0, x: 0, y: 0)
-                            .animation(.linear(duration: 8).repeatForever(autoreverses: true))
+                            .animation(animated ? Animation.linear(duration: 35).delay(2).repeatForever(autoreverses: false) : .default)
                     }
                 }
                 
@@ -134,7 +133,7 @@ struct SkyView_Previews: PreviewProvider {
                     Spacer().frame(height: UIScreen.main.bounds.height / 2)
                 }
             }
-//            .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
         }
     }
 }
