@@ -9,6 +9,13 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    init(){
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
         
         NavigationView {
