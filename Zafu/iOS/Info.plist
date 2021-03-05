@@ -6,6 +6,66 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIcons</key>
+	<dict>
+        <key>CFBundleAlternateIcons</key>
+        <dict>
+            <key>Dark-Mode</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>dark-mode</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>Proud</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>proud</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>Proud-Secondary</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>proud-second</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>Full-Black</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>pure-black</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>Full-Black-White</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>pure-black-white</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+        </dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>default</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>

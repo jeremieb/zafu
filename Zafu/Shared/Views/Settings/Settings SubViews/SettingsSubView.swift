@@ -17,21 +17,9 @@ struct SettingsSubView: View {
         
         ZStack {
             
-            /// Background colours
-            Color.modalBackground.ignoresSafeArea()
+            /// Header
+            SettingsSubViewHeader(icon: icon)
             
-            /// Icon
-            VStack {
-                HStack {
-                    Spacer()
-                    Image(systemName: icon)
-                        .font(.system(size: 90))
-                        .foregroundColor(.secondaryColor)
-                        .opacity(0.3)
-                }
-                Spacer()
-            }
-            .padding()
             
             ScrollView {
                 
@@ -58,6 +46,31 @@ struct SettingsSubView: View {
         } // end ZStack
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarHidden(false)
+    }
+}
+
+struct SettingsSubViewHeader: View {
+
+    var icon: String = "seal.fill"
+    
+    var body: some View {
+        
+        ZStack {
+            /// Background colours
+            Color.modalBackground.ignoresSafeArea()
+            
+            /// Icon
+            VStack {
+                HStack {
+                    Spacer()
+                    Image(systemName: icon)
+                        .font(.system(size: 90))
+                        .foregroundColor(.secondaryColor)
+                        .opacity(0.3)
+                }
+                Spacer()
+            }.padding()
+        }
     }
 }
 
