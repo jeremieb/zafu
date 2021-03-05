@@ -59,7 +59,6 @@ struct SettingsView: View {
                                     SettingsNavigationView(icon: "app.badge.fill", title: "Alternate App Icon")
                                 }
                             }
-                            .navigationBarHidden(false)
                             
                             // MARK: - OTHERS SECTION
                             HeaderSectionView(title: "Others").frame(height: 20)
