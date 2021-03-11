@@ -78,8 +78,10 @@ struct TimerView: View {
                         Spacer()
                         Button(action: {
                             withAnimation(){
-                                startTimer(timer: selectedButton == 0 ? firstTimer : secondTimer)
-                                myTimer.isStarted = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    startTimer(timer: selectedButton == 0 ? firstTimer : secondTimer)
+                                    myTimer.isStarted = true
+                                }
                                 playSound(sound: "bell", type: "wav")
                             }
                         }) {
@@ -133,7 +135,7 @@ struct TimerView: View {
         let minute = Int(time) / 60 % 60
         let second = Int(time) % 60
         
-        // return formated string
+        // return formatted string
         return String(format: "%02i:%02i:%02i", hour, minute, second)
     }
     
