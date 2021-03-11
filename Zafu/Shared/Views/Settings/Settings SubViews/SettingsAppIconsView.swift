@@ -33,8 +33,8 @@ struct SettingsAppIconsView: View {
                     AppIconsButtonView(image: "dark-mode", key: "Dark-Mode", title: "Dark Mode")
                     AppIconsButtonView(image: "proud", key: "Proud", title: "Proud")
                     AppIconsButtonView(image: "proud-second", key: "Proud-Secondary", title: "So Proud")
-                    AppIconsButtonView(image: "pure-black", key: "Full-Black", title: "Full Black")
-                    AppIconsButtonView(image: "pure-black-white", key: "Full-Black-White", title: "Full Black & White")
+                    AppIconsButtonView(image: "pure-black", key: "Full-Black", title: "Pure Black")
+                    AppIconsButtonView(image: "pure-black-white", key: "Full-Black-White", title: "Pure Black & White")
                 }
                 .foregroundColor(.mainColor)
             }
