@@ -9,8 +9,8 @@ import SwiftUI
 
 struct TimerView: View {
     
-    @State var selectedButton = 0
-    @State var timeRemaining = 0
+    @State var selectedButton = 0 /// define which time value should be used
+    @State var timeRemaining = 0 /// timer value to start
     
     @State var firstTimerSelected = true
     @State var secondTimerSelected = false
@@ -40,9 +40,9 @@ struct TimerView: View {
                         /// 15 minutes
                         VStack {
                             Button(action: {
-                                firstTimerSelected = true
-                                secondTimerSelected = false
-                                selectedButton = 0
+                                firstTimerSelected = true /// the first timer is selected
+                                secondTimerSelected = false /// the second timer is not selected
+                                selectedButton = 0 /// define which timer to start
                             }) {
                                 TimerButtonView(time: firstTimer, isSelected: firstTimerSelected)
                             }
@@ -58,9 +58,9 @@ struct TimerView: View {
                         /// 20 minutes
                         VStack {
                             Button(action: {
-                                secondTimerSelected = true
-                                firstTimerSelected = false
-                                selectedButton = 1
+                                secondTimerSelected = true /// the second timer is selected
+                                firstTimerSelected = false /// the first timer is not selected
+                                selectedButton = 1 /// define which timer to start
                             }) {
                                 TimerButtonView(time: secondTimer, isSelected: secondTimerSelected)
                             }
