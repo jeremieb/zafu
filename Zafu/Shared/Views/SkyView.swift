@@ -51,13 +51,13 @@ struct SkyView: View {
                             .font(.system(size: 85, weight: .regular))
                             .foregroundColor(.shapesColor)
                             .offset(x: animated ? cloudOne : -520, y: -80)
-                            .animation(.linear(duration: 30).repeatForever(autoreverses: true))
+                            .animation(Animation.linear(duration: 30).repeatForever(autoreverses: true))
                         
                         Image(systemName: "cloud.fill") /// CLOUD TWO
                             .font(.system(size: 85, weight: .regular))
                             .foregroundColor(.shapesColor)
                             .offset(x: animated ? cloudTwo : screenSize - 100)
-                            .animation(.linear(duration: 22).repeatForever(autoreverses: true))
+                            .animation(Animation.linear(duration: 22).repeatForever(autoreverses: true))
                         
                         /// SUN
                         Image(systemName: "sun.max.fill")
@@ -77,7 +77,7 @@ struct SkyView: View {
                             .frame(width: 5, height: 5)
                             .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
                             .opacity(animated ? 1 : stars)
-                            .animation(.linear(duration: 12).repeatForever(autoreverses: true))
+                            .animation(Animation.linear(duration: 12).repeatForever(autoreverses: true))
                         
                         Circle()
                             .fill(Color.mainColor)
@@ -85,7 +85,7 @@ struct SkyView: View {
                             .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
                             .offset(x: -90.0, y: -80.0)
                             .opacity(animated ? stars : 1)
-                            .animation(.linear(duration: 8).repeatForever(autoreverses: true))
+                            .animation(Animation.linear(duration: 8).repeatForever(autoreverses: true))
                         
                         Circle()
                             .fill(Color.mainColor)
@@ -93,7 +93,7 @@ struct SkyView: View {
                             .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
                             .offset(x: -50.0, y: -120.0)
                             .opacity(animated ? 1 : stars)
-                            .animation(.linear(duration: 10).repeatForever(autoreverses: true))
+                            .animation(Animation.linear(duration: 10).repeatForever(autoreverses: true))
                         
                         Circle()
                             .fill(Color.mainColor)
@@ -101,7 +101,7 @@ struct SkyView: View {
                             .shadow(color: .mainColor, radius: 5.0, x: 0, y: 0)
                             .offset(x: 100.0, y: 50.0)
                             .opacity(animated ? stars : 1)
-                            .animation(.linear(duration: 9).repeatForever(autoreverses: true))
+                            .animation(Animation.linear(duration: 9).repeatForever(autoreverses: true))
                         
                         /// MOON
                         Image(systemName: "moon.stars.fill")
