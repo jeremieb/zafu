@@ -117,6 +117,7 @@ struct TimerView: View {
                             withAnimation(){
                                 myTimer.isStarted = false
                                 timeRemaining = 0
+                                stopSound()
                             }
                         }) {
                             Text("Stop").font(.system(size: 22, weight: .heavy, design: .serif)).foregroundColor(.mainColor).textCase(.uppercase)
