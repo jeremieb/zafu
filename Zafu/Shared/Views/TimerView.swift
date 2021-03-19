@@ -81,8 +81,8 @@ struct TimerView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                 startTimer(timer: selectedButton == 0 ? firstTimer : secondTimer)
                                 myTimer.isStarted = true
+                                playSound(sound: "bell", type: "wav")
                             }
-                            playSound(sound: "bell", type: "wav")
                         }
                     }) {
                         Text("Start").font(.system(size: 22, weight: .heavy, design: .serif)).foregroundColor(.mainColor).textCase(.uppercase)
@@ -117,7 +117,9 @@ struct TimerView: View {
                             withAnimation(){
                                 myTimer.isStarted = false
                                 timeRemaining = 0
-                                stopSound()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.450) {
+                                    stopSound()
+                                }
                             }
                         }) {
                             Text("Stop").font(.system(size: 22, weight: .heavy, design: .serif)).foregroundColor(.mainColor).textCase(.uppercase)
