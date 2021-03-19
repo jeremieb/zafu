@@ -25,6 +25,12 @@ extension Color {
     /// Text specific colors
     static let headersColor = Color("headerColor")
     
+    /// Inverted color for buttons
+    static let invertedColor = Color("inverted")
+    
+    /// Buttons background
+    static let buttonBackground = Color("button")
+    
 }
 
 public let gradientBackground = Gradient(colors: [.gradientStart, .gradientEnd])
