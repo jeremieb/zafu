@@ -77,13 +77,13 @@ struct TimerView: View {
                 VStack {
                     Spacer()
                     Button(action: {
-                        withAnimation(){
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                startTimer(timer: selectedButton == 0 ? firstTimer : secondTimer)
-                                myTimer.isStarted = true
+                                withAnimation(){
+                                    startTimer(timer: selectedButton == 0 ? firstTimer : secondTimer)
+                                    myTimer.isStarted = true
+                                }
                                 playSound(sound: "bell", type: "wav")
                             }
-                        }
                     }) {
                         Text("Start").font(.system(size: 22, weight: .heavy, design: .serif)).foregroundColor(.mainColor).textCase(.uppercase)
                     }
