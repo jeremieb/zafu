@@ -9,19 +9,16 @@ import SwiftUI
 
 struct SettingsSubView <Content : View> : View {
     
-    let content: Content
-    
-    let title: String
-    let icon: String
+    let content: Content /// Can be anything
+    let title: String /// Set the title of the main view
+    let icon: String /// Set the icon on the background
 
     init(title: String, icon: String, @ViewBuilder contentBuilder: () -> Content){
         self.content = contentBuilder()
         self.title = title
         self.icon = icon
     }
-    
 
-    
     var body: some View {
         
         ZStack {
@@ -48,7 +45,6 @@ struct SettingsSubView <Content : View> : View {
                 .foregroundColor(.mainColor)
                 
             }.frame(width: UIScreen.main.bounds.width)
-            .foregroundColor(.mainColor)
             
         }
         // end ZStack
