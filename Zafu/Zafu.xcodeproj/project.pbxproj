@@ -45,13 +45,13 @@
 		1ECEB1A125F2418500556FF2 /* proud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECEB18F25F2418500556FF2 /* proud@3x.png */; };
 		1ECEB1A225F2418500556FF2 /* default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECEB19025F2418500556FF2 /* default@3x.png */; };
 		1ECEB1A325F2418500556FF2 /* proud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECEB19125F2418500556FF2 /* proud@2x.png */; };
-		1ED21EFB25F1004B0008AAC9 /* SettingsSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED21EFA25F1004B0008AAC9 /* SettingsSubView.swift */; };
 		1ED71B1525E9424800976218 /* SettingsHealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1425E9424800976218 /* SettingsHealthView.swift */; };
 		1ED71B1725E9431600976218 /* SettingsSiriView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1625E9431600976218 /* SettingsSiriView.swift */; };
 		1ED71B1925E9436700976218 /* SettingsAppIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1825E9436700976218 /* SettingsAppIconsView.swift */; };
 		1ED71B1B25E9438800976218 /* SettingsAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1A25E9438800976218 /* SettingsAboutView.swift */; };
 		1ED71B1D25E943AA00976218 /* SettingsPrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1C25E943AA00976218 /* SettingsPrivacyView.swift */; };
 		1ED71B1F25E94D7500976218 /* TimerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1E25E94D7500976218 /* TimerButtonView.swift */; };
+		1EDA5EEF2604A4E7001E1A4B /* SettingsSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDA5EEE2604A4E7001E1A4B /* SettingsSubView.swift */; };
 		1EDD9BF425D458A500805861 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDD9BF325D458A500805861 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,13 +98,13 @@
 		1ECEB18F25F2418500556FF2 /* proud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "proud@3x.png"; sourceTree = "<group>"; };
 		1ECEB19025F2418500556FF2 /* default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default@3x.png"; sourceTree = "<group>"; };
 		1ECEB19125F2418500556FF2 /* proud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "proud@2x.png"; sourceTree = "<group>"; };
-		1ED21EFA25F1004B0008AAC9 /* SettingsSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubView.swift; sourceTree = "<group>"; };
 		1ED71B1425E9424800976218 /* SettingsHealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHealthView.swift; sourceTree = "<group>"; };
 		1ED71B1625E9431600976218 /* SettingsSiriView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSiriView.swift; sourceTree = "<group>"; };
 		1ED71B1825E9436700976218 /* SettingsAppIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppIconsView.swift; sourceTree = "<group>"; };
 		1ED71B1A25E9438800976218 /* SettingsAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutView.swift; sourceTree = "<group>"; };
 		1ED71B1C25E943AA00976218 /* SettingsPrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPrivacyView.swift; sourceTree = "<group>"; };
 		1ED71B1E25E94D7500976218 /* TimerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerButtonView.swift; sourceTree = "<group>"; };
+		1EDA5EEE2604A4E7001E1A4B /* SettingsSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubView.swift; sourceTree = "<group>"; };
 		1EDD9BF325D458A500805861 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -128,7 +128,7 @@
 				1ED71B1825E9436700976218 /* SettingsAppIconsView.swift */,
 				1ED71B1A25E9438800976218 /* SettingsAboutView.swift */,
 				1ED71B1C25E943AA00976218 /* SettingsPrivacyView.swift */,
-				1ED21EFA25F1004B0008AAC9 /* SettingsSubView.swift */,
+				1EDA5EEE2604A4E7001E1A4B /* SettingsSubView.swift */,
 			);
 			path = "Settings SubViews";
 			sourceTree = "<group>";
@@ -373,6 +373,7 @@
 				1E99C2F525C98D9700F3DBE0 /* BackgroundView.swift in Sources */,
 				1E99C2F825C98EE100F3DBE0 /* Colors.swift in Sources */,
 				1EB7C8EB25E404AC0062F040 /* SettingsTimerView.swift in Sources */,
+				1EDA5EEF2604A4E7001E1A4B /* SettingsSubView.swift in Sources */,
 				1E89267625DEB89200E512D5 /* FooterView.swift in Sources */,
 				1E89267825DEB8C600E512D5 /* AchievementsSectionView.swift in Sources */,
 				1EB068A025A8510E00889248 /* ContentView.swift in Sources */,
@@ -384,7 +385,6 @@
 				1E89267425DEB83F00E512D5 /* HeaderSectionView.swift in Sources */,
 				1E89266F25DEA22600E512D5 /* SettingsButtonView.swift in Sources */,
 				1EB068B825A8556100889248 /* AudioPlayer.swift in Sources */,
-				1ED21EFB25F1004B0008AAC9 /* SettingsSubView.swift in Sources */,
 				1EAA83FD25D440C400F359C0 /* TimerViewModel.swift in Sources */,
 				1E1B776B25CD82BB00F5F4EC /* Quotes.swift in Sources */,
 				1ED71B1B25E9438800976218 /* SettingsAboutView.swift in Sources */,

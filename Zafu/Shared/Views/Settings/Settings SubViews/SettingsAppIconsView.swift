@@ -10,37 +10,19 @@ import SwiftUI
 struct SettingsAppIconsView: View {
     
     var body: some View {
-
-        ZStack {
+        
+        SettingsSubView(title: "Alternate App Icons", icon: "app.badge.fill") {
             
-            // Header
-            SettingsSubViewHeader(icon: "app.badge.fill")
-            
-            // LIST
-            ScrollView {
-                
-                VStack(alignment: .leading) {
-                    
-                    /// Title
-                    Text("Alternate App Icons")
-                        .font(.system(size: 42, weight: .semibold, design: .serif))
-                        .fontWeight(.heavy)
-                        .padding(.horizontal)
-                    
-                    Spacer().frame(height: 30)
-                    
-                    AppIconsButtonViewDefault(title: "Default")
-                    AppIconsButtonView(image: "dark-mode", key: "Dark-Mode", title: "Dark Mode")
-                    AppIconsButtonView(image: "proud", key: "Proud", title: "Proud")
-                    AppIconsButtonView(image: "proud-second", key: "Proud-Secondary", title: "So Proud")
-                    AppIconsButtonView(image: "pure-black", key: "Full-Black", title: "Pure Black")
-                    AppIconsButtonView(image: "pure-black-white", key: "Full-Black-White", title: "Pure Black & White")
-                }
-                .foregroundColor(.mainColor)
+            VStack(alignment: .leading) {
+                AppIconsButtonViewDefault(title: "Default")
+                AppIconsButtonView(image: "dark-mode", key: "Dark-Mode", title: "Dark Mode")
+                AppIconsButtonView(image: "proud", key: "Proud", title: "Proud")
+                AppIconsButtonView(image: "proud-second", key: "Proud-Secondary", title: "So Proud")
+                AppIconsButtonView(image: "pure-black", key: "Full-Black", title: "Pure Black")
+                AppIconsButtonView(image: "pure-black-white", key: "Full-Black-White", title: "Pure Black & White")
             }
+            .foregroundColor(.mainColor)
         }
-        .navigationBarTitle("", displayMode: .inline)
-        .navigationBarHidden(false)
     }
 }
 

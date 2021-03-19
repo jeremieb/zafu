@@ -2,17 +2,26 @@
 //  SettingsSubView.swift
 //  Zafu (iOS)
 //
-//  Created by Jeremie Berduck on 04/03/2021.
+//  Created by Jeremie Berduck on 19/03/2021.
 //
 
 import SwiftUI
 
-struct SettingsSubView: View {
+struct SettingsSubView <Content : View> : View {
+    
+    let content: Content
+    
+    let title: String
+    let icon: String
 
-    var title: String = "Title placeholder"
-    var icon: String = "seal.fill"
-    var content: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        
+    init(title: String, icon: String, @ViewBuilder contentBuilder: () -> Content){
+        self.content = contentBuilder()
+        self.title = title
+        self.icon = icon
+    }
+    
+
+    
     var body: some View {
         
         ZStack {
@@ -20,21 +29,19 @@ struct SettingsSubView: View {
             /// Header
             SettingsSubViewHeader(icon: icon)
             
-            
             ScrollView {
                 
                 VStack(alignment: .leading, spacing: 16) {
                     
                     /// Title
                     Text(title)
-                        .font(.system(size: 42, weight: .semibold, design: .serif))
-                        .fontWeight(.heavy)
+                        .font(.system(size: 42, weight: .heavy, design: .serif))
+                        .lineLimit(2)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                     /// Content
-                    Text(content)
-                    
-                        
-                    Spacer()
+                    content
+
                 }
                 .padding()
                 .font(.system(size: 17, weight: .semibold, design: .serif))
@@ -43,7 +50,8 @@ struct SettingsSubView: View {
             }.frame(width: UIScreen.main.bounds.width)
             .foregroundColor(.mainColor)
             
-        } // end ZStack
+        }
+        // end ZStack
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarHidden(false)
     }
@@ -76,8 +84,8 @@ struct SettingsSubViewHeader: View {
 
 struct SettingsSubView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{
-            SettingsSubView()
+        SettingsSubView(title: "My Title", icon: "seal.fill") {
+            Text("Test")
         }
     }
 }
