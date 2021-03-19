@@ -10,6 +10,10 @@ import SwiftUI
 @main
 struct ZafuApp: App {
     
+    init() {
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+    
     private var myTimer = TimerViewModel()
     
     var body: some Scene {
