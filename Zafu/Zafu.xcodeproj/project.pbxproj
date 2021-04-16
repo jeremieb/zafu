@@ -45,6 +45,8 @@
 		1ECEB1A125F2418500556FF2 /* proud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECEB18F25F2418500556FF2 /* proud@3x.png */; };
 		1ECEB1A225F2418500556FF2 /* default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECEB19025F2418500556FF2 /* default@3x.png */; };
 		1ECEB1A325F2418500556FF2 /* proud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECEB19125F2418500556FF2 /* proud@2x.png */; };
+		1ED2F0B426295EFD00956957 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ED2F0B326295EFD00956957 /* CloudKit.framework */; };
+		1ED2F0B726295F7B00956957 /* ZafuModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1ED2F0B526295F7B00956957 /* ZafuModel.xcdatamodeld */; };
 		1ED71B1525E9424800976218 /* SettingsHealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1425E9424800976218 /* SettingsHealthView.swift */; };
 		1ED71B1725E9431600976218 /* SettingsSiriView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1625E9431600976218 /* SettingsSiriView.swift */; };
 		1ED71B1925E9436700976218 /* SettingsAppIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED71B1825E9436700976218 /* SettingsAppIconsView.swift */; };
@@ -99,6 +101,9 @@
 		1ECEB18F25F2418500556FF2 /* proud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "proud@3x.png"; sourceTree = "<group>"; };
 		1ECEB19025F2418500556FF2 /* default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default@3x.png"; sourceTree = "<group>"; };
 		1ECEB19125F2418500556FF2 /* proud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "proud@2x.png"; sourceTree = "<group>"; };
+		1ED2F0B226295EF800956957 /* Zafu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zafu.entitlements; sourceTree = "<group>"; };
+		1ED2F0B326295EFD00956957 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		1ED2F0B626295F7B00956957 /* ZafuModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZafuModel.xcdatamodel; sourceTree = "<group>"; };
 		1ED71B1425E9424800976218 /* SettingsHealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHealthView.swift; sourceTree = "<group>"; };
 		1ED71B1625E9431600976218 /* SettingsSiriView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSiriView.swift; sourceTree = "<group>"; };
 		1ED71B1825E9436700976218 /* SettingsAppIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppIconsView.swift; sourceTree = "<group>"; };
@@ -116,6 +121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EDD9BF425D458A500805861 /* AVFoundation.framework in Frameworks */,
+				1ED2F0B426295EFD00956957 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +188,7 @@
 		1EB0688A25A8510D00889248 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1ED2F0B126295E3900956957 /* Model */,
 				1EAA83FB25D4409F00F359C0 /* ViewModels */,
 				1E99C2F625C98ECF00F3DBE0 /* Extensions */,
 				1EB068BE25A857F900889248 /* Views */,
@@ -231,6 +238,7 @@
 		1EB068B625A8555100889248 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				1ED2F0B226295EF800956957 /* Zafu.entitlements */,
 				1EB068B725A8556100889248 /* AudioPlayer.swift */,
 				1E1B776A25CD82BB00F5F4EC /* Quotes.swift */,
 			);
@@ -275,9 +283,18 @@
 			path = "App Icons";
 			sourceTree = "<group>";
 		};
+		1ED2F0B126295E3900956957 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1ED2F0B526295F7B00956957 /* ZafuModel.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1EDD9BF225D458A500805861 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1ED2F0B326295EFD00956957 /* CloudKit.framework */,
 				1EDD9BF325D458A500805861 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
@@ -386,6 +403,7 @@
 				1ED71B1925E9436700976218 /* SettingsAppIconsView.swift in Sources */,
 				1EAB158925E68E9B0025B1EB /* SettingsTimerSelectionView.swift in Sources */,
 				1E89267425DEB83F00E512D5 /* HeaderSectionView.swift in Sources */,
+				1ED2F0B726295F7B00956957 /* ZafuModel.xcdatamodeld in Sources */,
 				1E89266F25DEA22600E512D5 /* SettingsButtonView.swift in Sources */,
 				1EB068B825A8556100889248 /* AudioPlayer.swift in Sources */,
 				1EAA83FD25D440C400F359C0 /* TimerViewModel.swift in Sources */,
@@ -520,6 +538,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Zafu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PNJ2ZGDY4C;
 				ENABLE_PREVIEWS = YES;
@@ -542,6 +561,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Zafu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PNJ2ZGDY4C;
 				ENABLE_PREVIEWS = YES;
@@ -582,6 +602,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1ED2F0B526295F7B00956957 /* ZafuModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1ED2F0B626295F7B00956957 /* ZafuModel.xcdatamodel */,
+			);
+			currentVersion = 1ED2F0B626295F7B00956957 /* ZafuModel.xcdatamodel */;
+			path = ZafuModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1EB0688625A8510D00889248 /* Project object */;
 }
