@@ -17,6 +17,8 @@ struct Shapes: View {
     
     @State var animated = false
     
+    @ObservedObject var motion = MotionProvider()
+    
     @StateObject var animationProvider = AnimationProvider()
     
     /// Used to define circle position
@@ -34,18 +36,29 @@ struct Shapes: View {
     /// Geometry proxy
     let proxy: GeometryProxy
     
+    /// Blur
+    let blur: CGFloat
+    
+    /// Motion Calculator
+    var motionCalculator: Int {
+        return Int(motion.pitch)
+    }
+    
     var body: some View {
-        Circle()
-            .fill(color)
-            .frame(height: proxy.size.height / animationProvider.frameHeightRatio)
-            .offset(animationProvider.offset)
-            .rotationEffect(.init(degrees: animated ? rotation : rotation + 360))
-            .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false))
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
-            .opacity(0.8)
-            .onAppear{
-                animated.toggle()
-            }
+        ZStack {
+            Circle()
+                .fill(color)
+                .frame(height: proxy.size.height / animationProvider.frameHeightRatio)
+                .offset(animationProvider.offset)
+                .rotationEffect(.init(degrees: animated ? rotation : rotation + 360 ))
+                .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false))
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
+                .opacity(0.9)
+                .blur(radius: blur)
+                .onAppear{
+                    animated.toggle()
+                }
+        }
     }
 }
 
@@ -64,16 +77,40 @@ struct Circles: View {
                     .ignoresSafeArea()
                 
                 /// Blue
-                Shapes(alignment: .topTrailing, color: Color.backgroundBlue, duration: 40, proxy: proxy).blur(radius: blur)
+                Shapes(
+                    alignment: .topTrailing,
+                    color: Color.backgroundBlue,
+                    duration: 20,
+                    proxy: proxy,
+                    blur: blur
+                    )
                 
                 /// Pink
-                Shapes(alignment: .topLeading, color: Color.backgroundPink, duration: 30, proxy: proxy).blur(radius: blur)
+                Shapes(
+                    alignment: .topLeading,
+                    color: Color.backgroundPink,
+                    duration: 30,
+                    proxy: proxy,
+                    blur: blur
+                )
                 
                 /// Green
-                Shapes(alignment: .bottomLeading, color: Color.backgroundGreen, duration: 50, proxy: proxy).blur(radius: blur)
+                Shapes(
+                    alignment: .bottomLeading,
+                    color: Color.backgroundGreen,
+                    duration: 20,
+                    proxy: proxy,
+                    blur: blur
+                )
                 
                 /// Yellow
-                Shapes(alignment: .bottomLeading, color: Color.backgroundYellow, duration: 45, proxy: proxy).blur(radius: blur)
+                Shapes(
+                    alignment: .bottomLeading,
+                    color: Color.backgroundYellow,
+                    duration: 35,
+                    proxy: proxy,
+                    blur: blur
+                )
             }.ignoresSafeArea()
         }
     }

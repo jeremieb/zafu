@@ -13,19 +13,22 @@ struct ContentView: View {
     @State var debugSheet = false
     
     var body: some View {
-        VStack(spacing: 20.0) {
-            Text("Hello world")
-                .padding()
-            Button(action: { self.debugSheet = true }) {
-                Text("Show Debug")
-                    .frame(width: UIScreen.main.bounds.width * 0.8, height: 44)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.accentColor)
-                    )
-            }
-        }.sheet(isPresented: $debugSheet) {
-            DebugView(isPresented: $debugSheet)
+        ZStack {
+            BackgroundView()
+            VStack(spacing: 20.0) {
+                Text("Hello world")
+                    .padding()
+                Button(action: { self.debugSheet = true }) {
+                    Text("Show Debug")
+                        .frame(width: UIScreen.main.bounds.width * 0.8, height: 44)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.accentColor)
+                        )
+                }
+            }.sheet(isPresented: $debugSheet) {
+                DebugView(isPresented: $debugSheet)
+        }
         }
     }
 }

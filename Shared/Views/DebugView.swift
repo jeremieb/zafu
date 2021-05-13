@@ -9,12 +9,8 @@ import SwiftUI
 import CoreMotion
 
 struct DebugView: View {
-    let motionManager = CMMotionManager()
-    let queue = OperationQueue()
     
-    @State private var pitch = Double.zero
-    @State private var yaw = Double.zero
-    @State private var roll = Double.zero
+    @ObservedObject var motion = MotionProvider()
     
     @Binding var isPresented: Bool
     
@@ -26,28 +22,13 @@ struct DebugView: View {
                 Button(action: { isPresented = false }, label: {
                     Text("Close")
                 })
-            }.padding(.horizontal)
+            }.padding()
             List{
-                Text("Pitch: \(String(format: "%.2f", pitch))")
-                Text("Yaw: \(String(format: "%.2f", yaw))")
-                Text("Roll: \(String(format: "%.2f", roll))")
+                Text("🔥 Pitch: \(String(format: "%.2f", motion.pitch))")
+                Text("🔥 Yaw: \(String(format: "%.2f", motion.yaw))")
+                Text("🔥 Roll: \(String(format: "%.2f", motion.roll))")
             }
             Spacer()
-        }
-        .onAppear {
-            self.motionManager.startDeviceMotionUpdates(to: self.queue) { (data: CMDeviceMotion?, error: Error?) in
-                guard let data = data else {
-                    print("Error: \(error!)")
-                    return
-                }
-                let attitude: CMAttitude = data.attitude
-                
-                DispatchQueue.main.async {
-                    self.pitch = attitude.pitch
-                    self.yaw = attitude.yaw
-                    self.roll = attitude.roll
-                }
-            }
         }
     }
 }
