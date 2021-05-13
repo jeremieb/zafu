@@ -11,7 +11,7 @@ import SwiftUI
 struct ZafuApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BackgroundView()
         }
     }
 }

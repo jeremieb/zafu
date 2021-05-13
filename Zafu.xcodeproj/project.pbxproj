@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1E03EDFC264D5D660069E5AC /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E03EDFB264D5D660069E5AC /* DebugView.swift */; };
 		1E03EDFE264D62C60069E5AC /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E03EDFD264D62C60069E5AC /* BackgroundView.swift */; };
+		1E03EE01264D6D060069E5AC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E03EE00264D6D060069E5AC /* Colors.swift */; };
+		1E03EE04264D73B40069E5AC /* AnimationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E03EE03264D73B40069E5AC /* AnimationProvider.swift */; };
 		1EB3D9E2264D52EE00F13B3B /* ZafuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB3D9CF264D52ED00F13B3B /* ZafuApp.swift */; };
 		1EB3D9E4264D52EE00F13B3B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB3D9D0264D52ED00F13B3B /* ContentView.swift */; };
 		1EB3D9E6264D52EE00F13B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EB3D9D1264D52EE00F13B3B /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* Begin PBXFileReference section */
 		1E03EDFB264D5D660069E5AC /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		1E03EDFD264D62C60069E5AC /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		1E03EE00264D6D060069E5AC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		1E03EE03264D73B40069E5AC /* AnimationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationProvider.swift; sourceTree = "<group>"; };
 		1EB3D9CF264D52ED00F13B3B /* ZafuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZafuApp.swift; sourceTree = "<group>"; };
 		1EB3D9D0264D52ED00F13B3B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1EB3D9D1264D52EE00F13B3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +48,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		1E03EDFF264D6CFB0069E5AC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1E03EE00264D6D060069E5AC /* Colors.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1E03EE02264D73A40069E5AC /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				1E03EE03264D73B40069E5AC /* AnimationProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
 		1EB3D9C9264D52ED00F13B3B = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +76,8 @@
 		1EB3D9CE264D52ED00F13B3B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1E03EE02264D73A40069E5AC /* Provider */,
+				1E03EDFF264D6CFB0069E5AC /* Extensions */,
 				1E03EDFA264D5D510069E5AC /* Views */,
 				1EB3D9CF264D52ED00F13B3B /* ZafuApp.swift */,
 				1EB3D9D0264D52ED00F13B3B /* ContentView.swift */,
@@ -149,9 +171,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E03EDFC264D5D660069E5AC /* DebugView.swift in Sources */,
+				1E03EE01264D6D060069E5AC /* Colors.swift in Sources */,
 				1EB3D9E4264D52EE00F13B3B /* ContentView.swift in Sources */,
 				1E03EDFE264D62C60069E5AC /* BackgroundView.swift in Sources */,
 				1EB3D9E2264D52EE00F13B3B /* ZafuApp.swift in Sources */,
+				1E03EE04264D73B40069E5AC /* AnimationProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
