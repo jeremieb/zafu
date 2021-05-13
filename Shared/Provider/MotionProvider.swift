@@ -10,25 +10,28 @@ import CoreMotion
 
 final class MotionProvider: ObservableObject {
     
-    @Published var pitch = Double.zero
-    @Published var yaw = Double.zero
-    @Published var roll = Double.zero
+    @Published var x = Double.zero
+    @Published var y = Double.zero
+    @Published var z = Double.zero
     
-    let motionManager = CMMotionManager()
-    let queue = OperationQueue()
+    private var motionManager = CMMotionManager()
     
-    init(){
-        self.motionManager.startDeviceMotionUpdates(to: self.queue) { (data: CMDeviceMotion?, error: Error?) in
+    init() {
+        self.motionManager = CMMotionManager()
+        self.motionManager.accelerometerUpdateInterval = 0.5
+        self.motionManager.startDeviceMotionUpdates(to: .main) { (data: CMDeviceMotion?, error: Error?) in
+            //            self.motionManager.startMagnetometerUpdates(to: .main) { (magnetometerData, error) in
             guard let data = data else {
                 print("Error: \(error!)")
                 return
             }
-            let attitude: CMAttitude = data.attitude
+            
+            let attitude: CMRotationRate = data.rotationRate
             
             DispatchQueue.main.async {
-                self.pitch = attitude.pitch
-                self.yaw = attitude.yaw
-                self.roll = attitude.roll
+                self.x = attitude.x
+                self.y = attitude.y
+                self.z = attitude.z
             }
         }
     }

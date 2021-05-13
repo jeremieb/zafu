@@ -27,8 +27,8 @@ struct ContentView: View {
                         )
                 }
             }.sheet(isPresented: $debugSheet) {
-                DebugView(isPresented: $debugSheet)
-        }
+                DebugView(motion: MotionProvider(), isPresented: $debugSheet)
+            }
         }
     }
 }

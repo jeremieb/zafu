@@ -10,7 +10,7 @@ import CoreMotion
 
 struct DebugView: View {
     
-    @ObservedObject var motion = MotionProvider()
+    @ObservedObject var motion: MotionProvider
     
     @Binding var isPresented: Bool
     
@@ -24,9 +24,9 @@ struct DebugView: View {
                 })
             }.padding()
             List{
-                Text("🔥 Pitch: \(String(format: "%.2f", motion.pitch))")
-                Text("🔥 Yaw: \(String(format: "%.2f", motion.yaw))")
-                Text("🔥 Roll: \(String(format: "%.2f", motion.roll))")
+                Text("🔥 X: \(String(format: "%.2f", motion.x))")
+                Text("🔥 Y: \(String(format: "%.2f", motion.y))")
+                Text("🔥 Z: \(String(format: "%.2f", motion.z))")
             }
             Spacer()
         }
@@ -36,6 +36,6 @@ struct DebugView: View {
 struct DebugView_Previews: PreviewProvider {
     @State static var showingSheet = false
     static var previews: some View {
-        DebugView(isPresented: $showingSheet)
+        DebugView(motion: MotionProvider(), isPresented: $showingSheet)
     }
 }

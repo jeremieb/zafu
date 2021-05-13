@@ -16,9 +16,6 @@ struct BackgroundView: View {
 struct Shapes: View {
     
     @State var animated = false
-    
-    @ObservedObject var motion = MotionProvider()
-    
     @StateObject var animationProvider = AnimationProvider()
     
     /// Used to define circle position
@@ -38,11 +35,6 @@ struct Shapes: View {
     
     /// Blur
     let blur: CGFloat
-    
-    /// Motion Calculator
-    var motionCalculator: Int {
-        return Int(motion.pitch)
-    }
     
     var body: some View {
         ZStack {
@@ -76,45 +68,46 @@ struct Circles: View {
                 Color.backgroundMain
                     .ignoresSafeArea()
                 
-                /// Blue
-                Shapes(
-                    alignment: .topTrailing,
-                    color: Color.backgroundBlue,
-                    duration: 20,
-                    proxy: proxy,
-                    blur: blur
+                Group{
+                    // Blue
+                    Shapes(
+                        alignment: .topTrailing,
+                        color: Color.backgroundBlue,
+                        duration: 20,
+                        proxy: proxy,
+                        blur: blur
                     )
-                
-                /// Pink
-                Shapes(
-                    alignment: .topLeading,
-                    color: Color.backgroundPink,
-                    duration: 30,
-                    proxy: proxy,
-                    blur: blur
-                )
-                
-                /// Green
-                Shapes(
-                    alignment: .bottomLeading,
-                    color: Color.backgroundGreen,
-                    duration: 20,
-                    proxy: proxy,
-                    blur: blur
-                )
-                
-                /// Yellow
-                Shapes(
-                    alignment: .bottomLeading,
-                    color: Color.backgroundYellow,
-                    duration: 35,
-                    proxy: proxy,
-                    blur: blur
-                )
+                    
+                    // Pink
+                    Shapes(
+                        alignment: .topLeading,
+                        color: Color.backgroundPink,
+                        duration: 30,
+                        proxy: proxy,
+                        blur: blur
+                    )
+                    
+                    // Green
+                    Shapes(
+                        alignment: .bottomLeading,
+                        color: Color.backgroundGreen,
+                        duration: 20,
+                        proxy: proxy,
+                        blur: blur
+                    )
+                    
+                    // Yellow
+                    Shapes(
+                        alignment: .bottomLeading,
+                        color: Color.backgroundYellow,
+                        duration: 35,
+                        proxy: proxy,
+                        blur: blur
+                    )
+                } // group
             }.ignoresSafeArea()
         }
     }
-    
 }
 
 struct BackgroundView_Previews: PreviewProvider {
