@@ -16,8 +16,8 @@ struct ContentView: View {
         ZStack {
             BackgroundView()
             VStack(spacing: 20.0) {
-                Text("Hello world")
-                    .padding()
+                HeaderMainView()
+                Spacer()
                 Button(action: { self.debugSheet = true }) {
                     Text("Show Debug")
                         .frame(width: UIScreen.main.bounds.width * 0.8, height: 44)
@@ -35,6 +35,10 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+            ContentView()
+                .preferredColorScheme(.dark)
+        }
     }
 }
