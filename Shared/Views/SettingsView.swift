@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
+
     @Binding var isPresented: Bool
-    
+
     var body: some View {
         
         NavigationView{
@@ -27,7 +27,8 @@ struct SettingsView: View {
                         
                         Spacer()
                     }
-                }.navigationTitle("Settings")
+                }.navigationBarTitle(Text("Settings"), displayMode: .large)
+                
                 .toolbar(content: {
                     Button(action: {
                         isPresented.toggle()
@@ -38,7 +39,7 @@ struct SettingsView: View {
                     }
                 })
             }
-        }
+        }.navigationBarColor(backgroundColor: UIColor(Color("backgroundMain")), tintColor: .label)
     }
 }
 
