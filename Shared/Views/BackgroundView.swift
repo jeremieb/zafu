@@ -65,8 +65,7 @@ struct Circles: View {
             ZStack{
                 
                 /// Background color
-                Color.backgroundMain
-                    .ignoresSafeArea()
+                BackgroundDefaultView()
                 
                 Group{
                     // Blue

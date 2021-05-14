@@ -11,31 +11,22 @@ import CoreMotion
 struct DebugView: View {
     
     @ObservedObject var motion: MotionProvider
-    
-    @Binding var isPresented: Bool
-    
+
     var body: some View {
-        
-        VStack{
-            HStack{
-                Spacer()
-                Button(action: { isPresented = false }, label: {
-                    Text("Close")
-                })
-            }.padding()
-            List{
-                Text("🔥 X: \(String(format: "%.2f", motion.x))")
-                Text("🔥 Y: \(String(format: "%.2f", motion.y))")
-                Text("🔥 Z: \(String(format: "%.2f", motion.z))")
-            }
-            Spacer()
-        }
+
+        HStack(spacing: 20.0){
+            Text("🔥 X: \(String(format: "%.2f", motion.x))")
+            Text("🔥 Y: \(String(format: "%.2f", motion.y))")
+            Text("🔥 Z: \(String(format: "%.2f", motion.z))")
+        }.padding()
     }
 }
 
 struct DebugView_Previews: PreviewProvider {
-    @State static var showingSheet = false
     static var previews: some View {
-        DebugView(motion: MotionProvider(), isPresented: $showingSheet)
+        DebugView(motion: MotionProvider())
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+            .previewDisplayName("Default preview")
     }
 }

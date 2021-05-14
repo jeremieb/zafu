@@ -14,6 +14,8 @@
 		1EB3D9E2264D52EE00F13B3B /* ZafuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB3D9CF264D52ED00F13B3B /* ZafuApp.swift */; };
 		1EB3D9E4264D52EE00F13B3B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB3D9D0264D52ED00F13B3B /* ContentView.swift */; };
 		1EB3D9E6264D52EE00F13B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EB3D9D1264D52EE00F13B3B /* Assets.xcassets */; };
+		1EC79183264E47A100DBE82D /* BackgroundDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC79182264E47A100DBE82D /* BackgroundDefaultView.swift */; };
+		1EC79185264E487C00DBE82D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC79184264E487C00DBE82D /* SettingsView.swift */; };
 		1EE48E78264DB9B500E17A3B /* HeaderMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */; };
 		1EFDEC37264D80870001EF44 /* MotionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFDEC36264D80870001EF44 /* MotionProvider.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +30,8 @@
 		1EB3D9D1264D52EE00F13B3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EB3D9D6264D52EE00F13B3B /* Zafu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zafu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB3D9D9264D52EE00F13B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EC79182264E47A100DBE82D /* BackgroundDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundDefaultView.swift; sourceTree = "<group>"; };
+		1EC79184264E487C00DBE82D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMainView.swift; sourceTree = "<group>"; };
 		1EFDEC36264D80870001EF44 /* MotionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,6 +53,8 @@
 				1E03EDFB264D5D660069E5AC /* DebugView.swift */,
 				1E03EDFD264D62C60069E5AC /* BackgroundView.swift */,
 				1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */,
+				1EC79182264E47A100DBE82D /* BackgroundDefaultView.swift */,
+				1EC79184264E487C00DBE82D /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,9 +183,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EE48E78264DB9B500E17A3B /* HeaderMainView.swift in Sources */,
+				1EC79183264E47A100DBE82D /* BackgroundDefaultView.swift in Sources */,
 				1EFDEC37264D80870001EF44 /* MotionProvider.swift in Sources */,
 				1E03EDFC264D5D660069E5AC /* DebugView.swift in Sources */,
 				1E03EE01264D6D060069E5AC /* Colors.swift in Sources */,
+				1EC79185264E487C00DBE82D /* SettingsView.swift in Sources */,
 				1EB3D9E4264D52EE00F13B3B /* ContentView.swift in Sources */,
 				1E03EDFE264D62C60069E5AC /* BackgroundView.swift in Sources */,
 				1EB3D9E2264D52EE00F13B3B /* ZafuApp.swift in Sources */,

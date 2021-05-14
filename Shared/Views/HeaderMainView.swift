@@ -9,6 +9,10 @@ import SwiftUI
 
 struct HeaderMainView: View {
     
+    /// Opening modal view
+    @State var settingsSheet = false
+    
+    /// Displays the username with a placeholder
     var username: String = "Username"
     
     var body: some View {
@@ -22,7 +26,9 @@ struct HeaderMainView: View {
                     .fontWeight(.bold)
             }
             Spacer()
-            Button(action: { }) {
+            Button(action: {
+                self.settingsSheet = true
+            }) {
                 Image(systemName: "person.crop.circle")
                     .font(.largeTitle)
                     .foregroundColor(.elementSecondary)
@@ -30,6 +36,9 @@ struct HeaderMainView: View {
         }
         .padding(.vertical, 20)
         .padding(.horizontal)
+        .sheet(isPresented: $settingsSheet) {
+            SettingsView(isPresented: $settingsSheet)
+        }
     }
 }
 
