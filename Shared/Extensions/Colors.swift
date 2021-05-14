@@ -16,4 +16,7 @@ extension Color {
     static let backgroundPink = Color("backgroundPink")
     static let backgroundYellow = Color("backgroundYellow")
     
+    /// UI Elements
+    static let elementSecondary = Color("elementSecondary")
+    
 }

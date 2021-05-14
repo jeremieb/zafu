@@ -9,25 +9,13 @@ import SwiftUI
 import CoreMotion
 
 struct ContentView: View {
-    
-    @State var debugSheet = false
-    
+  
     var body: some View {
         ZStack {
             BackgroundView()
             VStack(spacing: 20.0) {
-                Text("Hello world")
-                    .padding()
-                Button(action: { self.debugSheet = true }) {
-                    Text("Show Debug")
-                        .frame(width: UIScreen.main.bounds.width * 0.8, height: 44)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.accentColor)
-                        )
-                }
-            }.sheet(isPresented: $debugSheet) {
-                DebugView(motion: MotionProvider(), isPresented: $debugSheet)
+                HeaderMainView()
+                Spacer()
             }
         }
     }
@@ -35,6 +23,10 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+            ContentView()
+                .preferredColorScheme(.dark)
+        }
     }
 }
