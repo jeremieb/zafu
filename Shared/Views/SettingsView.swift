@@ -22,7 +22,7 @@ struct SettingsView: View {
                     VStack(alignment: .leading){
                         /// DEBUG
                         /// Accelerometer
-                        SettingsHeaderView(title: "Debug")
+                        SectionHeaderView(title: "Debug")
                         DebugView(motion: MotionProvider())
                         
                         Spacer()
@@ -43,7 +43,7 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsHeaderView: View {
+struct SectionHeaderView: View {
     
     var title: String = "Header title"
     
@@ -58,7 +58,7 @@ struct SettingsHeaderView: View {
                 .lineLimit(1)
                 .padding()
                 .frame(width: UIScreen.main.bounds.size.width, height: 22, alignment: .leading)
-                .background(Color(UIColor.systemFill))
+//                .background(Color(UIColor.systemFill))
         }
         .padding(.top, 16)
         .padding(.bottom, 5)
@@ -73,6 +73,10 @@ struct SettingsView_Previews: PreviewProvider {
             SettingsView(isPresented: $showingSheet)
             SettingsView(isPresented: $showingSheet)
                 .preferredColorScheme(.dark)
+            SectionHeaderView()
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .previewDisplayName("Default preview")
         }
     }
 }
