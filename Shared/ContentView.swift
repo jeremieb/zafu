@@ -13,8 +13,10 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            VStack(spacing: 20.0) {
+            VStack() {
                 HeaderMainView()
+                SectionHeaderView(title: "My Sessions")
+                ListSessionCustomView()
                 Spacer()
             }
         }
