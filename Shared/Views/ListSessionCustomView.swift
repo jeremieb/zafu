@@ -38,19 +38,19 @@ struct SquareCellsView: View {
             
             /// Background color
             Color(UIColor.systemBackground)
-                .opacity(0.5)
+                .opacity(0.4)
             
             /// Content
             HStack {
                 VStack(alignment: .leading){
                     Text(duration)
                         .font(.caption)
-                        .foregroundColor(Color(UIColor.systemGray))
+                        .foregroundColor(.elementSecondary)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color(UIColor.systemGray), lineWidth: 1)
+                                .stroke(Color.elementSecondary, lineWidth: 1)
                          )
                         .lineLimit(1)
                     Spacer()

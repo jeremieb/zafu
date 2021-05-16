@@ -10,7 +10,7 @@ import SwiftUI
 struct SectionHeaderView: View {
     
     var title: String = "Header title"
-    
+
     var body: some View{
         VStack {
             Text(title)
@@ -24,7 +24,6 @@ struct SectionHeaderView: View {
                 .frame(width: UIScreen.main.bounds.size.width, height: 22, alignment: .leading)
         }
         .padding(.top, 16)
-        .padding(.bottom, 5)
     }
 }
 

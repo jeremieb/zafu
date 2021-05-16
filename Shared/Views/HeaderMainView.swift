@@ -32,7 +32,7 @@ struct HeaderMainView: View {
                 Image(systemName: "person.crop.circle")
                     .font(.largeTitle)
                     .foregroundColor(.elementSecondary)
-            }
+            }.padding(.top, 5)
         }
         .padding(.vertical, 20)
         .padding(.horizontal)
