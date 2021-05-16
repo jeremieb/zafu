@@ -14,9 +14,16 @@ struct ContentView: View {
         ZStack {
             BackgroundView()
             VStack() {
+                
+                /// View Header
                 HeaderMainView()
-                SectionHeaderView(title: "My Sessions")
-                ListSessionCustomView()
+                
+                /// My favorites or My sessions
+                Group {
+                    SectionHeaderView(title: "My Sessions")
+                    ListSessionCustomView()
+                }
+                
                 Spacer()
             }
         }

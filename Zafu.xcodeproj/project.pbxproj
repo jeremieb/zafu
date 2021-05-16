@@ -60,13 +60,13 @@
 		1E03EDFA264D5D510069E5AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1E03EDFB264D5D660069E5AC /* DebugView.swift */,
-				1E03EDFD264D62C60069E5AC /* BackgroundView.swift */,
-				1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */,
 				1EC79182264E47A100DBE82D /* BackgroundDefaultView.swift */,
-				1EC79184264E487C00DBE82D /* SettingsView.swift */,
 				1EAAE745265001680002FAE3 /* ListSessionCustomView.swift */,
+				1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */,
 				1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */,
+				1EC79184264E487C00DBE82D /* SettingsView.swift */,
+				1E03EDFD264D62C60069E5AC /* BackgroundView.swift */,
+				1E03EDFB264D5D660069E5AC /* DebugView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
