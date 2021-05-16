@@ -18,5 +18,6 @@ extension Color {
     
     /// UI Elements
     static let elementSecondary = Color("elementSecondary")
+    static let tabbar = Color("tabbar")
     
 }

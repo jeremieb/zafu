@@ -14,11 +14,7 @@ struct RootView: View {
         TabView{
             MainView()
                 .tabItem {
-//                    Label("Today", image:"zafu.logo.fill")
-                    VStack{
-                        Image("zafu.logo.fill")
-                        Text("Today")
-                    }
+                    Label("Today", image:"zafu.logo.fill")
                 }
             MeditationView()
                 .tabItem {
