@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  Shared
 //
 //  Created by Jeremie Berduck on 13/05/2021.
@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreMotion
 
-struct ContentView: View {
+struct MainView: View {
   
     var body: some View {
         ZStack {
@@ -39,8 +39,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
-            ContentView()
+            MainView()
+            MainView()
                 .preferredColorScheme(.dark)
         }
     }
