@@ -13,7 +13,7 @@ struct HeaderMainView: View {
     @State var settingsSheet = false
     
     /// Displays the username with a placeholder
-    var username: String = "Username"
+    var username: String = "Human"
     
     var body: some View {
         HStack(alignment: .top){
