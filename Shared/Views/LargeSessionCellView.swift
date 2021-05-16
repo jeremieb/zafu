@@ -7,31 +7,31 @@
 
 import SwiftUI
 
-struct ListSessionCustomView: View {
+struct LargeSessionCellView: View {
     
     /// Placeholder sessions
-    private var mySessions = [
-        CustomSession(title: "First Session", duration: "5 min"),
-        CustomSession(title: "Second Session", duration: "20 min"),
-        CustomSession(title: "Third Session", duration: "15 min"),
-        CustomSession(title: "Fourth Session", duration: "25 min")
+    private var sessions = [
+        Session(title: "First Session", duration: "15 min", description: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus."),
+        Session(title: "Second Session Big Title", duration: "20 min", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+        Session(title: "Third Session", duration: "16 min", description: "Cras justo odio, dapibus ac facilisis in, egestas eget quam.")
     ]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
             HStack{
-                ForEach(mySessions){ session in
-                    SquareCellsView(title: session.title, duration: session.duration)
+                ForEach(sessions){ featured in
+                    LargeCellView(title: featured.title, duration: featured.duration, description: featured.description)
                 }
             }.padding(.horizontal)
-        }
+        }.frame(width: UIScreen.main.bounds.width)
     }
 }
 
-struct SquareCellsView: View {
+struct LargeCellView: View {
     
     var title = "Session title"
     var duration = "5 min"
+    var description = "Cras justo odio, dapibus ac facilisis in, egestas eget quam."
     
     var body: some View {
         ZStack {
@@ -59,24 +59,32 @@ struct SquareCellsView: View {
                         .fontWeight(.bold)
                         .multilineTextAlignment(.leading)
                         .lineLimit(2)
+                    Text(description)
+                        .font(.footnote)
+                        .foregroundColor(.elementSecondary)
+                        .lineLimit(2)
                 }
                 .padding()
                 Spacer()
             }
         }
-        .frame(width: 150, height: 150)
+        .frame(width: 235, height: 150)
         .cornerRadius(10)
     }
 }
 
-struct ListSessionCustomView_Previews: PreviewProvider {
+struct ListSessionView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SquareCellsView()
+            LargeSessionCellView()
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .padding()
                 .previewDisplayName("Default preview")
-            SquareCellsView()
+            LargeCellView()
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .previewDisplayName("Default preview")
+            LargeCellView()
                 .preferredColorScheme(.dark)
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .padding()

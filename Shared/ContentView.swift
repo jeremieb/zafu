@@ -21,7 +21,13 @@ struct ContentView: View {
                 /// My favorites or My sessions
                 Group {
                     SectionHeaderView(title: "My Sessions")
-                    ListSessionCustomView()
+                    SmallSessionCellView()
+                }
+                
+                /// Featured sessions
+                Group {
+                    SectionHeaderView(title: "Featured")
+                    LargeSessionCellView()
                 }
                 
                 Spacer()
