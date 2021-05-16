@@ -9,21 +9,45 @@ import SwiftUI
 
 struct RootView: View {
     
+    private enum Tab: Hashable {
+        case today
+        case meditation
+        case sessions
+    }
+    
+    @State private var selectedTab: Tab = .today
+    
+    init() {
+        UITabBar.appearance().shadowImage = UIImage()
+    }
+    
     var body: some View {
         
-        TabView{
-            MainView()
-                .tabItem {
-                    Label("Today", image:"zafu.logo.fill")
-                }
-            MeditationView()
-                .tabItem {
-                    Label("Meditation", systemImage: "seal.fill")
-                }
-            SessionsView()
-                .tabItem {
-                    Label("Sessions", systemImage: "suit.heart.fill")
-                }
+        ZStack {
+            TabView(selection: $selectedTab){
+                MainView()
+                    .tag(0)
+                    .tabItem {
+                        Image("zafu.logo.fill")
+                            .font(.system(size: 22))
+                        Text("Today")
+                    }
+                MeditationView()
+                    .tag(1)
+                    .tabItem {
+                        Image("zafu_seal")
+                            .font(.system(size: 22))
+                        Text("Meditation")
+                    }
+                SessionsView()
+                    .tag(2)
+                    .tabItem {
+                        Image("zafu_heart")
+                            .font(.system(size: 20))
+                        Text("Sessions")
+                    }
+                
+            }.tabViewStyle(DefaultTabViewStyle())
         }
     }
 }
