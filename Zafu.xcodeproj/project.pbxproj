@@ -11,6 +11,7 @@
 		1E03EDFE264D62C60069E5AC /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E03EDFD264D62C60069E5AC /* BackgroundView.swift */; };
 		1E03EE01264D6D060069E5AC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E03EE00264D6D060069E5AC /* Colors.swift */; };
 		1E03EE04264D73B40069E5AC /* AnimationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E03EE03264D73B40069E5AC /* AnimationProvider.swift */; };
+		1E2DE5CF2650E96A003593B2 /* DisableModalDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2DE5CE2650E96A003593B2 /* DisableModalDismiss.swift */; };
 		1EAAE746265001680002FAE3 /* ListSessionCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE745265001680002FAE3 /* ListSessionCustomView.swift */; };
 		1EAAE74926500BC30002FAE3 /* CustomSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE74826500BC30002FAE3 /* CustomSession.swift */; };
 		1EAAE74B26500C1F0002FAE3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */; };
@@ -29,6 +30,7 @@
 		1E03EDFD264D62C60069E5AC /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		1E03EE00264D6D060069E5AC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1E03EE03264D73B40069E5AC /* AnimationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationProvider.swift; sourceTree = "<group>"; };
+		1E2DE5CE2650E96A003593B2 /* DisableModalDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableModalDismiss.swift; sourceTree = "<group>"; };
 		1EAAE745265001680002FAE3 /* ListSessionCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSessionCustomView.swift; sourceTree = "<group>"; };
 		1EAAE74826500BC30002FAE3 /* CustomSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSession.swift; sourceTree = "<group>"; };
 		1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			children = (
 				1E03EE00264D6D060069E5AC /* Colors.swift */,
 				1EC37661264E754300E716B9 /* NavigationBarColor.swift */,
+				1E2DE5CE2650E96A003593B2 /* DisableModalDismiss.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				1EC37662264E754300E716B9 /* NavigationBarColor.swift in Sources */,
 				1EAAE74B26500C1F0002FAE3 /* SectionHeaderView.swift in Sources */,
 				1EB3D9E2264D52EE00F13B3B /* ZafuApp.swift in Sources */,
+				1E2DE5CF2650E96A003593B2 /* DisableModalDismiss.swift in Sources */,
 				1E03EE04264D73B40069E5AC /* AnimationProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
