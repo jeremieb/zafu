@@ -19,6 +19,7 @@
 		1EAAE746265001680002FAE3 /* SmallSessionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE745265001680002FAE3 /* SmallSessionCellView.swift */; };
 		1EAAE74926500BC30002FAE3 /* Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE74826500BC30002FAE3 /* Sessions.swift */; };
 		1EAAE74B26500C1F0002FAE3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */; };
+		1EAD40E32657D6700061DBF7 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD40E22657D6700061DBF7 /* AudioPlayer.swift */; };
 		1EB3D9E2264D52EE00F13B3B /* ZafuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB3D9CF264D52ED00F13B3B /* ZafuApp.swift */; };
 		1EB3D9E4264D52EE00F13B3B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB3D9D0264D52ED00F13B3B /* MainView.swift */; };
 		1EB3D9E6264D52EE00F13B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EB3D9D1264D52EE00F13B3B /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		1EAAE745265001680002FAE3 /* SmallSessionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSessionCellView.swift; sourceTree = "<group>"; };
 		1EAAE74826500BC30002FAE3 /* Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sessions.swift; sourceTree = "<group>"; };
 		1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		1EAD40E22657D6700061DBF7 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		1EB3D9CF264D52ED00F13B3B /* ZafuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZafuApp.swift; sourceTree = "<group>"; };
 		1EB3D9D0264D52ED00F13B3B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1EB3D9D1264D52EE00F13B3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Shared/Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -107,6 +109,21 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		1EAD40E12657D65E0061DBF7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD40E22657D6700061DBF7 /* AudioPlayer.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1EAD40E42657D6D10061DBF7 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		1EB3D9C9264D52ED00F13B3B = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +136,8 @@
 		1EB3D9CE264D52ED00F13B3B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1EAD40E42657D6D10061DBF7 /* Sounds */,
+				1EAD40E12657D65E0061DBF7 /* Helpers */,
 				1EAAE74726500BB10002FAE3 /* Models */,
 				1E03EE02264D73A40069E5AC /* Provider */,
 				1E03EDFF264D6CFB0069E5AC /* Extensions */,
@@ -224,6 +243,7 @@
 				1E03EDFC264D5D660069E5AC /* DebugView.swift in Sources */,
 				1E2DE5D726514659003593B2 /* SessionsView.swift in Sources */,
 				1EAAE74926500BC30002FAE3 /* Sessions.swift in Sources */,
+				1EAD40E32657D6700061DBF7 /* AudioPlayer.swift in Sources */,
 				1E03EE01264D6D060069E5AC /* Colors.swift in Sources */,
 				1EC79185264E487C00DBE82D /* SettingsView.swift in Sources */,
 				1EB3D9E4264D52EE00F13B3B /* MainView.swift in Sources */,
