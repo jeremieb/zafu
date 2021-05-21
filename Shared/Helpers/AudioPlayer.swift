@@ -8,6 +8,9 @@
 // From: https://gist.github.com/standinga/f3e303d504f770a33496941137a68eef
 // Discussion: https://stackoverflow.com/questions/54345702/how-to-play-multiple-audio-files-simultaneously-using-avplayer
 
+// ⚠️ This player can display time, not sure we need this. There is another solution on the stackoverflow without it 
+
+
 import Foundation
 import AVFoundation
 
