@@ -24,6 +24,7 @@ struct RootView: View {
     var body: some View {
         
         ZStack {
+
             TabView(selection: $selectedTab){
                 MainView()
                     .tag(0)
@@ -47,7 +48,9 @@ struct RootView: View {
                         Text("Sessions")
                     }
                 
-            }.tabViewStyle(DefaultTabViewStyle())
+            }
+            .tabViewStyle(DefaultTabViewStyle())
+            .background(Color.clear)
         }
     }
 }
