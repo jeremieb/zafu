@@ -12,12 +12,10 @@ struct HeaderMainView: View {
     /// Opening modal view
     @State var settingsSheet = false
     
-    /// Displays the username with a placeholder
-    var username: String = "Human"
-    
     /// Only for the main view
     var isHome: Bool = false
     var title: String = "Welcome"
+    var username: String = "Human"
     
     var body: some View {
         HStack(alignment: .top){
