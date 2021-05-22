@@ -30,59 +30,62 @@ struct StatsMainView: View {
                 .cornerRadius(10)
             
             GeometryReader { geo in
-                HStack(alignment: .center, spacing: 12.0){
+                HStack(alignment: .center, spacing: 10.0){
                     
                     /// Streak
-                    HStack(alignment: .bottom, spacing: 5.0){
+                    HStack(spacing: 5.0){
                         Image(systemName: "calendar")
-                            .font(.system(size: 17))
                             .foregroundColor(.elementSecondary)
-                            .offset(y: -2)
+                            .minimumScaleFactor(0.5)
                         Text(streak)
                             .font(.system(size: 24))
                             .fontWeight(.bold)
-                            .offset(y: 2)
+                            .minimumScaleFactor(0.5)
                         Text(streakUnit)
-                            .offset(x: -2)
+                            .font(.footnote)
+                            .offset(x: -2, y: 4)
+                            .minimumScaleFactor(0.5)
                     }.padding(.horizontal, 10)
                     
                     Divider()
                     
                     /// Total hours
-                    HStack(alignment: .bottom, spacing: 5.0){
+                    HStack(spacing: 5.0){
                         Image(systemName: "hourglass")
-                            .font(.system(size: 17))
                             .foregroundColor(.elementSecondary)
-                            .offset(y: -2)
+                            .minimumScaleFactor(0.5)
                         Text(total)
                             .font(.system(size: 24))
                             .fontWeight(.bold)
-                            .offset(y: 2)
+                            .minimumScaleFactor(0.5)
                         Text(totalUnit)
-                            .offset(x: -2)
+                            .font(.footnote)
+                            .offset(x: -2, y: 4)
+                            .minimumScaleFactor(0.5)
                     }.padding(.horizontal, 10)
                     
                     Divider()
                     
                     /// Average
-                    HStack(alignment: .bottom, spacing: 5.0){
+                    HStack(spacing: 5.0){
                         Image(systemName: "stopwatch")
-                            .font(.system(size: 17))
                             .foregroundColor(.elementSecondary)
-                            .offset(y: -2)
+                            .minimumScaleFactor(0.5)
                         Text(average)
                             .font(.system(size: 24))
                             .fontWeight(.bold)
-                            .offset(y: 2)
+                            .minimumScaleFactor(0.5)
                         Text(averageUnit)
-                            .offset(x: -2)
+                            .font(.footnote)
+                            .offset(x: -2, y: 4)
+                            .minimumScaleFactor(0.5)
                     }.padding(.horizontal, 10)
                 }
                 .frame(width: geo.size.width - 32)
                 .cornerRadius(10)
                 .padding()
             }
-        }.frame(height: 82).padding(.horizontal)
+        }.frame(height: 70).padding(.horizontal)
     }
 }
 
