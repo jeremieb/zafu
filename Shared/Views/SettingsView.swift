@@ -10,6 +10,11 @@ import SwiftUI
 struct SettingsView: View {
 
     @Binding var isPresented: Bool
+    
+    public init(isPresented: Binding<Bool>){
+        UINavigationBar.appearance().barTintColor = UIColor(Color.clear)
+        self._isPresented = isPresented
+    }
 
     var body: some View {
         
@@ -25,7 +30,7 @@ struct SettingsView: View {
                         
                         /// Accelerometer
                         SectionHeaderView(title: "Debug")
-                        DebugView(motion: MotionProvider())
+//                        DebugView(motion: MotionProvider())
                         
                         Spacer()
                     }
@@ -41,7 +46,7 @@ struct SettingsView: View {
                     }
                 })
             }
-        }.navigationBarColor(backgroundColor: UIColor(Color("backgroundMain")), tintColor: .label)
+        }
     }
 }
 
