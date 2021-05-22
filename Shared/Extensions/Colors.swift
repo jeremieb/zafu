@@ -21,3 +21,10 @@ extension Color {
     static let tabbar = Color("tabbar")
     
 }
+
+/// Ramdom color
+extension UIColor {
+    static func random(from colors: [UIColor]) -> UIColor? {
+        return colors.randomElement()
+    }
+}
