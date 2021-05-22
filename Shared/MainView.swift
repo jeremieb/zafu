@@ -16,7 +16,7 @@ struct MainView: View {
             VStack() {
                 
                 /// View Header
-                HeaderMainView(isHome: true)
+                HeaderMainView(isHome: true, username: "Jeremie")
                 
                 /// Stats
                 Group{
