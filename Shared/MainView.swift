@@ -18,6 +18,12 @@ struct MainView: View {
                 /// View Header
                 HeaderMainView(isHome: true)
                 
+                /// Stats
+                Group{
+                    SectionHeaderView(title: "Stats")
+                    StatsMainView()
+                }
+                
                 /// My favorites or My sessions
                 Group {
                     SectionHeaderView(title: "My Sessions")
