@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SessionsView: View {
     var body: some View {
-        NavigationView{
-            ZStack {
-                BackgroundView()
-                
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                    .navigationTitle("Sessions")
+        ZStack {
+            BackgroundView()
+            
+            VStack {
+                HeaderMainView(title: "My Sessions")
+                Spacer()
             }
         }
     }

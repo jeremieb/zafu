@@ -9,17 +9,13 @@ import SwiftUI
 
 struct MeditationView: View {
     
-    
-    init(){
-        UINavigationBar.appearance().barTintColor = UIColor(Color.clear)
-    }
-    
     var body: some View {
-        NavigationView{
-            ZStack {
-                BackgroundView()
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                    .navigationTitle("Meditations")
+        ZStack {
+            BackgroundView()
+            
+            VStack {
+                HeaderMainView(title: "Meditation")
+                Spacer()
             }
         }
     }

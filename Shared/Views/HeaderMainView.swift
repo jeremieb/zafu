@@ -15,24 +15,36 @@ struct HeaderMainView: View {
     /// Displays the username with a placeholder
     var username: String = "Human"
     
+    /// Only for the main view
+    var isHome: Bool = false
+    var title: String = "Welcome"
+    
     var body: some View {
         HStack(alignment: .top){
             VStack(alignment: .leading){
-                Text("Welcome")
-                    .font(.largeTitle)
-                    .fontWeight(.regular)
-                Text(username)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                if isHome {
+                    Text(title)
+                        .font(.largeTitle)
+                        .fontWeight(.regular)
+                    Text(username)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                } else {
+                    Text(title)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                }
             }
             Spacer()
-            Button(action: {
-                self.settingsSheet = true
-            }) {
-                Image(systemName: "person.crop.circle")
-                    .font(.largeTitle)
-                    .foregroundColor(.elementSecondary)
-            }.padding(.top, 5)
+            if isHome {
+                Button(action: {
+                    self.settingsSheet = true
+                }) {
+                    Image(systemName: "person.crop.circle")
+                        .font(.largeTitle)
+                        .foregroundColor(.elementSecondary)
+                }.padding(.top, 5)
+            }
         }
         .padding(.vertical, 20)
         .padding(.horizontal)

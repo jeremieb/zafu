@@ -16,7 +16,7 @@ struct MainView: View {
             VStack() {
                 
                 /// View Header
-                HeaderMainView()
+                HeaderMainView(isHome: true)
                 
                 /// My favorites or My sessions
                 Group {
