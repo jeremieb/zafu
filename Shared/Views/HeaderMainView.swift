@@ -44,7 +44,8 @@ struct HeaderMainView: View {
                 }.padding(.top, 5)
             }
         }
-        .padding(.vertical, 20)
+        .padding(.top, 30)
+        .padding(.bottom, 20)
         .padding(.horizontal)
         .sheet(isPresented: $settingsSheet) {
             SettingsView(isPresented: $settingsSheet)
