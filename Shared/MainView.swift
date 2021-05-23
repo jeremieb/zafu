@@ -12,10 +12,13 @@ struct MainView: View {
     
     var body: some View {
         
-        VStack {
+        VStack(alignment: .leading) {
             
             /// View Header
             HeaderMainView(isHome: true, username: "Jeremie")
+            
+            /// Quotes
+            QuoteView()
             
             /// Stats
             Group{
