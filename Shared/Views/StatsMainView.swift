@@ -23,25 +23,24 @@ struct StatsMainView: View {
     
     var body: some View {
         
-        HStack(alignment: .center, spacing: 10.0){
+        HStack(alignment: .center, spacing: 8.0){
             
             /// Streak
             StatItem(number: streak, unit: streakUnit)
             
-            Divider().background(Color.elementSecondary).opacity(0.5)
+            Divider().background(Color.elementSecondary).opacity(0.6)
             
             /// Total hours
             StatItem(number: total, unit: totalUnit)
             
-            Divider().background(Color.elementSecondary).opacity(0.5)
+            Divider().background(Color.elementSecondary).opacity(0.6)
             
             /// Average
             StatItem(number: average, unit: averageUnit)
         }
-        .frame(width: UIScreen.main.bounds.width - 32, height: 58)
+        .frame(width: UIScreen.main.bounds.width - 32, height: 60)
         .background(Color(UIColor.systemBackground).opacity(0.4))
         .cornerRadius(10)
-        .padding(.horizontal)
     }
 }
 
