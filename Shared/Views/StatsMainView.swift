@@ -23,7 +23,7 @@ struct StatsMainView: View {
     
     var body: some View {
         
-        HStack(alignment: .center, spacing: 10.0){
+        HStack(alignment: .center, spacing: 8){
             
             /// Streak
             StatItem(number: streak, unit: streakUnit)
@@ -89,6 +89,22 @@ struct StatsMainView_Previews: PreviewProvider {
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
             .previewDisplayName("iPhone 11 Pro")
+            ZStack {
+                BackgroundView().frame(height: 80)
+                StatsMainView()
+            }
+            .previewDevice("iPhone 8")
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+            .previewDisplayName("iPhone 8")
+            ZStack {
+                BackgroundView().frame(height: 80)
+                StatsMainView()
+            }
+            .previewDevice("iPhone SE (2nd generation)")
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+            .previewDisplayName("iPhone SE (2nd generation)")
         }
     }
 }
