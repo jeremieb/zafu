@@ -8,45 +8,39 @@
 import SwiftUI
 
 struct SettingsView: View {
-
+    
     @Binding var isPresented: Bool
     
     public init(isPresented: Binding<Bool>){
         UINavigationBar.appearance().barTintColor = UIColor(Color.clear)
         self._isPresented = isPresented
     }
-
+    
     var body: some View {
         
-        NavigationView{
-            ZStack {
-                
-                BackgroundDefaultView()
-                
-                ScrollView{
-                    VStack(alignment: .leading){
-                        
-                        /// DEBUG
-                        
-                        /// Accelerometer
-                        SectionHeaderView(title: "Debug")
-//                        DebugView(motion: MotionProvider())
-                        
-                        Spacer()
+        
+        VStack {
+            ScrollView{
+                VStack {
+                    ZStack {
+                        HeaderMainView(title: "Settings")
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                isPresented.toggle()
+                            }) {
+                                Image(systemName: "xmark.circle")
+                                    .font(.system(size: 22))
+                                    .foregroundColor(Color(UIColor.systemGray))
+                                    .frame(width: 44, height: 44)
+                            }
+                        }.padding(.horizontal)
                     }
-                }.navigationBarTitle(Text("Settings"), displayMode: .large)
-                
-                .toolbar(content: {
-                    Button(action: {
-                        isPresented.toggle()
-                    }) {
-                        Image(systemName: "xmark.circle")
-                            .font(.system(size: 44))
-                            .frame(width: 44, height: 44)
-                    }
-                })
-            }
-        }
+                    Spacer()
+                }
+            }.navigationBarTitle(Text("Settings"), displayMode: .large)
+            .background(Color.clear)
+        }.background(BackgroundView().opacity(0.4))
     }
 }
 

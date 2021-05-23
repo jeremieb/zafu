@@ -9,13 +9,10 @@ import SwiftUI
 
 struct SessionsView: View {
     var body: some View {
-        ZStack {
-            BackgroundView()
-            
-            VStack {
-                HeaderMainView(title: "My Sessions")
-                Spacer()
-            }
+        
+        VStack {
+            HeaderMainView(title: "My Sessions")
+            Spacer()
         }
     }
 }

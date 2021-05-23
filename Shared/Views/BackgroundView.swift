@@ -47,9 +47,14 @@ struct Shapes: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
                 .opacity(0.9)
                 .blur(radius: blur)
-                .onAppear{
-                    animated.toggle()
-                }
+        }.onAppear{
+            withAnimation {
+                animated = true
+            }
+        }.onDisappear {
+            withAnimation {
+                animated = false
+            }
         }
     }
 }
@@ -57,8 +62,6 @@ struct Shapes: View {
 struct Circles: View {
 
     let blur: CGFloat = 80
-    
-    @State var animated = false
     
     var body: some View {
         GeometryReader { proxy in
@@ -103,7 +106,7 @@ struct Circles: View {
                         proxy: proxy,
                         blur: blur
                     )
-                } // group
+                }
             }.ignoresSafeArea()
         }
     }

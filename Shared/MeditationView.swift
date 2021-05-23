@@ -10,13 +10,10 @@ import SwiftUI
 struct MeditationView: View {
     
     var body: some View {
-        ZStack {
-            BackgroundView()
-            
-            VStack {
-                HeaderMainView(title: "Meditation")
-                Spacer()
-            }
+        
+        VStack {
+            HeaderMainView(title: "Meditation")
+            Spacer()
         }
     }
 }

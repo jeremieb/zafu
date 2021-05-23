@@ -32,21 +32,21 @@ struct RootView: View {
                         Image("zafu.logo.fill")
                             .font(.system(size: 22))
                         Text("Today")
-                    }
+                    }.background(BackgroundView())
                 MeditationView()
                     .tag(1)
                     .tabItem {
                         Image("zafu_seal")
                             .font(.system(size: 22))
                         Text("Meditation")
-                    }
+                    }.background(BackgroundView())
                 SessionsView()
                     .tag(2)
                     .tabItem {
                         Image("zafu_heart")
                             .font(.system(size: 20))
                         Text("Sessions")
-                    }
+                    }.background(BackgroundView())
                 
             }
             .tabViewStyle(DefaultTabViewStyle())

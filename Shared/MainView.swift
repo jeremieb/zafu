@@ -9,35 +9,33 @@ import SwiftUI
 import CoreMotion
 
 struct MainView: View {
-  
+    
     var body: some View {
-        ZStack {
-            BackgroundView()
-            VStack() {
-                
-                /// View Header
-                HeaderMainView(isHome: true, username: "Jeremie")
-                
-                /// Stats
-                Group{
-                    SectionHeaderView(title: "Stats")
-                    StatsMainView()
-                }
-                
-                /// My favorites or My sessions
-                Group {
-                    SectionHeaderView(title: "My Sessions")
-                    SmallSessionCellView()
-                }
-                
-                /// Featured sessions
-                Group {
-                    SectionHeaderView(title: "Featured")
-                    LargeSessionCellView()
-                }
-                
-                Spacer()
+        
+        VStack {
+            
+            /// View Header
+            HeaderMainView(isHome: true, username: "Jeremie")
+            
+            /// Stats
+            Group{
+                SectionHeaderView(title: "Stats")
+                StatsMainView()
             }
+            
+            /// My favorites or My sessions
+            Group {
+                SectionHeaderView(title: "My Sessions")
+                SmallSessionCellView()
+            }
+            
+            /// Featured sessions
+            Group {
+                SectionHeaderView(title: "Featured")
+                LargeSessionCellView()
+            }
+            
+            Spacer()
         }
     }
 }
