@@ -22,70 +22,48 @@ struct StatsMainView: View {
     var averageUnit: String = "m"
     
     var body: some View {
-        ZStack {
+        
+        HStack(alignment: .center, spacing: 10.0){
             
-            /// Background color
-            Color(UIColor.systemBackground)
-                .opacity(0.4)
-                .cornerRadius(10)
+            /// Streak
+            StatItem(number: streak, unit: streakUnit)
             
-            GeometryReader { geo in
-                HStack(alignment: .center, spacing: 10.0){
-                    
-                    /// Streak
-                    HStack(spacing: 5.0){
-                        Image(systemName: "calendar")
-                            .foregroundColor(.elementSecondary)
-                            .minimumScaleFactor(0.5)
-                        Text(streak)
-                            .font(.system(size: 24))
-                            .fontWeight(.bold)
-                            .minimumScaleFactor(0.5)
-                        Text(streakUnit)
-                            .font(.footnote)
-                            .offset(x: -2, y: 4)
-                            .minimumScaleFactor(0.5)
-                    }.padding(.horizontal, 10)
-                    
-                    Divider()
-                    
-                    /// Total hours
-                    HStack(spacing: 5.0){
-                        Image(systemName: "hourglass")
-                            .foregroundColor(.elementSecondary)
-                            .minimumScaleFactor(0.5)
-                        Text(total)
-                            .font(.system(size: 24))
-                            .fontWeight(.bold)
-                            .minimumScaleFactor(0.5)
-                        Text(totalUnit)
-                            .font(.footnote)
-                            .offset(x: -2, y: 4)
-                            .minimumScaleFactor(0.5)
-                    }.padding(.horizontal, 10)
-                    
-                    Divider()
-                    
-                    /// Average
-                    HStack(spacing: 5.0){
-                        Image(systemName: "stopwatch")
-                            .foregroundColor(.elementSecondary)
-                            .minimumScaleFactor(0.5)
-                        Text(average)
-                            .font(.system(size: 24))
-                            .fontWeight(.bold)
-                            .minimumScaleFactor(0.5)
-                        Text(averageUnit)
-                            .font(.footnote)
-                            .offset(x: -2, y: 4)
-                            .minimumScaleFactor(0.5)
-                    }.padding(.horizontal, 10)
-                }
-                .frame(width: geo.size.width - 32)
-                .cornerRadius(10)
-                .padding()
-            }
-        }.frame(height: 70).padding(.horizontal)
+            Divider().background(Color.elementSecondary).opacity(0.5)
+            
+            /// Total hours
+            StatItem(number: total, unit: totalUnit)
+            
+            Divider().background(Color.elementSecondary).opacity(0.5)
+            
+            /// Average
+            StatItem(number: average, unit: averageUnit)
+        }
+        .frame(width: UIScreen.main.bounds.width - 32, height: 58)
+        .background(Color(UIColor.systemBackground).opacity(0.4))
+        .cornerRadius(10)
+        .padding(.horizontal)
+    }
+}
+
+struct StatItem: View {
+    
+    var number: String
+    var unit: String
+    
+    var body: some View{
+        HStack(spacing: 5.0){
+            Image(systemName: "stopwatch")
+                .foregroundColor(.elementSecondary)
+                .minimumScaleFactor(0.5)
+            Text(number)
+                .font(.system(size: 24))
+                .fontWeight(.bold)
+                .minimumScaleFactor(0.5)
+            Text(unit)
+                .font(.footnote)
+                .offset(x: -2, y: 4)
+                .minimumScaleFactor(0.5)
+        }.padding(.horizontal, 10)
     }
 }
 
