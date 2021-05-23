@@ -23,7 +23,7 @@ struct StatsMainView: View {
     
     var body: some View {
         
-        HStack(alignment: .center, spacing: 8.0){
+        HStack(alignment: .center, spacing: 10.0){
             
             /// Streak
             StatItem(number: streak, unit: streakUnit)
@@ -41,6 +41,7 @@ struct StatsMainView: View {
         .frame(width: UIScreen.main.bounds.width - 32, height: 60)
         .background(Color(UIColor.systemBackground).opacity(0.4))
         .cornerRadius(10)
+        .padding(.horizontal)
     }
 }
 
@@ -54,23 +55,40 @@ struct StatItem: View {
             Image(systemName: "stopwatch")
                 .foregroundColor(.elementSecondary)
                 .minimumScaleFactor(0.5)
+                .lineLimit(1)
             Text(number)
                 .font(.system(size: 24))
                 .fontWeight(.bold)
                 .minimumScaleFactor(0.5)
+                .lineLimit(1)
             Text(unit)
                 .font(.footnote)
                 .offset(x: -2, y: 4)
                 .minimumScaleFactor(0.5)
-        }.padding(.horizontal, 10)
+                .lineLimit(1)
+        }.frame(width: (UIScreen.main.bounds.size.width - 72) / 3, alignment: .center)
     }
 }
 
 struct StatsMainView_Previews: PreviewProvider {
     static var previews: some View {
-        StatsMainView()
+        Group {
+            ZStack {
+                BackgroundView().frame(height: 80)
+                StatsMainView()
+            }
+            .previewDevice("iPhone 12 Pro")
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
-            .previewDisplayName("Default preview")
+            .previewDisplayName("iPhone 12 Pro")
+            ZStack {
+                BackgroundView().frame(height: 80)
+                StatsMainView()
+            }
+            .previewDevice("iPhone 11 Pro")
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+            .previewDisplayName("iPhone 11 Pro")
+        }
     }
 }
