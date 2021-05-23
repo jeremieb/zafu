@@ -18,7 +18,7 @@ struct LargeSessionCellView: View {
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
-            HStack{
+            HStack(spacing: 10.0){
                 ForEach(sessions){ featured in
                     LargeCellView(title: featured.title, duration: featured.duration, description: featured.description)
                 }
@@ -34,42 +34,38 @@ struct LargeCellView: View {
     var description = "Cras justo odio, dapibus ac facilisis in, egestas eget quam."
     
     var body: some View {
-        ZStack {
-            
-            /// Background color
-            Color(UIColor.systemBackground)
-                .opacity(0.4)
-            
-            /// Content
-            HStack {
-                VStack(alignment: .leading){
-                    Text(duration)
-                        .font(.caption)
-                        .foregroundColor(.elementSecondary)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 3)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.elementSecondary, lineWidth: 1)
-                         )
-                        .lineLimit(1)
-                    Spacer()
-                    Text(title)
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(2)
-                    Text(description)
-                        .font(.footnote)
-                        .foregroundColor(.elementSecondary)
-                        .lineLimit(2)
-                }
-                .padding()
+        
+        /// Content
+        HStack {
+            VStack(alignment: .leading){
+                Text(duration)
+                    .font(.caption)
+                    .foregroundColor(.elementSecondary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 3)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.elementSecondary, lineWidth: 1)
+                    )
+                    .lineLimit(1)
                 Spacer()
+                Text(title)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
+                Text(description)
+                    .font(.footnote)
+                    .foregroundColor(.elementSecondary)
+                    .lineLimit(2)
             }
+            .padding()
+            Spacer()
         }
+        .background(Color(UIColor.systemBackground).opacity(0.4))
         .frame(width: 235, height: 150)
         .cornerRadius(10)
+        
     }
 }
 

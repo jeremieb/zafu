@@ -12,33 +12,35 @@ struct MainView: View {
     
     var body: some View {
         
-        VStack(alignment: .leading) {
-            
-            /// View Header
-            HeaderMainView(isHome: true, username: "Jeremie")
-            
-            /// Quotes
-            QuoteView()
-            
-            /// Stats
-            Group{
-                SectionHeaderView(title: "Stats")
-                StatsMainView()
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: .leading) {
+                
+                /// View Header
+                HeaderMainView(isHome: true, username: "Jeremie")
+                
+                /// Quotes
+                QuoteView()
+                
+                /// Stats
+                Group{
+                    SectionHeaderView(title: "Stats")
+                    StatsMainView()
+                }
+                
+                /// My favorites or My sessions
+                Group {
+                    SectionHeaderView(title: "My Sessions")
+                    SmallSessionCellView()
+                }
+                
+                /// Featured sessions
+                Group {
+                    SectionHeaderView(title: "Featured")
+                    LargeSessionCellView()
+                }
+                
+                Spacer()
             }
-            
-            /// My favorites or My sessions
-            Group {
-                SectionHeaderView(title: "My Sessions")
-                SmallSessionCellView()
-            }
-            
-            /// Featured sessions
-            Group {
-                SectionHeaderView(title: "Featured")
-                LargeSessionCellView()
-            }
-            
-            Spacer()
         }
     }
 }
@@ -46,9 +48,15 @@ struct MainView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MainView()
-            MainView()
-                .preferredColorScheme(.dark)
+            ZStack {
+                BackgroundView()
+                MainView()
+            }
+            ZStack {
+                BackgroundView()
+                MainView()
+                    .preferredColorScheme(.dark)
+            }
         }
     }
 }

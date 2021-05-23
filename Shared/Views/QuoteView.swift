@@ -17,7 +17,7 @@ struct QuoteView: View {
         let quote = Array(myQuote.quotes.keys)[quoteKey]
         let author = Array(myQuote.quotes.values)[quoteKey]
         
-        HStack {
+        VStack {
             Text(quote)
                 .font(.subheadline)
                 .fontWeight(.light)
@@ -26,7 +26,7 @@ struct QuoteView: View {
                 + Text(author)
                 .font(.subheadline)
                 .fontWeight(.medium)
-        }.padding(.horizontal).lineLimit(5)
+        }.padding(.horizontal).fixedSize(horizontal: false, vertical: true).lineLimit(5)
     }
 }
 

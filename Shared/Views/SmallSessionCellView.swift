@@ -19,7 +19,7 @@ struct SmallSessionCellView: View {
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
-            HStack{
+            HStack(spacing: 10.0){
                 ForEach(mySessions){ session in
                     SquareCellsView(title: session.title, duration: session.duration, icon: session.icon)
                 }
@@ -38,47 +38,42 @@ struct SquareCellsView: View {
     }
     
     var body: some View {
-        ZStack {
-            
-            /// Background color
-            Color(UIColor.systemBackground)
-                .opacity(0.4)
-            
-            /// Content
-            HStack {
-                VStack(alignment: .leading){
-                    HStack {
-                        Text(duration)
-                            .font(.caption)
-                            .foregroundColor(.elementSecondary)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 3)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.elementSecondary, lineWidth: 1)
-                             )
-                            .lineLimit(1)
-                        Spacer()
-                        
-                        // if we have a icon
-                        if ((icon?.isEmpty) != nil) {
-                            Image(systemName: icon ?? "")
-                                .font(.system(size: 20))
-                                .foregroundColor(Color(iconColor ))
-                                .opacity(0.5)
-                        }
-                    }
+        
+        /// Content
+        VStack {
+            VStack(alignment: .leading){
+                HStack {
+                    Text(duration)
+                        .font(.caption)
+                        .foregroundColor(.elementSecondary)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 3)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.elementSecondary, lineWidth: 1)
+                        )
+                        .lineLimit(1)
                     Spacer()
-                    Text(title)
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(2)
+                    
+                    // if we have a icon
+                    if ((icon?.isEmpty) != nil) {
+                        Image(systemName: icon ?? "")
+                            .font(.system(size: 20))
+                            .foregroundColor(Color(iconColor ))
+                            .opacity(0.5)
+                    }
                 }
-                .padding()
                 Spacer()
+                Text(title)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
             }
+            .padding()
+            Spacer()
         }
+        .background(Color(UIColor.systemBackground).opacity(0.4))
         .frame(width: 150, height: 150)
         .cornerRadius(10)
     }
@@ -96,7 +91,10 @@ struct ListSessionCustomView_Previews: PreviewProvider {
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .padding()
                 .previewDisplayName("Default preview")
-            SmallSessionCellView()
+            ZStack {
+                BackgroundView()
+                SmallSessionCellView()
+            }
         }
     }
 }
