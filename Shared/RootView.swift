@@ -9,14 +9,6 @@ import SwiftUI
 
 struct RootView: View {
     
-    private enum Tab: Hashable {
-        case today
-        case meditation
-        case sessions
-    }
-    
-    @State private var selectedTab: Tab = .today
-    
     init() {
         UITabBar.appearance().shadowImage = UIImage()
     }
@@ -25,23 +17,20 @@ struct RootView: View {
         
         ZStack {
 
-            TabView(selection: $selectedTab){
+            TabView(){
                 MainView()
-                    .tag(0)
                     .tabItem {
                         Image("zafu.logo.fill")
                             .font(.system(size: 22))
                         Text("Today")
                     }.background(BackgroundView())
                 MeditationView()
-                    .tag(1)
                     .tabItem {
                         Image("zafu_seal")
                             .font(.system(size: 22))
                         Text("Meditation")
                     }.background(BackgroundView())
                 SessionsView()
-                    .tag(2)
                     .tabItem {
                         Image("zafu_heart")
                             .font(.system(size: 20))
