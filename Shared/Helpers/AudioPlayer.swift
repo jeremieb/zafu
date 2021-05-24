@@ -29,7 +29,7 @@ class AudioPlayer {
                 audioPlayer?.numberOfLoops = -1
                 audioPlayer?.play()
             } catch {
-                print("Error")
+                print("Error Background sound")
             }
         }
     }
@@ -43,7 +43,7 @@ class AudioPlayer {
                 audioSecondPlayer?.prepareToPlay()
                 audioSecondPlayer?.play()
             } catch {
-                print("Error")
+                print("Error Secondary sound")
             }
         }
     }
@@ -59,7 +59,7 @@ class AudioPlayer {
         }
     }
     
-    static func stopMainSound(){
+    static func stopBackgroundSound(){
         if ((audioPlayer?.isPlaying) != nil) {
             do {
                 audioPlayer?.setVolume(0, fadeDuration: 1)

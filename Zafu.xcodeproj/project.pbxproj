@@ -17,6 +17,8 @@
 		1E2DE5D52651464C003593B2 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2DE5D42651464C003593B2 /* MeditationView.swift */; };
 		1E2DE5D726514659003593B2 /* SessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2DE5D626514659003593B2 /* SessionsView.swift */; };
 		1E93772B265BF36C00BF9FB9 /* AirPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93772A265BF36C00BF9FB9 /* AirPlayView.swift */; };
+		1E93772E265BF9A300BF9FB9 /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93772D265BF9A300BF9FB9 /* TimerData.swift */; };
+		1E937730265C002E00BF9FB9 /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93772F265C002E00BF9FB9 /* QuoteModel.swift */; };
 		1EAAE746265001680002FAE3 /* SmallSessionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE745265001680002FAE3 /* SmallSessionCellView.swift */; };
 		1EAAE74926500BC30002FAE3 /* Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE74826500BC30002FAE3 /* Sessions.swift */; };
 		1EAAE74B26500C1F0002FAE3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */; };
@@ -49,6 +51,8 @@
 		1E2DE5D42651464C003593B2 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		1E2DE5D626514659003593B2 /* SessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsView.swift; sourceTree = "<group>"; };
 		1E93772A265BF36C00BF9FB9 /* AirPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayView.swift; sourceTree = "<group>"; };
+		1E93772D265BF9A300BF9FB9 /* TimerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerData.swift; sourceTree = "<group>"; };
+		1E93772F265C002E00BF9FB9 /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
 		1EAAE745265001680002FAE3 /* SmallSessionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSessionCellView.swift; sourceTree = "<group>"; };
 		1EAAE74826500BC30002FAE3 /* Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sessions.swift; sourceTree = "<group>"; };
 		1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -96,7 +100,6 @@
 				1E03EDFB264D5D660069E5AC /* DebugView.swift */,
 				1EB4A7932659623100B7D3BD /* StatsMainView.swift */,
 				1EB4A79C265AB55300B7D3BD /* QuoteView.swift */,
-				1EF13B02265B8D5B0032F9A8 /* SessionDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -120,10 +123,19 @@
 			path = Provider;
 			sourceTree = "<group>";
 		};
+		1E93772C265BF99500BF9FB9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1E93772D265BF9A300BF9FB9 /* TimerData.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		1EAAE74726500BB10002FAE3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				1EAAE74826500BC30002FAE3 /* Sessions.swift */,
+				1E93772F265C002E00BF9FB9 /* QuoteModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -159,6 +171,7 @@
 		1EB3D9CE264D52ED00F13B3B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1E93772C265BF99500BF9FB9 /* ViewModels */,
 				1EAD40E42657D6D10061DBF7 /* Sounds */,
 				1EAD40E12657D65E0061DBF7 /* Helpers */,
 				1EAAE74726500BB10002FAE3 /* Models */,
@@ -170,6 +183,7 @@
 				1EB3D9D0264D52ED00F13B3B /* MainView.swift */,
 				1E2DE5D42651464C003593B2 /* MeditationView.swift */,
 				1E2DE5D626514659003593B2 /* SessionsView.swift */,
+				1EF13B02265B8D5B0032F9A8 /* SessionDetailView.swift */,
 				1EB3D9D1264D52EE00F13B3B /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -274,6 +288,7 @@
 				1EB4A7942659623100B7D3BD /* StatsMainView.swift in Sources */,
 				1EE48E78264DB9B500E17A3B /* HeaderMainView.swift in Sources */,
 				1EB4A79D265AB55300B7D3BD /* QuoteView.swift in Sources */,
+				1E93772E265BF9A300BF9FB9 /* TimerData.swift in Sources */,
 				1EC79183264E47A100DBE82D /* BackgroundDefaultView.swift in Sources */,
 				1EF13B03265B8D5B0032F9A8 /* SessionDetailView.swift in Sources */,
 				1EFDEC37264D80870001EF44 /* MotionProvider.swift in Sources */,
@@ -294,6 +309,7 @@
 				1E2DE5D1265141B3003593B2 /* LargeSessionCellView.swift in Sources */,
 				1E93772B265BF36C00BF9FB9 /* AirPlayView.swift in Sources */,
 				1E2DE5CF2650E96A003593B2 /* DisableModalDismiss.swift in Sources */,
+				1E937730265C002E00BF9FB9 /* QuoteModel.swift in Sources */,
 				1E2DE5D52651464C003593B2 /* MeditationView.swift in Sources */,
 				1E03EE04264D73B40069E5AC /* AnimationProvider.swift in Sources */,
 			);

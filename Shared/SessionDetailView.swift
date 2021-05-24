@@ -9,13 +9,15 @@ import SwiftUI
 
 struct SessionDetailView: View {
     
+    @EnvironmentObject var data: TimerData
+    
     var title: String = "Session Title"
     var icon: String = "drop"
     var duration: Int = 5
     
     var body: some View {
         ZStack{
-
+            
             VStack {
                 Spacer().frame(height: 50)
                 Text("\(Image(systemName: icon))")
@@ -25,7 +27,7 @@ struct SessionDetailView: View {
                     .opacity(0.2)
                 Spacer()
             }
-                        
+            
             VStack {
                 
                 /// Title
@@ -34,22 +36,39 @@ struct SessionDetailView: View {
                     .fontWeight(.semibold)
                     .padding(.top, 100)
                 
-                QuoteView()
-                    .padding(.top, 50)
+                QuoteView().padding(.top, 50)
                 
                 Spacer().frame(height: 120)
                 
-                /// Duration label
-                Text(String(duration) + " min")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.myPurple)
+                Group{
+                    if data.sessionHasStarted {
+                        Text(String(data.selectedTime))
+                    } else {
+                        /// Duration label
+                        Text(String(duration) + " min")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.myPurple)
+                    }
+                    
+                    Button(action: {
+                        AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
+                        withAnimation(.default) {
+                            data.time = duration
+                            data.selectedTime = duration
+                            data.sessionHasStarted.toggle()
+                        }
+                    }) {
+                        Image("playButton")
+                    }
+                }.onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect(), perform: { _ in
+                    data.selectedTime -= 1
+                    
+                    if data.selectedTime == 0 {
+                        data.stopSession()
+                    }
+                })
                 
-                Button(action: {
-                    AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
-                }) {
-                    Image("playButton")
-                }
             }
             
             VStack {

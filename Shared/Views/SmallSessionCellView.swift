@@ -10,6 +10,8 @@ import SwiftUI
 
 struct SmallSessionCellView: View {
     
+    @StateObject var data = TimerData()
+    
     @State var showDetail = false
     @State var selectedSession: CustomSession? = nil
     
@@ -33,7 +35,7 @@ struct SmallSessionCellView: View {
             }
             .padding(.horizontal)
             .sheet(item: self.$selectedSession){ session in
-                SessionDetailView(title: session.title, icon: session.icon ?? "drop", duration: session.duration).modifier(DisableModalDismiss(disabled: true))
+                SessionDetailView(title: session.title, icon: session.icon ?? "drop", duration: session.duration).modifier(DisableModalDismiss(disabled: true)).environmentObject(data)
             }
         }
     }

@@ -9,32 +9,37 @@ import SwiftUI
 
 struct QuoteView: View {
     
-    private var myQuote = MyQuotes()
+    var myQuote = MyQuotes()
+    
+    @State var quote: QuoteModel = QuoteModel(theQuote: "Empty", theAuthor: "No one")
     
     var body: some View {
         
-        let quoteKey = Int(arc4random_uniform(UInt32(myQuote.quotes.count)))
-        let quote = Array(myQuote.quotes.keys)[quoteKey]
-        let author = Array(myQuote.quotes.values)[quoteKey]
-        
         VStack(alignment: .center) {
-            Text(quote)
+            Text(quote.theQuote)
                 .font(.title2)
                 .fontWeight(.ultraLight)
                 .italic()
                 .padding(.bottom, 5)
-            Text(author)
+            Text(quote.theAuthor)
                 .font(.title3)
                 .fontWeight(.light)
-        }.padding(.horizontal).fixedSize(horizontal: false, vertical: true).lineLimit(10).multilineTextAlignment(.center)
+        }
+        .padding(.horizontal)
+        .fixedSize(horizontal: false, vertical: true)
+        .lineLimit(10)
+        .multilineTextAlignment(.center)
+        .onAppear{
+            quote = myQuote.quotes.randomElement()!
+        }
     }
 }
 
-struct QuoteView_Previews: PreviewProvider {
-    static var previews: some View {
-        QuoteView()
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-            .previewDisplayName("Default preview")
-    }
-}
+//struct QuoteView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuoteView()
+//            .previewLayout(PreviewLayout.sizeThatFits)
+//            .padding()
+//            .previewDisplayName("Default preview")
+//    }
+//}

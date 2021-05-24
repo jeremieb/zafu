@@ -39,7 +39,7 @@ struct SettingsView: View {
                     
                     Button(action: {
                         if isPlaying {
-                            AudioPlayer.stopMainSound()
+                            AudioPlayer.stopBackgroundSound()
                             isPlaying.toggle()
                         } else {
                             AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")

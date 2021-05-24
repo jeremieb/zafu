@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RootView: View {
+    
+    @StateObject var data = TimerData()
         
     init() {
         UITabBar.appearance().shadowImage = UIImage()
@@ -23,7 +25,7 @@ struct RootView: View {
                         Image("zafu.logo.fill")
                             .font(.system(size: 22))
                         Text("Today")
-                    }.background(BackgroundView())
+                    }.background(BackgroundView()).environmentObject(data)
                 MeditationView()
                     .tabItem {
                         Image("zafu_seal")
