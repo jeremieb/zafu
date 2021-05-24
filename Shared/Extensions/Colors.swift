@@ -18,5 +18,15 @@ extension Color {
     
     /// UI Elements
     static let elementSecondary = Color("elementSecondary")
+    static let tabbar = Color("tabbar")
     
+    /// Colors
+    static let myPurple = Color("myPurple")
+}
+
+/// Ramdom color
+extension UIColor {
+    static func random(from colors: [UIColor]) -> UIColor? {
+        return colors.randomElement()
+    }
 }

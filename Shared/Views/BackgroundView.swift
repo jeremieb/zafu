@@ -17,6 +17,7 @@ struct Shapes: View {
     
     @State var animated = false
     @StateObject var animationProvider = AnimationProvider()
+    @ObservedObject var observer = Observer()
     
     /// Used to define circle position
     let alignment: Alignment
@@ -26,6 +27,7 @@ struct Shapes: View {
     
     /// Rotation
     let rotation: Double = Double(.random(in: 0...90))
+    let rotationTurn: Double
     
     /// Animation Duration
     let duration: Double
@@ -42,36 +44,39 @@ struct Shapes: View {
                 .fill(color)
                 .frame(height: proxy.size.height / animationProvider.frameHeightRatio)
                 .offset(animationProvider.offset)
-                .rotationEffect(.init(degrees: animated ? rotation : rotation + 360 ))
+                .rotationEffect(.init(degrees: animated ? rotation : rotation + rotationTurn ))
                 .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false))
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
                 .opacity(0.9)
                 .blur(radius: blur)
-                .onAppear{
-                    animated.toggle()
-                }
+        }
+        
+        /// Replacing on appear
+        .onReceive(self.observer.$enteredForeground) { _ in
+            withAnimation {
+                animated = true
+            }
         }
     }
 }
 
 struct Circles: View {
 
-    let blur: CGFloat = 80
-    
-    @State var animated = false
+    let blur: CGFloat = 120
     
     var body: some View {
         GeometryReader { proxy in
             ZStack{
                 
                 /// Background color
-                BackgroundDefaultView()
+                BackgroundDefaultView().opacity(0.3)
                 
                 Group{
                     // Blue
                     Shapes(
                         alignment: .topTrailing,
-                        color: Color.backgroundBlue,
+                        color: Color.backgroundGreen,
+                        rotationTurn: -180,
                         duration: 20,
                         proxy: proxy,
                         blur: blur
@@ -81,6 +86,7 @@ struct Circles: View {
                     Shapes(
                         alignment: .topLeading,
                         color: Color.backgroundPink,
+                        rotationTurn: 360,
                         duration: 30,
                         proxy: proxy,
                         blur: blur
@@ -89,7 +95,8 @@ struct Circles: View {
                     // Green
                     Shapes(
                         alignment: .bottomLeading,
-                        color: Color.backgroundGreen,
+                        color: Color.backgroundYellow,
+                        rotationTurn: 360,
                         duration: 20,
                         proxy: proxy,
                         blur: blur
@@ -98,12 +105,13 @@ struct Circles: View {
                     // Yellow
                     Shapes(
                         alignment: .bottomLeading,
-                        color: Color.backgroundYellow,
+                        color: Color.backgroundBlue,
+                        rotationTurn: -180,
                         duration: 35,
                         proxy: proxy,
                         blur: blur
                     )
-                } // group
+                }
             }.ignoresSafeArea()
         }
     }

@@ -12,29 +12,40 @@ struct HeaderMainView: View {
     /// Opening modal view
     @State var settingsSheet = false
     
-    /// Displays the username with a placeholder
-    var username: String = "Username"
+    /// Only for the main view
+    var isHome: Bool = false
+    var title: String = "Welcome"
+    var username: String = "Human"
     
     var body: some View {
         HStack(alignment: .top){
             VStack(alignment: .leading){
-                Text("Welcome")
-                    .font(.largeTitle)
-                    .fontWeight(.regular)
-                Text(username)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                if isHome {
+                    Text(title)
+                        .font(.largeTitle)
+                        .fontWeight(.regular)
+                    Text(username)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                } else {
+                    Text(title)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                }
             }
             Spacer()
-            Button(action: {
-                self.settingsSheet = true
-            }) {
-                Image(systemName: "person.crop.circle")
-                    .font(.largeTitle)
-                    .foregroundColor(.elementSecondary)
+            if isHome {
+                Button(action: {
+                    self.settingsSheet = true
+                }) {
+                    Image(systemName: "person.crop.circle")
+                        .font(.largeTitle)
+                        .foregroundColor(.elementSecondary)
+                }.padding(.top, 5)
             }
         }
-        .padding(.vertical, 20)
+        .padding(.top, 30)
+        .padding(.bottom, 20)
         .padding(.horizontal)
         .sheet(isPresented: $settingsSheet) {
             SettingsView(isPresented: $settingsSheet)

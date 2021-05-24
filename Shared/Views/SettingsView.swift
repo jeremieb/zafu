@@ -10,57 +10,55 @@ import SwiftUI
 struct SettingsView: View {
     
     @Binding var isPresented: Bool
+    @State var isPlaying: Bool = true
+    
+    public init(isPresented: Binding<Bool>){
+        UINavigationBar.appearance().barTintColor = UIColor(Color.clear)
+        self._isPresented = isPresented
+    }
     
     var body: some View {
         
-        NavigationView{
-            ZStack {
-                
-                BackgroundDefaultView()
-                
-                ScrollView{
-                    VStack(alignment: .leading){
-                        /// DEBUG
-                        /// Accelerometer
-                        SettingsHeaderView(title: "Debug")
-                        DebugView(motion: MotionProvider())
-                        
-                        Spacer()
-                    }
-                }.navigationTitle("Settings")
-                .toolbar(content: {
-                    Button(action: {
-                        isPresented.toggle()
-                    }) {
-                        Image(systemName: "xmark.circle")
-                            .font(.system(size: 44))
-                            .frame(width: 44, height: 44)
-                    }
-                })
-            }
-        }
-    }
-}
-
-struct SettingsHeaderView: View {
-    
-    var title: String = "Header title"
-    
-    var body: some View{
         VStack {
-            Text(title)
-                .font(.footnote)
-                .fontWeight(.bold)
-                .foregroundColor(Color("elementSecondary"))
-                .multilineTextAlignment(.leading)
-                .textCase(.uppercase)
-                .lineLimit(1)
-                .padding()
-                .frame(width: UIScreen.main.bounds.size.width, height: 22, alignment: .leading)
-                .background(Color(UIColor.systemFill))
-        }
-        .padding(.top, 16)
-        .padding(.bottom, 5)
+            ScrollView{
+                VStack {
+                    ZStack {
+                        HeaderMainView(title: "Settings")
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                isPresented.toggle()
+                            }) {
+                                Image(systemName: "xmark.circle")
+                                    .font(.system(size: 22))
+                                    .foregroundColor(Color(UIColor.systemGray))
+                                    .frame(width: 44, height: 44)
+                            }
+                        }.padding(.horizontal)
+                    }
+                    
+                    Button(action: {
+                        if isPlaying {
+                            AudioPlayer.stopBackgroundSound()
+                            isPlaying.toggle()
+                        } else {
+                            AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
+                            isPlaying.toggle()
+                        }
+                    }) {
+                        if isPlaying {
+                            Label("Stop sound", systemImage: "speaker.slash.fill")
+                        } else {
+                            Label("Start sound", systemImage: "speaker.fill")
+                        }
+                    }
+                    
+                    
+                    Spacer()
+                }
+            }.navigationBarTitle(Text("Settings"), displayMode: .large)
+            .background(Color.clear)
+        }.background(BackgroundView().opacity(0.4))
     }
 }
 
