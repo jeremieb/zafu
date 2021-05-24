@@ -33,8 +33,9 @@ struct SessionDetailView: View {
                 /// Title
                 Text(title)
                     .font(.title)
-                    .fontWeight(.semibold)
+                    .fontWeight(.bold)
                     .padding(.top, 100)
+                    .lineLimit(4)
                 
                 QuoteView().padding(.top, 50)
                 

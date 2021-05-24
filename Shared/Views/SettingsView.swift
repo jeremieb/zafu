@@ -20,8 +20,10 @@ struct SettingsView: View {
     var body: some View {
         
         VStack {
-            ScrollView{
-                VStack {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    
+                    /// Header stack
                     ZStack {
                         HeaderMainView(title: "Settings")
                         HStack {
@@ -36,6 +38,29 @@ struct SettingsView: View {
                             }
                         }.padding(.horizontal)
                     }
+                    
+                    /// Background soundscape
+                    Group{
+                        SectionHeaderView(title: "Soundscape")
+                        
+                        Text("Select a soundscape of your choice to play along with your meditation and after the session is done")
+                            .font(.footnote)
+                            .foregroundColor(Color("elementSecondary"))
+                            .lineLimit(5)
+                            .padding(.horizontal)
+                            .padding(.bottom, 20)
+
+                        ScrollView(.horizontal) {
+                            HStack(spacing: 20.0){
+                                CircleSelection(title: "Sound one")
+                                CircleSelection(title: "Sound two", color: .backgroundGreen)
+                            }.padding(.horizontal)
+                        }
+
+                    }
+                    
+                    Divider()
+                        .padding(.vertical, 30)
                     
                     Button(action: {
                         if isPlaying {
@@ -53,12 +78,29 @@ struct SettingsView: View {
                         }
                     }
                     
-                    
                     Spacer()
                 }
-            }.navigationBarTitle(Text("Settings"), displayMode: .large)
-            .background(Color.clear)
+            }.background(Color.clear)
         }.background(BackgroundView().opacity(0.4))
+    }
+}
+
+struct CircleSelection: View {
+    
+    var title: String = "Button title"
+    var color: Color = Color(UIColor.systemPink)
+    var image: Image = Image(systemName: "tortoise.fill")
+    
+    var body: some View{
+        VStack(alignment: .center){
+            color
+                .frame(width: 52, height: 52)
+                .clipShape(Circle())
+                .overlay(image)
+                .foregroundColor(Color(UIColor.systemBackground))
+            Text(title)
+                .font(.footnote)
+        }
     }
 }
 
