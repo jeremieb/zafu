@@ -49,7 +49,10 @@ struct Shapes: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
                 .opacity(0.9)
                 .blur(radius: blur)
-        }.onReceive(self.observer.$enteredForeground) { _ in
+        }
+        
+        /// Replacing on appear
+        .onReceive(self.observer.$enteredForeground) { _ in
             withAnimation {
                 animated = true
             }

@@ -43,9 +43,8 @@ struct RootView: View {
             }
             .tabViewStyle(DefaultTabViewStyle())
             .background(Color.clear)
-//            .onAppear {
-//                AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
-//            }
+            
+            /// Replacing on appear
             .onReceive(self.observer.$enteredForeground) { _ in
                 AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
             }
