@@ -29,7 +29,7 @@ struct SessionDetailView: View {
                     Spacer()
                 }
                 
-                VStack{
+                ScrollView(showsIndicators: false) {
                     
                     /// Title
                     Text(title)
@@ -43,20 +43,18 @@ struct SessionDetailView: View {
                         .italic()
                         .padding(.top, 50)
                     
-                    Spacer()
+                    Spacer().frame(height: 120)
                     
                     /// Duration label
                     Text(String(duration) + " min")
                         .fontWeight(.semibold)
                         .foregroundColor(.myPurple)
-                        .padding(.bottom, 10)
                     
                     Button(action: {
                         
                     }) {
                         Image("playButton")
                     }
-                    .padding(.bottom, 100)
                     
                     
                 }

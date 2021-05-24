@@ -33,7 +33,7 @@ struct SmallSessionCellView: View {
             }
             .padding(.horizontal)
             .sheet(item: self.$selectedSession){ session in
-                SessionDetailView(title: session.title, icon: session.icon ?? "drop", duration: session.duration)
+                SessionDetailView(title: session.title, icon: session.icon ?? "drop", duration: session.duration).modifier(DisableModalDismiss(disabled: true))
             }
         }
     }
