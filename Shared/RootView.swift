@@ -41,7 +41,7 @@ struct RootView: View {
             .tabViewStyle(DefaultTabViewStyle())
             .background(Color.clear)
             .onAppear {
-                AudioPlayer.playMainSound(soundFile: "birds-in-the-jungle.m4a")
+                AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
             }
         }
     }

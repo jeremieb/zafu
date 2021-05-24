@@ -19,13 +19,14 @@ class AudioPlayer {
     static var audioPlayer:AVAudioPlayer?
     static var audioSecondPlayer: AVAudioPlayer?
     
-    static func playMainSound(soundFile: String) {
+    static func playBackgroundSound(soundFile: String) {
         
         if let path = Bundle.main.path(forResource: soundFile, ofType: nil){
             
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
                 audioPlayer?.prepareToPlay()
+                audioPlayer?.numberOfLoops = -1
                 audioPlayer?.play()
             } catch {
                 print("Error")

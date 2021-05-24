@@ -5,7 +5,6 @@
 //  Created by Jeremie Berduck on 24/05/2021.
 //
 
-
 import SwiftUI
 
 struct SessionDetailView: View {
@@ -15,50 +14,50 @@ struct SessionDetailView: View {
     var duration: Int = 5
     
     var body: some View {
-        VStack{
-            SessionTopTools()
-            
-            ZStack {
-                
-                VStack {
-                    Text("\(Image(systemName: icon))")
-                        .font(.system(size: 310))
-                        .fontWeight(.ultraLight)
-                        .foregroundColor(.myPurple)
-                        .opacity(0.2)
-                    Spacer()
-                }
-                
-                ScrollView(showsIndicators: false) {
-                    
-                    /// Title
-                    Text(title)
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .padding(.top, 100)
-                    
-                    QuoteView()
-                        .padding(.top, 50)
+        ZStack{
 
-                    Spacer().frame(height: 120)
-                    
-                    /// Duration label
-                    Text(String(duration) + " min")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.myPurple)
-                    
-                    Button(action: {
-                        AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
-                    }) {
-                        Image("playButton")
-                    }
+            VStack {
+                Spacer().frame(height: 50)
+                Text("\(Image(systemName: icon))")
+                    .font(.system(size: 310))
+                    .fontWeight(.ultraLight)
+                    .foregroundColor(.myPurple)
+                    .opacity(0.2)
+                Spacer()
+            }
+                        
+            VStack {
+                
+                /// Title
+                Text(title)
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .padding(.top, 100)
+                
+                QuoteView()
+                    .padding(.top, 50)
+                
+                Spacer().frame(height: 120)
+                
+                /// Duration label
+                Text(String(duration) + " min")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.myPurple)
+                
+                Button(action: {
+                    AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
+                }) {
+                    Image("playButton")
                 }
             }
             
-            Spacer()
-        }
-        .background(BackgroundView().opacity(0.4))
+            VStack {
+                SessionTopTools()
+                Spacer()
+            }
+            
+        }.background(BackgroundView().opacity(0.4))
     }
 }
 
@@ -67,8 +66,9 @@ struct SessionTopTools: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        HStack{
+        HStack(alignment: .center){
             
+            /// Close modal view
             Button(action: {
                 AudioPlayer.stopSecondarySound()
                 self.presentationMode.wrappedValue.dismiss()
@@ -78,11 +78,15 @@ struct SessionTopTools: View {
             
             Spacer()
             
+            /// AirPlay
+            AirPlayView().frame(width: 22, height: 22)
+            
+            /// Edit current session
             Button(action: {
                 
             }) {
-                Text("Edit")
-            }
+                Image(systemName: "square.and.pencil")
+            }.padding(.horizontal, 10)
         }
         .padding(.horizontal)
         .padding(.vertical, 20)

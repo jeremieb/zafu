@@ -19,8 +19,7 @@ struct SettingsView: View {
     
     var body: some View {
         
-        
-        return VStack {
+        VStack {
             ScrollView{
                 VStack {
                     ZStack {
@@ -43,7 +42,7 @@ struct SettingsView: View {
                             AudioPlayer.stopMainSound()
                             isPlaying.toggle()
                         } else {
-                            AudioPlayer.playMainSound(soundFile: "birds-in-the-jungle.m4a")
+                            AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
                             isPlaying.toggle()
                         }
                     }) {

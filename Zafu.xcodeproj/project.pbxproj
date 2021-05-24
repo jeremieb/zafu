@@ -16,6 +16,7 @@
 		1E2DE5D3265145E0003593B2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2DE5D2265145E0003593B2 /* RootView.swift */; };
 		1E2DE5D52651464C003593B2 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2DE5D42651464C003593B2 /* MeditationView.swift */; };
 		1E2DE5D726514659003593B2 /* SessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2DE5D626514659003593B2 /* SessionsView.swift */; };
+		1E93772B265BF36C00BF9FB9 /* AirPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93772A265BF36C00BF9FB9 /* AirPlayView.swift */; };
 		1EAAE746265001680002FAE3 /* SmallSessionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE745265001680002FAE3 /* SmallSessionCellView.swift */; };
 		1EAAE74926500BC30002FAE3 /* Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE74826500BC30002FAE3 /* Sessions.swift */; };
 		1EAAE74B26500C1F0002FAE3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */; };
@@ -47,6 +48,7 @@
 		1E2DE5D2265145E0003593B2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		1E2DE5D42651464C003593B2 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		1E2DE5D626514659003593B2 /* SessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsView.swift; sourceTree = "<group>"; };
+		1E93772A265BF36C00BF9FB9 /* AirPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayView.swift; sourceTree = "<group>"; };
 		1EAAE745265001680002FAE3 /* SmallSessionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSessionCellView.swift; sourceTree = "<group>"; };
 		1EAAE74826500BC30002FAE3 /* Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sessions.swift; sourceTree = "<group>"; };
 		1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				1EAD40E22657D6700061DBF7 /* AudioPlayer.swift */,
+				1E93772A265BF36C00BF9FB9 /* AirPlayView.swift */,
 				1EB4A79A265AB51700B7D3BD /* Quotes.swift */,
 			);
 			path = Helpers;
@@ -289,6 +292,7 @@
 				1EB4A79B265AB51700B7D3BD /* Quotes.swift in Sources */,
 				1EB3D9E2264D52EE00F13B3B /* ZafuApp.swift in Sources */,
 				1E2DE5D1265141B3003593B2 /* LargeSessionCellView.swift in Sources */,
+				1E93772B265BF36C00BF9FB9 /* AirPlayView.swift in Sources */,
 				1E2DE5CF2650E96A003593B2 /* DisableModalDismiss.swift in Sources */,
 				1E2DE5D52651464C003593B2 /* MeditationView.swift in Sources */,
 				1E03EE04264D73B40069E5AC /* AnimationProvider.swift in Sources */,
