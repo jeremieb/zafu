@@ -23,13 +23,13 @@ struct MainView: View {
                 
                 /// My favorites or My sessions
                 Group {
-                    SectionHeaderView(title: "My Sessions").padding(.top, 30)
+                    SectionHeaderView(title: "My Sessions").padding(.top, 30).foregroundColor(.elementSecondary)
                     SmallSessionCellView()
                 }
                 
                 /// Featured sessions
                 Group {
-                    SectionHeaderView(title: "Featured").padding(.top, 30)
+                    SectionHeaderView(title: "Featured").padding(.top, 30).foregroundColor(.elementSecondary)
                     LargeSessionCellView()
                 }
                 

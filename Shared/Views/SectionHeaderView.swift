@@ -14,7 +14,7 @@ struct SectionHeaderView: View {
     var body: some View{
         VStack {
             Text(title)
-                .font(.title2)
+                .font(.title3)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
                 .lineLimit(1)

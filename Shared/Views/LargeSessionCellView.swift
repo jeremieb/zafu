@@ -23,7 +23,7 @@ struct LargeSessionCellView: View {
                     LargeCellView(title: featured.title, duration: featured.duration, description: featured.description)
                 }
             }.padding(.horizontal)
-        }.frame(width: UIScreen.main.bounds.width)
+        }.frame(width: UIScreen.main.bounds.width).padding(.top, 10)
     }
 }
 
@@ -50,7 +50,7 @@ struct LargeCellView: View {
                     .lineLimit(1)
                 Spacer()
                 Text(title)
-                    .font(.title3)
+                    .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)

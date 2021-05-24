@@ -37,7 +37,7 @@ struct SmallSessionCellView: View {
             .sheet(item: self.$selectedSession){ session in
                 SessionDetailView(title: session.title, icon: session.icon ?? "drop", duration: session.duration).modifier(DisableModalDismiss(disabled: true)).environmentObject(data)
             }
-        }
+        }.padding(.top, 10)
     }
 }
 
@@ -78,7 +78,7 @@ struct SquareCellsView: View {
                 }
                 Spacer()
                 Text(title)
-                    .font(.title3)
+                    .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
