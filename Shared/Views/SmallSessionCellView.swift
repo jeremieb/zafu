@@ -85,7 +85,7 @@ struct SquareCellsView: View {
         }
         .background(Color(UIColor.systemBackground).opacity(0.4))
         .frame(width: 150, height: 150)
-        .cornerRadius(10)
+        .cornerRadius(20)
     }
 }
 

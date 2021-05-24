@@ -40,7 +40,7 @@ struct StatsMainView: View {
         }
         .frame(width: UIScreen.main.bounds.width - 32, height: 60)
         .background(Color(UIColor.systemBackground).opacity(0.4))
-        .cornerRadius(10)
+        .cornerRadius(20)
         .padding(.horizontal)
     }
 }
