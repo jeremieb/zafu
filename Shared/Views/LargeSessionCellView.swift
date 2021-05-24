@@ -11,9 +11,9 @@ struct LargeSessionCellView: View {
     
     /// Placeholder sessions
     private var sessions = [
-        Session(title: "First Session", duration: "15 min", description: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus."),
-        Session(title: "Second Session Big Title", duration: "20 min", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
-        Session(title: "Third Session", duration: "16 min", description: "Cras justo odio, dapibus ac facilisis in, egestas eget quam.")
+        Session(title: "First Session", duration: 15, description: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus."),
+        Session(title: "Second Session Big Title", duration: 20, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+        Session(title: "Third Session", duration: 16, description: "Cras justo odio, dapibus ac facilisis in, egestas eget quam.")
     ]
     
     var body: some View {
@@ -30,7 +30,7 @@ struct LargeSessionCellView: View {
 struct LargeCellView: View {
     
     var title = "Session title"
-    var duration = "5 min"
+    var duration = 5
     var description = "Cras justo odio, dapibus ac facilisis in, egestas eget quam."
     
     var body: some View {
@@ -38,7 +38,7 @@ struct LargeCellView: View {
         /// Content
         HStack {
             VStack(alignment: .leading){
-                Text(duration)
+                Text(String(duration) + " min")
                     .font(.caption)
                     .foregroundColor(.elementSecondary)
                     .padding(.horizontal, 8)

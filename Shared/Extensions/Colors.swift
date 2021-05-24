@@ -20,6 +20,8 @@ extension Color {
     static let elementSecondary = Color("elementSecondary")
     static let tabbar = Color("tabbar")
     
+    /// Colors
+    static let myPurple = Color("myPurple")
 }
 
 /// Ramdom color

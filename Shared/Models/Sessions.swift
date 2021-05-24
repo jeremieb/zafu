@@ -10,13 +10,13 @@ import Foundation
 struct CustomSession: Identifiable {
     var id = UUID()
     var title: String
-    var duration: String
+    var duration: Int
     var icon: String?
 }
 
 struct Session: Identifiable {
     var id = UUID()
     var title: String
-    var duration: String
+    var duration: Int
     var description: String
 }

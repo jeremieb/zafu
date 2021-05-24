@@ -4,6 +4,7 @@
 //
 //  Created by Jeremie Berduck on 15/05/2021.
 //
+//  STACKOVERFLOW: https://stackoverflow.com/questions/58886568/swiftui-passing-data-from-view-to-modal-wont-update-correctly
 
 import SwiftUI
 
@@ -14,10 +15,10 @@ struct SmallSessionCellView: View {
     
     /// Placeholder sessions
     private var mySessions = [
-        CustomSession(title: "First Session", duration: "5 min", icon: "flame"),
-        CustomSession(title: "Second Session", duration: "20 min", icon: "leaf"),
-        CustomSession(title: "Third Session", duration: "15 min"),
-        CustomSession(title: "Fourth Session", duration: "25 min")
+        CustomSession(title: "First Session", duration: 5, icon: "flame"),
+        CustomSession(title: "Second Session", duration: 20, icon: "leaf"),
+        CustomSession(title: "Third Session", duration: 15),
+        CustomSession(title: "Fourth Session", duration: 25)
     ]
     
     var body: some View {
@@ -32,7 +33,7 @@ struct SmallSessionCellView: View {
             }
             .padding(.horizontal)
             .sheet(item: self.$selectedSession){ session in
-                SessionDetailView(title: session.title)
+                SessionDetailView(title: session.title, icon: session.icon ?? "drop", duration: session.duration)
             }
         }
     }
@@ -41,7 +42,7 @@ struct SmallSessionCellView: View {
 struct SquareCellsView: View {
     
     var title = "Session title"
-    var duration = "5 min"
+    var duration = 5
     var icon: String?
     var iconColor: UIColor {
         return UIColor.random(from: [.systemBlue, .systemPink, .systemGreen, .systemTeal, .systemPurple]) ?? UIColor.systemBlue
@@ -53,7 +54,7 @@ struct SquareCellsView: View {
         VStack {
             VStack(alignment: .leading){
                 HStack {
-                    Text(duration)
+                    Text(String(duration) + " min")
                         .font(.caption)
                         .foregroundColor(.elementSecondary)
                         .padding(.horizontal, 8)
@@ -92,7 +93,7 @@ struct SquareCellsView: View {
 struct ListSessionCustomView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SquareCellsView(title: "Test", duration: "5 min", icon: "leaf")
+            SquareCellsView(title: "Test", duration: 5, icon: "leaf")
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .padding()
                 .previewDisplayName("Default preview")
