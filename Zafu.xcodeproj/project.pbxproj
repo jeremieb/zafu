@@ -31,6 +31,9 @@
 		1EC79185264E487C00DBE82D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC79184264E487C00DBE82D /* SettingsView.swift */; };
 		1EE48E78264DB9B500E17A3B /* HeaderMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */; };
 		1EF13B03265B8D5B0032F9A8 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF13B02265B8D5B0032F9A8 /* SessionDetailView.swift */; };
+		1EF13B06265BCA4F0032F9A8 /* birds-chirping-near-the-river.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1EF13B04265BCA4F0032F9A8 /* birds-chirping-near-the-river.m4a */; };
+		1EF13B07265BCA4F0032F9A8 /* birds-in-the-jungle.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1EF13B05265BCA4F0032F9A8 /* birds-in-the-jungle.m4a */; };
+		1EF13B09265BCB220032F9A8 /* metal_gong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1EF13B08265BCB220032F9A8 /* metal_gong.wav */; };
 		1EFDEC37264D80870001EF44 /* MotionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFDEC36264D80870001EF44 /* MotionProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +64,9 @@
 		1EC79184264E487C00DBE82D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMainView.swift; sourceTree = "<group>"; };
 		1EF13B02265B8D5B0032F9A8 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
+		1EF13B04265BCA4F0032F9A8 /* birds-chirping-near-the-river.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "birds-chirping-near-the-river.m4a"; sourceTree = "<group>"; };
+		1EF13B05265BCA4F0032F9A8 /* birds-in-the-jungle.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "birds-in-the-jungle.m4a"; sourceTree = "<group>"; };
+		1EF13B08265BCB220032F9A8 /* metal_gong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = metal_gong.wav; sourceTree = "<group>"; };
 		1EFDEC36264D80870001EF44 /* MotionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +138,8 @@
 		1EAD40E42657D6D10061DBF7 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				1EF13B0A265BCB260032F9A8 /* soundscapes */,
+				1EF13B08265BCB220032F9A8 /* metal_gong.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -178,6 +186,15 @@
 				1EB3D9D9264D52EE00F13B3B /* Info.plist */,
 			);
 			path = iOS;
+			sourceTree = "<group>";
+		};
+		1EF13B0A265BCB260032F9A8 /* soundscapes */ = {
+			isa = PBXGroup;
+			children = (
+				1EF13B04265BCA4F0032F9A8 /* birds-chirping-near-the-river.m4a */,
+				1EF13B05265BCA4F0032F9A8 /* birds-in-the-jungle.m4a */,
+			);
+			path = soundscapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,7 +254,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EF13B06265BCA4F0032F9A8 /* birds-chirping-near-the-river.m4a in Resources */,
+				1EF13B07265BCA4F0032F9A8 /* birds-in-the-jungle.m4a in Resources */,
 				1EB3D9E6264D52EE00F13B3B /* Assets.xcassets in Resources */,
+				1EF13B09265BCB220032F9A8 /* metal_gong.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

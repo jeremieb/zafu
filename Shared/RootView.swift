@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct RootView: View {
-    
+        
     init() {
         UITabBar.appearance().shadowImage = UIImage()
     }
     
     var body: some View {
-        
+
         ZStack {
 
             TabView(){
@@ -40,6 +40,9 @@ struct RootView: View {
             }
             .tabViewStyle(DefaultTabViewStyle())
             .background(Color.clear)
+            .onAppear {
+                AudioPlayer.playMainSound(soundFile: "birds-in-the-jungle.m4a")
+            }
         }
     }
 }

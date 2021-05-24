@@ -44,16 +44,15 @@ struct SessionDetailView: View {
                     
                     /// Duration label
                     Text(String(duration) + " min")
+                        .font(.title3)
                         .fontWeight(.semibold)
                         .foregroundColor(.myPurple)
                     
                     Button(action: {
-                        
+                        AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
                     }) {
                         Image("playButton")
                     }
-                    
-                    
                 }
             }
             
@@ -71,6 +70,7 @@ struct SessionTopTools: View {
         HStack{
             
             Button(action: {
+                AudioPlayer.stopSecondarySound()
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Close")

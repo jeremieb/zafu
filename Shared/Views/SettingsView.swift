@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @Binding var isPresented: Bool
+    @State var isPlaying: Bool = true
     
     public init(isPresented: Binding<Bool>){
         UINavigationBar.appearance().barTintColor = UIColor(Color.clear)
@@ -19,7 +20,7 @@ struct SettingsView: View {
     var body: some View {
         
         
-        VStack {
+        return VStack {
             ScrollView{
                 VStack {
                     ZStack {
@@ -36,6 +37,24 @@ struct SettingsView: View {
                             }
                         }.padding(.horizontal)
                     }
+                    
+                    Button(action: {
+                        if isPlaying {
+                            AudioPlayer.stopMainSound()
+                            isPlaying.toggle()
+                        } else {
+                            AudioPlayer.playMainSound(soundFile: "birds-in-the-jungle.m4a")
+                            isPlaying.toggle()
+                        }
+                    }) {
+                        if isPlaying {
+                            Label("Stop sound", systemImage: "speaker.slash.fill")
+                        } else {
+                            Label("Start sound", systemImage: "speaker.fill")
+                        }
+                    }
+                    
+                    
                     Spacer()
                 }
             }.navigationBarTitle(Text("Settings"), displayMode: .large)
