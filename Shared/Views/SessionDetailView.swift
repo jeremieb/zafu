@@ -37,12 +37,9 @@ struct SessionDetailView: View {
                         .fontWeight(.semibold)
                         .padding(.top, 100)
                     
-                    Text("Clear your mind now...")
-                        .font(.title2)
-                        .fontWeight(.light)
-                        .italic()
+                    QuoteView()
                         .padding(.top, 50)
-                    
+
                     Spacer().frame(height: 120)
                     
                     /// Duration label

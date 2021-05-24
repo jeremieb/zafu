@@ -17,16 +17,16 @@ struct QuoteView: View {
         let quote = Array(myQuote.quotes.keys)[quoteKey]
         let author = Array(myQuote.quotes.values)[quoteKey]
         
-        VStack {
+        VStack(alignment: .center) {
             Text(quote)
-                .font(.subheadline)
-                .fontWeight(.light)
+                .font(.title2)
+                .fontWeight(.ultraLight)
                 .italic()
-                + Text(" - ")
-                + Text(author)
-                .font(.subheadline)
-                .fontWeight(.medium)
-        }.padding(.horizontal).fixedSize(horizontal: false, vertical: true).lineLimit(5)
+                .padding(.bottom, 5)
+            Text(author)
+                .font(.title3)
+                .fontWeight(.light)
+        }.padding(.horizontal).fixedSize(horizontal: false, vertical: true).lineLimit(10).multilineTextAlignment(.center)
     }
 }
 

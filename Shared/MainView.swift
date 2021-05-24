@@ -18,9 +18,6 @@ struct MainView: View {
                 /// View Header
                 HeaderMainView(isHome: true, username: "Jeremie")
                 
-                /// Quotes
-                QuoteView()
-                
                 /// Stats
                 Group{
                     SectionHeaderView(title: "Stats")
