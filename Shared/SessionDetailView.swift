@@ -43,6 +43,9 @@ struct SessionDetailView: View {
                 Group{
                     if data.sessionHasStarted {
                         Text(String(data.selectedTime))
+                            .font(.title)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.myPurple)
                     } else {
                         /// Duration label
                         Text(String(duration) + " min")
@@ -59,7 +62,11 @@ struct SessionDetailView: View {
                             data.sessionHasStarted.toggle()
                         }
                     }) {
-                        Image("playButton")
+                        if data.sessionHasStarted {
+                            Image("stopButton")
+                        } else {
+                            Image("playButton")
+                        }
                     }
                 }.onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect(), perform: { _ in
                     data.selectedTime -= 1
