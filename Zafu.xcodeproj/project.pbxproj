@@ -30,6 +30,7 @@
 		1EC79183264E47A100DBE82D /* BackgroundDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC79182264E47A100DBE82D /* BackgroundDefaultView.swift */; };
 		1EC79185264E487C00DBE82D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC79184264E487C00DBE82D /* SettingsView.swift */; };
 		1EE48E78264DB9B500E17A3B /* HeaderMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */; };
+		1EF13B03265B8D5B0032F9A8 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF13B02265B8D5B0032F9A8 /* SessionDetailView.swift */; };
 		1EFDEC37264D80870001EF44 /* MotionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFDEC36264D80870001EF44 /* MotionProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		1EC79182264E47A100DBE82D /* BackgroundDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundDefaultView.swift; sourceTree = "<group>"; };
 		1EC79184264E487C00DBE82D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMainView.swift; sourceTree = "<group>"; };
+		1EF13B02265B8D5B0032F9A8 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		1EFDEC36264D80870001EF44 /* MotionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 				1E03EDFB264D5D660069E5AC /* DebugView.swift */,
 				1EB4A7932659623100B7D3BD /* StatsMainView.swift */,
 				1EB4A79C265AB55300B7D3BD /* QuoteView.swift */,
+				1EF13B02265B8D5B0032F9A8 /* SessionDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				1EE48E78264DB9B500E17A3B /* HeaderMainView.swift in Sources */,
 				1EB4A79D265AB55300B7D3BD /* QuoteView.swift in Sources */,
 				1EC79183264E47A100DBE82D /* BackgroundDefaultView.swift in Sources */,
+				1EF13B03265B8D5B0032F9A8 /* SessionDetailView.swift in Sources */,
 				1EFDEC37264D80870001EF44 /* MotionProvider.swift in Sources */,
 				1E2DE5D3265145E0003593B2 /* RootView.swift in Sources */,
 				1E03EDFC264D5D660069E5AC /* DebugView.swift in Sources */,

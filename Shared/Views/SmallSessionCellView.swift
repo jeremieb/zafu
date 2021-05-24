@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SmallSessionCellView: View {
     
+    @State var showDetail = false
+    @State var selectedSession: CustomSession? = nil
+    
     /// Placeholder sessions
     private var mySessions = [
         CustomSession(title: "First Session", duration: "5 min", icon: "flame"),
@@ -22,8 +25,15 @@ struct SmallSessionCellView: View {
             HStack(spacing: 10.0){
                 ForEach(mySessions){ session in
                     SquareCellsView(title: session.title, duration: session.duration, icon: session.icon)
+                        .onTapGesture {
+                            self.selectedSession = session
+                        }
                 }
-            }.padding(.horizontal)
+            }
+            .padding(.horizontal)
+            .sheet(item: self.$selectedSession){ session in
+                SessionDetailView(title: session.title)
+            }
         }
     }
 }
