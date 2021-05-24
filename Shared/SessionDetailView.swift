@@ -123,6 +123,6 @@ struct SessionTopTools: View {
 
 struct SessionDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SessionDetailView()
+        SessionDetailView().environmentObject(TimerData())
     }
 }
