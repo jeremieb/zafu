@@ -23,7 +23,7 @@ struct SectionHeaderView: View {
                 .padding()
                 .frame(width: UIScreen.main.bounds.size.width, height: 22, alignment: .leading)
         }
-        .padding(.top, 16)
+        .padding(.top, 30)
     }
 }
 

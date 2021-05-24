@@ -40,7 +40,7 @@ struct MainView: View {
                 }
                 
                 Spacer()
-            }
+            }.padding(.bottom, 30)
         }
     }
 }
