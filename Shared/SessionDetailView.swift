@@ -56,7 +56,7 @@ struct SessionDetailView: View {
                     
                     Button(action: {
                         AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
-                        withAnimation(.default) {
+                        withAnimation(.linear(duration: 0.450)) {
                             data.time = duration
                             data.selectedTime = duration
                             data.sessionHasStarted.toggle()
