@@ -27,6 +27,7 @@ class TimerData: ObservableObject {
             selectedTime = 0
             sessionHasStarted = false
             leftTime = nil
+            AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
         }
     }
 }
