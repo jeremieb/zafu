@@ -10,6 +10,7 @@ import SwiftUI
 struct RootView: View {
     
     @StateObject var data = TimerData()
+    @ObservedObject var observer = Observer()
         
     init() {
         UITabBar.appearance().shadowImage = UIImage()
@@ -42,7 +43,10 @@ struct RootView: View {
             }
             .tabViewStyle(DefaultTabViewStyle())
             .background(Color.clear)
-            .onAppear {
+//            .onAppear {
+//                AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
+//            }
+            .onReceive(self.observer.$enteredForeground) { _ in
                 AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
             }
         }

@@ -17,6 +17,7 @@ struct Shapes: View {
     
     @State var animated = false
     @StateObject var animationProvider = AnimationProvider()
+    @ObservedObject var observer = Observer()
     
     /// Used to define circle position
     let alignment: Alignment
@@ -48,13 +49,9 @@ struct Shapes: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
                 .opacity(0.9)
                 .blur(radius: blur)
-        }.onAppear{
+        }.onReceive(self.observer.$enteredForeground) { _ in
             withAnimation {
                 animated = true
-            }
-        }.onDisappear {
-            withAnimation {
-                animated = false
             }
         }
     }
@@ -76,7 +73,7 @@ struct Circles: View {
                     Shapes(
                         alignment: .topTrailing,
                         color: Color.backgroundGreen,
-                        rotationTurn: -345,
+                        rotationTurn: -180,
                         duration: 20,
                         proxy: proxy,
                         blur: blur
@@ -106,7 +103,7 @@ struct Circles: View {
                     Shapes(
                         alignment: .bottomLeading,
                         color: Color.backgroundBlue,
-                        rotationTurn: -360,
+                        rotationTurn: -180,
                         duration: 35,
                         proxy: proxy,
                         blur: blur

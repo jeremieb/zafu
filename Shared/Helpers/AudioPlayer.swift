@@ -28,6 +28,7 @@ class AudioPlayer {
                 audioPlayer?.prepareToPlay()
                 audioPlayer?.numberOfLoops = -1
                 audioPlayer?.play()
+                print("starting background sound")
             } catch {
                 print("Error Background sound")
             }
