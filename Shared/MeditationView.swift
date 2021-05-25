@@ -11,9 +11,15 @@ struct MeditationView: View {
     
     var body: some View {
         
-        VStack {
-            HeaderMainView(title: "Meditation")
-            Spacer()
+        NavigationView{
+            ScrollView {
+                VStack(alignment: .leading){
+                    ForEach(0...10, id: \.self){ _ in
+                        CellText()
+                    }
+                }
+                .frame(width: UIScreen.main.bounds.size.width)
+            }.navigationTitle("Meditations")
         }
     }
 }

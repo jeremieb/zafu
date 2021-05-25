@@ -61,57 +61,31 @@ struct Shapes: View {
 }
 
 struct Circles: View {
-
+    
     let blur: CGFloat = 120
     
     var body: some View {
         GeometryReader { proxy in
             ZStack{
+                // Blue
+                Shapes(
+                    alignment: .topTrailing,
+                    color: Color.backgroundBlue,
+                    rotationTurn: -180,
+                    duration: 20,
+                    proxy: proxy,
+                    blur: blur
+                ).opacity(0.4)
                 
-                /// Background color
-                BackgroundDefaultView().opacity(0.3)
-                
-                Group{
-                    // Blue
-                    Shapes(
-                        alignment: .topTrailing,
-                        color: Color.backgroundGreen,
-                        rotationTurn: -180,
-                        duration: 20,
-                        proxy: proxy,
-                        blur: blur
-                    )
-                    
-                    // Pink
-                    Shapes(
-                        alignment: .topLeading,
-                        color: Color.backgroundPink,
-                        rotationTurn: 360,
-                        duration: 30,
-                        proxy: proxy,
-                        blur: blur
-                    )
-                    
-                    // Green
-                    Shapes(
-                        alignment: .bottomLeading,
-                        color: Color.backgroundYellow,
-                        rotationTurn: 360,
-                        duration: 20,
-                        proxy: proxy,
-                        blur: blur
-                    )
-                    
-                    // Yellow
-                    Shapes(
-                        alignment: .bottomLeading,
-                        color: Color.backgroundBlue,
-                        rotationTurn: -180,
-                        duration: 35,
-                        proxy: proxy,
-                        blur: blur
-                    )
-                }
+                // Pink
+                Shapes(
+                    alignment: .topLeading,
+                    color: Color.backgroundPink,
+                    rotationTurn: 360,
+                    duration: 30,
+                    proxy: proxy,
+                    blur: blur
+                ).opacity(0.4)
             }.ignoresSafeArea()
         }
     }

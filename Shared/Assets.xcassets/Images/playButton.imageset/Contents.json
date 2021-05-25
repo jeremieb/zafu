@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "button play.pdf",
+      "filename" : "playButton.pdf",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "button play dark.pdf",
+      "filename" : "playButton dark.pdf",
       "idiom" : "universal"
     }
   ],

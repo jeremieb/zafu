@@ -21,7 +21,9 @@ extension Color {
     static let tabbar = Color("tabbar")
     
     /// Colors
-    static let myPurple = Color("myPurple")
+    static let textPurple = Color("textPurple")
+    static let myPink = Color("myPink")
+    static let topSession = Color("topSession")
 }
 
 /// Ramdom color

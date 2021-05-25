@@ -3,7 +3,20 @@
     {
       "color" : {
         "platform" : "ios",
-        "reference" : "systemPinkColor"
+        "reference" : "systemIndigoColor"
+      },
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "platform" : "ios",
+        "reference" : "systemIndigoColor"
       },
       "idiom" : "universal"
     }

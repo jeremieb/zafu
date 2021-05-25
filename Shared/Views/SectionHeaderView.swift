@@ -14,16 +14,13 @@ struct SectionHeaderView: View {
     var body: some View{
         VStack {
             Text(title)
-                .font(.footnote)
+                .font(.title3)
                 .fontWeight(.bold)
-                .foregroundColor(Color("elementSecondary"))
                 .multilineTextAlignment(.leading)
-                .textCase(.uppercase)
                 .lineLimit(1)
                 .padding()
                 .frame(width: UIScreen.main.bounds.size.width, height: 22, alignment: .leading)
         }
-        .padding(.top, 30)
     }
 }
 

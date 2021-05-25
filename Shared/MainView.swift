@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreMotion
 
 struct MainView: View {
     
@@ -23,13 +22,13 @@ struct MainView: View {
                 
                 /// My favorites or My sessions
                 Group {
-                    SectionHeaderView(title: "My Sessions")
+                    SectionHeaderView(title: "My Sessions").padding(.top, 30).foregroundColor(.elementSecondary)
                     SmallSessionCellView()
                 }
                 
                 /// Featured sessions
                 Group {
-                    SectionHeaderView(title: "Featured")
+                    SectionHeaderView(title: "Featured").padding(.top, 30).foregroundColor(.elementSecondary)
                     LargeSessionCellView()
                 }
                 
