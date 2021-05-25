@@ -35,7 +35,7 @@ struct RootView: View {
                         Image("zafu_seal")
                             .font(.system(size: 22))
                         Text("Meditation")
-                    }.background(BackgroundView())
+                    }
                 SessionsView()
                     .tabItem {
                         Image("zafu_heart")
@@ -44,7 +44,6 @@ struct RootView: View {
                     }.background(BackgroundView())
                 
             }
-//            .tabViewStyle(DefaultTabViewStyle())
             .background(Color.clear)
             
             /// Replacing on appear
