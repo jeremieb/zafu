@@ -13,31 +13,15 @@ struct SettingsView: View {
     @State var isPlaying: Bool = true
     
     public init(isPresented: Binding<Bool>){
-        UINavigationBar.appearance().barTintColor = UIColor(Color.clear)
+        UINavigationBar.appearance().barTintColor = UIColor.systemPink
         self._isPresented = isPresented
     }
     
     var body: some View {
         
-        VStack {
+        NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    
-                    /// Header stack
-                    ZStack {
-                        HeaderMainView(title: "Settings")
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                isPresented.toggle()
-                            }) {
-                                Image(systemName: "xmark.circle")
-                                    .font(.system(size: 22))
-                                    .foregroundColor(Color(UIColor.systemGray))
-                                    .frame(width: 44, height: 44)
-                            }
-                        }.padding(.horizontal)
-                    }
                     
                     /// Background soundscape
                     Group{
@@ -80,8 +64,20 @@ struct SettingsView: View {
                     
                     Spacer()
                 }
-            }.background(Color.clear)
-        }.background(BackgroundView().opacity(0.4))
+            }
+            .background(Color.clear)
+            .background(BackgroundDefaultView().opacity(0.3))
+            .navigationTitle("Settings")
+            .toolbar(content: {
+                Button(action: {
+                    isPresented.toggle()
+                }) {
+                    Image(systemName: "xmark.circle")
+                        .font(.system(size: 22))
+                        .frame(width: 44, height: 44)
+                }
+            })
+        }
     }
 }
 
