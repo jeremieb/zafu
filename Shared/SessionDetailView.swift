@@ -19,11 +19,18 @@ struct SessionDetailView: View {
         ZStack{
             
             VStack {
+                TopCurve()
+                    .fill(Color.topSession)
+                    .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height / 2.5)
+                Spacer()
+            }.ignoresSafeArea()
+            
+            VStack {
                 Spacer().frame(height: 50)
                 Text("\(Image(systemName: icon))")
-                    .font(.system(size: 310))
+                    .font(.system(size: 140))
                     .fontWeight(.ultraLight)
-                    .foregroundColor(.myPurple)
+                    .foregroundColor(.textPurple)
                     .opacity(0.2)
                 Spacer()
             }
@@ -34,57 +41,64 @@ struct SessionDetailView: View {
                 Text(title)
                     .font(.title)
                     .fontWeight(.bold)
+                    .foregroundColor(.textPurple)
                     .padding(.top, 100)
                     .lineLimit(4)
                 
-                QuoteView().padding(.top, 50)
+                QuoteView().padding(.top, 20).foregroundColor(.textPurple)
                 
                 Spacer().frame(height: 120)
                 
-                Group{
-                    if data.sessionHasStarted {
+                
+                if data.sessionHasStarted {
+                    VStack {
                         Text(String(data.selectedTime))
-                            .font(.title)
+                            .font(.system(size: 42))
+                            .fontWeight(.heavy)
+                        Text("remain")
+                    }.foregroundColor(.textPurple)
+                } else {
+                    /// Duration label
+                    VStack {
+                        Text(String(duration))
+                            .font(.system(size: 42))
+                            .fontWeight(.heavy)
+                        Text("min")
                             .fontWeight(.semibold)
-                            .foregroundColor(.myPurple)
+                    }.foregroundColor(.textPurple)
+                }
+                
+                Button(action: {
+                    AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
+                    withAnimation(.linear(duration: 0.450)) {
+                        data.time = duration
+                        data.selectedTime = duration
+                        data.sessionHasStarted.toggle()
+                    }
+                }) {
+                    if data.sessionHasStarted {
+                        Image("stopButton")
                     } else {
-                        /// Duration label
-                        Text(String(duration) + " min")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.myPurple)
+                        Image("playButton")
                     }
-                    
-                    Button(action: {
-                        AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
-                        withAnimation(.linear(duration: 0.450)) {
-                            data.time = duration
-                            data.selectedTime = duration
-                            data.sessionHasStarted.toggle()
-                        }
-                    }) {
-                        if data.sessionHasStarted {
-                            Image("stopButton")
-                        } else {
-                            Image("playButton")
-                        }
-                    }
-                }.onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect(), perform: { _ in
-                    data.selectedTime -= 1
-                    
-                    if data.selectedTime == 0 {
-                        data.stopSession()
-                    }
-                })
+                }
+                Spacer()
                 
             }
+            .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect(), perform: { _ in
+                data.selectedTime -= 1
+                
+                if data.selectedTime == 0 {
+                    data.stopSession()
+                }
+            })
             
             VStack {
                 SessionTopTools()
                 Spacer()
             }
             
-        }.background(BackgroundView().opacity(0.4))
+        }
     }
 }
 
@@ -122,8 +136,28 @@ struct SessionTopTools: View {
     
 }
 
+struct TopCurve: Shape {
+    
+    func path(in rect: CGRect) -> Path {
+        
+        var path = Path()
+        
+        path.move(to: CGPoint.zero)
+        path.addLine(to: CGPoint(x: rect.maxX, y: 0))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addQuadCurve(to: CGPoint(x: 0, y: rect.maxY),
+                      control: CGPoint(x: rect.midX, y: rect.maxY + 100))
+        
+        return path
+    }
+    
+}
+
 struct SessionDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SessionDetailView().environmentObject(TimerData())
+        Group {
+            SessionDetailView().environmentObject(TimerData())
+            SessionDetailView().preferredColorScheme(.dark).environmentObject(TimerData())
+        }
     }
 }
