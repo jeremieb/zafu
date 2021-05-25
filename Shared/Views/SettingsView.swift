@@ -13,7 +13,7 @@ struct SettingsView: View {
     @State var isPlaying: Bool = true
     
     public init(isPresented: Binding<Bool>){
-        UINavigationBar.appearance().barTintColor = UIColor.systemPink
+//        UINavigationBar.appearance().barTintColor = UIColor.systemPink
         self._isPresented = isPresented
     }
     
@@ -41,32 +41,39 @@ struct SettingsView: View {
                             }.padding(.horizontal)
                         }
 
-                    }
+                    }/// end background soundscape
                     
-                    Divider()
-                        .padding(.vertical, 30)
-                    
-                    Button(action: {
-                        if isPlaying {
-                            AudioPlayer.stopBackgroundSound()
-                            isPlaying.toggle()
-                        } else {
-                            AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
-                            isPlaying.toggle()
+                    Divider().padding(.vertical, 30)
+
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            if isPlaying {
+                                AudioPlayer.stopBackgroundSound()
+                                isPlaying.toggle()
+                            } else {
+                                AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
+                                isPlaying.toggle()
+                            }
+                        }) {
+                            if isPlaying {
+                                Label("Stop sound", systemImage: "speaker.slash.fill")
+                                    .padding()
+                                    .background(Color(UIColor.systemIndigo))
+                                    .foregroundColor(Color(UIColor.systemBackground))
+                                    .cornerRadius(20)
+                            } else {
+                                Label("Start sound", systemImage: "speaker.fill")
+                                    .padding()
+                                    .background(Color(UIColor.systemIndigo))
+                                    .foregroundColor(Color(UIColor.systemBackground))
+                                    .cornerRadius(20)
+                            }
                         }
-                    }) {
-                        if isPlaying {
-                            Label("Stop sound", systemImage: "speaker.slash.fill")
-                        } else {
-                            Label("Start sound", systemImage: "speaker.fill")
-                        }
-                    }
-                    
-                    Spacer()
+                        Spacer()
+                    }.padding(.bottom, 50)
                 }
             }
-            .background(Color.clear)
-            .background(BackgroundDefaultView().opacity(0.3))
             .navigationTitle("Settings")
             .toolbar(content: {
                 Button(action: {
