@@ -11,6 +11,8 @@ struct SessionDetailView: View {
     
     @EnvironmentObject var data: TimerData
     
+    @State var isAnimated = false
+    
     var title: String = "Session Title"
     var icon: String = "drop"
     var duration: Int = 5
@@ -68,18 +70,28 @@ struct SessionDetailView: View {
                     }.foregroundColor(.textPurple)
                 }
                 
-                Button(action: {
-                    AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
-                    withAnimation(.linear(duration: 0.450)) {
-                        data.time = duration
-                        data.selectedTime = duration
-                        data.sessionHasStarted.toggle()
-                    }
-                }) {
+                ZStack {
                     if data.sessionHasStarted {
-                        Image("stopButton")
+                        CircularGradientButton()
+                            .rotationEffect(Angle.degrees(isAnimated ? 360 : 0 ))
+                            .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
                     } else {
-                        Image("playButton")
+                        CircularGradientButton()
+                    }
+                    Button(action: {
+                        AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
+                        withAnimation(.linear(duration: 0.450)) {
+                            data.time = duration
+                            data.selectedTime = duration
+                            data.sessionHasStarted.toggle()
+                        }
+                        isAnimated = true
+                    }) {
+                        if data.sessionHasStarted {
+                            Image("pauseButton").offset(y: 7)
+                        } else {
+                            Image("playButton").offset(y: 7)
+                        }
                     }
                 }
                 Spacer()
@@ -90,6 +102,7 @@ struct SessionDetailView: View {
                 
                 if data.selectedTime == 0 {
                     data.stopSession()
+                    isAnimated = false
                 }
             })
             
@@ -100,6 +113,32 @@ struct SessionDetailView: View {
             
         }
     }
+}
+
+struct CircularGradientButton: View {
+    
+    private let gradient = AngularGradient(
+        gradient: Gradient(colors: [Color.myPink, Color(UIColor.systemBackground)]),
+        center: .center,
+        startAngle: .degrees(320),
+        endAngle: .degrees(0))
+    
+    var body: some View {
+        ZStack {
+            Circle().stroke(Color(UIColor.systemBackground), lineWidth: 10).frame(width: 84, height: 84)
+            
+            Circle()
+                .trim(from: 0, to: CGFloat(0.79))
+                .stroke(gradient, style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                .frame(width: 84, height: 84)
+                .overlay(
+                    Circle().trim(from: 0, to: CGFloat(0.80))
+                        .rotation(Angle.degrees(-9))
+                        .stroke(gradient, style: StrokeStyle(lineWidth: 10, lineCap: .butt)))
+            
+        }.rotationEffect(Angle(degrees: -20))
+    }
+    
 }
 
 struct SessionTopTools: View {
@@ -146,7 +185,7 @@ struct TopCurve: Shape {
         path.addLine(to: CGPoint(x: rect.maxX, y: 0))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         path.addQuadCurve(to: CGPoint(x: 0, y: rect.maxY),
-                      control: CGPoint(x: rect.midX, y: rect.maxY + 100))
+                          control: CGPoint(x: rect.midX, y: rect.maxY + 100))
         
         return path
     }
