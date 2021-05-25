@@ -69,7 +69,7 @@ struct Circles: View {
             ZStack{
                 
                 /// Background color
-                BackgroundDefaultView().opacity(0.3)
+//                BackgroundDefaultView().opacity(0.3)
                 
                 Group{
                     // Blue
@@ -80,7 +80,7 @@ struct Circles: View {
                         duration: 20,
                         proxy: proxy,
                         blur: blur
-                    )
+                    ).opacity(0.4)
                     
                     // Pink
                     Shapes(
@@ -90,7 +90,7 @@ struct Circles: View {
                         duration: 30,
                         proxy: proxy,
                         blur: blur
-                    )
+                    ).opacity(0.4)
                     
                     // Green
                     Shapes(
@@ -100,7 +100,7 @@ struct Circles: View {
                         duration: 20,
                         proxy: proxy,
                         blur: blur
-                    )
+                    ).opacity(0.4)
                     
                     // Yellow
                     Shapes(
@@ -110,7 +110,7 @@ struct Circles: View {
                         duration: 35,
                         proxy: proxy,
                         blur: blur
-                    )
+                    ).opacity(0.4)
                 }
             }.ignoresSafeArea()
         }
