@@ -14,6 +14,9 @@ struct RootView: View {
         
     init() {
         UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().isTranslucent = true
+        UITabBar.appearance().backgroundColor = UIColor.systemBackground
     }
     
     var body: some View {
@@ -41,7 +44,7 @@ struct RootView: View {
                     }.background(BackgroundView())
                 
             }
-            .tabViewStyle(DefaultTabViewStyle())
+//            .tabViewStyle(DefaultTabViewStyle())
             .background(Color.clear)
             
             /// Replacing on appear
