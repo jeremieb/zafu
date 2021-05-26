@@ -10,12 +10,13 @@ import SwiftUI
 struct SettingsView: View {
     
     @Binding var isPresented: Bool
-    @State var isPlaying: Bool = true
     
-    public init(isPresented: Binding<Bool>){
+    @AppStorage("soundscapePlay", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapePlay: Bool = true
+    
+//    public init(isPresented: Binding<Bool>){
 //        UINavigationBar.appearance().barTintColor = UIColor.systemPink
-        self._isPresented = isPresented
-    }
+//        self._isPresented = isPresented
+//    }
     
     var body: some View {
         
@@ -48,15 +49,15 @@ struct SettingsView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            if isPlaying {
+                            if soundscapePlay {
+                                soundscapePlay = false
                                 AudioPlayer.stopBackgroundSound()
-                                isPlaying.toggle()
                             } else {
+                                soundscapePlay = true
                                 AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
-                                isPlaying.toggle()
                             }
                         }) {
-                            if isPlaying {
+                            if soundscapePlay {
                                 Label("Stop sound", systemImage: "speaker.slash.fill")
                                     .padding()
                                     .background(Color(UIColor.systemIndigo))
