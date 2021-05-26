@@ -166,7 +166,7 @@ struct SessionTopTools: View {
                 
             }) {
                 Image(systemName: "square.and.pencil")
-            }.padding(.horizontal, 10)
+            }.padding(.horizontal, 10).disabled(true)
         }
         .padding(.horizontal)
         .padding(.vertical, 20)
