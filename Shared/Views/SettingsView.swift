@@ -36,9 +36,25 @@ struct SettingsView: View {
                             .padding(.bottom, 20)
 
                         ScrollView(.horizontal) {
-                            HStack(spacing: 20.0){
-                                CircleSelection(title: "Sound one")
-                                CircleSelection(title: "Sound two", color: .backgroundGreen)
+                            HStack(alignment: .top, spacing: 20.0){
+                                
+                                VStack(alignment: .center) {
+                                    CircleSelection(title: "Sound one")
+                                }
+                                
+                                VStack(alignment: .center) {
+                                    CircleSelection(title: "Sound two", color: .backgroundGreen)
+                                }
+                                
+                                /// NO SOUND
+                                VStack(alignment: .center) {
+                                    CircleSelection(title: "No Sound", color: Color(UIColor.systemGray2), image: Image(systemName: "speaker.slash.fill"))
+                                    if !soundscapePlay {
+                                        Circle()
+                                            .fill(Color.textPurple)
+                                            .frame(width: 5, height: 5)
+                                    }
+                                }
                             }.padding(.horizontal)
                         }
 
