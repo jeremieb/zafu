@@ -46,10 +46,7 @@ struct SquareCellsView: View {
     var title = "Session title"
     var duration = 5
     var icon: String?
-    var iconColor: UIColor {
-        return UIColor.random(from: [.systemBlue, .systemPink, .systemGreen, .systemTeal, .systemPurple]) ?? UIColor.systemBlue
-    }
-    
+  
     var body: some View {
         
         /// Content
@@ -58,12 +55,12 @@ struct SquareCellsView: View {
                 HStack {
                     Text(String(duration) + " min")
                         .font(.caption)
-                        .foregroundColor(.elementSecondary)
+                        .foregroundColor(.textPurple)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.elementSecondary, lineWidth: 1)
+                                .stroke(Color.textPurple, lineWidth: 1)
                         )
                         .lineLimit(1)
                     Spacer()
@@ -72,7 +69,7 @@ struct SquareCellsView: View {
                     if ((icon?.isEmpty) != nil) {
                         Image(systemName: icon ?? "")
                             .font(.system(size: 20))
-                            .foregroundColor(Color(iconColor ))
+                            .foregroundColor(Color.textPurple)
                             .opacity(0.5)
                     }
                 }
@@ -80,13 +77,14 @@ struct SquareCellsView: View {
                 Text(title)
                     .font(.title2)
                     .fontWeight(.bold)
+                    .foregroundColor(.textPurple)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
             }
             .padding()
             Spacer()
         }
-        .background(Color(UIColor.systemBackground).opacity(0.4))
+        .background(Color.topSession.opacity(0.4))
         .frame(width: 150, height: 150)
         .cornerRadius(20)
     }
