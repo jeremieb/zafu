@@ -19,8 +19,8 @@ struct SmallSessionCellView: View {
     private var mySessions = [
         CustomSession(title: "First Session", duration: 5, icon: "flame"),
         CustomSession(title: "Second Session", duration: 20, icon: "leaf"),
-        CustomSession(title: "Third Session", duration: 15),
-        CustomSession(title: "Fourth Session", duration: 25)
+        CustomSession(title: "Third Session", duration: 90),
+        CustomSession(title: "Fourth Session", duration: 3600)
     ]
     
     var body: some View {

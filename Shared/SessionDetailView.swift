@@ -17,6 +17,10 @@ struct SessionDetailView: View {
     var icon: String = "drop"
     var duration: Int = 5
     
+    var formattedCountdown: String {
+        return timeString(time: data.selectedTime).hours + ":" + timeString(time: data.selectedTime).minutes + ":" + timeString(time: data.selectedTime).seconds
+    }
+
     var body: some View {
         ZStack{
             
@@ -51,10 +55,9 @@ struct SessionDetailView: View {
                 
                 Spacer().frame(height: 120)
                 
-                
                 if data.sessionHasStarted {
                     VStack {
-                        Text(String(data.selectedTime))
+                        Text(formattedCountdown)
                             .font(.system(size: 42))
                             .fontWeight(.heavy)
                         Text("remain")
@@ -62,7 +65,7 @@ struct SessionDetailView: View {
                 } else {
                     /// Duration label
                     VStack {
-                        Text(String(duration))
+                        Text("\(duration)")
                             .font(.system(size: 42))
                             .fontWeight(.heavy)
                         Text("min")
