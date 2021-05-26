@@ -107,7 +107,11 @@ struct SessionDetailView: View {
             })
             
             VStack {
-                SessionTopTools()
+                if data.sessionHasStarted {
+                    SessionTopTools(isInactive: true)
+                } else {
+                    SessionTopTools()
+                }
                 Spacer()
             }
             
@@ -145,6 +149,8 @@ struct SessionTopTools: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    var isInactive: Bool = false
+    
     var body: some View {
         HStack(alignment: .center){
             
@@ -154,7 +160,7 @@ struct SessionTopTools: View {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Close")
-            }
+            }.disabled(isInactive)
             
             Spacer()
             
