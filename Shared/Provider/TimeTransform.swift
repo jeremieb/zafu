@@ -7,10 +7,12 @@
 
 import Foundation
 
-func timeString(time: Int) -> (hours: String, minutes: String, seconds: String) {
-    let hours   = Int(time) / 3600
-    let minutes = Int(time) / 60 % 60
-    let seconds = Int(time) % 60
-
-    return ("\(hours)", "\(minutes)", "\(seconds)")
+extension Double {
+  func asString(style: DateComponentsFormatter.UnitsStyle) -> String {
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.hour, .minute, .second, .nanosecond]
+    formatter.unitsStyle = style
+    guard let formattedString = formatter.string(from: self) else { return "" }
+    return formattedString
+  }
 }

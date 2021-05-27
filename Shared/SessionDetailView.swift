@@ -16,10 +16,6 @@ struct SessionDetailView: View {
     var title: String = "Session Title"
     var icon: String = "drop"
     var duration: Int = 5
-    
-    var formattedCountdown: String {
-        return timeString(time: data.selectedTime).hours + ":" + timeString(time: data.selectedTime).minutes + ":" + timeString(time: data.selectedTime).seconds
-    }
 
     var body: some View {
         ZStack{
@@ -57,19 +53,30 @@ struct SessionDetailView: View {
                 
                 if data.sessionHasStarted {
                     VStack {
-                        Text(formattedCountdown)
+                        Text(Double(data.selectedTime).asString(style: .positional))
                             .font(.system(size: 42))
                             .fontWeight(.heavy)
-                        Text("remain")
+                        if data.selectedTime <= 60 {
+                            Text("seconds remain").fontWeight(.semibold)
+                        } else if data.selectedTime >= 60 && data.selectedTime <= 3599 {
+                            Text("minutes remain").fontWeight(.semibold)
+                        } else {
+                            Text("hours remain").fontWeight(.semibold)
+                        }
                     }.foregroundColor(.textPurple)
                 } else {
                     /// Duration label
                     VStack {
-                        Text("\(duration)")
+                        Text(Double(duration).asString(style: .positional))
                             .font(.system(size: 42))
                             .fontWeight(.heavy)
-                        Text("min")
-                            .fontWeight(.semibold)
+                        if duration <= 60 {
+                            Text("seconds").fontWeight(.semibold)
+                        } else if duration >= 60 && duration <= 3599 {
+                            Text("minutes").fontWeight(.semibold)
+                        } else {
+                            Text("hours").fontWeight(.semibold)
+                        }
                     }.foregroundColor(.textPurple)
                 }
                 
