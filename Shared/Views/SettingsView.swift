@@ -12,12 +12,7 @@ struct SettingsView: View {
     @Binding var isPresented: Bool
     
     @AppStorage("soundscapePlay", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapePlay: Bool = true
-    
-//    public init(isPresented: Binding<Bool>){
-//        UINavigationBar.appearance().barTintColor = UIColor.systemPink
-//        self._isPresented = isPresented
-//    }
-    
+        
     var body: some View {
         
         NavigationView {
@@ -28,10 +23,11 @@ struct SettingsView: View {
                     Group{
                         SectionHeaderView(title: "Soundscape")
                         
-                        Text("Select a soundscape of your choice to play along with your meditation and after the session is done")
+                        Text("Select a soundscape of your choice to play along with your meditation and after the session is done.")
                             .font(.footnote)
                             .foregroundColor(Color("elementSecondary"))
-                            .lineLimit(5)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .lineLimit(6)
                             .padding(.horizontal)
                             .padding(.bottom, 20)
 
@@ -49,46 +45,34 @@ struct SettingsView: View {
                                 /// NO SOUND
                                 VStack(alignment: .center) {
                                     CircleSelection(title: "No Sound", color: Color(UIColor.systemGray2), image: Image(systemName: "speaker.slash.fill"))
-                                    if !soundscapePlay {
-                                        Circle()
-                                            .fill(Color.textPurple)
-                                            .frame(width: 5, height: 5)
-                                    }
+                                        .onTapGesture {
+                                            if soundscapePlay {
+                                                withAnimation(){
+                                                    soundscapePlay = false
+                                                }
+                                                AudioPlayer.stopBackgroundSound()
+                                            } else {
+                                                withAnimation(){
+                                                    soundscapePlay = true
+                                                }
+                                                AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
+                                            }
+                                        }
+                                    Circle()
+                                        .fill(Color.textPurple)
+                                        .frame(width: 5, height: 5)
+                                        .opacity(soundscapePlay ? 0 : 1)
                                 }
                             }.padding(.horizontal)
                         }
 
                     }/// end background soundscape
                     
+                    
                     Divider().padding(.vertical, 30)
-
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            if soundscapePlay {
-                                soundscapePlay = false
-                                AudioPlayer.stopBackgroundSound()
-                            } else {
-                                soundscapePlay = true
-                                AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
-                            }
-                        }) {
-                            if soundscapePlay {
-                                Label("Stop sound", systemImage: "speaker.slash.fill")
-                                    .padding()
-                                    .background(Color(UIColor.systemIndigo))
-                                    .foregroundColor(Color(UIColor.systemBackground))
-                                    .cornerRadius(20)
-                            } else {
-                                Label("Start sound", systemImage: "speaker.fill")
-                                    .padding()
-                                    .background(Color(UIColor.systemIndigo))
-                                    .foregroundColor(Color(UIColor.systemBackground))
-                                    .cornerRadius(20)
-                            }
-                        }
-                        Spacer()
-                    }.padding(.bottom, 50)
+                    
+                    /// Footer
+                    FooterView().padding(.bottom, 50)
                 }
             }
             .navigationTitle("Settings")
@@ -122,6 +106,22 @@ struct CircleSelection: View {
                 .font(.footnote)
         }
     }
+}
+
+struct FooterView: View {
+    
+    private let versionNumber: AnyObject? = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as AnyObject?
+    private let buildNumber: AnyObject? = Bundle.main.infoDictionary!["CFBundleVersion"] as AnyObject?
+    
+    var body: some View{
+        VStack(alignment: .center){
+            Text("Zafu v\(versionNumber as! String) (\(buildNumber as! String))")
+                .font(.footnote)
+                .foregroundColor(.elementSecondary)
+                .multilineTextAlignment(.center)
+        }.frame(width: UIScreen.main.bounds.size.width)
+    }
+    
 }
 
 struct SettingsView_Previews: PreviewProvider {
