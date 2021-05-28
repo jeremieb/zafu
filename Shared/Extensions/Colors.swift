@@ -24,6 +24,10 @@ extension Color {
     static let textPurple = Color("textPurple")
     static let myPink = Color("myPink")
     static let topSession = Color("topSession")
+    
+    /// Gradient
+    static let gradient1Start = Color("gradient1-start")
+    static let gradient1End = Color("gradient1-end")
 }
 
 /// Ramdom color

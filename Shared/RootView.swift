@@ -11,6 +11,8 @@ struct RootView: View {
     
     @StateObject var data = TimerData()
     @ObservedObject var observer = Observer()
+    
+    @AppStorage("soundscapePlay", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapePlay: Bool = true
         
     init() {
         UITabBar.appearance().shadowImage = UIImage()
@@ -48,7 +50,9 @@ struct RootView: View {
             
             /// Replacing on appear
             .onReceive(self.observer.$enteredForeground) { _ in
-                AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
+                if soundscapePlay {
+                    AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
+                }
             }
         }
     }

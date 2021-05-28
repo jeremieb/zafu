@@ -16,7 +16,7 @@ struct SessionDetailView: View {
     var title: String = "Session Title"
     var icon: String = "drop"
     var duration: Int = 5
-    
+
     var body: some View {
         ZStack{
             
@@ -51,22 +51,32 @@ struct SessionDetailView: View {
                 
                 Spacer().frame(height: 120)
                 
-                
                 if data.sessionHasStarted {
                     VStack {
-                        Text(String(data.selectedTime))
+                        Text(Double(data.selectedTime).asString(style: .positional))
                             .font(.system(size: 42))
                             .fontWeight(.heavy)
-                        Text("remain")
+                        if data.selectedTime <= 60 {
+                            Text("seconds remain").fontWeight(.semibold)
+                        } else if data.selectedTime >= 60 && data.selectedTime <= 3599 {
+                            Text("minutes remain").fontWeight(.semibold)
+                        } else {
+                            Text("hours remain").fontWeight(.semibold)
+                        }
                     }.foregroundColor(.textPurple)
                 } else {
                     /// Duration label
                     VStack {
-                        Text(String(duration))
+                        Text(Double(duration).asString(style: .positional))
                             .font(.system(size: 42))
                             .fontWeight(.heavy)
-                        Text("min")
-                            .fontWeight(.semibold)
+                        if duration <= 60 {
+                            Text("seconds").fontWeight(.semibold)
+                        } else if duration >= 60 && duration <= 3599 {
+                            Text("minutes").fontWeight(.semibold)
+                        } else {
+                            Text("hours").fontWeight(.semibold)
+                        }
                     }.foregroundColor(.textPurple)
                 }
                 
@@ -107,7 +117,11 @@ struct SessionDetailView: View {
             })
             
             VStack {
-                SessionTopTools()
+                if data.sessionHasStarted {
+                    SessionTopTools(isInactive: true)
+                } else {
+                    SessionTopTools()
+                }
                 Spacer()
             }
             
@@ -145,6 +159,8 @@ struct SessionTopTools: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    var isInactive: Bool = false
+    
     var body: some View {
         HStack(alignment: .center){
             
@@ -154,7 +170,7 @@ struct SessionTopTools: View {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Close")
-            }
+            }.disabled(isInactive)
             
             Spacer()
             
@@ -166,7 +182,7 @@ struct SessionTopTools: View {
                 
             }) {
                 Image(systemName: "square.and.pencil")
-            }.padding(.horizontal, 10)
+            }.padding(.horizontal, 10).disabled(true)
         }
         .padding(.horizontal)
         .padding(.vertical, 20)

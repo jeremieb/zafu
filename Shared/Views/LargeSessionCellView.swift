@@ -33,6 +33,11 @@ struct LargeCellView: View {
     var duration = 5
     var description = "Cras justo odio, dapibus ac facilisis in, egestas eget quam."
     
+    let gradientOneColors = Gradient(colors: [Color.gradient1Start, Color.gradient1End])
+    var gradientOne: RadialGradient {
+        return RadialGradient(gradient: gradientOneColors, center: .topLeading, startRadius: 0, endRadius: 160)
+    }
+    
     var body: some View {
         
         /// Content
@@ -62,9 +67,13 @@ struct LargeCellView: View {
             .padding()
             Spacer()
         }
-        .background(Color(UIColor.systemBackground).opacity(0.4))
-        .frame(width: 235, height: 150)
-        .cornerRadius(20)
+        .background(
+//            Color(UIColor.systemBackground).opacity(0.4)
+            RoundedRectangle(cornerRadius: 20)
+                .fill(gradientOne).opacity(0.5))
+                .frame(width: 235, height: 150)
+//        .frame(width: 235, height: 150)
+//        .cornerRadius(20)
         
     }
 }
