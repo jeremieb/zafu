@@ -447,6 +447,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1000;
 				DEVELOPMENT_TEAM = PNJ2ZGDY4C;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -455,7 +456,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jeremieberduck.zafu.Zafu;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeremieberduck.zafu;
 				PRODUCT_NAME = Zafu;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -469,6 +471,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1000;
 				DEVELOPMENT_TEAM = PNJ2ZGDY4C;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -477,7 +480,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jeremieberduck.zafu.Zafu;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeremieberduck.zafu;
 				PRODUCT_NAME = Zafu;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
