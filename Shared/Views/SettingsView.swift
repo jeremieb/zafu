@@ -10,9 +10,10 @@ import SwiftUI
 struct SettingsView: View {
     
     @Binding var isPresented: Bool
-    
-    @AppStorage("soundscapePlay", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapePlay: Bool = true
         
+    @AppStorage("soundscapePlay", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapePlay: Bool = true
+    @AppStorage("soundscapeFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapeFile: Int = 1
+    
     var body: some View {
         
         NavigationView {
@@ -20,7 +21,7 @@ struct SettingsView: View {
                 VStack(alignment: .leading) {
                     
                     /// Background soundscape
-                    Group{
+                    Group {
                         SectionHeaderView(title: "Soundscape")
                         
                         Text("Select a soundscape of your choice to play along with your meditation and after the session is done.")
@@ -30,44 +31,33 @@ struct SettingsView: View {
                             .lineLimit(6)
                             .padding(.horizontal)
                             .padding(.bottom, 20)
-
+                        
                         ScrollView(.horizontal) {
                             HStack(alignment: .top, spacing: 20.0){
                                 
-                                VStack(alignment: .center) {
-                                    CircleSelection(title: "Sound one")
-                                }
-                                
-                                VStack(alignment: .center) {
-                                    CircleSelection(title: "Sound two", color: .backgroundGreen)
-                                }
-                                
-                                /// NO SOUND
-                                VStack(alignment: .center) {
-                                    CircleSelection(title: "No Sound", color: Color(UIColor.systemGray2), image: Image(systemName: "speaker.slash.fill"))
+                                ForEach(Array(soundFiles.enumerated()), id: \.offset) { index, sound in
+                                    CircleSelection(selection: $soundscapeFile, title: sound.name, color: Color(sound.color), image: Image(systemName: sound.image ?? "tortoise.fill"), id: sound.id)
                                         .onTapGesture {
-                                            if soundscapePlay {
-                                                withAnimation(){
-                                                    soundscapePlay = false
+                                            withAnimation{
+                                                if soundscapePlay && sound.id == 0 {
+                                                    withAnimation() {
+                                                        soundscapeFile = sound.id
+                                                        soundscapePlay = false
+                                                    }
+                                                    AudioPlayer.stopBackgroundSound()
+                                                } else {
+                                                    withAnimation() {
+                                                        soundscapeFile = sound.id
+                                                        soundscapePlay = true
+                                                    }
+                                                    AudioPlayer.playBackgroundSound(soundFile: sound.file)
                                                 }
-                                                AudioPlayer.stopBackgroundSound()
-                                            } else {
-                                                withAnimation(){
-                                                    soundscapePlay = true
-                                                }
-                                                AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
                                             }
                                         }
-                                    Circle()
-                                        .fill(Color.textPurple)
-                                        .frame(width: 5, height: 5)
-                                        .opacity(soundscapePlay ? 0 : 1)
                                 }
                             }.padding(.horizontal)
                         }
-
                     }/// end background soundscape
-                    
                     
                     Divider().padding(.vertical, 30)
                     
@@ -91,19 +81,36 @@ struct SettingsView: View {
 
 struct CircleSelection: View {
     
+    @Binding var selection: Int
+    @State var selected: Bool = false
+    
     var title: String = "Button title"
     var color: Color = Color(UIColor.systemPink)
     var image: Image = Image(systemName: "tortoise.fill")
+    var id: Int
     
     var body: some View{
-        VStack(alignment: .center){
-            color
-                .frame(width: 52, height: 52)
-                .clipShape(Circle())
-                .overlay(image)
-                .foregroundColor(Color(UIColor.systemBackground))
-            Text(title)
-                .font(.footnote)
+        VStack(alignment: .center) {
+            VStack(alignment: .center){
+                color
+                    .frame(width: 52, height: 52)
+                    .clipShape(Circle())
+                    .overlay(image)
+                    .foregroundColor(Color(UIColor.systemBackground))
+                Text(title)
+                    .font(.footnote)
+            }
+            if selection == id {
+                Circle()
+                    .fill(Color.textPurple)
+                    .frame(width: 5, height: 5)
+                    .opacity(1)
+            } else {
+                Circle()
+                    .fill(Color.textPurple)
+                    .frame(width: 5, height: 5)
+                    .opacity(0)
+            }
         }
     }
 }

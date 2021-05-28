@@ -18,6 +18,7 @@
 		1E2DE5D726514659003593B2 /* SessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2DE5D626514659003593B2 /* SessionsView.swift */; };
 		1E54D036265E22B000A11588 /* GradientsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E54D035265E22B000A11588 /* GradientsViews.swift */; };
 		1E694437265E63B000EDDD06 /* TimeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E694436265E63B000EDDD06 /* TimeTransform.swift */; };
+		1E6944392661426C00EDDD06 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6944382661426C00EDDD06 /* Sounds.swift */; };
 		1E93772B265BF36C00BF9FB9 /* AirPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93772A265BF36C00BF9FB9 /* AirPlayView.swift */; };
 		1E93772E265BF9A300BF9FB9 /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93772D265BF9A300BF9FB9 /* TimerData.swift */; };
 		1E937730265C002E00BF9FB9 /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93772F265C002E00BF9FB9 /* QuoteModel.swift */; };
@@ -55,6 +56,7 @@
 		1E2DE5D626514659003593B2 /* SessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsView.swift; sourceTree = "<group>"; };
 		1E54D035265E22B000A11588 /* GradientsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientsViews.swift; sourceTree = "<group>"; };
 		1E694436265E63B000EDDD06 /* TimeTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTransform.swift; sourceTree = "<group>"; };
+		1E6944382661426C00EDDD06 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		1E93772A265BF36C00BF9FB9 /* AirPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayView.swift; sourceTree = "<group>"; };
 		1E93772D265BF9A300BF9FB9 /* TimerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerData.swift; sourceTree = "<group>"; };
 		1E93772F265C002E00BF9FB9 /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				1EAAE74826500BC30002FAE3 /* Sessions.swift */,
 				1E93772F265C002E00BF9FB9 /* QuoteModel.swift */,
+				1E6944382661426C00EDDD06 /* Sounds.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				1EB3D9E2264D52EE00F13B3B /* ZafuApp.swift in Sources */,
 				1E2DE5D1265141B3003593B2 /* LargeSessionCellView.swift in Sources */,
 				1E93772B265BF36C00BF9FB9 /* AirPlayView.swift in Sources */,
+				1E6944392661426C00EDDD06 /* Sounds.swift in Sources */,
 				1E2DE5CF2650E96A003593B2 /* DisableModalDismiss.swift in Sources */,
 				1E937730265C002E00BF9FB9 /* QuoteModel.swift in Sources */,
 				1E2DE5D52651464C003593B2 /* MeditationView.swift in Sources */,
