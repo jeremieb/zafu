@@ -11,18 +11,21 @@ struct SessionDetailView: View {
     
     @EnvironmentObject var data: TimerData
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var isAnimated = false
     
     var title: String = "Session Title"
     var icon: String = "drop"
     var duration: Int = 5
+    var color: Color = Color.topSession
 
     var body: some View {
         ZStack{
             
             VStack {
                 TopCurve()
-                    .fill(Color.topSession)
+                    .fill(color.opacity(colorScheme == .dark ? 0.1 : 0.2))
                     .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height / 2.5)
                 Spacer()
             }.ignoresSafeArea()
