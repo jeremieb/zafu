@@ -10,8 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @Binding var isPresented: Bool
-        
-    @AppStorage("soundscapePlay", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapePlay: Bool = true
+
     @AppStorage("soundscapeFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapeFile: Int = 1
     
     var body: some View {
@@ -22,7 +21,7 @@ struct SettingsView: View {
                     
                     /// Background soundscape
                     Group {
-                        SectionHeaderView(title: "Soundscape")
+                        SectionHeaderView(title: "Soundscape").padding(.top,30)
                         
                         Text("Select a soundscape of your choice to play along with your meditation and after the session is done.")
                             .font(.footnote)
@@ -36,19 +35,17 @@ struct SettingsView: View {
                             HStack(alignment: .top, spacing: 20.0){
                                 
                                 ForEach(Array(soundFiles.enumerated()), id: \.offset) { index, sound in
-                                    CircleSelection(selection: $soundscapeFile, title: sound.name, color: Color(sound.color), image: Image(systemName: sound.image ?? "tortoise.fill"), id: sound.id)
+                                    CircleSelection(selection: $soundscapeFile, title: sound.name, color: sound.color, image: Image(systemName: sound.image ?? "tortoise.fill"), id: sound.id)
                                         .onTapGesture {
                                             withAnimation{
-                                                if soundscapePlay && sound.id == 0 {
+                                                if sound.id == 0 {
                                                     withAnimation() {
                                                         soundscapeFile = sound.id
-                                                        soundscapePlay = false
                                                     }
                                                     AudioPlayer.stopBackgroundSound()
                                                 } else {
                                                     withAnimation() {
                                                         soundscapeFile = sound.id
-                                                        soundscapePlay = true
                                                     }
                                                     AudioPlayer.playBackgroundSound(soundFile: sound.file)
                                                 }
@@ -85,7 +82,7 @@ struct CircleSelection: View {
     @State var selected: Bool = false
     
     var title: String = "Button title"
-    var color: Color = Color(UIColor.systemPink)
+    var color: Color
     var image: Image = Image(systemName: "tortoise.fill")
     var id: Int
     
@@ -99,6 +96,10 @@ struct CircleSelection: View {
                     .foregroundColor(Color(UIColor.systemBackground))
                 Text(title)
                     .font(.footnote)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(2)
+                    
             }
             if selection == id {
                 Circle()
@@ -111,7 +112,7 @@ struct CircleSelection: View {
                     .frame(width: 5, height: 5)
                     .opacity(0)
             }
-        }
+        }.frame(width: 80)
     }
 }
 

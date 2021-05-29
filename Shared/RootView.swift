@@ -12,7 +12,6 @@ struct RootView: View {
     @StateObject var data = TimerData()
     @ObservedObject var observer = Observer()
     
-    @AppStorage("soundscapePlay", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapePlay: Bool = true
     @AppStorage("soundscapeFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapeFile: Int = 1
         
     init() {

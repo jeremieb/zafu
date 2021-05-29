@@ -6,19 +6,21 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Sounds: Hashable {
     
     var id: Int
     var name: String
     var file: String
-    var color: String
+    var color: Color
     var image: String?
     
 }
 
 let soundFiles: [Sounds] = [
-    Sounds(id: 0, name: "No Sound", file: "", color: "elementSecondary", image: "speaker.slash.fill"),
-    Sounds(id: 1, name: "Birds in the jungle", file: "birds-in-the-jungle.m4a", color: "backgroundGreen", image: "leaf.fill"),
-    Sounds(id: 2, name: "Birds near the river", file: "birds-chirping-near-the-river.m4a", color: "backgroundYellow", image: "hare.fill")
+    Sounds(id: 1, name: "Birds in the jungle", file: "birds-in-the-jungle.m4a", color: Color.backgroundGreen, image: "leaf.fill"),
+    Sounds(id: 2, name: "Birds near the river", file: "birds-chirping-near-the-river.m4a", color: Color.backgroundYellow, image: "hare.fill"),
+    /// NO SOUND - KEEP AT THE END
+    Sounds(id: 0, name: "No \n Sound", file: "", color: Color(UIColor.systemGray3), image: "speaker.slash.fill")
 ]
