@@ -62,7 +62,7 @@ struct SettingsView: View {
                     FooterView().padding(.bottom, 50)
                 }
             }
-            .fixFlickering()
+            .fixFlickering() /// Fixing the glitch for NavigationView with ScrollView
             .navigationTitle("Settings")
             .toolbar(content: {
                 Button(action: {

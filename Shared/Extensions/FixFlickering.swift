@@ -4,6 +4,7 @@
 //
 //  Created by Jeremie Berduck on 29/05/2021.
 //
+/// https://stackoverflow.com/questions/64280447/scrollview-navigationview-animation-glitch-swiftui
 
 import SwiftUI
 
