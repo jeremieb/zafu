@@ -17,7 +17,6 @@ extension Color {
     static let mainDarkPink = Color("mainDarkPink")
     static let mainOrange = Color("mainOrange")
     
-    
     /// Background colors
     static let backgroundMain = Color("backgroundMain")
     static let backgroundBlue = Color("backgroundBlue")
