@@ -11,9 +11,9 @@ struct LargeSessionCellView: View {
     
     /// Placeholder sessions
     private var sessions = [
-        Session(title: "First Session", duration: 15, description: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus."),
-        Session(title: "Second Session Big Title", duration: 20, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
-        Session(title: "Third Session", duration: 16, description: "Cras justo odio, dapibus ac facilisis in, egestas eget quam.")
+        Session(title: "First Session", duration: 15, description: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.", color: Color.mainOrange),
+        Session(title: "Second Session Big Title", duration: 20, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", color: Color.mainOrange),
+        Session(title: "Third Session", duration: 16, description: "Cras justo odio, dapibus ac facilisis in, egestas eget quam.", color: Color.mainOrange)
     ]
     
     var body: some View {
