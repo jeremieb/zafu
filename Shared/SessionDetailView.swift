@@ -152,7 +152,6 @@ struct CircularGradientButton: View {
             
         }.rotationEffect(Angle(degrees: -20))
     }
-    
 }
 
 struct SessionTopTools: View {

@@ -19,8 +19,8 @@ struct Sounds: Hashable {
 }
 
 let soundFiles: [Sounds] = [
-    Sounds(id: 1, name: "Birds in the jungle", file: "birds-in-the-jungle.m4a", color: Color.backgroundGreen, image: "leaf.fill"),
-    Sounds(id: 2, name: "Birds near the river", file: "birds-chirping-near-the-river.m4a", color: Color.backgroundYellow, image: "hare.fill"),
+    Sounds(id: 1, name: "Birds in the jungle", file: "birds-in-the-jungle.m4a", color: Color.mainSky, image: "leaf.fill"),
+    Sounds(id: 2, name: "Birds near the river", file: "birds-chirping-near-the-river.m4a", color: Color.mainPink, image: "hare.fill"),
     /// NO SOUND - KEEP AT THE END
     Sounds(id: 0, name: "No \n Sound", file: "", color: Color(UIColor.systemGray3), image: "speaker.slash.fill")
 ]
