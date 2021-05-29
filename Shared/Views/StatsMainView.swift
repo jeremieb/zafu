@@ -53,7 +53,6 @@ struct StatItem: View {
     var body: some View{
         HStack(spacing: 5.0){
             Image(systemName: "stopwatch")
-                .foregroundColor(.textPurple)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
             Text(number)
