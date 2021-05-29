@@ -32,7 +32,7 @@ struct SessionDetailView: View {
                 Text("\(Image(systemName: icon))")
                     .font(.system(size: 140))
                     .fontWeight(.ultraLight)
-                    .foregroundColor(.textPurple)
+                    .foregroundColor(.mainPurple)
                     .opacity(0.2)
                 Spacer()
             }
@@ -43,11 +43,11 @@ struct SessionDetailView: View {
                 Text(title)
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(.textPurple)
+                    .foregroundColor(.mainPurple)
                     .padding(.top, 100)
                     .lineLimit(4)
                 
-                QuoteView().padding(.top, 20).foregroundColor(.textPurple)
+                QuoteView().padding(.top, 20).foregroundColor(.mainPurple)
                 
                 Spacer().frame(height: 120)
                 
@@ -63,7 +63,7 @@ struct SessionDetailView: View {
                         } else {
                             Text("hours remain").fontWeight(.semibold)
                         }
-                    }.foregroundColor(.textPurple)
+                    }.foregroundColor(.mainPurple)
                 } else {
                     /// Duration label
                     VStack {
@@ -77,7 +77,7 @@ struct SessionDetailView: View {
                         } else {
                             Text("hours").fontWeight(.semibold)
                         }
-                    }.foregroundColor(.textPurple)
+                    }.foregroundColor(.mainPurple)
                 }
                 
                 ZStack {

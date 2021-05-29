@@ -45,36 +45,33 @@ struct LargeCellView: View {
             VStack(alignment: .leading){
                 Text(String(duration) + " min")
                     .font(.caption)
-                    .foregroundColor(.elementSecondary)
+                    .foregroundColor(.mainPurple)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 3)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.elementSecondary, lineWidth: 1)
+                            .stroke(Color.mainPurple, lineWidth: 1)
                     )
                     .lineLimit(1)
                 Spacer()
                 Text(title)
                     .font(.title2)
                     .fontWeight(.bold)
+                    .foregroundColor(.mainPurple)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
                 Text(description)
                     .font(.footnote)
-                    .foregroundColor(.elementSecondary)
+                    .foregroundColor(.mainPurple)
                     .lineLimit(2)
             }
             .padding()
             Spacer()
         }
         .background(
-//            Color(UIColor.systemBackground).opacity(0.4)
             RoundedRectangle(cornerRadius: 20)
                 .fill(gradientOne).opacity(0.5))
                 .frame(width: 235, height: 150)
-//        .frame(width: 235, height: 150)
-//        .cornerRadius(20)
-        
     }
 }
 

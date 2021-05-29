@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct SettingsView: View {
+
+    public init(isPresented: Binding<Bool>){
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
+        self._isPresented = isPresented
+    }
     
     @Binding var isPresented: Bool
-
+    
     @AppStorage("soundscapeFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapeFile: Int = 1
     
     var body: some View {
@@ -25,7 +30,7 @@ struct SettingsView: View {
                         
                         Text("Select a soundscape of your choice to play along with your meditation and after the session is done.")
                             .font(.footnote)
-                            .foregroundColor(Color("elementSecondary"))
+                            .foregroundColor(Color.mainPurple)
                             .fixedSize(horizontal: false, vertical: true)
                             .lineLimit(6)
                             .padding(.horizontal)
@@ -99,6 +104,7 @@ struct AlternateAppIcons: View {
                         .frame(width: 52, height: 52)
                     Text("Default")
                         .font(.footnote)
+                        .foregroundColor(.mainPurple)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                         .lineLimit(2)
@@ -133,6 +139,7 @@ struct AppIconItem: View {
                 .frame(width: 52, height: 52)
             Text(title)
                 .font(.footnote)
+                .foregroundColor(.mainPurple)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
                 .lineLimit(2)
@@ -164,10 +171,11 @@ struct CircleSelection: View {
                     .foregroundColor(Color(UIColor.systemBackground))
                 Text(title)
                     .font(.footnote)
+                    .foregroundColor(.mainPurple)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                     .lineLimit(2)
-                    
+                
             }
             if selection == id {
                 Circle()
@@ -195,7 +203,7 @@ struct FooterView: View {
         VStack(alignment: .center){
             Text("Zafu v\(versionNumber as! String) (\(buildNumber as! String))")
                 .font(.footnote)
-                .foregroundColor(.elementSecondary)
+                .foregroundColor(.mainPurple)
                 .multilineTextAlignment(.center)
         }.frame(width: UIScreen.main.bounds.size.width)
     }

@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct SessionsView: View {
+    
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
+    }
+    
     var body: some View {
         NavigationView{
             ScrollView {

@@ -66,7 +66,7 @@ struct StatItem: View {
                 .offset(x: -2, y: 4)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
-        }.frame(width: (UIScreen.main.bounds.size.width - 72) / 3, alignment: .center)
+        }.frame(width: (UIScreen.main.bounds.size.width - 72) / 3, alignment: .center).foregroundColor(.mainPurple)
     }
 }
 

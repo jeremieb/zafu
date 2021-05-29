@@ -9,6 +9,10 @@ import SwiftUI
 
 struct MeditationView: View {
     
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
+    }
+    
     var body: some View {
         
         NavigationView{

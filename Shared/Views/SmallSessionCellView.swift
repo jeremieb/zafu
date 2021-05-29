@@ -55,12 +55,12 @@ struct SquareCellsView: View {
                 HStack {
                     Text(String(duration) + " min")
                         .font(.caption)
-                        .foregroundColor(.textPurple)
+                        .foregroundColor(.mainPurple)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.textPurple, lineWidth: 1)
+                                .stroke(Color.mainPurple, lineWidth: 1)
                         )
                         .lineLimit(1)
                     Spacer()
@@ -69,7 +69,7 @@ struct SquareCellsView: View {
                     if ((icon?.isEmpty) != nil) {
                         Image(systemName: icon ?? "")
                             .font(.system(size: 20))
-                            .foregroundColor(Color.textPurple)
+                            .foregroundColor(Color.mainPurple)
                             .opacity(0.5)
                     }
                 }
@@ -77,7 +77,7 @@ struct SquareCellsView: View {
                 Text(title)
                     .font(.title2)
                     .fontWeight(.bold)
-                    .foregroundColor(.textPurple)
+                    .foregroundColor(.mainPurple)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
             }
