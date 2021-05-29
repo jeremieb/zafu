@@ -31,7 +31,7 @@ struct SettingsView: View {
                             .padding(.horizontal)
                             .padding(.bottom, 20)
                         
-                        ScrollView(.horizontal) {
+                        ScrollView(.horizontal, showsIndicators: false) {
                             HStack(alignment: .top, spacing: 20.0){
                                 
                                 ForEach(Array(soundFiles.enumerated()), id: \.offset) { index, sound in
@@ -56,6 +56,14 @@ struct SettingsView: View {
                         }
                     }/// end background soundscape
                     
+                    Divider().padding(.vertical, 20)
+                    
+                    /// Alternat app icons
+                    Group {
+                        SectionHeaderView(title: "Alternate app icons")
+                        AlternateAppIcons()
+                    }
+                    
                     Divider().padding(.vertical, 30)
                     
                     /// Footer
@@ -77,6 +85,65 @@ struct SettingsView: View {
     }
 }
 
+// MARK: - AlternateAppIcons View
+struct AlternateAppIcons: View {
+    
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false){
+            HStack(alignment: .top, spacing: 20) {
+                
+                // Default
+                VStack(alignment: .center) {
+                    Image("default")
+                        .scaledToFill()
+                        .frame(width: 52, height: 52)
+                    Text("Default")
+                        .font(.footnote)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(2)
+                }.onTapGesture {
+                    UIApplication.shared.setAlternateIconName(nil)
+                }.frame(width: 80)
+                
+                // Default Black
+                AppIconItem(title: "Black", image: "default-black")
+                
+                // Pride
+                AppIconItem(title: "Pride", image: "pride")
+                
+                // Trans
+                AppIconItem(title: "Trans Pride", image: "pride-trans")
+                
+            }.padding(.horizontal).padding(.top, 20)
+        }
+    }
+}
+
+// MARK: - AppIconItem View
+struct AppIconItem: View {
+    
+    var title: String
+    var image: String
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            Image(image)
+                .scaledToFill()
+                .frame(width: 52, height: 52)
+            Text(title)
+                .font(.footnote)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(2)
+        }.onTapGesture {
+            UIApplication.shared.setAlternateIconName(image)
+        }.frame(width: 80)
+    }
+}
+
+
+// MARK: - CircleSelection View
 struct CircleSelection: View {
     
     @Binding var selection: Int
@@ -116,6 +183,8 @@ struct CircleSelection: View {
         }.frame(width: 80)
     }
 }
+
+// MARK: - Footer View
 
 struct FooterView: View {
     
