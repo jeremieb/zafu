@@ -62,6 +62,7 @@ struct SettingsView: View {
                     FooterView().padding(.bottom, 50)
                 }
             }
+            .fixFlickering()
             .navigationTitle("Settings")
             .toolbar(content: {
                 Button(action: {
