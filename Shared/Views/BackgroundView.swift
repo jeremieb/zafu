@@ -29,6 +29,8 @@ struct OneCircle: View {
     
     @StateObject var animationProvider = AnimationProvider()
     
+    @Environment(\.colorScheme) var colorScheme
+    
     /// User to define circle color
     let color: Color
     
@@ -51,7 +53,7 @@ struct OneCircle: View {
                 .frame(width: UIScreen.main.bounds.size.width / 1.4, height: UIScreen.main.bounds.size.height / animationProvider.frameHeightRatio)
                 .offset(animationProvider.offset)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment.randomElement() ?? .topTrailing)
-                .opacity(0.9)
+                .opacity(colorScheme == .dark ? 0.3 : 0.950)
                 .blur(radius: 120)
         }
     }

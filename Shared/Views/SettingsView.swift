@@ -53,6 +53,7 @@ struct SettingsView: View {
                         .frame(width: 44, height: 44)
                 }
             })
+            .background(BackgroundView())
         }
     }
 }
