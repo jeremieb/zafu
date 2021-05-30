@@ -14,7 +14,7 @@ struct MeditationView: View {
     }
     
     var body: some View {
-        
+
         NavigationView{
             ScrollView {
                 VStack(alignment: .leading){

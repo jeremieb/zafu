@@ -34,16 +34,16 @@ struct RootView: View {
                     }.background(BackgroundView()).environmentObject(data)
                 MeditationView()
                     .tabItem {
-                        Image("zafu_seal")
+                        Image("zafu.seal.fill")
                             .font(.system(size: 22))
                         Text("Meditation")
                     }
                 SessionsView()
                     .tabItem {
-                        Image("zafu_heart")
+                        Image("zafu.heart.fill")
                             .font(.system(size: 20))
                         Text("Sessions")
-                    }.background(BackgroundView())
+                    }
                 
             }
             .background(Color.clear)
