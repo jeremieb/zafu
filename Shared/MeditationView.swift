@@ -23,7 +23,9 @@ struct MeditationView: View {
                     }
                 }
                 .frame(width: UIScreen.main.bounds.size.width)
-            }.navigationTitle("Meditations")
+            }
+            .navigationTitle("Meditations")
+            .background(BackgroundView())
         }
     }
 }

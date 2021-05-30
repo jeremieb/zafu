@@ -22,7 +22,9 @@ struct SessionsView: View {
                     }
                 }
                 .frame(width: UIScreen.main.bounds.size.width)
-            }.navigationTitle("My Sessions")
+            }
+            .navigationTitle("My Sessions")
+            .background(BackgroundView())
         }
     }
 }

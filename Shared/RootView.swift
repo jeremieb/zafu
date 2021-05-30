@@ -44,7 +44,6 @@ struct RootView: View {
                             .font(.system(size: 20))
                         Text("Sessions")
                     }
-                
             }
             .background(Color.clear)
             
