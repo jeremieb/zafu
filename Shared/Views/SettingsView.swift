@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct SettingsView: View {
-
+    
     public init(isPresented: Binding<Bool>){
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
         self._isPresented = isPresented
     }
     
     @Binding var isPresented: Bool
-    
-    @AppStorage("soundscapeFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapeFile: Int = 1
     
     var body: some View {
         
@@ -27,39 +25,8 @@ struct SettingsView: View {
                     /// Background soundscape
                     Group {
                         SectionHeaderView(title: "Soundscape").padding(.top,30)
-                        
-                        Text("Select a soundscape of your choice to play along with your meditation and after the session is done.")
-                            .font(.footnote)
-                            .foregroundColor(Color.mainPurple)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .lineLimit(6)
-                            .padding(.horizontal)
-                            .padding(.bottom, 20)
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(alignment: .top, spacing: 20.0){
-                                
-                                ForEach(Array(soundFiles.enumerated()), id: \.offset) { index, sound in
-                                    CircleSelection(selection: $soundscapeFile, title: sound.name, color: sound.color, image: Image(systemName: sound.image ?? "tortoise.fill"), id: sound.id)
-                                        .onTapGesture {
-                                            withAnimation{
-                                                if sound.id == 0 {
-                                                    withAnimation() {
-                                                        soundscapeFile = sound.id
-                                                    }
-                                                    AudioPlayer.stopBackgroundSound()
-                                                } else {
-                                                    withAnimation() {
-                                                        soundscapeFile = sound.id
-                                                    }
-                                                    AudioPlayer.playBackgroundSound(soundFile: sound.file)
-                                                }
-                                            }
-                                        }
-                                }
-                            }.padding(.horizontal)
-                        }
-                    }/// end background soundscape
+                        SoundSelection()
+                    }
                     
                     Divider().padding(.vertical, 20)
                     
@@ -146,6 +113,46 @@ struct AppIconItem: View {
         }.onTapGesture {
             UIApplication.shared.setAlternateIconName(image)
         }.frame(width: 80)
+    }
+}
+
+// MARK: - Sound Selection View
+struct SoundSelection: View {
+    
+    @AppStorage("soundscapeFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapeFile: Int = 1
+    
+    var body: some View {
+        Text("Select a soundscape of your choice to play along with your meditation and after the session is done.")
+            .font(.footnote)
+            .foregroundColor(Color.mainPurple)
+            .fixedSize(horizontal: false, vertical: true)
+            .lineLimit(6)
+            .padding(.horizontal)
+            .padding(.bottom, 20)
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: 20.0){
+                
+                ForEach(Array(soundFiles.enumerated()), id: \.offset) { index, sound in
+                    CircleSelection(selection: $soundscapeFile, title: sound.name, color: sound.color, image: Image(systemName: sound.image ?? "tortoise.fill"), id: sound.id)
+                        .onTapGesture {
+                            withAnimation{
+                                if sound.id == 0 {
+                                    withAnimation() {
+                                        soundscapeFile = sound.id
+                                    }
+                                    AudioPlayer.stopBackgroundSound()
+                                } else {
+                                    withAnimation() {
+                                        soundscapeFile = sound.id
+                                    }
+                                    AudioPlayer.playBackgroundSound(soundFile: sound.file)
+                                }
+                            }
+                        }
+                }
+            }.padding(.horizontal)
+        }
     }
 }
 
