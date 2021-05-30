@@ -53,7 +53,6 @@
 		1EF13B06265BCA4F0032F9A8 /* birds-chirping-near-the-river.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1EF13B04265BCA4F0032F9A8 /* birds-chirping-near-the-river.m4a */; };
 		1EF13B07265BCA4F0032F9A8 /* birds-in-the-jungle.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1EF13B05265BCA4F0032F9A8 /* birds-in-the-jungle.m4a */; };
 		1EF13B09265BCB220032F9A8 /* metal_gong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1EF13B08265BCB220032F9A8 /* metal_gong.wav */; };
-		1EFDEC37264D80870001EF44 /* MotionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFDEC36264D80870001EF44 /* MotionProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,7 +104,6 @@
 		1EF13B04265BCA4F0032F9A8 /* birds-chirping-near-the-river.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "birds-chirping-near-the-river.m4a"; sourceTree = "<group>"; };
 		1EF13B05265BCA4F0032F9A8 /* birds-in-the-jungle.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "birds-in-the-jungle.m4a"; sourceTree = "<group>"; };
 		1EF13B08265BCB220032F9A8 /* metal_gong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = metal_gong.wav; sourceTree = "<group>"; };
-		1EFDEC36264D80870001EF44 /* MotionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +150,6 @@
 			children = (
 				1E694436265E63B000EDDD06 /* TimeTransform.swift */,
 				1E03EE03264D73B40069E5AC /* AnimationProvider.swift */,
-				1EFDEC36264D80870001EF44 /* MotionProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -226,9 +223,9 @@
 		1EB3D9CE264D52ED00F13B3B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1EAD40E42657D6D10061DBF7 /* Sounds */,
 				1E69443C266218D100EDDD06 /* AppIcons */,
 				1E93772C265BF99500BF9FB9 /* ViewModels */,
-				1EAD40E42657D6D10061DBF7 /* Sounds */,
 				1EAD40E12657D65E0061DBF7 /* Helpers */,
 				1EAAE74726500BB10002FAE3 /* Models */,
 				1E03EE02264D73A40069E5AC /* Provider */,
@@ -360,7 +357,6 @@
 				1E93772E265BF9A300BF9FB9 /* TimerData.swift in Sources */,
 				1EC98B03265C0A9000C02323 /* Observer.swift in Sources */,
 				1EF13B03265B8D5B0032F9A8 /* SessionDetailView.swift in Sources */,
-				1EFDEC37264D80870001EF44 /* MotionProvider.swift in Sources */,
 				1E2DE5D3265145E0003593B2 /* RootView.swift in Sources */,
 				1E03EDFC264D5D660069E5AC /* DebugView.swift in Sources */,
 				1E2DE5D726514659003593B2 /* SessionsView.swift in Sources */,

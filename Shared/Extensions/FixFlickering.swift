@@ -23,17 +23,17 @@ extension ScrollView {
         GeometryReader { geometryWithSafeArea in
             GeometryReader { geometry in
                 configurator(
-                ScrollView<AnyView>(self.axes, showsIndicators: self.showsIndicators) {
-                    AnyView(
-                    VStack {
-                        self.content
+                    ScrollView<AnyView>(self.axes, showsIndicators: self.showsIndicators) {
+                        AnyView(
+                            VStack {
+                                self.content
+                            }
+                            .padding(.top, geometryWithSafeArea.safeAreaInsets.top)
+                            .padding(.bottom, geometryWithSafeArea.safeAreaInsets.bottom)
+                            .padding(.leading, geometryWithSafeArea.safeAreaInsets.leading)
+                            .padding(.trailing, geometryWithSafeArea.safeAreaInsets.trailing)
+                        )
                     }
-                    .padding(.top, geometryWithSafeArea.safeAreaInsets.top)
-                    .padding(.bottom, geometryWithSafeArea.safeAreaInsets.bottom)
-                    .padding(.leading, geometryWithSafeArea.safeAreaInsets.leading)
-                    .padding(.trailing, geometryWithSafeArea.safeAreaInsets.trailing)
-                    )
-                }
                 )
             }
             .edgesIgnoringSafeArea(.all)

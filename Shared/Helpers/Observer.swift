@@ -8,9 +8,9 @@
 import SwiftUI
 
 class Observer: ObservableObject {
-
+    
     @Published var enteredForeground = true
-
+    
     init() {
         if #available(iOS 13.0, *) {
             NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIScene.willEnterForegroundNotification, object: nil)
@@ -18,7 +18,7 @@ class Observer: ObservableObject {
             NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         }
     }
-
+    
     @objc func willEnterForeground() {
         enteredForeground.toggle()
     }

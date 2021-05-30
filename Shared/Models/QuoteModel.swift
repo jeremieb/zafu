@@ -8,9 +8,7 @@
 import Foundation
 
 struct QuoteModel: Identifiable {
-    
     var id = UUID()
     var theQuote: String
     var theAuthor: String
-    
 }

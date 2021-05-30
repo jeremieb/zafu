@@ -9,13 +9,11 @@ import Foundation
 import SwiftUI
 
 struct Sounds: Hashable {
-    
     var id: Int
     var name: String
     var file: String
     var color: Color
     var image: String?
-    
 }
 
 let soundFiles: [Sounds] = [
