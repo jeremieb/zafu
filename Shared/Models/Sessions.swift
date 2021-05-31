@@ -15,7 +15,7 @@ struct CustomSession: Identifiable {
     var color: Color
 }
 
-struct Session: Identifiable {
+struct LocalSession: Identifiable {
     var id = UUID()
     var title: String
     var duration: Int
