@@ -13,13 +13,25 @@ struct SessionsView: View {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
     }
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(entity: Sessions.entity(), sortDescriptors: [], predicate: NSPredicate(format: "title != %@"))
+
+    var sessions: FetchedResults<Sessions>
+    
+    @State var showSessionSheet = false
+    
     var body: some View {
         NavigationView{
             ScrollView {
                 VStack(alignment: .leading){
-//                    ForEach(0...10, id: \.self){ _ in
-//                        CellText()
-//                    }
+                    ForEach(sessions) { session in
+                        VStack(alignment: .leading) {
+                            Text(session.title)
+                            Text(String(session.duration))
+                                .font(.footnote)
+                        }
+                    }
                     EmptyView()
                 }
                 .frame(width: UIScreen.main.bounds.size.width)
