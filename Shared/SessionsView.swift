@@ -14,9 +14,9 @@ struct SessionsView: View {
     }
     
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataController: DataController
+    @FetchRequest(entity: Sessions.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Sessions.title, ascending: true)])
     
-    @FetchRequest(entity: Sessions.entity(), sortDescriptors: [], predicate: NSPredicate(format: "title != %@"))
-
     var sessions: FetchedResults<Sessions>
     
     @State var showSessionSheet = false
@@ -32,12 +32,20 @@ struct SessionsView: View {
                                 .font(.footnote)
                         }
                     }
-                    EmptyView()
                 }
                 .frame(width: UIScreen.main.bounds.size.width)
             }
             .navigationTitle("My Sessions")
             .background(BackgroundView())
+            .navigationBarItems(trailing: Button(action: {
+                showSessionSheet = true
+            }, label: {
+                Image(systemName: "plus.circle")
+                    .imageScale(.large)
+            }))
+            .sheet(isPresented: $showSessionSheet) {
+                NewSessionSheetView()
+            }
         }
     }
 }

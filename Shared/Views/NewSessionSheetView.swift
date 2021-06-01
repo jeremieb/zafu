@@ -9,9 +9,10 @@ import SwiftUI
 
 struct NewSessionSheetView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
-    
     @Environment (\.presentationMode) var presentationMode
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataController: DataController
     
     @State var title: String = ""
     @State var duration: Int16 = 5
@@ -47,6 +48,22 @@ struct NewSessionSheetView: View {
                                 .clipShape(Circle())
                         }
                     }
+                }
+                
+                Button(action: {
+                    guard self.title != "" else {return}
+                    guard self.icon != "" else {return}
+                    let newSession = Sessions(context: dataController.container.viewContext)
+                    newSession.title = self.title
+                    newSession.duration = Int16(self.duration)
+                    newSession.icon = self.icon
+                    newSession.color = self.color
+                    newSession.id = UUID()
+                    dataController.save()
+                    print("Order saved.")
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Add Session")
                 }
             }
             .navigationTitle("New Session")
