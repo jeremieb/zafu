@@ -14,12 +14,12 @@ struct NewSessionSheetView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var dataController: DataController
     
-    @State var title: String = ""
-    @State var duration: Int16 = 5
-    @State var iconSelected: String = "leaf.fill"
-    @State var iconID: Int = 1
-    @State var colorSelected: String = "mainBlue"
-    @State var colorID: Int = 1
+    @State private var title: String = ""
+    @State private var duration: Int16 = 5
+    @State private var iconSelected: String = "leaf.fill"
+    @State private var iconID: Int = 1
+    @State private var colorSelected: String = "mainBlue"
+    @State private var colorID: Int = 1
     
     private let allIcons: [Int: String] = [
         01: "leaf.fill",
@@ -53,7 +53,7 @@ struct NewSessionSheetView: View {
                 
                 /// Duration picker
                 Section(header: Text("Duration"), footer: Text("Choose a duration for your meditation session up to 90 minutes").fixedSize(horizontal: false, vertical: true)) {
-                    Stepper("\(duration) minutes", value: $duration, in: 5...90)
+                    Stepper("\(duration) minutes", value: $duration, in: 5...90, step: 5)
                 }
                 
                 Section(header: Text("Customization")) {
@@ -104,7 +104,7 @@ struct NewSessionSheetView: View {
                             guard self.iconSelected != "" else {return}
                             let newSession = Sessions(context: dataController.container.viewContext)
                             newSession.title = self.title
-                            newSession.duration = Int16(self.duration)
+                            newSession.duration = Int16(self.duration) * 60
                             newSession.icon = self.iconSelected
                             newSession.color = self.colorSelected
                             newSession.id = UUID()
@@ -125,7 +125,7 @@ struct NewSessionSheetView: View {
 struct IconSelection: View {
     
     @Binding var selection: Int
-    @State var isSelected: Bool = false
+    @State private var isSelected: Bool = false
     
     var icon: String
     var id: Int
@@ -156,7 +156,7 @@ struct IconSelection: View {
 struct ColorSelection: View {
     
     @Binding var selection: Int
-    @State var isSelected: Bool = false
+    @State private var isSelected: Bool = false
     
     var color: String
     var id: Int

@@ -20,8 +20,8 @@ struct MySessionsView: View {
     var sessions: FetchedResults<Sessions>
     
     /// Session detail
-    @State var showDetail = false
-    @State var selectedSession: Sessions? = nil
+    @State private var showDetail = false
+    @State private var selectedSession: Sessions? = nil
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
@@ -57,7 +57,7 @@ struct SquareCellsView: View {
         VStack {
             VStack(alignment: .leading){
                 HStack {
-                    Text(String(duration) + " min")
+                    Text(String(duration / 60) + " min")
                         .font(.caption)
                         .foregroundColor(colorScheme == .dark ? color : Color.mainPurple)
                         .padding(.horizontal, 8)

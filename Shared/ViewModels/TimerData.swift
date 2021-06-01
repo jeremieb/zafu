@@ -11,8 +11,8 @@ import SwiftUI
 class TimerData: ObservableObject {
     
     /// Timer value
-    @Published var time: Int = 0
-    @Published var selectedTime: Int = 0
+    @Published var time: Int = 0 * 60
+    @Published var selectedTime: Int = 0 * 60
     
     /// Used this to know if the sessions has started, like for animations
     @Published var sessionHasStarted = false
