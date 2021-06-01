@@ -10,24 +10,24 @@ import SwiftUI
 
 struct MySessionsView: View {
     
+    /// Timer data
     @StateObject var data = TimerData()
     
+    /// Core Data
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataController: DataController
+    @FetchRequest(entity: Sessions.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Sessions.title, ascending: true)])
+    var sessions: FetchedResults<Sessions>
+    
+    /// Session detail
     @State var showDetail = false
-    @State var selectedSession: CustomSession? = nil
-    
-    /// Placeholder sessions
-    private var mySessions = [
-        CustomSession(title: "First Session", duration: 5, icon: "flame", color: Color.mainSky),
-        CustomSession(title: "Second Session", duration: 20, icon: "leaf", color: Color.mainPink),
-        CustomSession(title: "Third Session", duration: 90, color: Color.mainOrange),
-        CustomSession(title: "Fourth Session", duration: 3600, color: Color.mainDarkPink)
-    ]
-    
+    @State var selectedSession: Sessions? = nil
+
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 10.0){
-                ForEach(mySessions){ session in
-                    SquareCellsView(title: session.title, duration: session.duration, icon: session.icon, color: session.color)
+                ForEach(sessions) { session in
+                    SquareCellsView(title: session.title, duration: Int(session.duration), icon: session.icon, color: Color(session.color))
                         .onTapGesture {
                             self.selectedSession = session
                         }
@@ -35,12 +35,13 @@ struct MySessionsView: View {
             }
             .padding(.horizontal)
             .sheet(item: self.$selectedSession){ session in
-                SessionDetailView(title: session.title, icon: session.icon ?? "drop", duration: session.duration, color: session.color).modifier(DisableModalDismiss(disabled: true)).environmentObject(data)
+                SessionDetailView(title: session.title, icon: session.icon, duration: Int(session.duration), color: Color(session.color)).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
             }
         }.padding(.top, 10)
     }
 }
 
+// MARK: - Square Cell View
 struct SquareCellsView: View {
     
     @Environment(\.colorScheme) var colorScheme
