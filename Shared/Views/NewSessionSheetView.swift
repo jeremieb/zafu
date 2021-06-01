@@ -16,11 +16,22 @@ struct NewSessionSheetView: View {
     
     @State var title: String = ""
     @State var duration: Int16 = 5
-    @State var icon: String = "leaf"
+    @State var iconSelected: String = "leaf.fill"
+    @State var iconID: Int = 1
     @State var colorSelected: String = "mainBlue"
     @State var colorID: Int = 1
     
-    let allColors: [Int: String] = [
+    private let allIcons: [Int: String] = [
+        01: "leaf.fill",
+        02: "sun.max.fill",
+        03: "wind",
+        04: "bolt.horizontal.fill",
+        05: "mouth.fill",
+        06: "hand.raised.fill",
+        07: "flame.fill"
+    ]
+    
+    private let allColors: [Int: String] = [
         01: "mainBlue",
         02: "mainOrange",
         03: "mainPink",
@@ -34,20 +45,35 @@ struct NewSessionSheetView: View {
         NavigationView{
             
             Form {
+                
+                /// Session Title
                 Section(header: Text("Session title")) {
                     TextField("Give your session a name", text: $title)
                 }
                 
+                /// Duration picker
                 Section(header: Text("Duration"), footer: Text("Choose a duration for your meditation session up to 90 minutes").fixedSize(horizontal: false, vertical: true)) {
                     Stepper("\(duration) minutes", value: $duration, in: 5...90)
                 }
                 
                 Section(header: Text("Customization")) {
+                    
+                    /// Icon Selection
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top) {
-                            Image(systemName: icon)
+                            ForEach(Array(allIcons.enumerated()), id: \.offset) { index, icon in
+                                VStack{
+                                    IconSelection(selection: $iconID, icon: icon.value, id: icon.key)
+                                        .onTapGesture {
+                                            self.iconSelected = icon.value
+                                            self.iconID = icon.key
+                                        }
+                                }
+                            }
                         }
                     }
+                    
+                    /// Color selection
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top) {
                             ForEach(Array(allColors.enumerated()), id: \.offset) { index, color in
@@ -75,11 +101,11 @@ struct NewSessionSheetView: View {
                         Spacer()
                         Button(action: {
                             guard self.title != "" else {return}
-                            guard self.icon != "" else {return}
+                            guard self.iconSelected != "" else {return}
                             let newSession = Sessions(context: dataController.container.viewContext)
                             newSession.title = self.title
                             newSession.duration = Int16(self.duration)
-                            newSession.icon = self.icon
+                            newSession.icon = self.iconSelected
                             newSession.color = self.colorSelected
                             newSession.id = UUID()
                             dataController.save()
@@ -95,6 +121,38 @@ struct NewSessionSheetView: View {
     }
 }
 
+// MARK: - ICON SELECTION VIEW
+struct IconSelection: View {
+    
+    @Binding var selection: Int
+    @State var isSelected: Bool = false
+    
+    var icon: String
+    var id: Int
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            VStack(alignment: .center){
+                Image(systemName: icon)
+                    .frame(width: 32, height: 32)
+                    .clipShape(Circle())
+            }
+            if selection == id {
+                Circle()
+                    .fill(Color.textPurple)
+                    .frame(width: 5, height: 5)
+                    .opacity(1)
+            } else {
+                Circle()
+                    .fill(Color.textPurple)
+                    .frame(width: 5, height: 5)
+                    .opacity(0)
+            }
+        }.frame(width: 40).padding(.top, 6).padding(.bottom, 2)
+    }
+}
+
+// MARK: - COLOR SELECTION VIEW
 struct ColorSelection: View {
     
     @Binding var selection: Int
@@ -123,7 +181,6 @@ struct ColorSelection: View {
             }
         }.frame(width: 40).padding(.top, 6).padding(.bottom, 2)
     }
-    
 }
 
 struct NewSessionSheetView_Previews: PreviewProvider {
