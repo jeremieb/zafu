@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SmallSessionCellView: View {
+struct MySessionsView: View {
     
     @StateObject var data = TimerData()
     
@@ -107,7 +107,7 @@ struct ListSessionCustomView_Previews: PreviewProvider {
                 .previewDisplayName("Default preview")
             ZStack {
                 BackgroundView()
-                SmallSessionCellView()
+                MySessionsView()
             }
         }
     }

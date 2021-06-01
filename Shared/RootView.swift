@@ -43,7 +43,7 @@ struct RootView: View {
                         Image("zafu.heart.fill")
                             .font(.system(size: 20))
                         Text("Sessions")
-                    }
+                    }.environmentObject(data)
             }
             .background(Color.clear)
             

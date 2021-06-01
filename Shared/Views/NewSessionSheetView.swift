@@ -60,7 +60,7 @@ struct NewSessionSheetView: View {
                     newSession.color = self.color
                     newSession.id = UUID()
                     dataController.save()
-                    print("Order saved.")
+                    print("New session saved.")
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Add Session")

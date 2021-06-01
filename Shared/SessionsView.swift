@@ -13,13 +13,16 @@ struct SessionsView: View {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
     }
     
+    @StateObject var data = TimerData()
+    
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var dataController: DataController
     @FetchRequest(entity: Sessions.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Sessions.title, ascending: true)])
     
     var sessions: FetchedResults<Sessions>
     
-    @State var showSessionSheet = false
+    @State var showSheet = false
+    @State var selectedSession: Sessions? = nil
     
     var body: some View {
         NavigationView{
@@ -27,25 +30,37 @@ struct SessionsView: View {
                 VStack(alignment: .leading){
                     ForEach(sessions) { session in
                         VStack(alignment: .leading) {
-                            Text(session.title)
-                            Text(String(session.duration))
-                                .font(.footnote)
+                            SquareCellsView(title: session.title, duration: Int(session.duration), icon: session.icon, color: Color(session.color))
+                                .onTapGesture {
+                                    self.selectedSession = session
+                                }
                         }
+                        .frame(width: UIScreen.main.bounds.size.width - 32)
+                        .padding(.horizontal)
+                        
+                    }
+                    .sheet(item: self.$selectedSession){ session in
+                        SessionDetailView(title: session.title, icon: session.icon, duration: Int(session.duration), color: Color(session.color)).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
+                    }
+                    Button(action: {
+                        dataController.deleteAll()
+                    }) {
+                        Text("Erase all?")
+                    }.padding(.top)
+                    .sheet(isPresented: $showSheet) {
+                        NewSessionSheetView()
                     }
                 }
-                .frame(width: UIScreen.main.bounds.size.width)
+                
             }
             .navigationTitle("My Sessions")
             .background(BackgroundView())
             .navigationBarItems(trailing: Button(action: {
-                showSessionSheet = true
+                showSheet = true
             }, label: {
                 Image(systemName: "plus.circle")
                     .imageScale(.large)
             }))
-            .sheet(isPresented: $showSessionSheet) {
-                NewSessionSheetView()
-            }
         }
     }
 }

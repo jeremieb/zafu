@@ -17,7 +17,7 @@
 		1E2DE5D52651464C003593B2 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2DE5D42651464C003593B2 /* MeditationView.swift */; };
 		1E2DE5D726514659003593B2 /* SessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2DE5D626514659003593B2 /* SessionsView.swift */; };
 		1E3E79002664BD9B00A0EE65 /* Zafu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E78FE2664BD9B00A0EE65 /* Zafu.xcdatamodeld */; };
-		1E3E79022664BEFC00A0EE65 /* PersistanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E79012664BEFC00A0EE65 /* PersistanceController.swift */; };
+		1E3E79022664BEFC00A0EE65 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E79012664BEFC00A0EE65 /* DataController.swift */; };
 		1E3E79042664C00600A0EE65 /* SessionsCoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E79032664C00600A0EE65 /* SessionsCoreDataClass.swift */; };
 		1E3E79062664C02800A0EE65 /* SessionsCoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E79052664C02800A0EE65 /* SessionsCoreDataProperties.swift */; };
 		1E3E79082664C67A00A0EE65 /* NewSessionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E79072664C67A00A0EE65 /* NewSessionSheetView.swift */; };
@@ -40,7 +40,7 @@
 		1E93772B265BF36C00BF9FB9 /* AirPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93772A265BF36C00BF9FB9 /* AirPlayView.swift */; };
 		1E93772E265BF9A300BF9FB9 /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93772D265BF9A300BF9FB9 /* TimerData.swift */; };
 		1E937730265C002E00BF9FB9 /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93772F265C002E00BF9FB9 /* QuoteModel.swift */; };
-		1EAAE746265001680002FAE3 /* SmallSessionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE745265001680002FAE3 /* SmallSessionCellView.swift */; };
+		1EAAE746265001680002FAE3 /* MySessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE745265001680002FAE3 /* MySessionsView.swift */; };
 		1EAAE74926500BC30002FAE3 /* Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE74826500BC30002FAE3 /* Sessions.swift */; };
 		1EAAE74B26500C1F0002FAE3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */; };
 		1EAD40E32657D6700061DBF7 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD40E22657D6700061DBF7 /* AudioPlayer.swift */; };
@@ -71,7 +71,7 @@
 		1E2DE5D42651464C003593B2 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		1E2DE5D626514659003593B2 /* SessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsView.swift; sourceTree = "<group>"; };
 		1E3E78FF2664BD9B00A0EE65 /* Zafu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Zafu.xcdatamodel; sourceTree = "<group>"; };
-		1E3E79012664BEFC00A0EE65 /* PersistanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceController.swift; sourceTree = "<group>"; };
+		1E3E79012664BEFC00A0EE65 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		1E3E79032664C00600A0EE65 /* SessionsCoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsCoreDataClass.swift; sourceTree = "<group>"; };
 		1E3E79052664C02800A0EE65 /* SessionsCoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsCoreDataProperties.swift; sourceTree = "<group>"; };
 		1E3E79072664C67A00A0EE65 /* NewSessionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSessionSheetView.swift; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		1E93772A265BF36C00BF9FB9 /* AirPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayView.swift; sourceTree = "<group>"; };
 		1E93772D265BF9A300BF9FB9 /* TimerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerData.swift; sourceTree = "<group>"; };
 		1E93772F265C002E00BF9FB9 /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
-		1EAAE745265001680002FAE3 /* SmallSessionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSessionCellView.swift; sourceTree = "<group>"; };
+		1EAAE745265001680002FAE3 /* MySessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySessionsView.swift; sourceTree = "<group>"; };
 		1EAAE74826500BC30002FAE3 /* Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sessions.swift; sourceTree = "<group>"; };
 		1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		1EAD40E22657D6700061DBF7 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 			children = (
 				1E54D035265E22B000A11588 /* GradientsViews.swift */,
 				1E03EDFD264D62C60069E5AC /* BackgroundView.swift */,
-				1EAAE745265001680002FAE3 /* SmallSessionCellView.swift */,
+				1EAAE745265001680002FAE3 /* MySessionsView.swift */,
 				1E2DE5D0265141B3003593B2 /* LargeSessionCellView.swift */,
 				1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */,
 				1EAAE74A26500C1F0002FAE3 /* SectionHeaderView.swift */,
@@ -209,7 +209,7 @@
 				1E93772A265BF36C00BF9FB9 /* AirPlayView.swift */,
 				1EB4A79A265AB51700B7D3BD /* Quotes.swift */,
 				1EC98B02265C0A9000C02323 /* Observer.swift */,
-				1E3E79012664BEFC00A0EE65 /* PersistanceController.swift */,
+				1E3E79012664BEFC00A0EE65 /* DataController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -384,7 +384,7 @@
 				1E3E79062664C02800A0EE65 /* SessionsCoreDataProperties.swift in Sources */,
 				1EB3D9E4264D52EE00F13B3B /* MainView.swift in Sources */,
 				1E03EDFE264D62C60069E5AC /* BackgroundView.swift in Sources */,
-				1EAAE746265001680002FAE3 /* SmallSessionCellView.swift in Sources */,
+				1EAAE746265001680002FAE3 /* MySessionsView.swift in Sources */,
 				1E69443B26620FE600EDDD06 /* FixFlickering.swift in Sources */,
 				1E3E79082664C67A00A0EE65 /* NewSessionSheetView.swift in Sources */,
 				1EC37662264E754300E716B9 /* NavigationBarColor.swift in Sources */,
@@ -395,7 +395,7 @@
 				1E93772B265BF36C00BF9FB9 /* AirPlayView.swift in Sources */,
 				1E6944392661426C00EDDD06 /* Sounds.swift in Sources */,
 				1E2DE5CF2650E96A003593B2 /* DisableModalDismiss.swift in Sources */,
-				1E3E79022664BEFC00A0EE65 /* PersistanceController.swift in Sources */,
+				1E3E79022664BEFC00A0EE65 /* DataController.swift in Sources */,
 				1E937730265C002E00BF9FB9 /* QuoteModel.swift in Sources */,
 				1E2DE5D52651464C003593B2 /* MeditationView.swift in Sources */,
 				1E03EE04264D73B40069E5AC /* AnimationProvider.swift in Sources */,
