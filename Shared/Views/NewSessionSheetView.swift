@@ -20,7 +20,15 @@ struct NewSessionSheetView: View {
     @State var colorSelected: String = "mainBlue"
     @State var colorID: Int = 1
     
-    let allColors: [Int: String] = [01:"mainBlue", 02:"mainOrange", 03:"mainPink", 04:"mainDarkPink"]
+    let allColors: [Int: String] = [
+        01: "mainBlue",
+        02: "mainOrange",
+        03: "mainPink",
+        04: "mainDarkPink",
+        05: "mainSky",
+        06: "mainLightBlue",
+        07: "mainPurple"
+    ]
     
     var body: some View {
         NavigationView{
