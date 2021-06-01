@@ -6,25 +6,18 @@
 //
 
 import SwiftUI
-import CoreMotion
 
 struct DebugView: View {
-    
-    @ObservedObject var motion: MotionProvider
 
     var body: some View {
 
-        HStack(spacing: 20.0){
-            Text("🔥 X: \(String(format: "%.2f", motion.x))")
-            Text("🔥 Y: \(String(format: "%.2f", motion.y))")
-            Text("🔥 Z: \(String(format: "%.2f", motion.z))")
-        }.padding()
+        EmptyView()
     }
 }
 
 struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
-        DebugView(motion: MotionProvider())
+        DebugView()
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
             .previewDisplayName("Default preview")

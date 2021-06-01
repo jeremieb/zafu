@@ -26,17 +26,17 @@ struct StatsMainView: View {
         HStack(alignment: .center, spacing: 8){
             
             /// Streak
-            StatItem(number: streak, unit: streakUnit)
+            StatItem(icon: "calendar", number: streak, unit: streakUnit)
             
             Divider().background(Color.elementSecondary).opacity(0.6)
             
             /// Total hours
-            StatItem(number: total, unit: totalUnit)
+            StatItem(icon: "hourglass", number: total, unit: totalUnit)
             
             Divider().background(Color.elementSecondary).opacity(0.6)
             
             /// Average
-            StatItem(number: average, unit: averageUnit)
+            StatItem(icon: "stopwatch", number: average, unit: averageUnit)
         }
         .frame(width: UIScreen.main.bounds.width - 32, height: 60)
         .background(Color(UIColor.systemBackground).opacity(0.4))
@@ -45,15 +45,16 @@ struct StatsMainView: View {
     }
 }
 
+/// MARK: - Stat item view
 struct StatItem: View {
     
+    var icon: String
     var number: String
     var unit: String
     
     var body: some View{
         HStack(spacing: 5.0){
-            Image(systemName: "stopwatch")
-                .foregroundColor(.textPurple)
+            Image(systemName: icon)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
             Text(number)
@@ -66,7 +67,7 @@ struct StatItem: View {
                 .offset(x: -2, y: 4)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
-        }.frame(width: (UIScreen.main.bounds.size.width - 72) / 3, alignment: .center)
+        }.frame(width: (UIScreen.main.bounds.size.width - 72) / 3, alignment: .center).foregroundColor(.mainPurple)
     }
 }
 

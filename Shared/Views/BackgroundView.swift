@@ -8,87 +8,56 @@
 import SwiftUI
 
 struct BackgroundView: View {
+    
+    let colors: [Color] = [
+        Color.mainOrange,
+        Color.mainPink,
+        Color.mainBlue,
+        Color.mainDarkPink,
+        Color.mainLightBlue
+    ]
+    
     var body: some View {
-        Circles()
+        ZStack {
+            OneCircle(color: colors.randomElement() ?? Color.mainBlue)
+            OneCircle(color: colors.randomElement() ?? Color.mainBlue)
+        }.ignoresSafeArea()
     }
 }
 
-struct Shapes: View {
+struct OneCircle: View {
     
-    @State var animated = false
     @StateObject var animationProvider = AnimationProvider()
-    @ObservedObject var observer = Observer()
     
-    /// Used to define circle position
-    let alignment: Alignment
+    @Environment(\.colorScheme) var colorScheme
     
     /// User to define circle color
     let color: Color
     
-    /// Rotation
-    let rotation: Double = Double(.random(in: 0...90))
-    let rotationTurn: Double
-    
-    /// Animation Duration
-    let duration: Double
-    
-    /// Geometry proxy
-    let proxy: GeometryProxy
-    
-    /// Blur
-    let blur: CGFloat
-    
+    /// Alignment
+    var alignment: [Alignment] {
+        return [
+            .topLeading,
+            .bottomLeading,
+            .topTrailing,
+            .bottomTrailing,
+            .leading,
+            .trailing
+        ]
+    }
+
     var body: some View {
         ZStack {
             Circle()
                 .fill(color)
-                .frame(height: proxy.size.height / animationProvider.frameHeightRatio)
+                .frame(width: UIScreen.main.bounds.size.width / 1.4, height: UIScreen.main.bounds.size.height / animationProvider.frameHeightRatio)
                 .offset(animationProvider.offset)
-                .rotationEffect(.init(degrees: animated ? rotation : rotation + rotationTurn ))
-                .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false))
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
-                .opacity(0.9)
-                .blur(radius: blur)
-        }
-        
-        /// Replacing on appear
-        .onReceive(self.observer.$enteredForeground) { _ in
-            withAnimation {
-                animated = true
-            }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment.randomElement() ?? .topTrailing)
+                .opacity(colorScheme == .dark ? 0.3 : 0.950)
+                .blur(radius: 120)
         }
     }
-}
 
-struct Circles: View {
-    
-    let blur: CGFloat = 120
-    
-    var body: some View {
-        GeometryReader { proxy in
-            ZStack{
-                // Blue
-                Shapes(
-                    alignment: .topTrailing,
-                    color: Color.backgroundBlue,
-                    rotationTurn: -180,
-                    duration: 20,
-                    proxy: proxy,
-                    blur: blur
-                ).opacity(0.4)
-                
-                // Pink
-                Shapes(
-                    alignment: .topLeading,
-                    color: Color.backgroundPink,
-                    rotationTurn: 360,
-                    duration: 30,
-                    proxy: proxy,
-                    blur: blur
-                ).opacity(0.4)
-            }.ignoresSafeArea()
-        }
-    }
 }
 
 struct BackgroundView_Previews: PreviewProvider {

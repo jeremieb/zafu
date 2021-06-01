@@ -10,13 +10,24 @@ import SwiftUI
 @main
 struct ZafuApp: App {
     
+//    let persistenceController = PersistenceController.shared
+    
     @StateObject var data = TimerData()
+    @StateObject var dataController = DataController()
     
     @Environment(\.scenePhase) var scene
     
+    init() {
+        let dataController = DataController()
+        _dataController = StateObject(wrappedValue: dataController)
+    }
+    
     var body: some Scene {
         WindowGroup {
-            RootView().environmentObject(data)
+            RootView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environmentObject(data)
+                .environmentObject(dataController)
         }.onChange(of: scene) { (newScene) in
             #if !targetEnvironment(simulator)
             

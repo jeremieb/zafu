@@ -32,7 +32,7 @@ struct HeaderMainView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                 }
-            }
+            }.foregroundColor(.mainPurple)
             Spacer()
             if isHome {
                 Button(action: {
@@ -40,7 +40,7 @@ struct HeaderMainView: View {
                 }) {
                     Image(systemName: "person.crop.circle")
                         .font(.largeTitle)
-                        .foregroundColor(.elementSecondary)
+                        .foregroundColor(.mainPurple)
                 }.padding(.top, 5)
             }
         }

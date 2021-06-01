@@ -9,6 +9,15 @@ import SwiftUI
 
 extension Color {
     
+    /// Main colors
+    static let mainPurple = Color("mainPurple")
+    static let mainSky = Color("mainSky")
+    static let mainBlue = Color("mainBlue")
+    static let mainLightBlue = Color("mainLightBlue")
+    static let mainPink = Color("mainPink")
+    static let mainDarkPink = Color("mainDarkPink")
+    static let mainOrange = Color("mainOrange")
+    
     /// Background colors
     static let backgroundMain = Color("backgroundMain")
     static let backgroundBlue = Color("backgroundBlue")

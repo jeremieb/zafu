@@ -8,26 +8,26 @@
 
 import SwiftUI
 
-struct SmallSessionCellView: View {
+struct MySessionsView: View {
     
+    /// Timer data
     @StateObject var data = TimerData()
     
+    /// Core Data
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataController: DataController
+    @FetchRequest(entity: Sessions.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Sessions.title, ascending: true)])
+    var sessions: FetchedResults<Sessions>
+    
+    /// Session detail
     @State var showDetail = false
-    @State var selectedSession: CustomSession? = nil
-    
-    /// Placeholder sessions
-    private var mySessions = [
-        CustomSession(title: "First Session", duration: 5, icon: "flame"),
-        CustomSession(title: "Second Session", duration: 20, icon: "leaf"),
-        CustomSession(title: "Third Session", duration: 90),
-        CustomSession(title: "Fourth Session", duration: 3600)
-    ]
-    
+    @State var selectedSession: Sessions? = nil
+
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 10.0){
-                ForEach(mySessions){ session in
-                    SquareCellsView(title: session.title, duration: session.duration, icon: session.icon)
+                ForEach(sessions) { session in
+                    SquareCellsView(title: session.title, duration: Int(session.duration), icon: session.icon, color: Color(session.color))
                         .onTapGesture {
                             self.selectedSession = session
                         }
@@ -35,17 +35,21 @@ struct SmallSessionCellView: View {
             }
             .padding(.horizontal)
             .sheet(item: self.$selectedSession){ session in
-                SessionDetailView(title: session.title, icon: session.icon ?? "drop", duration: session.duration).modifier(DisableModalDismiss(disabled: true)).environmentObject(data)
+                SessionDetailView(title: session.title, icon: session.icon, duration: Int(session.duration), color: Color(session.color)).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
             }
         }.padding(.top, 10)
     }
 }
 
+// MARK: - Square Cell View
 struct SquareCellsView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
     
     var title = "Session title"
     var duration = 5
     var icon: String?
+    var color: Color
   
     var body: some View {
         
@@ -55,12 +59,12 @@ struct SquareCellsView: View {
                 HStack {
                     Text(String(duration) + " min")
                         .font(.caption)
-                        .foregroundColor(.textPurple)
+                        .foregroundColor(colorScheme == .dark ? color : Color.mainPurple)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.textPurple, lineWidth: 1)
+                                .stroke(colorScheme == .dark ? color : Color.mainPurple, lineWidth: 1)
                         )
                         .lineLimit(1)
                     Spacer()
@@ -69,7 +73,7 @@ struct SquareCellsView: View {
                     if ((icon?.isEmpty) != nil) {
                         Image(systemName: icon ?? "")
                             .font(.system(size: 20))
-                            .foregroundColor(Color.textPurple)
+                            .foregroundColor(colorScheme == .dark ? color : Color.mainPurple)
                             .opacity(0.5)
                     }
                 }
@@ -77,14 +81,14 @@ struct SquareCellsView: View {
                 Text(title)
                     .font(.title2)
                     .fontWeight(.bold)
-                    .foregroundColor(.textPurple)
+                    .foregroundColor(colorScheme == .dark ? color : Color.mainPurple)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
             }
             .padding()
             Spacer()
         }
-        .background(Color.topSession.opacity(0.4))
+        .background(color.opacity(colorScheme == .dark ? 0.1 : 0.8))
         .frame(width: 150, height: 150)
         .cornerRadius(20)
     }
@@ -93,18 +97,18 @@ struct SquareCellsView: View {
 struct ListSessionCustomView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SquareCellsView(title: "Test", duration: 5, icon: "leaf")
+            SquareCellsView(title: "Test", duration: 5, icon: "leaf", color: Color.mainOrange)
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .padding()
                 .previewDisplayName("Default preview")
-            SquareCellsView()
+            SquareCellsView(color: Color.mainOrange)
                 .preferredColorScheme(.dark)
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .padding()
                 .previewDisplayName("Default preview")
             ZStack {
                 BackgroundView()
-                SmallSessionCellView()
+                MySessionsView()
             }
         }
     }

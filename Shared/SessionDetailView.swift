@@ -11,18 +11,21 @@ struct SessionDetailView: View {
     
     @EnvironmentObject var data: TimerData
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var isAnimated = false
     
     var title: String = "Session Title"
     var icon: String = "drop"
     var duration: Int = 5
+    var color: Color = Color.topSession
 
     var body: some View {
         ZStack{
             
             VStack {
                 TopCurve()
-                    .fill(Color.topSession)
+                    .fill(color.opacity(colorScheme == .dark ? 0.1 : 0.2))
                     .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height / 2.5)
                 Spacer()
             }.ignoresSafeArea()
@@ -32,7 +35,7 @@ struct SessionDetailView: View {
                 Text("\(Image(systemName: icon))")
                     .font(.system(size: 140))
                     .fontWeight(.ultraLight)
-                    .foregroundColor(.textPurple)
+                    .foregroundColor(.mainPurple)
                     .opacity(0.2)
                 Spacer()
             }
@@ -43,11 +46,11 @@ struct SessionDetailView: View {
                 Text(title)
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(.textPurple)
+                    .foregroundColor(.mainPurple)
                     .padding(.top, 100)
                     .lineLimit(4)
                 
-                QuoteView().padding(.top, 20).foregroundColor(.textPurple)
+                QuoteView().padding(.top, 20).foregroundColor(.mainPurple)
                 
                 Spacer().frame(height: 120)
                 
@@ -63,7 +66,7 @@ struct SessionDetailView: View {
                         } else {
                             Text("hours remain").fontWeight(.semibold)
                         }
-                    }.foregroundColor(.textPurple)
+                    }.foregroundColor(.mainPurple)
                 } else {
                     /// Duration label
                     VStack {
@@ -77,7 +80,7 @@ struct SessionDetailView: View {
                         } else {
                             Text("hours").fontWeight(.semibold)
                         }
-                    }.foregroundColor(.textPurple)
+                    }.foregroundColor(.mainPurple)
                 }
                 
                 ZStack {
@@ -152,7 +155,6 @@ struct CircularGradientButton: View {
             
         }.rotationEffect(Angle(degrees: -20))
     }
-    
 }
 
 struct SessionTopTools: View {
@@ -187,8 +189,7 @@ struct SessionTopTools: View {
         .padding(.horizontal)
         .padding(.vertical, 20)
         .frame(width: UIScreen.main.bounds.size.width)
-    }
-    
+    } 
 }
 
 struct TopCurve: Shape {

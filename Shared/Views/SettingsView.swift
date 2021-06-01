@@ -9,10 +9,13 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    public init(isPresented: Binding<Bool>){
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
+        self._isPresented = isPresented
+    }
+    
     @Binding var isPresented: Bool
     
-    @AppStorage("soundscapePlay", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapePlay: Bool = true
-        
     var body: some View {
         
         NavigationView {
@@ -20,54 +23,18 @@ struct SettingsView: View {
                 VStack(alignment: .leading) {
                     
                     /// Background soundscape
-                    Group{
-                        SectionHeaderView(title: "Soundscape")
-                        
-                        Text("Select a soundscape of your choice to play along with your meditation and after the session is done.")
-                            .font(.footnote)
-                            .foregroundColor(Color("elementSecondary"))
-                            .fixedSize(horizontal: false, vertical: true)
-                            .lineLimit(6)
-                            .padding(.horizontal)
-                            .padding(.bottom, 20)
-
-                        ScrollView(.horizontal) {
-                            HStack(alignment: .top, spacing: 20.0){
-                                
-                                VStack(alignment: .center) {
-                                    CircleSelection(title: "Sound one")
-                                }
-                                
-                                VStack(alignment: .center) {
-                                    CircleSelection(title: "Sound two", color: .backgroundGreen)
-                                }
-                                
-                                /// NO SOUND
-                                VStack(alignment: .center) {
-                                    CircleSelection(title: "No Sound", color: Color(UIColor.systemGray2), image: Image(systemName: "speaker.slash.fill"))
-                                        .onTapGesture {
-                                            if soundscapePlay {
-                                                withAnimation(){
-                                                    soundscapePlay = false
-                                                }
-                                                AudioPlayer.stopBackgroundSound()
-                                            } else {
-                                                withAnimation(){
-                                                    soundscapePlay = true
-                                                }
-                                                AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
-                                            }
-                                        }
-                                    Circle()
-                                        .fill(Color.textPurple)
-                                        .frame(width: 5, height: 5)
-                                        .opacity(soundscapePlay ? 0 : 1)
-                                }
-                            }.padding(.horizontal)
-                        }
-
-                    }/// end background soundscape
+                    Group {
+                        SectionHeaderView(title: "Soundscape").padding(.top,30)
+                        SoundSelection()
+                    }
                     
+                    Divider().padding(.vertical, 20)
+                    
+                    /// Alternat app icons
+                    Group {
+                        SectionHeaderView(title: "Alternate app icons")
+                        AlternateAppIcons()
+                    }
                     
                     Divider().padding(.vertical, 30)
                     
@@ -75,6 +42,7 @@ struct SettingsView: View {
                     FooterView().padding(.bottom, 50)
                 }
             }
+            .fixFlickering() /// Fixing the glitch for NavigationView with ScrollView
             .navigationTitle("Settings")
             .toolbar(content: {
                 Button(action: {
@@ -85,28 +53,154 @@ struct SettingsView: View {
                         .frame(width: 44, height: 44)
                 }
             })
+            .background(BackgroundView())
         }
     }
 }
 
-struct CircleSelection: View {
+// MARK: - AlternateAppIcons View
+struct AlternateAppIcons: View {
     
-    var title: String = "Button title"
-    var color: Color = Color(UIColor.systemPink)
-    var image: Image = Image(systemName: "tortoise.fill")
-    
-    var body: some View{
-        VStack(alignment: .center){
-            color
-                .frame(width: 52, height: 52)
-                .clipShape(Circle())
-                .overlay(image)
-                .foregroundColor(Color(UIColor.systemBackground))
-            Text(title)
-                .font(.footnote)
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false){
+            HStack(alignment: .top, spacing: 20) {
+                
+                // Default
+                VStack(alignment: .center) {
+                    Image("default")
+                        .scaledToFill()
+                        .frame(width: 52, height: 52)
+                    Text("Default")
+                        .font(.footnote)
+                        .foregroundColor(.mainPurple)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(2)
+                }.onTapGesture {
+                    UIApplication.shared.setAlternateIconName(nil)
+                }.frame(width: 80)
+                
+                // Default Black
+                AppIconItem(title: "Black", image: "default-black")
+                
+                // Pride
+                AppIconItem(title: "Pride", image: "pride")
+                
+                // Trans
+                AppIconItem(title: "Trans Pride", image: "pride-trans")
+                
+            }.padding(.horizontal).padding(.top, 20)
         }
     }
 }
+
+// MARK: - AppIconItem View
+struct AppIconItem: View {
+    
+    var title: String
+    var image: String
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            Image(image)
+                .scaledToFill()
+                .frame(width: 52, height: 52)
+            Text(title)
+                .font(.footnote)
+                .foregroundColor(.mainPurple)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(2)
+        }.onTapGesture {
+            UIApplication.shared.setAlternateIconName(image)
+        }.frame(width: 80)
+    }
+}
+
+// MARK: - Sound Selection View
+struct SoundSelection: View {
+    
+    @AppStorage("soundscapeFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapeFile: Int = 1
+    
+    var body: some View {
+        Text("Select a soundscape of your choice to play along with your meditation and after the session is done.")
+            .font(.footnote)
+            .foregroundColor(Color.mainPurple)
+            .fixedSize(horizontal: false, vertical: true)
+            .lineLimit(6)
+            .padding(.horizontal)
+            .padding(.bottom, 20)
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: 20.0){
+                
+                ForEach(Array(soundFiles.enumerated()), id: \.offset) { index, sound in
+                    CircleSelection(selection: $soundscapeFile, title: sound.name, color: sound.color, image: Image(systemName: sound.image ?? "tortoise.fill"), id: sound.id)
+                        .onTapGesture {
+                            withAnimation{
+                                if sound.id == 0 {
+                                    withAnimation() {
+                                        soundscapeFile = sound.id
+                                    }
+                                    AudioPlayer.stopBackgroundSound()
+                                } else {
+                                    withAnimation() {
+                                        soundscapeFile = sound.id
+                                    }
+                                    AudioPlayer.playBackgroundSound(soundFile: sound.file)
+                                }
+                            }
+                        }
+                }
+            }.padding(.horizontal)
+        }
+    }
+}
+
+
+// MARK: - CircleSelection View
+struct CircleSelection: View {
+    
+    @Binding var selection: Int
+    @State var selected: Bool = false
+    
+    var title: String = "Button title"
+    var color: Color
+    var image: Image = Image(systemName: "tortoise.fill")
+    var id: Int
+    
+    var body: some View{
+        VStack(alignment: .center) {
+            VStack(alignment: .center){
+                color
+                    .frame(width: 52, height: 52)
+                    .clipShape(Circle())
+                    .overlay(image)
+                    .foregroundColor(Color(UIColor.systemBackground))
+                Text(title)
+                    .font(.footnote)
+                    .foregroundColor(.mainPurple)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(2)
+                
+            }
+            if selection == id {
+                Circle()
+                    .fill(Color.textPurple)
+                    .frame(width: 5, height: 5)
+                    .opacity(1)
+            } else {
+                Circle()
+                    .fill(Color.textPurple)
+                    .frame(width: 5, height: 5)
+                    .opacity(0)
+            }
+        }.frame(width: 80)
+    }
+}
+
+// MARK: - Footer View
 
 struct FooterView: View {
     
@@ -117,7 +211,7 @@ struct FooterView: View {
         VStack(alignment: .center){
             Text("Zafu v\(versionNumber as! String) (\(buildNumber as! String))")
                 .font(.footnote)
-                .foregroundColor(.elementSecondary)
+                .foregroundColor(.mainPurple)
                 .multilineTextAlignment(.center)
         }.frame(width: UIScreen.main.bounds.size.width)
     }

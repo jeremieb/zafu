@@ -16,6 +16,7 @@ struct SectionHeaderView: View {
             Text(title)
                 .font(.title3)
                 .fontWeight(.bold)
+                .foregroundColor(.mainPurple)
                 .multilineTextAlignment(.leading)
                 .lineLimit(1)
                 .padding()

@@ -12,7 +12,7 @@ struct RootView: View {
     @StateObject var data = TimerData()
     @ObservedObject var observer = Observer()
     
-    @AppStorage("soundscapePlay", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapePlay: Bool = true
+    @AppStorage("soundscapeFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var soundscapeFile: Int = 1
         
     init() {
         UITabBar.appearance().shadowImage = UIImage()
@@ -34,24 +34,25 @@ struct RootView: View {
                     }.background(BackgroundView()).environmentObject(data)
                 MeditationView()
                     .tabItem {
-                        Image("zafu_seal")
+                        Image("zafu.seal.fill")
                             .font(.system(size: 22))
                         Text("Meditation")
                     }
                 SessionsView()
                     .tabItem {
-                        Image("zafu_heart")
+                        Image("zafu.heart.fill")
                             .font(.system(size: 20))
                         Text("Sessions")
-                    }.background(BackgroundView())
-                
+                    }.environmentObject(data)
             }
             .background(Color.clear)
             
             /// Replacing on appear
             .onReceive(self.observer.$enteredForeground) { _ in
-                if soundscapePlay {
+                if soundscapeFile == 1 {
                     AudioPlayer.playBackgroundSound(soundFile: "birds-in-the-jungle.m4a")
+                } else if soundscapeFile == 2 {
+                    AudioPlayer.playBackgroundSound(soundFile: "birds-chirping-near-the-river.m4a")
                 }
             }
         }
