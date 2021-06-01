@@ -29,29 +29,33 @@ struct SessionsView: View {
     
     /// List
     let columns = [
-        GridItem(.fixed(UIScreen.main.bounds.size.width / 2)),
-        GridItem(.fixed(UIScreen.main.bounds.size.width / 2))
+        GridItem(.fixed(UIScreen.main.bounds.size.width / 2.3)),
+        GridItem(.fixed(UIScreen.main.bounds.size.width / 2.3))
     ]
     
     var body: some View {
         NavigationView{
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 10){
+                LazyVGrid(columns: columns, spacing: 30){
                     ForEach(sessions) { session in
                         SquareCellsView(title: session.title, duration: Int(session.duration), icon: session.icon, color: Color(session.color))
                             .onTapGesture {
                                 self.selectedSession = session
                             }
                     }
-                }
+                }.padding(.top, 30)
                 .sheet(item: self.$selectedSession){ session in
                     SessionDetailView(title: session.title, icon: session.icon, duration: Int(session.duration), color: Color(session.color)).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
                 }
+                
+                /// DELETE ALL button
                 Button(action: {
-                    dataController.deleteAll()
+                    withAnimation {
+                        dataController.deleteAll()
+                    }
                 }) {
-                    Text("Erase all?")
-                }.padding(.top)
+                    Label("Erase all?", systemImage: "trash").padding().frame(width: UIScreen.main.bounds.size.width - 56).background(Color(UIColor.systemBackground).colorInvert().opacity(0.15)).cornerRadius(10).foregroundColor(Color(UIColor.systemRed))
+                }.padding(.top, 120)
                 .sheet(isPresented: $showSheet) {
                     NewSessionSheetView()
                 }

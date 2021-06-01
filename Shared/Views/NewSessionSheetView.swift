@@ -17,11 +17,10 @@ struct NewSessionSheetView: View {
     @State var title: String = ""
     @State var duration: Int16 = 5
     @State var icon: String = "leaf"
-    @State var color: String = "mainBlue"
+    @State var colorSelected: String = "mainBlue"
+    @State var colorID: Int = 1
     
-    var computedColor: Color {
-        return Color(color)
-    }
+    let allColors: [Int: String] = [01:"mainBlue", 02:"mainOrange", 03:"mainPink", 04:"mainDarkPink"]
     
     var body: some View {
         NavigationView{
@@ -43,9 +42,15 @@ struct NewSessionSheetView: View {
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top) {
-                            computedColor
-                                .frame(width: 32)
-                                .clipShape(Circle())
+                            ForEach(Array(allColors.enumerated()), id: \.offset) { index, color in
+                                VStack{
+                                    ColorSelection(selection: $colorID, color: color.value, id: color.key)
+                                        .onTapGesture {
+                                            self.colorSelected = color.value
+                                            self.colorID = color.key
+                                        }
+                                }
+                            }
                         }
                     }
                 }
@@ -67,7 +72,7 @@ struct NewSessionSheetView: View {
                             newSession.title = self.title
                             newSession.duration = Int16(self.duration)
                             newSession.icon = self.icon
-                            newSession.color = self.color
+                            newSession.color = self.colorSelected
                             newSession.id = UUID()
                             dataController.save()
                             print("New session saved.")
@@ -81,6 +86,38 @@ struct NewSessionSheetView: View {
         }
     }
 }
+
+struct ColorSelection: View {
+    
+    @Binding var selection: Int
+    @State var isSelected: Bool = false
+    
+    var color: String
+    var id: Int
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            VStack(alignment: .center){
+                Color(color)
+                    .frame(width: 32, height: 32)
+                    .clipShape(Circle())
+            }
+            if selection == id {
+                Circle()
+                    .fill(Color.textPurple)
+                    .frame(width: 5, height: 5)
+                    .opacity(1)
+            } else {
+                Circle()
+                    .fill(Color.textPurple)
+                    .frame(width: 5, height: 5)
+                    .opacity(0)
+            }
+        }.frame(width: 40).padding(.top, 6).padding(.bottom, 2)
+    }
+    
+}
+
 struct NewSessionSheetView_Previews: PreviewProvider {
     static var previews: some View {
         NewSessionSheetView()
