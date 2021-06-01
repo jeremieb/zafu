@@ -49,28 +49,38 @@ struct NewSessionSheetView: View {
                         }
                     }
                 }
-                
-                Button(action: {
-                    guard self.title != "" else {return}
-                    guard self.icon != "" else {return}
-                    let newSession = Sessions(context: dataController.container.viewContext)
-                    newSession.title = self.title
-                    newSession.duration = Int16(self.duration)
-                    newSession.icon = self.icon
-                    newSession.color = self.color
-                    newSession.id = UUID()
-                    dataController.save()
-                    print("New session saved.")
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Add Session")
-                }
             }
             .navigationTitle("New Session")
+            .toolbar(content: {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            Text("Cancel").fontWeight(.regular)
+                        })
+                        Spacer()
+                        Button(action: {
+                            guard self.title != "" else {return}
+                            guard self.icon != "" else {return}
+                            let newSession = Sessions(context: dataController.container.viewContext)
+                            newSession.title = self.title
+                            newSession.duration = Int16(self.duration)
+                            newSession.icon = self.icon
+                            newSession.color = self.color
+                            newSession.id = UUID()
+                            dataController.save()
+                            print("New session saved.")
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("Add Session").fontWeight(.semibold)
+                        }
+                    }.frame(width: UIScreen.main.bounds.size.width - 32).padding(.horizontal)
+                }
+            })
         }
     }
 }
-
 struct NewSessionSheetView_Previews: PreviewProvider {
     static var previews: some View {
         NewSessionSheetView()

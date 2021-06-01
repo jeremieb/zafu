@@ -13,54 +13,57 @@ struct SessionsView: View {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
     }
     
+    /// Timer running or not
     @StateObject var data = TimerData()
     
+    /// Core Data
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var dataController: DataController
     @FetchRequest(entity: Sessions.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Sessions.title, ascending: true)])
     
     var sessions: FetchedResults<Sessions>
     
+    /// Show modals
     @State var showSheet = false
     @State var selectedSession: Sessions? = nil
+    
+    /// List
+    let columns = [
+        GridItem(.fixed(UIScreen.main.bounds.size.width / 2)),
+        GridItem(.fixed(UIScreen.main.bounds.size.width / 2))
+    ]
     
     var body: some View {
         NavigationView{
             ScrollView {
-                VStack(alignment: .leading){
+                LazyVGrid(columns: columns, spacing: 10){
                     ForEach(sessions) { session in
-                        VStack(alignment: .leading) {
-                            SquareCellsView(title: session.title, duration: Int(session.duration), icon: session.icon, color: Color(session.color))
-                                .onTapGesture {
-                                    self.selectedSession = session
-                                }
-                        }
-                        .frame(width: UIScreen.main.bounds.size.width - 32)
-                        .padding(.horizontal)
-                        
-                    }
-                    .sheet(item: self.$selectedSession){ session in
-                        SessionDetailView(title: session.title, icon: session.icon, duration: Int(session.duration), color: Color(session.color)).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
-                    }
-                    Button(action: {
-                        dataController.deleteAll()
-                    }) {
-                        Text("Erase all?")
-                    }.padding(.top)
-                    .sheet(isPresented: $showSheet) {
-                        NewSessionSheetView()
+                        SquareCellsView(title: session.title, duration: Int(session.duration), icon: session.icon, color: Color(session.color))
+                            .onTapGesture {
+                                self.selectedSession = session
+                            }
                     }
                 }
-                
+                .sheet(item: self.$selectedSession){ session in
+                    SessionDetailView(title: session.title, icon: session.icon, duration: Int(session.duration), color: Color(session.color)).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
+                }
+                Button(action: {
+                    dataController.deleteAll()
+                }) {
+                    Text("Erase all?")
+                }.padding(.top)
+                .sheet(isPresented: $showSheet) {
+                    NewSessionSheetView()
+                }
+                .navigationTitle("My Sessions")
+                .navigationBarItems(trailing: Button(action: {
+                    showSheet = true
+                }, label: {
+                    Image(systemName: "plus.circle")
+                        .imageScale(.large)
+                }))
             }
-            .navigationTitle("My Sessions")
             .background(BackgroundView())
-            .navigationBarItems(trailing: Button(action: {
-                showSheet = true
-            }, label: {
-                Image(systemName: "plus.circle")
-                    .imageScale(.large)
-            }))
         }
     }
 }

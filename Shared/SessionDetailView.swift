@@ -189,8 +189,7 @@ struct SessionTopTools: View {
         .padding(.horizontal)
         .padding(.vertical, 20)
         .frame(width: UIScreen.main.bounds.size.width)
-    }
-    
+    } 
 }
 
 struct TopCurve: Shape {
