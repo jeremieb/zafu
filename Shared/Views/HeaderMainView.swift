@@ -10,7 +10,7 @@ import SwiftUI
 struct HeaderMainView: View {
     
     /// Opening modal view
-    @State var settingsSheet = false
+    @State private var settingsSheet = false
     
     /// Only for the main view
     var isHome: Bool = false

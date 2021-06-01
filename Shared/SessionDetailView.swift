@@ -13,7 +13,7 @@ struct SessionDetailView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    @State var isAnimated = false
+    @State private var isAnimated = false
     
     var title: String = "Session Title"
     var icon: String = "drop"

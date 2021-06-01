@@ -11,7 +11,7 @@ struct QuoteView: View {
     
     var myQuote = MyQuotes()
     
-    @State var quote: QuoteModel = QuoteModel(theQuote: "Empty", theAuthor: "No one")
+    @State private var quote: QuoteModel = QuoteModel(theQuote: "Empty", theAuthor: "No one")
     
     var body: some View {
         

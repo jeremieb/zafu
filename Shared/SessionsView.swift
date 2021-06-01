@@ -24,8 +24,8 @@ struct SessionsView: View {
     var sessions: FetchedResults<Sessions>
     
     /// Show modals
-    @State var showSheet = false
-    @State var selectedSession: Sessions? = nil
+    @State private var showSheet = false
+    @State private var selectedSession: Sessions? = nil
     
     /// List
     let columns = [

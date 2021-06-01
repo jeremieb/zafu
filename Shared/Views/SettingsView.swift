@@ -162,7 +162,7 @@ struct SoundSelection: View {
 struct CircleSelection: View {
     
     @Binding var selection: Int
-    @State var selected: Bool = false
+    @State private var selected: Bool = false
     
     var title: String = "Button title"
     var color: Color
