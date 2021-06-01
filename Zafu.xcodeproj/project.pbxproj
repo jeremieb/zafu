@@ -21,6 +21,7 @@
 		1E3E79042664C00600A0EE65 /* SessionsCoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E79032664C00600A0EE65 /* SessionsCoreDataClass.swift */; };
 		1E3E79062664C02800A0EE65 /* SessionsCoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E79052664C02800A0EE65 /* SessionsCoreDataProperties.swift */; };
 		1E3E79082664C67A00A0EE65 /* NewSessionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3E79072664C67A00A0EE65 /* NewSessionSheetView.swift */; };
+		1E4B5CA52666070A00E82CBE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E4B5CA42666070A00E82CBE /* CloudKit.framework */; };
 		1E54D036265E22B000A11588 /* GradientsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E54D035265E22B000A11588 /* GradientsViews.swift */; };
 		1E694437265E63B000EDDD06 /* TimeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E694436265E63B000EDDD06 /* TimeTransform.swift */; };
 		1E6944392661426C00EDDD06 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6944382661426C00EDDD06 /* Sounds.swift */; };
@@ -75,6 +76,8 @@
 		1E3E79032664C00600A0EE65 /* SessionsCoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsCoreDataClass.swift; sourceTree = "<group>"; };
 		1E3E79052664C02800A0EE65 /* SessionsCoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsCoreDataProperties.swift; sourceTree = "<group>"; };
 		1E3E79072664C67A00A0EE65 /* NewSessionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSessionSheetView.swift; sourceTree = "<group>"; };
+		1E4B5CA22666070600E82CBE /* Zafu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zafu.entitlements; sourceTree = "<group>"; };
+		1E4B5CA42666070A00E82CBE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		1E54D035265E22B000A11588 /* GradientsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientsViews.swift; sourceTree = "<group>"; };
 		1E694436265E63B000EDDD06 /* TimeTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTransform.swift; sourceTree = "<group>"; };
 		1E6944382661426C00EDDD06 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E4B5CA52666070A00E82CBE /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +167,14 @@
 				1E03EE03264D73B40069E5AC /* AnimationProvider.swift */,
 			);
 			path = Provider;
+			sourceTree = "<group>";
+		};
+		1E4B5CA32666070A00E82CBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E4B5CA42666070A00E82CBE /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		1E69443C266218D100EDDD06 /* AppIcons */ = {
@@ -226,12 +238,14 @@
 		1EB3D9C9264D52ED00F13B3B = {
 			isa = PBXGroup;
 			children = (
+				1E4B5CA22666070600E82CBE /* Zafu.entitlements */,
 				1E3E78FE2664BD9B00A0EE65 /* Zafu.xcdatamodeld */,
 				1E3E79032664C00600A0EE65 /* SessionsCoreDataClass.swift */,
 				1E3E79052664C02800A0EE65 /* SessionsCoreDataProperties.swift */,
 				1EB3D9CE264D52ED00F13B3B /* Shared */,
 				1EB3D9D8264D52EE00F13B3B /* iOS */,
 				1EB3D9D7264D52EE00F13B3B /* Products */,
+				1E4B5CA32666070A00E82CBE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -522,6 +536,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Zafu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1000;
 				DEVELOPMENT_TEAM = PNJ2ZGDY4C;
@@ -546,6 +561,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Zafu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1000;
 				DEVELOPMENT_TEAM = PNJ2ZGDY4C;
