@@ -22,12 +22,12 @@ struct MySessionsView: View {
     /// Session detail
     @State private var showDetail = false
     @State private var selectedSession: Sessions? = nil
-
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 10.0){
                 ForEach(sessions) { session in
-                    SquareCellsView(title: session.title, duration: Int(session.duration), icon: session.icon, color: Color(session.color))
+                    SquareCellsView(session: session)
                         .onTapGesture {
                             self.selectedSession = session
                         }
@@ -45,73 +45,62 @@ struct MySessionsView: View {
 struct SquareCellsView: View {
     
     @Environment(\.colorScheme) var colorScheme
+
+    @ObservedObject var session: Sessions
     
-    var title = "Session title"
-    var duration = 5
-    var icon: String?
-    var color: Color
-  
     var body: some View {
         
         /// Content
         VStack {
             VStack(alignment: .leading){
                 HStack {
-                    Text(String(duration / 60) + " min")
+                    Text(String(session.duration / 60) + " min")
                         .font(.caption)
-                        .foregroundColor(colorScheme == .dark ? color : Color.mainPurple)
+                        .foregroundColor(colorScheme == .dark ? Color(session.color) : Color.mainPurple)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(colorScheme == .dark ? color : Color.mainPurple, lineWidth: 1)
+                                .stroke(colorScheme == .dark ? Color(session.color) : Color.mainPurple, lineWidth: 1)
                         )
                         .lineLimit(1)
                     Spacer()
                     
                     // if we have a icon
-                    if ((icon?.isEmpty) != nil) {
-                        Image(systemName: icon ?? "")
-                            .font(.system(size: 20))
-                            .foregroundColor(colorScheme == .dark ? color : Color.mainPurple)
-                            .opacity(0.5)
-                    }
+                    Image(systemName: session.icon)
+                        .font(.system(size: 20))
+                        .foregroundColor(colorScheme == .dark ? Color(session.color) : Color.mainPurple)
+                        .opacity(0.5)
                 }
                 Spacer()
-                Text(title)
+                Text(session.title)
                     .font(.title2)
                     .fontWeight(.bold)
-                    .foregroundColor(colorScheme == .dark ? color : Color.mainPurple)
+                    .foregroundColor(colorScheme == .dark ? Color(session.color) : Color.mainPurple)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
             }
             .padding()
             Spacer()
         }
-        .background(color.opacity(colorScheme == .dark ? 0.1 : 0.8))
+        .background(Color(session.color).opacity(colorScheme == .dark ? 0.1 : 0.8))
         .frame(width: 150, height: 150)
         .cornerRadius(20)
     }
 }
 
-struct ListSessionCustomView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            SquareCellsView(title: "Test", duration: 5, icon: "leaf", color: Color.mainOrange)
-                .previewLayout(PreviewLayout.sizeThatFits)
-                .padding()
-                .previewDisplayName("Default preview")
-            SquareCellsView(color: Color.mainOrange)
-                .preferredColorScheme(.dark)
-                .previewLayout(PreviewLayout.sizeThatFits)
-                .padding()
-                .previewDisplayName("Default preview")
-            ZStack {
-                BackgroundView()
-                MySessionsView()
-            }
-        }
-    }
-}
+//struct ListSessionCustomView_Previews: PreviewProvider {
+//
+//    @State private var session: DataController
+//
+//    static var previews: some View {
+//        Group {
+//            SquareCellsView(session: )
+//                .previewLayout(PreviewLayout.sizeThatFits)
+//                .padding()
+//                .previewDisplayName("Default preview")
+//        }
+//    }
+//}
 
 

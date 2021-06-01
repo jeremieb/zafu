@@ -103,6 +103,7 @@ struct NewSessionSheetView: View {
                             guard self.title != "" else {return}
                             guard self.iconSelected != "" else {return}
                             let newSession = Sessions(context: dataController.container.viewContext)
+                            newSession.objectWillChange.send()
                             newSession.title = self.title
                             newSession.duration = Int16(self.duration) * 60
                             newSession.icon = self.iconSelected

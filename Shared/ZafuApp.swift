@@ -9,9 +9,7 @@ import SwiftUI
 
 @main
 struct ZafuApp: App {
-    
-//    let persistenceController = PersistenceController.shared
-    
+
     @StateObject var data = TimerData()
     @StateObject var dataController = DataController()
     

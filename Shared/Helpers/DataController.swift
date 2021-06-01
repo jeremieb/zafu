@@ -54,9 +54,10 @@ class DataController: ObservableObject {
             let newSession = Sessions(context: viewContext)
             newSession.id = UUID()
             newSession.title = "My Session"
-            newSession.duration = 5
+            newSession.duration = 300
             newSession.icon = "leaf"
             newSession.color = ".mainBlue"
+            newSession.objectWillChange.send()
         }
         try viewContext.save()
     }

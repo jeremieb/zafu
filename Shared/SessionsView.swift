@@ -38,7 +38,7 @@ struct SessionsView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 30){
                     ForEach(sessions) { session in
-                        SquareCellsView(title: session.title, duration: Int(session.duration), icon: session.icon, color: Color(session.color))
+                        SquareCellsView(session: session)
                             .onTapGesture {
                                 self.selectedSession = session
                             }
