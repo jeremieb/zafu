@@ -68,10 +68,10 @@ struct NewSessionSheetView: View {
                                             self.iconSelected = icon.value
                                             self.iconID = icon.key
                                         }
-                                }
+                                }.padding(.trailing, 4)
                             }
                         }
-                    }
+                    }.padding(.trailing, -20)
                     
                     /// Color selection
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -83,10 +83,10 @@ struct NewSessionSheetView: View {
                                             self.colorSelected = color.value
                                             self.colorID = color.key
                                         }
-                                }
+                                }.padding(.trailing, 4)
                             }
                         }
-                    }
+                    }.padding(.trailing, -20)
                 }
             }
             .navigationTitle("New Session")
