@@ -19,6 +19,7 @@ extension Sessions {
     @NSManaged public var duration: Int16
     @NSManaged public var icon: String
     @NSManaged public var color: String
+    @NSManaged public var interval: Int16
 
 }
 

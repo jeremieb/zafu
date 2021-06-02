@@ -47,7 +47,7 @@ class DataController: ObservableObject {
         let session = Sessions(context: viewContext)
         
         let sessionSample = [
-            (session.title = "My Session", session.duration = 5, session.icon = "leaf", session.color = "mainPink")
+            (session.title = "My Session", session.duration = 5, session.icon = "leaf", session.color = "mainPink", session.interval = 0)
         ]
         
         for _ in sessionSample {
@@ -57,6 +57,7 @@ class DataController: ObservableObject {
             newSession.duration = 300
             newSession.icon = "leaf"
             newSession.color = ".mainBlue"
+            newSession.interval = 0
             newSession.objectWillChange.send()
         }
         try viewContext.save()

@@ -16,6 +16,7 @@ struct NewSessionSheetView: View {
     
     @State private var title: String = ""
     @State private var duration: Int16 = 5
+    @State private var interval: Int16 = 0
     @State private var iconSelected: String = "leaf.fill"
     @State private var iconID: Int = 1
     @State private var colorSelected: String = "mainBlue"
@@ -54,6 +55,11 @@ struct NewSessionSheetView: View {
                 /// Duration picker
                 Section(header: Text("Duration"), footer: Text("Choose a duration for your meditation session up to 90 minutes").fixedSize(horizontal: false, vertical: true)) {
                     Stepper("\(duration) minutes", value: $duration, in: 5...90, step: 5)
+                }
+                
+                /// Interval
+                Section(header: Text("Interval"), footer: Text("You can add a small alert during your session.").fixedSize(horizontal: false, vertical: true)) {
+                    Stepper("\(interval) minutes", value: $interval, in: 0...duration - 5, step: 5)
                 }
                 
                 Section(header: Text("Customization")) {
