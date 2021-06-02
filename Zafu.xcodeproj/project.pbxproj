@@ -53,6 +53,9 @@
 		1EC79185264E487C00DBE82D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC79184264E487C00DBE82D /* SettingsView.swift */; };
 		1EC98B03265C0A9000C02323 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC98B02265C0A9000C02323 /* Observer.swift */; };
 		1EE1D1B02667B46900F6EB9C /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE1D1AF2667B46900F6EB9C /* FeaturedView.swift */; };
+		1EE1D1B32667BFC800F6EB9C /* achievement-bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1EE1D1B22667BFC800F6EB9C /* achievement-bell.wav */; };
+		1EE1D1B52667C00F00F6EB9C /* fairy-bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1EE1D1B42667C00F00F6EB9C /* fairy-bell.wav */; };
+		1EE1D1B72667C03100F6EB9C /* happy.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1EE1D1B62667C03100F6EB9C /* happy.wav */; };
 		1EE48E78264DB9B500E17A3B /* HeaderMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */; };
 		1EF13B03265B8D5B0032F9A8 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF13B02265B8D5B0032F9A8 /* SessionDetailView.swift */; };
 		1EF13B06265BCA4F0032F9A8 /* birds-chirping-near-the-river.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1EF13B04265BCA4F0032F9A8 /* birds-chirping-near-the-river.m4a */; };
@@ -110,6 +113,9 @@
 		1EC79184264E487C00DBE82D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1EC98B02265C0A9000C02323 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		1EE1D1AF2667B46900F6EB9C /* FeaturedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedView.swift; sourceTree = "<group>"; };
+		1EE1D1B22667BFC800F6EB9C /* achievement-bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "achievement-bell.wav"; sourceTree = "<group>"; };
+		1EE1D1B42667C00F00F6EB9C /* fairy-bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "fairy-bell.wav"; sourceTree = "<group>"; };
+		1EE1D1B62667C03100F6EB9C /* happy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = happy.wav; sourceTree = "<group>"; };
 		1EE48E77264DB9B500E17A3B /* HeaderMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMainView.swift; sourceTree = "<group>"; };
 		1EF13B02265B8D5B0032F9A8 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		1EF13B04265BCA4F0032F9A8 /* birds-chirping-near-the-river.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "birds-chirping-near-the-river.m4a"; sourceTree = "<group>"; };
@@ -226,8 +232,8 @@
 		1EAD40E42657D6D10061DBF7 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				1EE1D1B12667BF9100F6EB9C /* bells */,
 				1EF13B0A265BCB260032F9A8 /* soundscapes */,
-				1EF13B08265BCB220032F9A8 /* metal_gong.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -282,6 +288,17 @@
 				1EB3D9D9264D52EE00F13B3B /* Info.plist */,
 			);
 			path = iOS;
+			sourceTree = "<group>";
+		};
+		1EE1D1B12667BF9100F6EB9C /* bells */ = {
+			isa = PBXGroup;
+			children = (
+				1EE1D1B62667C03100F6EB9C /* happy.wav */,
+				1EE1D1B22667BFC800F6EB9C /* achievement-bell.wav */,
+				1EE1D1B42667C00F00F6EB9C /* fairy-bell.wav */,
+				1EF13B08265BCB220032F9A8 /* metal_gong.wav */,
+			);
+			path = bells;
 			sourceTree = "<group>";
 		};
 		1EF13B0A265BCB260032F9A8 /* soundscapes */ = {
@@ -354,6 +371,8 @@
 				1E69444E266218E200EDDD06 /* default-black@3x.png in Resources */,
 				1E69444F266218E200EDDD06 /* pride-trans@3x.png in Resources */,
 				1E694451266218E200EDDD06 /* default-black@1x.png in Resources */,
+				1EE1D1B32667BFC800F6EB9C /* achievement-bell.wav in Resources */,
+				1EE1D1B52667C00F00F6EB9C /* fairy-bell.wav in Resources */,
 				1E694452266218E200EDDD06 /* pride@1x.png in Resources */,
 				1E69444B266218E200EDDD06 /* pride-trans@2x.png in Resources */,
 				1E694453266218E200EDDD06 /* pride@3x.png in Resources */,
@@ -362,6 +381,7 @@
 				1E694449266218E200EDDD06 /* default-black@2x.png in Resources */,
 				1EF13B07265BCA4F0032F9A8 /* birds-in-the-jungle.m4a in Resources */,
 				1EB3D9E6264D52EE00F13B3B /* Assets.xcassets in Resources */,
+				1EE1D1B72667C03100F6EB9C /* happy.wav in Resources */,
 				1E694450266218E200EDDD06 /* pride@2x.png in Resources */,
 				1EF13B09265BCB220032F9A8 /* metal_gong.wav in Resources */,
 				1E69444A266218E200EDDD06 /* pride-trans@1x.png in Resources */,

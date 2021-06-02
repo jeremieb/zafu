@@ -30,6 +30,14 @@ struct SettingsView: View {
                     
                     Divider().padding(.vertical, 20)
                     
+                    /// Alert & Bells
+                    Group{
+                        SectionHeaderView(title: "Alerts")
+                        AlertBellsView()
+                    }
+                    
+                    Divider().padding(.vertical, 20)
+                    
                     /// Alternat app icons
                     Group {
                         SectionHeaderView(title: "Alternate app icons")
@@ -54,6 +62,38 @@ struct SettingsView: View {
                 }
             })
             .background(BackgroundView())
+        }
+    }
+}
+
+// MARK: - Alert & Bells View
+struct AlertBellsView: View {
+    
+    @AppStorage("alertFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var alertFile: Int = 1
+    
+    var body: some View {
+        Text("Select a sound to be alerted when your the session is done.")
+            .font(.footnote)
+            .foregroundColor(Color.mainPurple)
+            .fixedSize(horizontal: false, vertical: true)
+            .lineLimit(6)
+            .padding(.horizontal)
+            .padding(.bottom, 20)
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: 20.0){
+                
+                ForEach(Array(bellFiles.enumerated()), id: \.offset) { index, bell in
+                    CircleSelection(selection: $alertFile, title: bell.name, color: bell.color, image: Image(systemName: "bell"), id: bell.id)
+                        .onTapGesture {
+                            withAnimation{
+                                AudioPlayer.stopSecondarySound()
+                                alertFile = bell.id
+                                AudioPlayer.playSecondarySound(soundFile: bell.file)
+                            }
+                        }
+                }
+            }.padding(.horizontal)
         }
     }
 }
@@ -166,7 +206,7 @@ struct CircleSelection: View {
     
     var title: String = "Button title"
     var color: Color
-    var image: Image = Image(systemName: "tortoise.fill")
+    var image: Image?
     var id: Int
     
     var body: some View{

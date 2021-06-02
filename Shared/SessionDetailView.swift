@@ -16,6 +16,12 @@ struct SessionDetailView: View {
     @State private var isAnimated = false
     
     @ObservedObject var session: Sessions
+    
+    @AppStorage("alertFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var alertFile: Int = 1
+    
+    private var alertFileStored: String {
+        return bellFiles[alertFile].file
+    }
 
     var body: some View {
         ZStack{
@@ -89,7 +95,7 @@ struct SessionDetailView: View {
                         CircularGradientButton()
                     }
                     Button(action: {
-                        AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
+                        AudioPlayer.playSecondarySound(soundFile: alertFileStored)
                         withAnimation(.linear(duration: 0.450)) {
                             data.time = Int(session.duration)
                             data.selectedTime = Int(session.duration)
@@ -105,14 +111,13 @@ struct SessionDetailView: View {
                     }
                 }
                 Spacer()
-                
             }
             .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect(), perform: { _ in
                 data.selectedTime -= 1
                 
                 if data.selectedTime == 0 {
                     data.stopSession()
-                    AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
+                    AudioPlayer.playSecondarySound(soundFile: alertFileStored)
                     isAnimated = false
                 }
             })
