@@ -24,10 +24,7 @@ struct MainView: View {
                 MySessionsView()
                 
                 /// Featured sessions
-                Group {
-                    SectionHeaderView(title: "Featured").padding(.top, 30).foregroundColor(.elementSecondary)
-                    LargeSessionCellView()
-                }
+                FeaturedView()
                 
                 Spacer()
             }.padding(.bottom, 30)

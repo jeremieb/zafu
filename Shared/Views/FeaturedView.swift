@@ -1,41 +1,37 @@
 //
-//  MeditationView.swift
+//  FeaturedView.swift
 //  Zafu (iOS)
 //
-//  Created by Jeremie Berduck on 16/05/2021.
+//  Created by Jeremie Berduck on 02/06/2021.
 //
 
 import SwiftUI
 
-struct MeditationView: View {
-    
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
-    }
- 
+struct FeaturedView: View {
     var body: some View {
-
-        NavigationView{
-            ScrollView {
-                VStack(alignment: .leading){
+        VStack(alignment: .leading) {
+            SectionHeaderView(title: "Featured").padding(.top, 30).foregroundColor(.elementSecondary)
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack(spacing: 10.0){
                     ForEach(sessions){ featured in
-                        CellText(featuredSession: featured)
+                        FeaturedCellView(featuredSession: featured)
                     }
-                }
-                .frame(width: UIScreen.main.bounds.size.width)
-            }
-            .navigationTitle("Meditations")
-            .background(BackgroundView())
+                }.padding(.horizontal)
+            }.frame(width: UIScreen.main.bounds.width).padding(.top, 10)
         }
     }
 }
 
-struct CellText: View {
+// MARK: - Featured Cell Views
+struct FeaturedCellView: View {
     
-    @Environment(\.colorScheme) var colorScheme
+    let gradientOneColors = Gradient(colors: [Color.gradient1Start, Color.gradient1End])
+    var gradientOne: RadialGradient {
+        return RadialGradient(gradient: gradientOneColors, center: .topLeading, startRadius: 0, endRadius: 160)
+    }
     
     var featuredSession: LocalFeaturedSession
-
+    
     var body: some View {
         /// Content
         HStack {
@@ -67,13 +63,14 @@ struct CellText: View {
         }
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(featuredSession.color).opacity(colorScheme == .dark ? 0.1 : 0.8))
-        .frame(width: UIScreen.main.bounds.size.width - 32, height: 150)
+                .fill(gradientOne).opacity(0.5))
+                .frame(width: 235, height: 150)
     }
+    
 }
 
-struct MeditationView_Previews: PreviewProvider {
+struct FeaturedView_Previews: PreviewProvider {
     static var previews: some View {
-        MeditationView()
+        FeaturedView()
     }
 }
