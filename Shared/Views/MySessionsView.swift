@@ -24,21 +24,28 @@ struct MySessionsView: View {
     @State private var selectedSession: Sessions? = nil
     
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false){
-            HStack(spacing: 10.0){
-                ForEach(sessions) { session in
-                    Button(action: {
-                        self.selectedSession = session
-                    }) {
-                        SquareCellsView(session: session)
+        if !sessions.isEmpty {
+            VStack(alignment: .leading) {
+                SectionHeaderView(title: "My Sessions").padding(.top, 30).foregroundColor(.elementSecondary)
+                ScrollView(.horizontal, showsIndicators: false){
+                    HStack(spacing: 10.0){
+                        ForEach(sessions) { session in
+                            Button(action: {
+                                self.selectedSession = session
+                            }) {
+                                SquareCellsView(session: session)
+                            }
+                        }
                     }
-                }
+                    .padding(.horizontal)
+                    .sheet(item: self.$selectedSession){ session in
+                        SessionDetailView(title: session.title, icon: session.icon, duration: Int(session.duration), color: Color(session.color)).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
+                    }
+                }.padding(.top, 10)
             }
-            .padding(.horizontal)
-            .sheet(item: self.$selectedSession){ session in
-                SessionDetailView(title: session.title, icon: session.icon, duration: Int(session.duration), color: Color(session.color)).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
-            }
-        }.padding(.top, 10)
+        } else {
+            EmptyView()
+        }
     }
 }
 
@@ -46,7 +53,7 @@ struct MySessionsView: View {
 struct SquareCellsView: View {
     
     @Environment(\.colorScheme) var colorScheme
-
+    
     @ObservedObject var session: Sessions
     
     var body: some View {

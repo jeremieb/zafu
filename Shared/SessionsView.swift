@@ -96,7 +96,7 @@ struct SessionsView: View {
                                     }
                                 }
                                 label: {
-                                    Label("Add", systemImage: "ellipsis.circle")
+                                    Label("Add", systemImage: "ellipsis.circle").font(.system(size: 24))
                                 }
                             }
                         }

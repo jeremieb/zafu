@@ -21,10 +21,7 @@ struct MainView: View {
                 StatsMainView()
                 
                 /// My favorites or My sessions
-                Group {
-                    SectionHeaderView(title: "My Sessions").padding(.top, 30).foregroundColor(.elementSecondary)
-                    MySessionsView()
-                }
+                MySessionsView()
                 
                 /// Featured sessions
                 Group {
