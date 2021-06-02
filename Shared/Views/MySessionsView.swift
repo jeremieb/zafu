@@ -27,10 +27,11 @@ struct MySessionsView: View {
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 10.0){
                 ForEach(sessions) { session in
-                    SquareCellsView(session: session)
-                        .onTapGesture {
-                            self.selectedSession = session
-                        }
+                    Button(action: {
+                        self.selectedSession = session
+                    }) {
+                        SquareCellsView(session: session)
+                    }
                 }
             }
             .padding(.horizontal)

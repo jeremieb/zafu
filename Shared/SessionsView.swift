@@ -27,6 +27,9 @@ struct SessionsView: View {
     @State private var showSheet = false
     @State private var selectedSession: Sessions? = nil
     
+    /// Show edit
+    @State private var editMode = false
+    
     /// List
     let columns = [
         GridItem(.fixed(UIScreen.main.bounds.size.width / 2.3)),
@@ -38,41 +41,78 @@ struct SessionsView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 30){
                     ForEach(sessions) { session in
-                        SquareCellsView(session: session)
-                            .onTapGesture {
-                                self.selectedSession = session
+                        if editMode {
+                            ZStack {
+                                SquareCellsView(session: session).overlay(Color(UIColor.systemBackground).clipShape(RoundedRectangle.init(cornerRadius: 20)).opacity(0.7))
+                                Button(action: { dataController.delete(session) }, label: {
+                                    Image(systemName: "trash.circle").font(.system(size: 32)).foregroundColor(.red)
+                                })
                             }
+                        } else {
+                            Button(action: {
+                                self.selectedSession = session
+                            }) {
+                                SquareCellsView(session: session)
+                            }
+                        }
                     }
                 }.padding(.top, 30)
                 .sheet(item: self.$selectedSession){ session in
                     SessionDetailView(title: session.title, icon: session.icon, duration: Int(session.duration), color: Color(session.color)).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
                 }
-                
-                /// DELETE ALL button
-                Button(action: {
-                    withAnimation {
-                        dataController.deleteAll()
+                EmptyView()
+                    .sheet(isPresented: $showSheet) {
+                        NewSessionSheetView()
                     }
-                }) {
-                    Label("Erase all?", systemImage: "trash").padding().frame(width: UIScreen.main.bounds.size.width - 56).background(Color(UIColor.systemBackground).colorInvert().opacity(0.15)).cornerRadius(10).foregroundColor(Color(UIColor.systemRed))
-                }.padding(.top, 120)
-                .sheet(isPresented: $showSheet) {
-                    NewSessionSheetView()
-                }
-                .navigationTitle("My Sessions")
-                .navigationBarItems(trailing: Button(action: {
-                    showSheet = true
-                }, label: {
-                    Image(systemName: "plus.circle")
-                        .imageScale(.large)
-                }))
+                    .navigationTitle("My Sessions")
+                    .toolbar {
+                        ToolbarItem(placement: .primaryAction) {
+                            if editMode {
+                                Button(action: {
+                                    editMode = false
+                                    dataController.save()
+                                }) {
+                                    Text("Save")
+                                }
+                            } else {
+                                Menu {
+                                    Section{
+                                        /// Add a session
+                                        Button(action: { showSheet = true }) {
+                                            Label("Add a session", systemImage: "plus.circle")
+                                        }
+                                        
+                                        /// Edit mode
+                                        Button(action: { editMode = true }) {
+                                            Label("Edit", systemImage: "pencil.circle")
+                                        }
+                                    }
+                                    Section{
+                                        /// Delete all - ⚠️ Cannot be customized for now...
+                                        /// https://stackoverflow.com/questions/58467846/how-to-configure-contextmenu-buttons-for-delete-and-disabled-in-swiftui
+                                        Button(action: { dataController.deleteAll() }) {
+                                            Label("Delete all", systemImage: "trash")
+                                        }.foregroundColor(.red) /// doesn't work for now...
+                                    }
+                                }
+                                label: {
+                                    Label("Add", systemImage: "ellipsis.circle")
+                                }
+                            }
+                        }
+                    }
             }
             .background(BackgroundView())
         }
     }
 }
 
-
+struct RedMenu: MenuStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        Menu(configuration)
+            .foregroundColor(.red)
+    }
+}
 
 struct SessionsView_Previews: PreviewProvider {
     static var previews: some View {
