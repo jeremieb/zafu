@@ -115,6 +115,7 @@ struct SessionDetailView: View {
                 
                 if data.selectedTime == 0 {
                     data.stopSession()
+                    AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
                     isAnimated = false
                 }
             })
