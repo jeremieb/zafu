@@ -114,6 +114,7 @@ struct NewSessionSheetView: View {
                             newSession.duration = Int16(self.duration) * 60
                             newSession.icon = self.iconSelected
                             newSession.color = self.colorSelected
+                            newSession.interval = self.interval * 60
                             newSession.id = UUID()
                             dataController.save()
                             print("New session saved.")

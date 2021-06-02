@@ -67,6 +67,18 @@ struct SessionDetailView: View {
                         } else {
                             Text("hours remain").fontWeight(.semibold)
                         }
+                        if session.interval > 0 {
+                            HStack(spacing: 0) {
+                                Text("Alert me after: " + Double(session.interval).asString(style: .positional))
+                                if session.interval <= 60 {
+                                    Text(" seconds")
+                                } else if session.interval >= 60 && session.interval <= 3599 {
+                                    Text(" minutes")
+                                } else {
+                                    Text(" hours")
+                                }
+                            }.font(.footnote).padding(.vertical, 20)
+                        }
                     }.foregroundColor(.mainPurple)
                 } else {
                     /// Duration label
@@ -80,6 +92,18 @@ struct SessionDetailView: View {
                             Text("minutes").fontWeight(.semibold)
                         } else {
                             Text("hours").fontWeight(.semibold)
+                        }
+                        if session.interval > 0 {
+                            HStack(spacing: 0) {
+                                Text("Alert me after: " + Double(session.interval).asString(style: .positional))
+                                if session.interval <= 60 {
+                                    Text(" seconds")
+                                } else if session.interval >= 60 && session.interval <= 3599 {
+                                    Text(" minutes")
+                                } else {
+                                    Text(" hours")
+                                }
+                            }.font(.footnote).padding(.vertical, 20)
                         }
                     }.foregroundColor(.mainPurple)
                 }
