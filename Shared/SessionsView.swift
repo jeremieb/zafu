@@ -62,7 +62,7 @@ struct SessionsView: View {
                 }
                 EmptyView()
                     .sheet(isPresented: $showSheet) {
-                        NewSessionSheetView()
+                        NewSessionSheetView().environmentObject(dataController)
                     }
                     .navigationTitle("My Sessions")
                     .toolbar {
