@@ -69,8 +69,8 @@ struct SessionsView: View {
                         ToolbarItem(placement: .primaryAction) {
                             if editMode {
                                 Button(action: {
-                                    editMode = false
                                     dataController.save()
+                                    editMode = false
                                 }) {
                                     Text("Save")
                                 }
