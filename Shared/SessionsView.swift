@@ -19,9 +19,7 @@ struct SessionsView: View {
     /// Core Data
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var dataController: DataController
-    @FetchRequest(entity: Sessions.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Sessions.title, ascending: true)])
-    
-    var sessions: FetchedResults<Sessions>
+    @FetchRequest(entity: Sessions.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Sessions.title, ascending: true)]) var sessions: FetchedResults<Sessions>
     
     /// Show modals
     @State private var showSheet = false
@@ -30,7 +28,7 @@ struct SessionsView: View {
     /// Show edit
     @State private var editMode = false
     
-    /// List
+    /// Layout columns
     let columns = [
         GridItem(.fixed(UIScreen.main.bounds.size.width / 2.3)),
         GridItem(.fixed(UIScreen.main.bounds.size.width / 2.3))
@@ -58,7 +56,7 @@ struct SessionsView: View {
                     }
                 }.padding(.top, 30)
                 .sheet(item: self.$selectedSession){ session in
-                    SessionDetailView(title: session.title, icon: session.icon, duration: Int(session.duration), color: Color(session.color)).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
+                    SessionDetailView(session: session).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
                 }
                 EmptyView()
                     .sheet(isPresented: $showSheet) {
@@ -101,16 +99,8 @@ struct SessionsView: View {
                             }
                         }
                     }
-            }
-            .background(BackgroundView())
+            }.background(BackgroundView())
         }
-    }
-}
-
-struct RedMenu: MenuStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        Menu(configuration)
-            .foregroundColor(.red)
     }
 }
 

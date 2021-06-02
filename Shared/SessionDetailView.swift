@@ -15,24 +15,21 @@ struct SessionDetailView: View {
     
     @State private var isAnimated = false
     
-    var title: String = "Session Title"
-    var icon: String = "drop"
-    var duration: Int = 5
-    var color: Color = Color.topSession
+    @ObservedObject var session: Sessions
 
     var body: some View {
         ZStack{
             
             VStack {
                 TopCurve()
-                    .fill(color.opacity(colorScheme == .dark ? 0.1 : 0.2))
+                    .fill(Color(session.color).opacity(colorScheme == .dark ? 0.1 : 0.2))
                     .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height / 2.5)
                 Spacer()
             }.ignoresSafeArea()
             
             VStack {
                 Spacer().frame(height: 50)
-                Text("\(Image(systemName: icon))")
+                Text("\(Image(systemName: session.icon))")
                     .font(.system(size: 140))
                     .fontWeight(.ultraLight)
                     .foregroundColor(.mainPurple)
@@ -43,7 +40,7 @@ struct SessionDetailView: View {
             VStack {
                 
                 /// Title
-                Text(title)
+                Text(session.title)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.mainPurple)
@@ -70,12 +67,12 @@ struct SessionDetailView: View {
                 } else {
                     /// Duration label
                     VStack {
-                        Text(Double(duration).asString(style: .positional))
+                        Text(Double(session.duration).asString(style: .positional))
                             .font(.system(size: 42))
                             .fontWeight(.heavy)
-                        if duration <= 60 {
+                        if session.duration <= 60 {
                             Text("seconds").fontWeight(.semibold)
-                        } else if duration >= 60 && duration <= 3599 {
+                        } else if session.duration >= 60 && session.duration <= 3599 {
                             Text("minutes").fontWeight(.semibold)
                         } else {
                             Text("hours").fontWeight(.semibold)
@@ -94,8 +91,8 @@ struct SessionDetailView: View {
                     Button(action: {
                         AudioPlayer.playSecondarySound(soundFile: "metal_gong.wav")
                         withAnimation(.linear(duration: 0.450)) {
-                            data.time = duration
-                            data.selectedTime = duration
+                            data.time = Int(session.duration)
+                            data.selectedTime = Int(session.duration)
                             data.sessionHasStarted.toggle()
                         }
                         isAnimated = true
@@ -133,6 +130,8 @@ struct SessionDetailView: View {
     }
 }
 
+
+/// MARK: - Circular Gradient Button
 struct CircularGradientButton: View {
     
     private let gradient = AngularGradient(
@@ -158,6 +157,7 @@ struct CircularGradientButton: View {
     }
 }
 
+/// MARK: - Session Top Tools
 struct SessionTopTools: View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -193,6 +193,7 @@ struct SessionTopTools: View {
     } 
 }
 
+/// MARK: - Top Curve
 struct TopCurve: Shape {
     
     func path(in rect: CGRect) -> Path {
@@ -210,11 +211,11 @@ struct TopCurve: Shape {
     
 }
 
-struct SessionDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            SessionDetailView().environmentObject(TimerData())
-            SessionDetailView().preferredColorScheme(.dark).environmentObject(TimerData())
-        }
-    }
-}
+//struct SessionDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            SessionDetailView().environmentObject(TimerData())
+//            SessionDetailView().preferredColorScheme(.dark).environmentObject(TimerData())
+//        }
+//    }
+//}

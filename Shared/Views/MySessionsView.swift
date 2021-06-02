@@ -16,8 +16,7 @@ struct MySessionsView: View {
     /// Core Data
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var dataController: DataController
-    @FetchRequest(entity: Sessions.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Sessions.title, ascending: true)])
-    var sessions: FetchedResults<Sessions>
+    @FetchRequest(entity: Sessions.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Sessions.title, ascending: true)]) var sessions: FetchedResults<Sessions>
     
     /// Session detail
     @State private var showDetail = false
@@ -39,7 +38,10 @@ struct MySessionsView: View {
                     }
                     .padding(.horizontal)
                     .sheet(item: self.$selectedSession){ session in
-                        SessionDetailView(title: session.title, icon: session.icon, duration: Int(session.duration), color: Color(session.color)).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
+                        SessionDetailView(session: session)
+                            .modifier(DisableModalDismiss(disabled: true))
+                            .environmentObject(dataController)
+                            .environmentObject(data)
                     }
                 }.padding(.top, 10)
             }
