@@ -158,7 +158,6 @@ struct CircularGradientButton: View {
                     Circle().trim(from: 0, to: CGFloat(0.80))
                         .rotation(Angle.degrees(-9))
                         .stroke(gradient, style: StrokeStyle(lineWidth: 10, lineCap: .butt)))
-            
         }.rotationEffect(Angle(degrees: -20))
     }
 }
@@ -185,13 +184,6 @@ struct SessionTopTools: View {
             
             /// AirPlay
             AirPlayView().frame(width: 22, height: 22)
-            
-            /// Edit current session
-            Button(action: {
-                
-            }) {
-                Image(systemName: "square.and.pencil")
-            }.padding(.horizontal, 10).disabled(true)
         }
         .padding(.horizontal)
         .padding(.vertical, 20)

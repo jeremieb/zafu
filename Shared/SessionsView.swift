@@ -27,6 +27,7 @@ struct SessionsView: View {
     
     /// Show edit
     @State private var editMode = false
+    @State private var editSheet = false
     
     /// Layout columns
     let columns = [
@@ -42,9 +43,16 @@ struct SessionsView: View {
                         if editMode {
                             ZStack {
                                 SquareCellsView(session: session).overlay(Color(UIColor.systemBackground).clipShape(RoundedRectangle.init(cornerRadius: 20)).opacity(0.7))
-                                Button(action: { dataController.delete(session) }, label: {
-                                    Image(systemName: "trash.circle").font(.system(size: 32)).foregroundColor(.red)
-                                })
+                                HStack(spacing: 15.0) {
+                                    Button(action: {
+                                        
+                                    }, label: {
+                                        Image(systemName: "pencil.circle").font(.system(size: 32)).foregroundColor(.mainPurple)
+                                    })
+                                    Button(action: { dataController.delete(session) }, label: {
+                                        Text("\(Image(systemName: "trash.circle"))").font(.system(size: 32)).fontWeight(.regular).foregroundColor(.red)
+                                    })
+                                }
                             }
                         } else {
                             Button(action: {
