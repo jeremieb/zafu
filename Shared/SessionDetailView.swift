@@ -9,16 +9,19 @@ import SwiftUI
 
 struct SessionDetailView: View {
     
+    /// Models
     @EnvironmentObject var data: TimerData
-    
-    @Environment(\.colorScheme) var colorScheme
-    
-    @State private var isAnimated = false
-    
     @ObservedObject var session: Sessions
     
-    @AppStorage("alertFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var alertFile: Int = 1
+    /// Dark or light mode?
+    @Environment(\.colorScheme) var colorScheme
     
+    /// Animation when session got started
+    @State private var isAnimated = false
+    
+    /// Alert sounds selected
+    @AppStorage("alertFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var alertFile: Int = 1
+    /// Computed alert file value
     private var alertFileStored: String {
         return bellFiles[alertFile].file
     }
