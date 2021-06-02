@@ -28,13 +28,8 @@ struct SessionDetailView: View {
 
     var body: some View {
         ZStack{
-            
-            VStack {
-                TopCurve()
-                    .fill(Color(session.color).opacity(colorScheme == .dark ? 0.1 : 0.2))
-                    .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height / 2.5)
-                Spacer()
-            }.ignoresSafeArea()
+          
+            Color(session.color).opacity(colorScheme == .dark ? 0.2 : 0.3).ignoresSafeArea()
             
             VStack {
                 Spacer().frame(height: 50)
@@ -91,11 +86,11 @@ struct SessionDetailView: View {
                 
                 ZStack {
                     if data.sessionHasStarted {
-                        CircularGradientButton()
+                        CircularGradientButton(secondColor: Color(session.color))
                             .rotationEffect(Angle.degrees(isAnimated ? 360 : 0 ))
                             .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
                     } else {
-                        CircularGradientButton()
+                        CircularGradientButton(secondColor: Color(session.color))
                     }
                     Button(action: {
                         AudioPlayer.playSecondarySound(soundFile: alertFileStored)
@@ -142,15 +137,18 @@ struct SessionDetailView: View {
 /// MARK: - Circular Gradient Button
 struct CircularGradientButton: View {
     
-    private let gradient = AngularGradient(
-        gradient: Gradient(colors: [Color.myPink, Color(UIColor.systemBackground)]),
-        center: .center,
-        startAngle: .degrees(320),
-        endAngle: .degrees(0))
-    
+    var secondColor: Color
+
     var body: some View {
+        
+        let gradient = AngularGradient(
+            gradient: Gradient(colors: [Color.myPink, Color.myPink.opacity(0)]),
+            center: .center,
+            startAngle: .degrees(320),
+            endAngle: .degrees(0))
+        
         ZStack {
-            Circle().stroke(Color(UIColor.systemBackground), lineWidth: 10).frame(width: 84, height: 84)
+            Circle().stroke(secondColor.opacity(0), lineWidth: 10).frame(width: 84, height: 84)
             
             Circle()
                 .trim(from: 0, to: CGFloat(0.79))
