@@ -25,97 +25,33 @@ struct SessionDetailView: View {
     private var alertFileStored: String {
         return bellFiles[alertFile].file
     }
-
+    
     var body: some View {
         ZStack{
-          
+            
             Color(session.color).opacity(colorScheme == .dark ? 0.2 : 0.3).ignoresSafeArea()
             
-            VStack {
-                Spacer().frame(height: 50)
-                Text("\(Image(systemName: session.icon))")
-                    .font(.system(size: 140))
-                    .fontWeight(.ultraLight)
-                    .foregroundColor(.mainPurple)
-                    .opacity(0.2)
-                Spacer()
-            }
             
-            VStack {
+            
+            VStack(spacing: 0) {
+                
+                Spacer().frame(height: 80)
                 
                 /// Title
-                Text(session.title)
-                    .font(.title)
+                Text("\(Image(systemName: session.icon)) ")
+                    .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.mainPurple)
-                    .padding(.top, 100)
-                    .lineLimit(4)
+                    + Text(session.title)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.mainPurple)
                 
-                QuoteView().padding(.top, 20).foregroundColor(.mainPurple)
-                
-                Spacer().frame(height: 120)
-                
-                if data.sessionHasStarted {
-                    VStack {
-                        Text(Double(data.selectedTime).asString(style: .positional))
-                            .font(.system(size: 42))
-                            .fontWeight(.heavy)
-                        if data.selectedTime <= 60 {
-                            Text("seconds remain").fontWeight(.semibold)
-                        } else if data.selectedTime >= 60 && data.selectedTime <= 3599 {
-                            Text("minutes remain").fontWeight(.semibold)
-                        } else {
-                            Text("hours remain").fontWeight(.semibold)
-                        }
-                        if session.interval > 0 {
-                            HStack(spacing: 0) {
-                                Text("Alert me after: " + Double(session.interval).asString(style: .positional))
-                                if session.interval <= 60 {
-                                    Text(" seconds")
-                                } else if session.interval >= 60 && session.interval <= 3599 {
-                                    Text(" minutes")
-                                } else {
-                                    Text(" hours")
-                                }
-                            }.font(.footnote).padding(.vertical, 20)
-                        }
-                    }.foregroundColor(.mainPurple)
-                } else {
-                    /// Duration label
-                    VStack {
-                        Text(Double(session.duration).asString(style: .positional))
-                            .font(.system(size: 42))
-                            .fontWeight(.heavy)
-                        if session.duration <= 60 {
-                            Text("seconds").fontWeight(.semibold)
-                        } else if session.duration >= 60 && session.duration <= 3599 {
-                            Text("minutes").fontWeight(.semibold)
-                        } else {
-                            Text("hours").fontWeight(.semibold)
-                        }
-                        if session.interval > 0 {
-                            HStack(spacing: 0) {
-                                Text("Alert me after: " + Double(session.interval).asString(style: .positional))
-                                if session.interval <= 60 {
-                                    Text(" seconds")
-                                } else if session.interval >= 60 && session.interval <= 3599 {
-                                    Text(" minutes")
-                                } else {
-                                    Text(" hours")
-                                }
-                            }.font(.footnote).padding(.vertical, 20)
-                        }
-                    }.foregroundColor(.mainPurple)
-                }
+                QuoteView().padding(.top, 50).padding(.bottom, 0).foregroundColor(.mainPurple)
                 
                 ZStack {
-                    if data.sessionHasStarted {
-                        CircularGradientButton(secondColor: Color(session.color))
-                            .rotationEffect(Angle.degrees(isAnimated ? 360 : 0 ))
-                            .animation(Animation.linear(duration: 3).repeatForever(autoreverses: false))
-                    } else {
-                        CircularGradientButton(secondColor: Color(session.color))
-                    }
+                    Circle().stroke(Color(UIColor.systemBackground), lineWidth: 8).frame(width: 230)
+                    Circle().stroke(Color(UIColor.systemBackground), lineWidth: 2).frame(width: 210)
                     Button(action: {
                         AudioPlayer.playSecondarySound(soundFile: alertFileStored)
                         withAnimation(.linear(duration: 0.450)) {
@@ -131,7 +67,56 @@ struct SessionDetailView: View {
                             Image("playButton").offset(y: 7)
                         }
                     }
+                }.frame(height: 230).padding(.top, 50)
+                
+                /// ▶️ SESSION HAS STARTED
+                if data.sessionHasStarted {
+                    VStack(alignment: .center) {
+                        Text(Double(data.selectedTime).asString(style: .positional))
+                            .font(.title)
+                            .fontWeight(.heavy)
+                        if session.interval > 0 {
+                            HStack(spacing: 0) {
+                                Text("Alert me after: " + Double(session.interval).asString(style: .positional))
+                                if session.interval <= 60 {
+                                    Text(" seconds")
+                                } else if session.interval >= 60 && session.interval <= 3599 {
+                                    Text(" minutes")
+                                } else {
+                                    Text(" hours")
+                                }
+                            }.font(.footnote).padding(.top, 12)
+                        }
+                    }.foregroundColor(.mainPurple).padding(.top, 50)
+                } else {
+                    /// Duration label
+                    HStack(alignment: .firstTextBaseline) {
+                        Text(Double(session.duration).asString(style: .positional))
+                            .font(.title)
+                            .fontWeight(.heavy)
+                        if session.duration <= 60 {
+                            Text("seconds").fontWeight(.semibold)
+                        } else if session.duration >= 60 && session.duration <= 3599 {
+                            Text("minutes").fontWeight(.semibold)
+                        } else {
+                            Text("hours").fontWeight(.semibold)
+                        }
+                    }.foregroundColor(.mainPurple).padding(.top, 50)
+                    if session.interval > 0 {
+                        HStack(spacing: 0) {
+                            Text("Alert me after: " + Double(session.interval).asString(style: .positional))
+                            if session.interval <= 60 {
+                                Text(" seconds")
+                            } else if session.interval >= 60 && session.interval <= 3599 {
+                                Text(" minutes")
+                            } else {
+                                Text(" hours")
+                            }
+                        }.font(.footnote).padding(.vertical, 20).foregroundColor(.mainPurple)
+                    }
                 }
+                
+                
                 Spacer()
             }
             .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect(), perform: { _ in
@@ -152,7 +137,6 @@ struct SessionDetailView: View {
                 }
                 Spacer()
             }
-            
         }
     }
 }
@@ -162,7 +146,7 @@ struct SessionDetailView: View {
 struct CircularGradientButton: View {
     
     var secondColor: Color
-
+    
     var body: some View {
         
         let gradient = AngularGradient(
@@ -234,9 +218,13 @@ struct TopCurve: Shape {
 }
 
 //struct SessionDetailView_Previews: PreviewProvider {
+//
 //    static var previews: some View {
+//        
+//        var dataController = DataController().createSampleData()
+//
 //        Group {
-//            SessionDetailView().environmentObject(TimerData())
+//            SessionDetailView(session: ).environmentObject(TimerData())
 //            SessionDetailView().preferredColorScheme(.dark).environmentObject(TimerData())
 //        }
 //    }

@@ -10,6 +10,8 @@ import CoreData
 
 class DataController: ObservableObject {
     
+    static let shared = DataController()
+    
     /// Sync with CloudKit
     let container: NSPersistentCloudKitContainer
     
