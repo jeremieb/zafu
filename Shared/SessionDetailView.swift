@@ -112,7 +112,7 @@ struct SessionDetailView: View {
                     if data.sessionHasStarted {
                         CircularGradientButton(secondColor: Color(session.color))
                             .rotationEffect(Angle.degrees(isAnimated ? 360 : 0 ))
-                            .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
+                            .animation(Animation.linear(duration: 3).repeatForever(autoreverses: false))
                     } else {
                         CircularGradientButton(secondColor: Color(session.color))
                     }
