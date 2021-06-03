@@ -32,6 +32,8 @@ struct FeaturedCellView: View {
     
     var featuredSession: LocalFeaturedSession
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         /// Content
         HStack {
@@ -63,7 +65,7 @@ struct FeaturedCellView: View {
         }
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(gradientOne).opacity(0.5))
+                .fill(featuredSession.color).opacity(colorScheme == .dark ? 0.1 : 0.8))
                 .frame(width: 235, height: 150)
     }
     
