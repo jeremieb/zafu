@@ -17,12 +17,10 @@ struct QuoteView: View {
         
         VStack(alignment: .center) {
             Text(quote.theQuote)
-                .font(.title2)
                 .fontWeight(.ultraLight)
                 .italic()
                 .padding(.bottom, 5)
             Text(quote.theAuthor)
-                .font(.title3)
                 .fontWeight(.light)
         }
         .padding(.horizontal)

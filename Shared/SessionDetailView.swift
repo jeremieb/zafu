@@ -77,7 +77,7 @@ struct SessionDetailView: View {
                             .fontWeight(.heavy)
                         if session.interval > 0 {
                             HStack(spacing: 0) {
-                                Text("Alert me after: " + Double(session.interval).asString(style: .positional))
+                                Label(Double(session.interval).asString(style: .positional), systemImage: "bell")
                                 if session.interval <= 60 {
                                     Text(" seconds")
                                 } else if session.interval >= 60 && session.interval <= 3599 {
@@ -85,7 +85,13 @@ struct SessionDetailView: View {
                                 } else {
                                     Text(" hours")
                                 }
-                            }.font(.footnote).padding(.top, 12)
+                            }
+                            .font(.footnote)
+                            .padding()
+                            .background(Color(UIColor.systemBackground))
+                            .cornerRadius(30)
+                            .foregroundColor(.mainPurple)
+                            .padding(.top, 16)
                         }
                     }.foregroundColor(.mainPurple).padding(.top, 50)
                 } else {
@@ -104,7 +110,7 @@ struct SessionDetailView: View {
                     }.foregroundColor(.mainPurple).padding(.top, 50)
                     if session.interval > 0 {
                         HStack(spacing: 0) {
-                            Text("Alert me after: " + Double(session.interval).asString(style: .positional))
+                            Label(Double(session.interval).asString(style: .positional), systemImage: "bell")
                             if session.interval <= 60 {
                                 Text(" seconds")
                             } else if session.interval >= 60 && session.interval <= 3599 {
@@ -112,7 +118,13 @@ struct SessionDetailView: View {
                             } else {
                                 Text(" hours")
                             }
-                        }.font(.footnote).padding(.vertical, 20).foregroundColor(.mainPurple)
+                        }
+                        .font(.footnote)
+                        .padding()
+                        .background(Color(UIColor.systemBackground))
+                        .cornerRadius(30)
+                        .foregroundColor(.mainPurple)
+                        .padding(.top, 30)
                     }
                 }
                 Spacer()
