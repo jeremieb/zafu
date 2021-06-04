@@ -61,6 +61,8 @@ struct SessionDetailView: View {
                     }) {
                         if data.sessionHasStarted {
                             Image("pauseButton")
+                                .scaleEffect(isAnimated ? 1.2 : 1)
+                                .animation(.linear(duration: 2).repeatForever())
                         } else {
                             Image("playButton")
                         }
