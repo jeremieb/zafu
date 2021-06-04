@@ -30,9 +30,7 @@ struct SessionDetailView: View {
         ZStack{
             
             Color(session.color).opacity(colorScheme == .dark ? 0.2 : 0.3).ignoresSafeArea()
-            
-            
-            
+
             VStack(spacing: 0) {
                 
                 Spacer().frame(height: 80)
@@ -69,64 +67,10 @@ struct SessionDetailView: View {
                     }
                 }.frame(height: 230).padding(.top, 50)
                 
-                /// ▶️ SESSION HAS STARTED
-                if data.sessionHasStarted {
-                    VStack(alignment: .center) {
-                        Text(Double(data.selectedTime).asString(style: .positional))
-                            .font(.title)
-                            .fontWeight(.heavy)
-                        if session.interval > 0 {
-                            HStack(spacing: 0) {
-                                Label(Double(session.interval).asString(style: .positional), systemImage: "bell")
-                                if session.interval <= 60 {
-                                    Text(" seconds")
-                                } else if session.interval >= 60 && session.interval <= 3599 {
-                                    Text(" minutes")
-                                } else {
-                                    Text(" hours")
-                                }
-                            }
-                            .font(.footnote)
-                            .padding()
-                            .background(Color(UIColor.systemBackground))
-                            .cornerRadius(30)
-                            .foregroundColor(.mainPurple)
-                            .padding(.top, 16)
-                        }
-                    }.foregroundColor(.mainPurple).padding(.top, 50)
-                } else {
-                    /// Duration label
-                    HStack(alignment: .firstTextBaseline) {
-                        Text(Double(session.duration).asString(style: .positional))
-                            .font(.title)
-                            .fontWeight(.heavy)
-                        if session.duration <= 60 {
-                            Text("seconds").fontWeight(.semibold)
-                        } else if session.duration >= 60 && session.duration <= 3599 {
-                            Text("minutes").fontWeight(.semibold)
-                        } else {
-                            Text("hours").fontWeight(.semibold)
-                        }
-                    }.foregroundColor(.mainPurple).padding(.top, 50)
-                    if session.interval > 0 {
-                        HStack(spacing: 0) {
-                            Label(Double(session.interval).asString(style: .positional), systemImage: "bell")
-                            if session.interval <= 60 {
-                                Text(" seconds")
-                            } else if session.interval >= 60 && session.interval <= 3599 {
-                                Text(" minutes")
-                            } else {
-                                Text(" hours")
-                            }
-                        }
-                        .font(.footnote)
-                        .padding()
-                        .background(Color(UIColor.systemBackground))
-                        .cornerRadius(30)
-                        .foregroundColor(.mainPurple)
-                        .padding(.top, 30)
-                    }
-                }
+                /// Timing display
+                SessionTimingDisplayView(isStarted: data.sessionHasStarted, duration: session.duration, interval: session.interval)
+                    .environmentObject(data)
+ 
                 Spacer()
             }
             .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect(), perform: { _ in
@@ -151,8 +95,78 @@ struct SessionDetailView: View {
     }
 }
 
+// MARK: - Session Timing Display View
+struct SessionTimingDisplayView: View {
+    
+    /// Models
+    @EnvironmentObject var data: TimerData
+    
+    var isStarted: Bool
+    var duration: Int16
+    var interval: Int16
+    
+    var body: some View{
+        if isStarted {
+            VStack(alignment: .center) {
+                Text(Double(data.selectedTime).asString(style: .positional))
+                    .font(.title)
+                    .fontWeight(.heavy)
+                if interval > 0 {
+                    HStack(spacing: 0) {
+                        Label(Double(interval).asString(style: .positional), systemImage: "bell")
+                        if interval <= 60 {
+                            Text(" seconds")
+                        } else if interval >= 60 && interval <= 3599 {
+                            Text(" minutes")
+                        } else {
+                            Text(" hours")
+                        }
+                    }
+                    .font(.footnote)
+                    .padding()
+                    .background(Color(UIColor.systemBackground))
+                    .cornerRadius(30)
+                    .foregroundColor(.mainPurple)
+                    .padding(.top, 16)
+                }
+            }.foregroundColor(.mainPurple).padding(.top, 50)
+        } else {
+            /// Duration label
+            HStack(alignment: .firstTextBaseline) {
+                Text(Double(duration).asString(style: .positional))
+                    .font(.title)
+                    .fontWeight(.heavy)
+                if duration <= 60 {
+                    Text("seconds").fontWeight(.semibold)
+                } else if duration >= 60 && duration <= 3599 {
+                    Text("minutes").fontWeight(.semibold)
+                } else {
+                    Text("hours").fontWeight(.semibold)
+                }
+            }.foregroundColor(.mainPurple).padding(.top, 50)
+            if interval > 0 {
+                HStack(spacing: 0) {
+                    Label(Double(interval).asString(style: .positional), systemImage: "bell")
+                    if interval <= 60 {
+                        Text(" seconds")
+                    } else if interval >= 60 && interval <= 3599 {
+                        Text(" minutes")
+                    } else {
+                        Text(" hours")
+                    }
+                }
+                .font(.footnote)
+                .padding()
+                .background(Color(UIColor.systemBackground))
+                .cornerRadius(30)
+                .foregroundColor(.mainPurple)
+                .padding(.top, 30)
+            }
+        }
+    }
+}
 
-/// MARK: - Circular Gradient Button
+// MARK: - Circular Gradient Button
 struct CircularGradientButton: View {
     
     var secondColor: Color
@@ -180,7 +194,7 @@ struct CircularGradientButton: View {
     }
 }
 
-/// MARK: - Session Top Tools
+// MARK: - Session Top Tools
 struct SessionTopTools: View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -207,24 +221,6 @@ struct SessionTopTools: View {
         .padding(.vertical, 20)
         .frame(width: UIScreen.main.bounds.size.width)
     } 
-}
-
-/// MARK: - Top Curve
-struct TopCurve: Shape {
-    
-    func path(in rect: CGRect) -> Path {
-        
-        var path = Path()
-        
-        path.move(to: CGPoint.zero)
-        path.addLine(to: CGPoint(x: rect.maxX, y: 0))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addQuadCurve(to: CGPoint(x: 0, y: rect.maxY),
-                          control: CGPoint(x: rect.midX, y: rect.maxY + 100))
-        
-        return path
-    }
-    
 }
 
 //struct SessionDetailView_Previews: PreviewProvider {
