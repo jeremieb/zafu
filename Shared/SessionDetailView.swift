@@ -50,8 +50,8 @@ struct SessionDetailView: View {
                 QuoteView().padding(.top, 50).padding(.bottom, 0).foregroundColor(.mainPurple)
                 
                 ZStack {
-                    Circle().stroke(Color(UIColor.systemBackground), lineWidth: 8).frame(width: 230)
-                    Circle().stroke(Color(UIColor.systemBackground), lineWidth: 2).frame(width: 210)
+                    Circle().stroke(Color(UIColor.systemBackground), lineWidth: 8).frame(width: 230).opacity(0.6)
+                    Circle().stroke(Color(UIColor.systemBackground), lineWidth: 2).frame(width: 210).opacity(0.6)
                     Button(action: {
                         AudioPlayer.playSecondarySound(soundFile: alertFileStored)
                         withAnimation(.linear(duration: 0.450)) {
@@ -62,9 +62,9 @@ struct SessionDetailView: View {
                         isAnimated = true
                     }) {
                         if data.sessionHasStarted {
-                            Image("pauseButton").offset(y: 7)
+                            Image("pauseButton")
                         } else {
-                            Image("playButton").offset(y: 7)
+                            Image("playButton")
                         }
                     }
                 }.frame(height: 230).padding(.top, 50)
@@ -115,8 +115,6 @@ struct SessionDetailView: View {
                         }.font(.footnote).padding(.vertical, 20).foregroundColor(.mainPurple)
                     }
                 }
-                
-                
                 Spacer()
             }
             .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect(), perform: { _ in
