@@ -19,6 +19,9 @@ struct SessionDetailView: View {
     /// Animation when session got started
     @State private var isAnimated = false
     
+    /// Animation for circles
+    @State private var circleAnimation = false
+    
     /// Alert sounds selected
     @AppStorage("alertFile", store: UserDefaults(suiteName: "com.jeremieberduck.zafu")) var alertFile: Int = 1
     /// Computed alert file value
@@ -30,49 +33,33 @@ struct SessionDetailView: View {
         ZStack{
             
             Color(session.color).opacity(colorScheme == .dark ? 0.2 : 0.3).ignoresSafeArea()
-
+            
+            ZStack {
+                Circle().stroke(Color(UIColor.systemBackground), lineWidth: 8).frame(width: 230)
+                    .scaleEffect(circleAnimation ? 1.5 : 1)
+                    .opacity(circleAnimation ? 0 : 0.6)
+                    .animation(.linear(duration: 6).repeatForever(autoreverses: false))
+                Circle().stroke(Color(UIColor.systemBackground), lineWidth: 2).frame(width: 210)
+                    .scaleEffect(circleAnimation ? 2 : 1)
+                    .opacity(circleAnimation ? 0 : 0.6)
+                    .animation(.linear(duration: 4).repeatForever(autoreverses: false))
+            }.frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height).ignoresSafeArea()
+            .onAppear {
+                circleAnimation = true
+            }
+            
             VStack(spacing: 0) {
                 
                 Spacer().frame(height: 80)
                 
                 /// Title
-                Text("\(Image(systemName: session.icon)) ")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundColor(.mainPurple)
-                    + Text(session.title)
+                Text("\(Image(systemName: session.icon)) \(session.title)")
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.mainPurple)
                 
                 QuoteView().padding(.top, 50).padding(.bottom, 0).foregroundColor(.mainPurple)
                 
-                ZStack {
-                    Circle().stroke(Color(UIColor.systemBackground), lineWidth: 8).frame(width: 230).opacity(0.6)
-                    Circle().stroke(Color(UIColor.systemBackground), lineWidth: 2).frame(width: 210).opacity(0.6)
-                    Button(action: {
-                        AudioPlayer.playSecondarySound(soundFile: alertFileStored)
-                        withAnimation(.linear(duration: 0.450)) {
-                            data.time = Int(session.duration)
-                            data.selectedTime = Int(session.duration)
-                            data.sessionHasStarted.toggle()
-                        }
-                        isAnimated = true
-                    }) {
-                        if data.sessionHasStarted {
-                            Image("pauseButton")
-                                .scaleEffect(isAnimated ? 1.2 : 1)
-                                .animation(.linear(duration: 2).repeatForever())
-                        } else {
-                            Image("playButton")
-                        }
-                    }
-                }.frame(height: 230).padding(.top, 50)
-                
-                /// Timing display
-                SessionTimingDisplayView(isStarted: data.sessionHasStarted, duration: session.duration, interval: session.interval)
-                    .environmentObject(data)
- 
                 Spacer()
             }
             .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect(), perform: { _ in
@@ -85,6 +72,35 @@ struct SessionDetailView: View {
                 }
             })
             
+            /// Timing display
+            VStack {
+                Spacer()
+                SessionTimingDisplayView(isStarted: data.sessionHasStarted, duration: session.duration, interval: session.interval)
+                    .environmentObject(data).padding(.bottom, 60)
+            }
+            
+            /// Action button
+            ZStack {
+                Button(action: {
+                    AudioPlayer.playSecondarySound(soundFile: alertFileStored)
+                    withAnimation(.linear(duration: 0.450)) {
+                        data.time = Int(session.duration)
+                        data.selectedTime = Int(session.duration)
+                        data.sessionHasStarted.toggle()
+                    }
+                    isAnimated = true
+                }) {
+                    if data.sessionHasStarted {
+                        Image("pauseButton")
+                            .scaleEffect(isAnimated ? 1.2 : 1)
+                            .animation(.linear(duration: 2).repeatForever())
+                    } else {
+                        Image("playButton")
+                    }
+                }
+            }.frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height).ignoresSafeArea()
+            
+            /// Top tools (UN-USED)
             VStack {
                 if data.sessionHasStarted {
                     SessionTopTools(isInactive: true)
@@ -107,6 +123,26 @@ struct SessionTimingDisplayView: View {
     var duration: Int16
     var interval: Int16
     
+    var unit: String {
+        if duration <= 60 {
+            return " seconds"
+        } else if duration >= 60 && duration <= 3599 {
+            return " minutes"
+        } else {
+            return " hours"
+        }
+    }
+    
+    var unitInterval: String {
+        if interval <= 60 {
+            return " seconds"
+        } else if interval >= 60 && interval <= 3599 {
+            return " minutes"
+        } else {
+            return " hours"
+        }
+    }
+    
     var body: some View{
         if isStarted {
             VStack(alignment: .center) {
@@ -114,22 +150,12 @@ struct SessionTimingDisplayView: View {
                     .font(.title)
                     .fontWeight(.heavy)
                 if interval > 0 {
-                    HStack(spacing: 0) {
-                        Label(Double(interval).asString(style: .positional), systemImage: "bell")
-                        if interval <= 60 {
-                            Text(" seconds")
-                        } else if interval >= 60 && interval <= 3599 {
-                            Text(" minutes")
-                        } else {
-                            Text(" hours")
-                        }
-                    }
-                    .font(.footnote)
-                    .padding()
-                    .background(Color(UIColor.systemBackground))
-                    .cornerRadius(30)
-                    .foregroundColor(.mainPurple)
-                    .padding(.top, 16)
+                    Label(Double(interval).asString(style: .positional) + unitInterval, systemImage: "bell")
+                        .font(.footnote)
+                        .padding()
+                        .background(Color(UIColor.systemBackground))
+                        .cornerRadius(30)
+                        .foregroundColor(.mainPurple)
                 }
             }.foregroundColor(.mainPurple).padding(.top, 50)
         } else {
@@ -138,31 +164,15 @@ struct SessionTimingDisplayView: View {
                 Text(Double(duration).asString(style: .positional))
                     .font(.title)
                     .fontWeight(.heavy)
-                if duration <= 60 {
-                    Text("seconds").fontWeight(.semibold)
-                } else if duration >= 60 && duration <= 3599 {
-                    Text("minutes").fontWeight(.semibold)
-                } else {
-                    Text("hours").fontWeight(.semibold)
-                }
-            }.foregroundColor(.mainPurple).padding(.top, 50)
+                Text(unit).fontWeight(.semibold)
+            }.foregroundColor(.mainPurple).padding(.top, 50).padding(.bottom, 30)
             if interval > 0 {
-                HStack(spacing: 0) {
-                    Label(Double(interval).asString(style: .positional), systemImage: "bell")
-                    if interval <= 60 {
-                        Text(" seconds")
-                    } else if interval >= 60 && interval <= 3599 {
-                        Text(" minutes")
-                    } else {
-                        Text(" hours")
-                    }
-                }
-                .font(.footnote)
-                .padding()
-                .background(Color(UIColor.systemBackground))
-                .cornerRadius(30)
-                .foregroundColor(.mainPurple)
-                .padding(.top, 30)
+                Label(Double(interval).asString(style: .positional) + unitInterval, systemImage: "bell")
+                    .font(.footnote)
+                    .padding()
+                    .background(Color(UIColor.systemBackground))
+                    .cornerRadius(30)
+                    .foregroundColor(.mainPurple)
             }
         }
     }

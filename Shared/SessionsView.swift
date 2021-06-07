@@ -64,7 +64,7 @@ struct SessionsView: View {
                     }
                 }.padding(.top, 30)
                 .sheet(item: self.$selectedSession){ session in
-                    SessionDetailView(session: session).modifier(DisableModalDismiss(disabled: true)).environmentObject(dataController).environmentObject(data)
+                    SessionDetailView(session: session).environmentObject(dataController).environmentObject(data)
                 }
                 EmptyView()
                     .sheet(isPresented: $showSheet) {

@@ -39,7 +39,6 @@ struct MySessionsView: View {
                     .padding(.horizontal)
                     .sheet(item: self.$selectedSession){ session in
                         SessionDetailView(session: session)
-                            .modifier(DisableModalDismiss(disabled: true))
                             .environmentObject(dataController)
                             .environmentObject(data)
                     }
